@@ -16,7 +16,7 @@ namespace ETEditor
     /// 从Unity的NavMesh组件里导出地图数据，供服务器来使用
     /// https://blog.csdn.net/huutu/article/details/52672505
     /// </summary>
-    public class NavMeshExporter: Editor
+    public class NavMeshExporter: UnityEditor.Editor
     {
         public const byte VERSION = 1;
 

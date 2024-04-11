@@ -479,6 +479,160 @@ namespace ET
 
 	}
 
+// Cast相关------------------------------------------------------
+	[Message(OuterMessage.M2C_CastCreat)]
+	[ProtoContract]
+	public partial class M2C_CastCreat: ProtoObject, IActorMessage
+	{
+		[ProtoMember(80)]
+		public long SceneId { get; set; }
+
+		[ProtoMember(1)]
+		public long CastId { get; set; }
+
+		[ProtoMember(2)]
+		public long CasterId { get; set; }
+
+		[ProtoMember(3)]
+		public List<long> TargetsId { get; set; }
+
+	}
+
+	[Message(OuterMessage.M2C_CastTick)]
+	[ProtoContract]
+	public partial class M2C_CastTick: ProtoObject, IActorMessage
+	{
+		[ProtoMember(80)]
+		public long SceneId { get; set; }
+
+		[ProtoMember(1)]
+		public long CastId { get; set; }
+
+		[ProtoMember(2)]
+		public long CasterId { get; set; }
+
+		[ProtoMember(3)]
+		public List<long> TargetsId { get; set; }
+
+	}
+
+	[Message(OuterMessage.M2C_CastRemove)]
+	[ProtoContract]
+	public partial class M2C_CastRemove: ProtoObject, IActorMessage
+	{
+		[ProtoMember(80)]
+		public long SceneId { get; set; }
+
+		[ProtoMember(1)]
+		public long CastId { get; set; }
+
+		[ProtoMember(2)]
+		public long CasterId { get; set; }
+
+		[ProtoMember(3)]
+		public List<long> TargetsId { get; set; }
+
+	}
+
+// Buff相关------------------------------------------------------
+	[Message(OuterMessage.M2C_BuffCreat)]
+	[ProtoContract]
+	public partial class M2C_BuffCreat: ProtoObject, IActorMessage
+	{
+		[ProtoMember(80)]
+		public long UnitId { get; set; }
+
+		[ProtoMember(1)]
+		public long BuffId { get; set; }
+
+		[ProtoMember(2)]
+		public long CasterId { get; set; }
+
+		[ProtoMember(3)]
+		public List<long> TargetsId { get; set; }
+
+	}
+
+	[Message(OuterMessage.M2C_BuffTick)]
+	[ProtoContract]
+	public partial class M2C_BuffTick: ProtoObject, IActorMessage
+	{
+		[ProtoMember(80)]
+		public long UnitId { get; set; }
+
+		[ProtoMember(1)]
+		public long BuffId { get; set; }
+
+		[ProtoMember(2)]
+		public long CasterId { get; set; }
+
+		[ProtoMember(3)]
+		public List<long> TargetsId { get; set; }
+
+	}
+
+	[Message(OuterMessage.M2C_BuffRemove)]
+	[ProtoContract]
+	public partial class M2C_BuffRemove: ProtoObject, IActorMessage
+	{
+		[ProtoMember(80)]
+		public long UnitId { get; set; }
+
+		[ProtoMember(1)]
+		public long BuffId { get; set; }
+
+		[ProtoMember(2)]
+		public long CasterId { get; set; }
+
+		[ProtoMember(3)]
+		public List<long> TargetsId { get; set; }
+
+	}
+
+// Other------------------------------------------------------
+	[Message(OuterMessage.M2C_HpChanged)]
+	[ProtoContract]
+	public partial class M2C_HpChanged: ProtoObject, IActorMessage
+	{
+		[ProtoMember(1)]
+		public long CasterId { get; set; }
+
+		[ProtoMember(2)]
+		public long TargetId { get; set; }
+
+		[ProtoMember(3)]
+		public long Damage { get; set; }
+
+	}
+
+	[ResponseType(nameof(M2C_NormalAtk))]
+	[Message(OuterMessage.C2M_NormalAtk)]
+	[ProtoContract]
+	public partial class C2M_NormalAtk: ProtoObject, IActorLocationRequest
+	{
+		[ProtoMember(90)]
+		public int RpcId { get; set; }
+
+		[ProtoMember(1)]
+		public int CastConfigId { get; set; }
+
+	}
+
+	[Message(OuterMessage.M2C_NormalAtk)]
+	[ProtoContract]
+	public partial class M2C_NormalAtk: ProtoObject, IActorLocationResponse
+	{
+		[ProtoMember(90)]
+		public int RpcId { get; set; }
+
+		[ProtoMember(91)]
+		public int Error { get; set; }
+
+		[ProtoMember(92)]
+		public string Message { get; set; }
+
+	}
+
 	public static class OuterMessage
 	{
 		 public const ushort HttpGetRouterResponse = 10002;
@@ -515,5 +669,14 @@ namespace ET
 		 public const ushort M2C_TransferMap = 10033;
 		 public const ushort C2G_Benchmark = 10034;
 		 public const ushort G2C_Benchmark = 10035;
+		 public const ushort M2C_CastCreat = 10036;
+		 public const ushort M2C_CastTick = 10037;
+		 public const ushort M2C_CastRemove = 10038;
+		 public const ushort M2C_BuffCreat = 10039;
+		 public const ushort M2C_BuffTick = 10040;
+		 public const ushort M2C_BuffRemove = 10041;
+		 public const ushort M2C_HpChanged = 10042;
+		 public const ushort C2M_NormalAtk = 10043;
+		 public const ushort M2C_NormalAtk = 10044;
 	}
 }

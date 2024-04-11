@@ -1,0 +1,7 @@
+{"list":[
+{"_t":"ActionConfig","_id":2000,"Args":["0"]},
+{"_t":"ActionConfig","_id":0,"Args":["10","50","0","0"]},
+{"_t":"ActionConfig","_id":1000,"Args":["1000","10","0"]},
+{"_t":"ActionConfig","_id":1001,"Args":[]},
+{"_t":"ActionConfig","_id":1,"Args":[]},
+]}

@@ -7,7 +7,7 @@ using Object = UnityEngine.Object;
 
 //自定义ReferenceCollector类在界面中的显示与功能
 [CustomEditor(typeof (ReferenceCollector))]
-public class ReferenceCollectorEditor: Editor
+public class ReferenceCollectorEditor: UnityEditor.Editor
 {
     //输入在textfield中的字符串
     private string searchKey

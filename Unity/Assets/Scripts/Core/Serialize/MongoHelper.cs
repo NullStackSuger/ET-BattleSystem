@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using System.Reflection;
 using MongoDB.Bson;
 using MongoDB.Bson.IO;
@@ -8,6 +9,7 @@ using MongoDB.Bson.Serialization;
 using MongoDB.Bson.Serialization.Conventions;
 using MongoDB.Bson.Serialization.Serializers;
 using Unity.Mathematics;
+using UnityEditor;
 
 namespace ET
 {
@@ -108,8 +110,10 @@ namespace ET
 
                 BsonClassMap.LookupClassMap(type);
             }
+            
+            RegisterAllSubClassForDeserialize(types.Values.ToList());
         }
-
+        
         public static void Init()
         {
         }
@@ -117,6 +121,45 @@ namespace ET
         public static void RegisterStruct<T>() where T : struct
         {
             BsonSerializer.RegisterSerializer(typeof (T), new StructBsonSerialize<T>());
+        }
+        
+        /// <summary>
+        /// 注册所有供反序列化的子类
+        /// </summary>
+        public static void RegisterAllSubClassForDeserialize(List<Type> allTypes)
+        {
+            List<Type> parenTypes = new List<Type>();
+            List<Type> childrenTypes = new List<Type>();
+            // registe by BsonDeserializerRegisterAttribute Automatically
+            foreach (Type type in allTypes)
+            {
+                BsonDeserializerRegisterAttribute[] bsonDeserializerRegisterAttributes =
+                        type.GetCustomAttributes(typeof(BsonDeserializerRegisterAttribute), false) as
+                                BsonDeserializerRegisterAttribute[];
+                if (bsonDeserializerRegisterAttributes.Length > 0)
+                {
+                    parenTypes.Add(type);
+                }
+
+                BsonDeserializerRegisterAttribute[] bsonDeserializerRegisterAttributes1 =
+                        type.GetCustomAttributes(typeof(BsonDeserializerRegisterAttribute), true) as
+                                BsonDeserializerRegisterAttribute[];
+                if (bsonDeserializerRegisterAttributes1.Length > 0)
+                {
+                    childrenTypes.Add(type);
+                }
+            }
+
+            foreach (Type type in childrenTypes)
+            {
+                foreach (var parentType in parenTypes)
+                {
+                    if (parentType.IsAssignableFrom(type) && parentType != type)
+                    {
+                        BsonClassMap.LookupClassMap(type);
+                    }
+                }
+            }
         }
 
         public static string ToJson(object obj)

@@ -1,5 +1,6 @@
 using System;
 using System.IO;
+using ET.Server;
 
 namespace ET.Client
 {
@@ -12,12 +13,16 @@ namespace ET.Client
             Root.Instance.Scene.AddComponent<ResourcesComponent>();
             
             Root.Instance.Scene.AddComponent<GlobalComponent>();
+            
+            //Root.Instance.Scene.AddComponent<ActionsDispatcherComponent>();
 
             await ResourcesComponent.Instance.LoadBundleAsync("unit.unity3d");
             
             Scene clientScene = await SceneFactory.CreateClientScene(1, "Game");
             
             await EventSystem.Instance.PublishAsync(clientScene, new EventType.AppStartInitFinish());
+            
+            Log.Info("开始测试");
         }
     }
 }

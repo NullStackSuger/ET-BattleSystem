@@ -2,13 +2,13 @@
     "name": "Unity.HotfixView.Codes",
     "rootNamespace": "ET",
     "references": [
+        "Unity.Mathematics",
         "Unity.ThirdParty",
+        "Unity.Loader",
         "Unity.Core",
         "Unity.Model.Codes",
         "Unity.Hotfix.Codes",
-        "Unity.ModelView.Codes",
-        "Unity.Mathematics",
-        "Unity.Loader"
+        "Unity.ModelView.Codes"
     ],
     "includePlatforms": [
         "Editor"

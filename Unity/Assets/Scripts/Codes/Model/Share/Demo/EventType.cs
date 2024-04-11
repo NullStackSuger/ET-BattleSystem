@@ -34,5 +34,35 @@
         {
             public Unit Unit;
         }
+
+        public struct CastCreat
+        {
+            public long CastId;
+        }
+
+        public struct CastTick
+        {
+            
+        }
+
+        public struct CastRemove
+        {
+            
+        }
+
+        public struct BuffCreat
+        {
+            
+        }
+
+        public struct BuffTick
+        {
+            
+        }
+
+        public struct BuffRemove
+        {
+            
+        }
     }
 }

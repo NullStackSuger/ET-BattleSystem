@@ -1,4 +1,5 @@
 using System.Net;
+using ET.Client;
 
 namespace ET.Server
 {
@@ -24,6 +25,8 @@ namespace ET.Server
             {
                 case AppType.Server:
                 {
+                    Root.Instance.Scene.AddComponent<ActionsDispatcherComponent>();
+                    
                     Root.Instance.Scene.AddComponent<NetInnerComponent, IPEndPoint>(processConfig.InnerIPPort);
 
                     var processScenes = StartSceneConfigCategory.Instance.GetByProcess(Options.Instance.Process);
@@ -32,7 +35,7 @@ namespace ET.Server
                         await SceneFactory.CreateServerScene(ServerSceneManagerComponent.Instance, startConfig.Id, startConfig.InstanceId, startConfig.Zone, startConfig.Name,
                             startConfig.Type, startConfig);
                     }
-
+                    
                     break;
                 }
                 case AppType.Watcher:

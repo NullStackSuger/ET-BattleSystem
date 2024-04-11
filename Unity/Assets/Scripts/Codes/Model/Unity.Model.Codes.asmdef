@@ -2,9 +2,9 @@
     "name": "Unity.Model.Codes",
     "rootNamespace": "ET",
     "references": [
+        "Unity.Mathematics",
         "Unity.ThirdParty",
-        "Unity.Core",
-        "Unity.Mathematics"
+        "Unity.Core"
     ],
     "includePlatforms": [
         "Editor"

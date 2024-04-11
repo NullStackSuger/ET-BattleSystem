@@ -44,6 +44,13 @@ namespace ET.Client
                     C2M_TransferMap c2MTransferMap = new C2M_TransferMap();
                     self.ClientScene().GetComponent<SessionComponent>().Session.Call(c2MTransferMap).Coroutine();
                 }
+
+                if (Input.GetKeyDown(KeyCode.Q))
+                {
+                    C2M_NormalAtk c2MNormalAtk = new();
+                    c2MNormalAtk.CastConfigId = 0001;
+                    self.ClientScene().GetComponent<SessionComponent>().Session.Call(c2MNormalAtk).Coroutine();
+                }
             }
         }
     }

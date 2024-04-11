@@ -235,3 +235,85 @@ message G2C_Benchmark // IResponse
 	int32 Error = 2;
 	string Message = 3;
 }
+
+// Cast相关------------------------------------------------------
+
+message M2C_CastCreat // IActorMessage
+{
+	int64 SceneId = 80;
+
+	int64 CastId = 1;
+	int64 CasterId = 2;
+	repeated int64 TargetsId = 3;
+}
+
+message M2C_CastTick // IActorMessage
+{
+	int64 SceneId = 80;
+
+	int64 CastId = 1;
+	int64 CasterId = 2;
+	repeated int64 TargetsId = 3;
+}
+
+message M2C_CastRemove // IActorMessage
+{
+	int64 SceneId = 80;
+
+	int64 CastId = 1;
+	int64 CasterId = 2;
+	repeated int64 TargetsId = 3;
+}
+
+// Buff相关------------------------------------------------------
+
+message M2C_BuffCreat // IActorMessage
+{
+	int64 UnitId = 80;
+
+	int64 BuffId = 1;
+	int64 CasterId = 2;
+	repeated int64 TargetsId = 3;
+}
+
+message M2C_BuffTick // IActorMessage
+{
+	int64 UnitId = 80;
+
+	int64 BuffId = 1;
+	int64 CasterId = 2;
+	repeated int64 TargetsId = 3;
+}
+
+message M2C_BuffRemove // IActorMessage
+{
+	int64 UnitId = 80;
+
+	int64 BuffId = 1;
+	int64 CasterId = 2;
+	repeated int64 TargetsId = 3;
+}
+
+// Other------------------------------------------------------
+
+message M2C_HpChanged // IActorMessage
+{
+	int64 CasterId = 1;
+	int64 TargetId = 2;
+	int64 Damage = 3;
+}
+
+//ResponseType M2C_NormalAtk
+message C2M_NormalAtk // IActorLocationRequest
+{
+	int32 RpcId = 90;
+
+	int32 CastConfigId = 1;
+}
+
+message M2C_NormalAtk // IActorLocationResponse
+{
+	int32 RpcId = 90;
+	int32 Error = 91;
+	string Message = 92;
+}

@@ -2,8 +2,8 @@
     "name": "Unity.Core",
     "rootNamespace": "ET",
     "references": [
-        "Unity.ThirdParty",
-        "Unity.Mathematics"
+        "Unity.Mathematics",
+        "Unity.ThirdParty"
     ],
     "includePlatforms": [],
     "excludePlatforms": [],

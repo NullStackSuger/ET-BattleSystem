@@ -2,11 +2,11 @@
     "name": "Unity.Hotfix.Codes",
     "rootNamespace": "ET",
     "references": [
-        "Unity.ThirdParty",
-        "Unity.Core",
-        "Unity.Model.Codes",
         "Unity.Mathematics",
-        "Unity.Loader"
+        "Unity.ThirdParty",
+        "Unity.Loader",
+        "Unity.Core",
+        "Unity.Model.Codes"
     ],
     "includePlatforms": [
         "Editor"
