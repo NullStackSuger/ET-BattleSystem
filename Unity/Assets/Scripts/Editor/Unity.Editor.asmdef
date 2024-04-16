@@ -2,14 +2,16 @@
     "name": "Unity.Editor",
     "rootNamespace": "",
     "references": [
-        "com.alelievr.NodeGraphProcessor.Runtime",
-        "com.alelievr.NodeGraphProcessor.Editor",
-        "NodeGraphProcessor.Examples",
+        "Unity.EditorCoroutines.Editor",
         "HybridCLR.Editor",
         "HybridCLR.Runtime",
         "Unity.ThirdParty",
         "Unity.Loader",
-        "Unity.Core"
+        "Unity.Core",
+        "Unity.Hotfix.Codes",
+        "Unity.HotfixView.Codes",
+        "Unity.Model.Codes",
+        "Unity.ModelView.Codes"
     ],
     "includePlatforms": [
         "Editor"

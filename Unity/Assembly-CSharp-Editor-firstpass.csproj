@@ -45,22 +45,22 @@
     <Analyzer Include="D:\ToolSoft\U3D\Editor\2022.3.6f1\Editor\Data\Tools\Unity.SourceGenerators\Unity.Properties.SourceGenerator.dll" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Assets\Plugins\NPBehave\Editor\Tests\_utils\TestRoot.cs" />
-    <Compile Include="Assets\Plugins\NPBehave\Editor\Tests\Composite\RandomSelectorTest.cs" />
-    <Compile Include="Assets\Plugins\NPBehave\Editor\Tests\Composite\SequenceTest.cs" />
-    <Compile Include="Assets\Plugins\NPBehave\Editor\Tests\Decorator\CooldownTest.cs" />
-    <Compile Include="Assets\Plugins\NPBehave\Editor\Tests\Composite\ParallelTest.cs" />
-    <Compile Include="Assets\Plugins\NPBehave\Editor\Tests\Composite\SelectorTest.cs" />
-    <Compile Include="Assets\Plugins\NPBehave\Editor\Tests\Decorator\BlackboardQueryTest.cs" />
-    <Compile Include="Assets\Plugins\NPBehave\Editor\Tests\ClockTest.cs" />
-    <Compile Include="Assets\Plugins\NPBehave\Editor\DebuggerWindow.cs" />
-    <Compile Include="Assets\Plugins\NPBehave\Editor\Tests\Decorator\RepeaterTest.cs" />
-    <Compile Include="Assets\Plugins\NPBehave\Editor\Tests\_utils\Test.cs" />
-    <Compile Include="Assets\Plugins\NPBehave\Editor\Tests\Composite\RandomSequenceTest.cs" />
-    <Compile Include="Assets\Plugins\NPBehave\Editor\DebuggerEditor.cs" />
-    <Compile Include="Assets\Plugins\NPBehave\Editor\Tests\_utils\MockNode.cs" />
-    <Compile Include="Assets\Plugins\NPBehave\Editor\Tests\BlackboardTest.cs" />
-    <Compile Include="Assets\Plugins\NPBehave\Editor\Tests\GeneralTest.cs" />
+    <Compile Include="Assets\Plugins\NPBehaver\Editor\Tests\Composite\SequenceTest.cs" />
+    <Compile Include="Assets\Plugins\NPBehaver\Editor\Tests\Composite\SelectorTest.cs" />
+    <Compile Include="Assets\Plugins\NPBehaver\Editor\DebuggerWindow.cs" />
+    <Compile Include="Assets\Plugins\NPBehaver\Editor\Tests\_utils\TestRoot.cs" />
+    <Compile Include="Assets\Plugins\NPBehaver\Editor\Tests\_utils\MockNode.cs" />
+    <Compile Include="Assets\Plugins\NPBehaver\Editor\Tests\Composite\ParallelTest.cs" />
+    <Compile Include="Assets\Plugins\NPBehaver\Editor\DebuggerEditor.cs" />
+    <Compile Include="Assets\Plugins\NPBehaver\Editor\Tests\BlackboardTest.cs" />
+    <Compile Include="Assets\Plugins\NPBehaver\Editor\Tests\Decorator\BlackboardQueryTest.cs" />
+    <Compile Include="Assets\Plugins\NPBehaver\Editor\Tests\Composite\RandomSelectorTest.cs" />
+    <Compile Include="Assets\Plugins\NPBehaver\Editor\Tests\Decorator\CooldownTest.cs" />
+    <Compile Include="Assets\Plugins\NPBehaver\Editor\Tests\Decorator\RepeaterTest.cs" />
+    <Compile Include="Assets\Plugins\NPBehaver\Editor\Tests\_utils\Test.cs" />
+    <Compile Include="Assets\Plugins\NPBehaver\Editor\Tests\Composite\RandomSequenceTest.cs" />
+    <Compile Include="Assets\Plugins\NPBehaver\Editor\Tests\ClockTest.cs" />
+    <Compile Include="Assets\Plugins\NPBehaver\Editor\Tests\GeneralTest.cs" />
     <Reference Include="UnityEngine">
       <HintPath>D:\ToolSoft\U3D\Editor\2022.3.6f1\Editor\Data\Managed\UnityEngine\UnityEngine.dll</HintPath>
     </Reference>
@@ -323,61 +323,61 @@
       <HintPath>D:\ToolSoft\U3D\Editor\2022.3.6f1\Editor\Data\PlaybackEngines\WindowsStandaloneSupport\UnityEditor.WindowsStandalone.Extensions.dll</HintPath>
     </Reference>
     <Reference Include="Sirenix.Serialization">
-      <HintPath>D:\ToolSoft\U3D\Project\ETs\Raw_ET7.2_Test_5\Unity\Assets\Plugins\Sirenix\Assemblies\Sirenix.Serialization.dll</HintPath>
+      <HintPath>D:\ToolSoft\U3D\Project\ETs\ET-BattleSystem\Unity\Assets\Plugins\Sirenix\Assemblies\Sirenix.Serialization.dll</HintPath>
     </Reference>
     <Reference Include="NLog">
-      <HintPath>D:\ToolSoft\U3D\Project\ETs\Raw_ET7.2_Test_5\Unity\Assets\Plugins\NLog.dll</HintPath>
+      <HintPath>D:\ToolSoft\U3D\Project\ETs\ET-BattleSystem\Unity\Assets\Plugins\NLog.dll</HintPath>
     </Reference>
     <Reference Include="SharpCompress">
-      <HintPath>D:\ToolSoft\U3D\Project\ETs\Raw_ET7.2_Test_5\Unity\Assets\Plugins\MongoDB\SharpCompress.dll</HintPath>
+      <HintPath>D:\ToolSoft\U3D\Project\ETs\ET-BattleSystem\Unity\Assets\Plugins\MongoDB\SharpCompress.dll</HintPath>
     </Reference>
     <Reference Include="Sirenix.Serialization.Config">
-      <HintPath>D:\ToolSoft\U3D\Project\ETs\Raw_ET7.2_Test_5\Unity\Assets\Plugins\Sirenix\Assemblies\Sirenix.Serialization.Config.dll</HintPath>
+      <HintPath>D:\ToolSoft\U3D\Project\ETs\ET-BattleSystem\Unity\Assets\Plugins\Sirenix\Assemblies\Sirenix.Serialization.Config.dll</HintPath>
     </Reference>
     <Reference Include="Sirenix.OdinInspector.Editor">
-      <HintPath>D:\ToolSoft\U3D\Project\ETs\Raw_ET7.2_Test_5\Unity\Assets\Plugins\Sirenix\Assemblies\Sirenix.OdinInspector.Editor.dll</HintPath>
+      <HintPath>D:\ToolSoft\U3D\Project\ETs\ET-BattleSystem\Unity\Assets\Plugins\Sirenix\Assemblies\Sirenix.OdinInspector.Editor.dll</HintPath>
     </Reference>
     <Reference Include="System.Text.Encoding.CodePages">
-      <HintPath>D:\ToolSoft\U3D\Project\ETs\Raw_ET7.2_Test_5\Unity\Assets\Plugins\MongoDB\System.Text.Encoding.CodePages.dll</HintPath>
+      <HintPath>D:\ToolSoft\U3D\Project\ETs\ET-BattleSystem\Unity\Assets\Plugins\MongoDB\System.Text.Encoding.CodePages.dll</HintPath>
     </Reference>
     <Reference Include="MongoDB.Driver.Core">
-      <HintPath>D:\ToolSoft\U3D\Project\ETs\Raw_ET7.2_Test_5\Unity\Assets\Plugins\MongoDB\MongoDB.Driver.Core.dll</HintPath>
+      <HintPath>D:\ToolSoft\U3D\Project\ETs\ET-BattleSystem\Unity\Assets\Plugins\MongoDB\MongoDB.Driver.Core.dll</HintPath>
     </Reference>
     <Reference Include="Sirenix.OdinInspector.Attributes">
-      <HintPath>D:\ToolSoft\U3D\Project\ETs\Raw_ET7.2_Test_5\Unity\Assets\Plugins\Sirenix\Assemblies\Sirenix.OdinInspector.Attributes.dll</HintPath>
+      <HintPath>D:\ToolSoft\U3D\Project\ETs\ET-BattleSystem\Unity\Assets\Plugins\Sirenix\Assemblies\Sirenix.OdinInspector.Attributes.dll</HintPath>
     </Reference>
     <Reference Include="Sirenix.Utilities">
-      <HintPath>D:\ToolSoft\U3D\Project\ETs\Raw_ET7.2_Test_5\Unity\Assets\Plugins\Sirenix\Assemblies\Sirenix.Utilities.dll</HintPath>
+      <HintPath>D:\ToolSoft\U3D\Project\ETs\ET-BattleSystem\Unity\Assets\Plugins\Sirenix\Assemblies\Sirenix.Utilities.dll</HintPath>
     </Reference>
     <Reference Include="MongoDB.Bson">
-      <HintPath>D:\ToolSoft\U3D\Project\ETs\Raw_ET7.2_Test_5\Unity\Assets\Plugins\MongoDB\MongoDB.Bson.dll</HintPath>
+      <HintPath>D:\ToolSoft\U3D\Project\ETs\ET-BattleSystem\Unity\Assets\Plugins\MongoDB\MongoDB.Bson.dll</HintPath>
     </Reference>
     <Reference Include="dnlib">
-      <HintPath>D:\ToolSoft\U3D\Project\ETs\Raw_ET7.2_Test_5\Unity\Library\PackageCache\com.code-philosophy.hybridclr@f810ede6d7\Plugins\dnlib.dll</HintPath>
+      <HintPath>D:\ToolSoft\U3D\Project\ETs\ET-BattleSystem\Unity\Library\PackageCache\com.code-philosophy.hybridclr@f810ede6d7\Plugins\dnlib.dll</HintPath>
     </Reference>
     <Reference Include="CommandLine">
-      <HintPath>D:\ToolSoft\U3D\Project\ETs\Raw_ET7.2_Test_5\Unity\Assets\Plugins\CommandLine.dll</HintPath>
+      <HintPath>D:\ToolSoft\U3D\Project\ETs\ET-BattleSystem\Unity\Assets\Plugins\CommandLine.dll</HintPath>
     </Reference>
     <Reference Include="System.Runtime.CompilerServices.Unsafe">
-      <HintPath>D:\ToolSoft\U3D\Project\ETs\Raw_ET7.2_Test_5\Unity\Assets\Plugins\MongoDB\System.Runtime.CompilerServices.Unsafe.dll</HintPath>
+      <HintPath>D:\ToolSoft\U3D\Project\ETs\ET-BattleSystem\Unity\Assets\Plugins\MongoDB\System.Runtime.CompilerServices.Unsafe.dll</HintPath>
     </Reference>
     <Reference Include="Sirenix.Utilities.Editor">
-      <HintPath>D:\ToolSoft\U3D\Project\ETs\Raw_ET7.2_Test_5\Unity\Assets\Plugins\Sirenix\Assemblies\Sirenix.Utilities.Editor.dll</HintPath>
+      <HintPath>D:\ToolSoft\U3D\Project\ETs\ET-BattleSystem\Unity\Assets\Plugins\Sirenix\Assemblies\Sirenix.Utilities.Editor.dll</HintPath>
     </Reference>
     <Reference Include="DnsClient">
-      <HintPath>D:\ToolSoft\U3D\Project\ETs\Raw_ET7.2_Test_5\Unity\Assets\Plugins\MongoDB\DnsClient.dll</HintPath>
+      <HintPath>D:\ToolSoft\U3D\Project\ETs\ET-BattleSystem\Unity\Assets\Plugins\MongoDB\DnsClient.dll</HintPath>
     </Reference>
     <Reference Include="MongoDB.Libmongocrypt">
-      <HintPath>D:\ToolSoft\U3D\Project\ETs\Raw_ET7.2_Test_5\Unity\Assets\Plugins\MongoDB\MongoDB.Libmongocrypt.dll</HintPath>
+      <HintPath>D:\ToolSoft\U3D\Project\ETs\ET-BattleSystem\Unity\Assets\Plugins\MongoDB\MongoDB.Libmongocrypt.dll</HintPath>
     </Reference>
     <Reference Include="ICSharpCode.SharpZipLib">
-      <HintPath>D:\ToolSoft\U3D\Project\ETs\Raw_ET7.2_Test_5\Unity\Assets\Plugins\ICSharpCode.SharpZipLib.dll</HintPath>
+      <HintPath>D:\ToolSoft\U3D\Project\ETs\ET-BattleSystem\Unity\Assets\Plugins\ICSharpCode.SharpZipLib.dll</HintPath>
     </Reference>
     <Reference Include="MongoDB.Driver">
-      <HintPath>D:\ToolSoft\U3D\Project\ETs\Raw_ET7.2_Test_5\Unity\Assets\Plugins\MongoDB\MongoDB.Driver.dll</HintPath>
+      <HintPath>D:\ToolSoft\U3D\Project\ETs\ET-BattleSystem\Unity\Assets\Plugins\MongoDB\MongoDB.Driver.dll</HintPath>
     </Reference>
     <Reference Include="nunit.framework">
-      <HintPath>D:\ToolSoft\U3D\Project\ETs\Raw_ET7.2_Test_5\Unity\Library\PackageCache\com.unity.ext.nunit@1.0.6\net35\unity-custom\nunit.framework.dll</HintPath>
+      <HintPath>D:\ToolSoft\U3D\Project\ETs\ET-BattleSystem\Unity\Library\PackageCache\com.unity.ext.nunit@1.0.6\net35\unity-custom\nunit.framework.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Android.Types">
       <HintPath>D:\ToolSoft\U3D\Editor\2022.3.6f1\Editor\Data\PlaybackEngines\AndroidPlayer\Unity.Android.Types.dll</HintPath>
@@ -764,103 +764,103 @@
       <HintPath>D:\ToolSoft\U3D\Editor\2022.3.6f1\Editor\Data\UnityReferenceAssemblies\unity-4.8-api\Facades\System.Xml.XPath.XDocument.dll</HintPath>
     </Reference>
     <Reference Include="UnityEditor.TestRunner">
-      <HintPath>D:\ToolSoft\U3D\Project\ETs\Raw_ET7.2_Test_5\Unity\Library\ScriptAssemblies\UnityEditor.TestRunner.dll</HintPath>
+      <HintPath>D:\ToolSoft\U3D\Project\ETs\ET-BattleSystem\Unity\Library\ScriptAssemblies\UnityEditor.TestRunner.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.TestRunner">
-      <HintPath>D:\ToolSoft\U3D\Project\ETs\Raw_ET7.2_Test_5\Unity\Library\ScriptAssemblies\UnityEngine.TestRunner.dll</HintPath>
+      <HintPath>D:\ToolSoft\U3D\Project\ETs\ET-BattleSystem\Unity\Library\ScriptAssemblies\UnityEngine.TestRunner.dll</HintPath>
     </Reference>
     <Reference Include="Unity.RenderPipelines.ShaderGraph.ShaderGraphLibrary">
-      <HintPath>D:\ToolSoft\U3D\Project\ETs\Raw_ET7.2_Test_5\Unity\Library\ScriptAssemblies\Unity.RenderPipelines.ShaderGraph.ShaderGraphLibrary.dll</HintPath>
+      <HintPath>D:\ToolSoft\U3D\Project\ETs\ET-BattleSystem\Unity\Library\ScriptAssemblies\Unity.RenderPipelines.ShaderGraph.ShaderGraphLibrary.dll</HintPath>
     </Reference>
     <Reference Include="Unity.EditorCoroutines.Editor">
-      <HintPath>D:\ToolSoft\U3D\Project\ETs\Raw_ET7.2_Test_5\Unity\Library\ScriptAssemblies\Unity.EditorCoroutines.Editor.dll</HintPath>
+      <HintPath>D:\ToolSoft\U3D\Project\ETs\ET-BattleSystem\Unity\Library\ScriptAssemblies\Unity.EditorCoroutines.Editor.dll</HintPath>
     </Reference>
     <Reference Include="HybridCLR.Runtime">
-      <HintPath>D:\ToolSoft\U3D\Project\ETs\Raw_ET7.2_Test_5\Unity\Library\ScriptAssemblies\HybridCLR.Runtime.dll</HintPath>
+      <HintPath>D:\ToolSoft\U3D\Project\ETs\ET-BattleSystem\Unity\Library\ScriptAssemblies\HybridCLR.Runtime.dll</HintPath>
     </Reference>
     <Reference Include="Unity.RenderPipelines.Core.Runtime">
-      <HintPath>D:\ToolSoft\U3D\Project\ETs\Raw_ET7.2_Test_5\Unity\Library\ScriptAssemblies\Unity.RenderPipelines.Core.Runtime.dll</HintPath>
+      <HintPath>D:\ToolSoft\U3D\Project\ETs\ET-BattleSystem\Unity\Library\ScriptAssemblies\Unity.RenderPipelines.Core.Runtime.dll</HintPath>
     </Reference>
     <Reference Include="Unity.RenderPipelines.Universal.Runtime">
-      <HintPath>D:\ToolSoft\U3D\Project\ETs\Raw_ET7.2_Test_5\Unity\Library\ScriptAssemblies\Unity.RenderPipelines.Universal.Runtime.dll</HintPath>
+      <HintPath>D:\ToolSoft\U3D\Project\ETs\ET-BattleSystem\Unity\Library\ScriptAssemblies\Unity.RenderPipelines.Universal.Runtime.dll</HintPath>
     </Reference>
     <Reference Include="Unity.AI.Navigation">
-      <HintPath>D:\ToolSoft\U3D\Project\ETs\Raw_ET7.2_Test_5\Unity\Library\ScriptAssemblies\Unity.AI.Navigation.dll</HintPath>
+      <HintPath>D:\ToolSoft\U3D\Project\ETs\ET-BattleSystem\Unity\Library\ScriptAssemblies\Unity.AI.Navigation.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Burst.Editor">
-      <HintPath>D:\ToolSoft\U3D\Project\ETs\Raw_ET7.2_Test_5\Unity\Library\ScriptAssemblies\Unity.Burst.Editor.dll</HintPath>
+      <HintPath>D:\ToolSoft\U3D\Project\ETs\ET-BattleSystem\Unity\Library\ScriptAssemblies\Unity.Burst.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Burst">
-      <HintPath>D:\ToolSoft\U3D\Project\ETs\Raw_ET7.2_Test_5\Unity\Library\ScriptAssemblies\Unity.Burst.dll</HintPath>
+      <HintPath>D:\ToolSoft\U3D\Project\ETs\ET-BattleSystem\Unity\Library\ScriptAssemblies\Unity.Burst.dll</HintPath>
     </Reference>
     <Reference Include="HybridCLR.Editor">
-      <HintPath>D:\ToolSoft\U3D\Project\ETs\Raw_ET7.2_Test_5\Unity\Library\ScriptAssemblies\HybridCLR.Editor.dll</HintPath>
+      <HintPath>D:\ToolSoft\U3D\Project\ETs\ET-BattleSystem\Unity\Library\ScriptAssemblies\HybridCLR.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Timeline.Editor">
-      <HintPath>D:\ToolSoft\U3D\Project\ETs\Raw_ET7.2_Test_5\Unity\Library\ScriptAssemblies\Unity.Timeline.Editor.dll</HintPath>
+      <HintPath>D:\ToolSoft\U3D\Project\ETs\ET-BattleSystem\Unity\Library\ScriptAssemblies\Unity.Timeline.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.ShaderGraph.Editor">
-      <HintPath>D:\ToolSoft\U3D\Project\ETs\Raw_ET7.2_Test_5\Unity\Library\ScriptAssemblies\Unity.ShaderGraph.Editor.dll</HintPath>
+      <HintPath>D:\ToolSoft\U3D\Project\ETs\ET-BattleSystem\Unity\Library\ScriptAssemblies\Unity.ShaderGraph.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.VisualStudio.Editor">
-      <HintPath>D:\ToolSoft\U3D\Project\ETs\Raw_ET7.2_Test_5\Unity\Library\ScriptAssemblies\Unity.VisualStudio.Editor.dll</HintPath>
+      <HintPath>D:\ToolSoft\U3D\Project\ETs\ET-BattleSystem\Unity\Library\ScriptAssemblies\Unity.VisualStudio.Editor.dll</HintPath>
     </Reference>
     <Reference Include="UnityEditor.UI">
-      <HintPath>D:\ToolSoft\U3D\Project\ETs\Raw_ET7.2_Test_5\Unity\Library\ScriptAssemblies\UnityEditor.UI.dll</HintPath>
+      <HintPath>D:\ToolSoft\U3D\Project\ETs\ET-BattleSystem\Unity\Library\ScriptAssemblies\UnityEditor.UI.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Rider.Editor">
-      <HintPath>D:\ToolSoft\U3D\Project\ETs\Raw_ET7.2_Test_5\Unity\Library\ScriptAssemblies\Unity.Rider.Editor.dll</HintPath>
+      <HintPath>D:\ToolSoft\U3D\Project\ETs\ET-BattleSystem\Unity\Library\ScriptAssemblies\Unity.Rider.Editor.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.UI">
-      <HintPath>D:\ToolSoft\U3D\Project\ETs\Raw_ET7.2_Test_5\Unity\Library\ScriptAssemblies\UnityEngine.UI.dll</HintPath>
+      <HintPath>D:\ToolSoft\U3D\Project\ETs\ET-BattleSystem\Unity\Library\ScriptAssemblies\UnityEngine.UI.dll</HintPath>
     </Reference>
     <Reference Include="Unity.RenderPipelines.Core.Editor">
-      <HintPath>D:\ToolSoft\U3D\Project\ETs\Raw_ET7.2_Test_5\Unity\Library\ScriptAssemblies\Unity.RenderPipelines.Core.Editor.dll</HintPath>
+      <HintPath>D:\ToolSoft\U3D\Project\ETs\ET-BattleSystem\Unity\Library\ScriptAssemblies\Unity.RenderPipelines.Core.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Mathematics.Editor">
-      <HintPath>D:\ToolSoft\U3D\Project\ETs\Raw_ET7.2_Test_5\Unity\Library\ScriptAssemblies\Unity.Mathematics.Editor.dll</HintPath>
+      <HintPath>D:\ToolSoft\U3D\Project\ETs\ET-BattleSystem\Unity\Library\ScriptAssemblies\Unity.Mathematics.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.RenderPipeline.Universal.ShaderLibrary">
-      <HintPath>D:\ToolSoft\U3D\Project\ETs\Raw_ET7.2_Test_5\Unity\Library\ScriptAssemblies\Unity.RenderPipeline.Universal.ShaderLibrary.dll</HintPath>
+      <HintPath>D:\ToolSoft\U3D\Project\ETs\ET-BattleSystem\Unity\Library\ScriptAssemblies\Unity.RenderPipeline.Universal.ShaderLibrary.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Timeline">
-      <HintPath>D:\ToolSoft\U3D\Project\ETs\Raw_ET7.2_Test_5\Unity\Library\ScriptAssemblies\Unity.Timeline.dll</HintPath>
+      <HintPath>D:\ToolSoft\U3D\Project\ETs\ET-BattleSystem\Unity\Library\ScriptAssemblies\Unity.Timeline.dll</HintPath>
     </Reference>
     <Reference Include="Unity.RenderPipelines.Core.ShaderLibrary">
-      <HintPath>D:\ToolSoft\U3D\Project\ETs\Raw_ET7.2_Test_5\Unity\Library\ScriptAssemblies\Unity.RenderPipelines.Core.ShaderLibrary.dll</HintPath>
+      <HintPath>D:\ToolSoft\U3D\Project\ETs\ET-BattleSystem\Unity\Library\ScriptAssemblies\Unity.RenderPipelines.Core.ShaderLibrary.dll</HintPath>
     </Reference>
     <Reference Include="Unity.AI.Navigation.Updater">
-      <HintPath>D:\ToolSoft\U3D\Project\ETs\Raw_ET7.2_Test_5\Unity\Library\ScriptAssemblies\Unity.AI.Navigation.Updater.dll</HintPath>
+      <HintPath>D:\ToolSoft\U3D\Project\ETs\ET-BattleSystem\Unity\Library\ScriptAssemblies\Unity.AI.Navigation.Updater.dll</HintPath>
     </Reference>
     <Reference Include="PPv2URPConverters">
-      <HintPath>D:\ToolSoft\U3D\Project\ETs\Raw_ET7.2_Test_5\Unity\Library\ScriptAssemblies\PPv2URPConverters.dll</HintPath>
+      <HintPath>D:\ToolSoft\U3D\Project\ETs\ET-BattleSystem\Unity\Library\ScriptAssemblies\PPv2URPConverters.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Mathematics">
-      <HintPath>D:\ToolSoft\U3D\Project\ETs\Raw_ET7.2_Test_5\Unity\Library\ScriptAssemblies\Unity.Mathematics.dll</HintPath>
+      <HintPath>D:\ToolSoft\U3D\Project\ETs\ET-BattleSystem\Unity\Library\ScriptAssemblies\Unity.Mathematics.dll</HintPath>
     </Reference>
     <Reference Include="Unity.TextMeshPro">
-      <HintPath>D:\ToolSoft\U3D\Project\ETs\Raw_ET7.2_Test_5\Unity\Library\ScriptAssemblies\Unity.TextMeshPro.dll</HintPath>
+      <HintPath>D:\ToolSoft\U3D\Project\ETs\ET-BattleSystem\Unity\Library\ScriptAssemblies\Unity.TextMeshPro.dll</HintPath>
     </Reference>
     <Reference Include="Unity.TextMeshPro.Editor">
-      <HintPath>D:\ToolSoft\U3D\Project\ETs\Raw_ET7.2_Test_5\Unity\Library\ScriptAssemblies\Unity.TextMeshPro.Editor.dll</HintPath>
+      <HintPath>D:\ToolSoft\U3D\Project\ETs\ET-BattleSystem\Unity\Library\ScriptAssemblies\Unity.TextMeshPro.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Searcher.Editor">
-      <HintPath>D:\ToolSoft\U3D\Project\ETs\Raw_ET7.2_Test_5\Unity\Library\ScriptAssemblies\Unity.Searcher.Editor.dll</HintPath>
+      <HintPath>D:\ToolSoft\U3D\Project\ETs\ET-BattleSystem\Unity\Library\ScriptAssemblies\Unity.Searcher.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.RenderPipelines.Universal.Shaders">
-      <HintPath>D:\ToolSoft\U3D\Project\ETs\Raw_ET7.2_Test_5\Unity\Library\ScriptAssemblies\Unity.RenderPipelines.Universal.Shaders.dll</HintPath>
+      <HintPath>D:\ToolSoft\U3D\Project\ETs\ET-BattleSystem\Unity\Library\ScriptAssemblies\Unity.RenderPipelines.Universal.Shaders.dll</HintPath>
     </Reference>
     <Reference Include="Unity.AI.Navigation.Editor">
-      <HintPath>D:\ToolSoft\U3D\Project\ETs\Raw_ET7.2_Test_5\Unity\Library\ScriptAssemblies\Unity.AI.Navigation.Editor.dll</HintPath>
+      <HintPath>D:\ToolSoft\U3D\Project\ETs\ET-BattleSystem\Unity\Library\ScriptAssemblies\Unity.AI.Navigation.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.AI.Navigation.Editor.ConversionSystem">
-      <HintPath>D:\ToolSoft\U3D\Project\ETs\Raw_ET7.2_Test_5\Unity\Library\ScriptAssemblies\Unity.AI.Navigation.Editor.ConversionSystem.dll</HintPath>
+      <HintPath>D:\ToolSoft\U3D\Project\ETs\ET-BattleSystem\Unity\Library\ScriptAssemblies\Unity.AI.Navigation.Editor.ConversionSystem.dll</HintPath>
     </Reference>
     <Reference Include="Unity.VSCode.Editor">
-      <HintPath>D:\ToolSoft\U3D\Project\ETs\Raw_ET7.2_Test_5\Unity\Library\ScriptAssemblies\Unity.VSCode.Editor.dll</HintPath>
+      <HintPath>D:\ToolSoft\U3D\Project\ETs\ET-BattleSystem\Unity\Library\ScriptAssemblies\Unity.VSCode.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.RenderPipelines.Universal.Editor">
-      <HintPath>D:\ToolSoft\U3D\Project\ETs\Raw_ET7.2_Test_5\Unity\Library\ScriptAssemblies\Unity.RenderPipelines.Universal.Editor.dll</HintPath>
+      <HintPath>D:\ToolSoft\U3D\Project\ETs\ET-BattleSystem\Unity\Library\ScriptAssemblies\Unity.RenderPipelines.Universal.Editor.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
