@@ -45,22 +45,8 @@
     <Analyzer Include="D:\ToolSoft\U3D\Editor\2022.3.6f1\Editor\Data\Tools\Unity.SourceGenerators\Unity.Properties.SourceGenerator.dll" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Assets\Plugins\NPBehaver\Editor\Tests\Composite\SequenceTest.cs" />
-    <Compile Include="Assets\Plugins\NPBehaver\Editor\Tests\Composite\SelectorTest.cs" />
     <Compile Include="Assets\Plugins\NPBehaver\Editor\DebuggerWindow.cs" />
-    <Compile Include="Assets\Plugins\NPBehaver\Editor\Tests\_utils\TestRoot.cs" />
-    <Compile Include="Assets\Plugins\NPBehaver\Editor\Tests\_utils\MockNode.cs" />
-    <Compile Include="Assets\Plugins\NPBehaver\Editor\Tests\Composite\ParallelTest.cs" />
     <Compile Include="Assets\Plugins\NPBehaver\Editor\DebuggerEditor.cs" />
-    <Compile Include="Assets\Plugins\NPBehaver\Editor\Tests\BlackboardTest.cs" />
-    <Compile Include="Assets\Plugins\NPBehaver\Editor\Tests\Decorator\BlackboardQueryTest.cs" />
-    <Compile Include="Assets\Plugins\NPBehaver\Editor\Tests\Composite\RandomSelectorTest.cs" />
-    <Compile Include="Assets\Plugins\NPBehaver\Editor\Tests\Decorator\CooldownTest.cs" />
-    <Compile Include="Assets\Plugins\NPBehaver\Editor\Tests\Decorator\RepeaterTest.cs" />
-    <Compile Include="Assets\Plugins\NPBehaver\Editor\Tests\_utils\Test.cs" />
-    <Compile Include="Assets\Plugins\NPBehaver\Editor\Tests\Composite\RandomSequenceTest.cs" />
-    <Compile Include="Assets\Plugins\NPBehaver\Editor\Tests\ClockTest.cs" />
-    <Compile Include="Assets\Plugins\NPBehaver\Editor\Tests\GeneralTest.cs" />
     <Reference Include="UnityEngine">
       <HintPath>D:\ToolSoft\U3D\Editor\2022.3.6f1\Editor\Data\Managed\UnityEngine\UnityEngine.dll</HintPath>
     </Reference>
@@ -872,10 +858,6 @@
       <Project>{32b76b98-b8f4-f864-d1f9-50cf255042d8}</Project>
       <Name>Unity.Loader</Name>
     </ProjectReference>
-    <ProjectReference Include="com.alelievr.NodeGraphProcessor.Editor.csproj">
-      <Project>{27a20443-6d8f-cd44-e004-04d9c7340939}</Project>
-      <Name>com.alelievr.NodeGraphProcessor.Editor</Name>
-    </ProjectReference>
     <ProjectReference Include="Unity.Editor.csproj">
       <Project>{041131cd-3018-19b1-81b6-5dbee2467ffb}</Project>
       <Name>Unity.Editor</Name>
@@ -892,10 +874,6 @@
       <Project>{d2ad5be1-263a-9a30-ab0f-dc5b08044350}</Project>
       <Name>Unity.ThirdParty</Name>
     </ProjectReference>
-    <ProjectReference Include="com.alelievr.NodeGraphProcessor.Runtime.csproj">
-      <Project>{2c5a86f7-1354-6e9b-6019-90c0890a7359}</Project>
-      <Name>com.alelievr.NodeGraphProcessor.Runtime</Name>
-    </ProjectReference>
     <ProjectReference Include="Unity.Core.csproj">
       <Project>{770e9beb-b313-3761-faa2-76daf4b34ada}</Project>
       <Name>Unity.Core</Name>
@@ -907,10 +885,6 @@
     <ProjectReference Include="Unity.ModelView.csproj">
       <Project>{c109842f-01da-64d4-dbf2-00c6449e459e}</Project>
       <Name>Unity.ModelView</Name>
-    </ProjectReference>
-    <ProjectReference Include="NodeGraphProcessor.Examples.csproj">
-      <Project>{4fa9d2d7-792f-abe3-350a-36ce3f256551}</Project>
-      <Name>NodeGraphProcessor.Examples</Name>
     </ProjectReference>
     <ProjectReference Include="Unity.Model.csproj">
       <Project>{9498bfb4-d9f5-c441-13e3-3f26f7700e29}</Project>

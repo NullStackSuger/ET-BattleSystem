@@ -10,6 +10,6 @@ namespace ET
         [Input("Input"), Vertical] [HideInInspector]
         public EditorNodeBase Input;
         
-        public abstract Task Init(/*ET.Unit unit, */Blackboard blackboard);
+        public abstract Task Init(/*Unit unit, */Blackboard blackboard);
     }
 }
