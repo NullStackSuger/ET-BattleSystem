@@ -27,7 +27,7 @@ namespace ET.Server
 
                 // 添加行为
                 BuffConfig buffConfig = BuffConfigCategory.Instance.Get(id);
-                foreach (int actionId in buffConfig.ActionIds)
+                foreach (int actionId in buffConfig.SeverActionIds)
                 {
                     actionComponent.Creat(actionId);
                 }

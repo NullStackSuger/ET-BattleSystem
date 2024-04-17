@@ -74,9 +74,9 @@ namespace ET
 		/// <summary>Id</summary>
 		[ProtoMember(1)]
 		public int Id { get; set; }
-		/// <summary>拥有的行为的Id</summary>
+		/// <summary>服务端行为Id</summary>
 		[ProtoMember(2)]
-		public int[] ActionIds { get; set; }
+		public int[] SeverActionIds { get; set; }
 		/// <summary>目标选择方式(添加对应组件)</summary>
 		[ProtoMember(5)]
 		public int SelectType { get; set; }

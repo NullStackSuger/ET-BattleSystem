@@ -3,20 +3,12 @@
     "rootNamespace": "",
     "references": [
         "Unity.EditorCoroutines.Editor",
-        "NPBehaver",
         "HybridCLR.Editor",
         "HybridCLR.Runtime",
         "Unity.ThirdParty",
         "Unity.Loader",
         "Unity.Core",
-        "Unity.Hotfix.Codes",
-        "Unity.Model.Codes",
-        "Unity.HotfixView.Codes",
-        "Unity.ModelView.Codes",
-        "Unity.Hotfix",
-        "Unity.Model",
-        "Unity.HotfixView",
-        "Unity.ModelView"
+        "Unity.Model"
     ],
     "includePlatforms": [
         "Editor"

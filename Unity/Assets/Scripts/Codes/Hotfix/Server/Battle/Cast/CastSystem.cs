@@ -29,7 +29,7 @@ namespace ET.Server
 
                 // 添加行为
                 CastConfig castConfig = CastConfigCategory.Instance.Get(id);
-                foreach (int actionId in castConfig.ActionIds)
+                foreach (int actionId in castConfig.SeverActionIds)
                 {
                     actionComponent.Creat(actionId);
                 }

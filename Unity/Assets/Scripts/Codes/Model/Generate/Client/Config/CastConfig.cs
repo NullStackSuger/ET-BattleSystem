@@ -74,12 +74,12 @@ namespace ET
 		/// <summary>Id</summary>
 		[ProtoMember(1)]
 		public int Id { get; set; }
-		/// <summary>客户端行为树名字</summary>
+		/// <summary>客户端行为Id</summary>
 		[ProtoMember(3)]
-		public string[] ClientTreeNames { get; set; }
-		/// <summary>客户端表现层行为树名字</summary>
+		public int[] ClientActionIds { get; set; }
+		/// <summary>客户端表现层行为Id</summary>
 		[ProtoMember(4)]
-		public string[] ViewTreeNames { get; set; }
+		public int[] ViewActionIds { get; set; }
 		/// <summary>目标选择方式(添加对应组件)</summary>
 		[ProtoMember(5)]
 		public int SelectType { get; set; }
