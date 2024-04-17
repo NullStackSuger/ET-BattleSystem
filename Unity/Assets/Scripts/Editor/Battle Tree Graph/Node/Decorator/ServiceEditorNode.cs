@@ -12,7 +12,7 @@ namespace ET
         
         public System.Action Action;
         
-        public override Decorator Init(/*Unit unit, */Blackboard blackboard, Node node)
+        public override Decorator Init(Unit unit, Blackboard blackboard, Node node)
         {
             NP_Node = new Service(Interval, Action, node);
             return this.NP_Node as Decorator;

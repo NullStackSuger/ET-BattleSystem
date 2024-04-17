@@ -9,7 +9,7 @@ namespace ET
     {
         private int loopCount = -1;
         
-        public override Decorator Init(/*Unit unit, */Blackboard blackboard, Node node)
+        public override Decorator Init(Unit unit, Blackboard blackboard, Node node)
         {
             this.NP_Node = new Repeater(loopCount, node);
             return this.NP_Node as Decorator;

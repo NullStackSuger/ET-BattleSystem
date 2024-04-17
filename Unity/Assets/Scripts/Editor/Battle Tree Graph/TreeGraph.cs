@@ -77,7 +77,7 @@ namespace ET
                     switch (editorNode)
                     {
                         case TaskEditorNode task:
-                            task.Init(/*null, */null);
+                            task.Init(null, null);
                             break;
                         case DecoratorEditorNode decorator:
                             foreach (BaseNode child in editorNode.GetOutputNodes())
@@ -85,7 +85,7 @@ namespace ET
                                 if (child is EditorNodeBase childEditorNode)
                                 {
                                     Debug.Log("Decorator Node : " + decorator.name + " " + "Child is: " + childEditorNode.name);
-                                    decorator.Init(/*null, */null, childEditorNode.NP_Node);
+                                    decorator.Init(null, null, childEditorNode.NP_Node);
                                     break;
                                 }
                             }

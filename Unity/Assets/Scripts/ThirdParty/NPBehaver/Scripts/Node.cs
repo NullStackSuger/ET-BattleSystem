@@ -1,4 +1,5 @@
-﻿using UnityEngine.Assertions;
+﻿using UnityEngine;
+using UnityEngine.Assertions;
 
 namespace NPBehave
 {
@@ -22,7 +23,7 @@ namespace NPBehave
         {
             get { return currentState; }
         }
-
+        
         public Root RootNode;
 
         private Container parentNode;
