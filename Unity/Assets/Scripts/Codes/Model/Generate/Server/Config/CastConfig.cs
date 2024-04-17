@@ -78,10 +78,10 @@ namespace ET
 		[ProtoMember(2)]
 		public int[] ActionIds { get; set; }
 		/// <summary>目标选择方式(添加对应组件)</summary>
-		[ProtoMember(3)]
+		[ProtoMember(5)]
 		public int SelectType { get; set; }
 		/// <summary>通知客户端类型</summary>
-		[ProtoMember(4)]
+		[ProtoMember(6)]
 		public int NoticeClientType { get; set; }
 
 	}

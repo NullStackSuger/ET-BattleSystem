@@ -1,4 +1,4 @@
 {"list":[
-{"_t":"BuffConfig","_id":0,"ActionIds":[1000],"SelectType":0,"NoticeClientType":0},
-{"_t":"BuffConfig","_id":1,"ActionIds":[1001],"SelectType":0,"NoticeClientType":0},
+{"_t":"BuffConfig","_id":0,"ActionIds":[1000],"ClientTreeNames":[],"ClientViewTreeNames":[],"SelectType":0,"NoticeClientType":0},
+{"_t":"BuffConfig","_id":1,"ActionIds":[1001],"ClientTreeNames":[],"ClientViewTreeNames":[],"SelectType":0,"NoticeClientType":0},
 ]}

@@ -1,4 +1,4 @@
 {"list":[
-{"_t":"CastConfig","_id":0,"ActionIds":[0],"SelectType":0,"NoticeClientType":0},
-{"_t":"CastConfig","_id":1,"ActionIds":[1],"SelectType":0,"NoticeClientType":0},
+{"_t":"CastConfig","_id":0,"ClientTreeNames":[],"ViewTreeNames":[],"SelectType":0,"NoticeClientType":0},
+{"_t":"CastConfig","_id":1,"ClientTreeNames":[],"ViewTreeNames":[],"SelectType":0,"NoticeClientType":0},
 ]}
