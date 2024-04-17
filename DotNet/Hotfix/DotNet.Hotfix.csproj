@@ -40,5 +40,148 @@
         <ProjectReference Include="..\Loader\DotNet.Loader.csproj" />
         <ProjectReference Include="..\Model\DotNet.Model.csproj" />
     </ItemGroup>
+    <ItemGroup>
+      <Content Include="..\..\Unity\Assets\Scripts\Codes\Hotfix\Client\Battle.meta">
+        <Link>Client\Battle.meta</Link>
+      </Content>
+      <Content Include="..\..\Unity\Assets\Scripts\Codes\Hotfix\Client\Battle\Buff.meta">
+        <Link>Client\Battle\Buff.meta</Link>
+      </Content>
+      <Content Include="..\..\Unity\Assets\Scripts\Codes\Hotfix\Client\Battle\Buff\M2C_BuffCreatHandler.cs.meta">
+        <Link>Client\Battle\Buff\M2C_BuffCreatHandler.cs.meta</Link>
+      </Content>
+      <Content Include="..\..\Unity\Assets\Scripts\Codes\Hotfix\Client\Battle\Buff\M2C_BuffRemoveHandler.cs.meta">
+        <Link>Client\Battle\Buff\M2C_BuffRemoveHandler.cs.meta</Link>
+      </Content>
+      <Content Include="..\..\Unity\Assets\Scripts\Codes\Hotfix\Client\Battle\Buff\M2C_BuffTickHandler.cs.meta">
+        <Link>Client\Battle\Buff\M2C_BuffTickHandler.cs.meta</Link>
+      </Content>
+      <Content Include="..\..\Unity\Assets\Scripts\Codes\Hotfix\Client\Battle\Cast.meta">
+        <Link>Client\Battle\Cast.meta</Link>
+      </Content>
+      <Content Include="..\..\Unity\Assets\Scripts\Codes\Hotfix\Client\Battle\Cast\M2C_CastCreatHandler.cs.meta">
+        <Link>Client\Battle\Cast\M2C_CastCreatHandler.cs.meta</Link>
+      </Content>
+      <Content Include="..\..\Unity\Assets\Scripts\Codes\Hotfix\Client\Battle\Cast\M2C_CastRemoveHandler.cs.meta">
+        <Link>Client\Battle\Cast\M2C_CastRemoveHandler.cs.meta</Link>
+      </Content>
+      <Content Include="..\..\Unity\Assets\Scripts\Codes\Hotfix\Client\Battle\Cast\M2C_CastTickHandler.cs.meta">
+        <Link>Client\Battle\Cast\M2C_CastTickHandler.cs.meta</Link>
+      </Content>
+      <Content Include="..\..\Unity\Assets\Scripts\Codes\Hotfix\Client\Demo.meta">
+        <Link>Client\Demo.meta</Link>
+      </Content>
+      <Content Include="..\..\Unity\Assets\Scripts\Codes\Hotfix\Client\Demo\AI.meta">
+        <Link>Client\Demo\AI.meta</Link>
+      </Content>
+      <Content Include="..\..\Unity\Assets\Scripts\Codes\Hotfix\Client\Demo\AI\AI_Attack.cs.meta">
+        <Link>Client\Demo\AI\AI_Attack.cs.meta</Link>
+      </Content>
+      <Content Include="..\..\Unity\Assets\Scripts\Codes\Hotfix\Client\Demo\AI\AI_XunLuo.cs.meta">
+        <Link>Client\Demo\AI\AI_XunLuo.cs.meta</Link>
+      </Content>
+      <Content Include="..\..\Unity\Assets\Scripts\Codes\Hotfix\Client\Demo\AI\XunLuoPathComponentSystem.cs.meta">
+        <Link>Client\Demo\AI\XunLuoPathComponentSystem.cs.meta</Link>
+      </Content>
+      <Content Include="..\..\Unity\Assets\Scripts\Codes\Hotfix\Client\Demo\Login.meta">
+        <Link>Client\Demo\Login.meta</Link>
+      </Content>
+      <Content Include="..\..\Unity\Assets\Scripts\Codes\Hotfix\Client\Demo\Login\EnterMapHelper.cs.meta">
+        <Link>Client\Demo\Login\EnterMapHelper.cs.meta</Link>
+      </Content>
+      <Content Include="..\..\Unity\Assets\Scripts\Codes\Hotfix\Client\Demo\Login\LoginHelper.cs.meta">
+        <Link>Client\Demo\Login\LoginHelper.cs.meta</Link>
+      </Content>
+      <Content Include="..\..\Unity\Assets\Scripts\Codes\Hotfix\Client\Demo\Move.meta">
+        <Link>Client\Demo\Move.meta</Link>
+      </Content>
+      <Content Include="..\..\Unity\Assets\Scripts\Codes\Hotfix\Client\Demo\Move\M2C_PathfindingResultHandler.cs.meta">
+        <Link>Client\Demo\Move\M2C_PathfindingResultHandler.cs.meta</Link>
+      </Content>
+      <Content Include="..\..\Unity\Assets\Scripts\Codes\Hotfix\Client\Demo\Move\M2C_StopHandler.cs.meta">
+        <Link>Client\Demo\Move\M2C_StopHandler.cs.meta</Link>
+      </Content>
+      <Content Include="..\..\Unity\Assets\Scripts\Codes\Hotfix\Client\Demo\Move\MoveHelper.cs.meta">
+        <Link>Client\Demo\Move\MoveHelper.cs.meta</Link>
+      </Content>
+      <Content Include="..\..\Unity\Assets\Scripts\Codes\Hotfix\Client\Demo\Ping.meta">
+        <Link>Client\Demo\Ping.meta</Link>
+      </Content>
+      <Content Include="..\..\Unity\Assets\Scripts\Codes\Hotfix\Client\Demo\Ping\PingComponentSystem.cs.meta">
+        <Link>Client\Demo\Ping\PingComponentSystem.cs.meta</Link>
+      </Content>
+      <Content Include="..\..\Unity\Assets\Scripts\Codes\Hotfix\Client\Demo\Router.meta">
+        <Link>Client\Demo\Router.meta</Link>
+      </Content>
+      <Content Include="..\..\Unity\Assets\Scripts\Codes\Hotfix\Client\Demo\Router\HttpClientHelper.cs.meta">
+        <Link>Client\Demo\Router\HttpClientHelper.cs.meta</Link>
+      </Content>
+      <Content Include="..\..\Unity\Assets\Scripts\Codes\Hotfix\Client\Demo\Router\RouterAddressComponentSystem.cs.meta">
+        <Link>Client\Demo\Router\RouterAddressComponentSystem.cs.meta</Link>
+      </Content>
+      <Content Include="..\..\Unity\Assets\Scripts\Codes\Hotfix\Client\Demo\Router\RouterCheckComponentSystem.cs.meta">
+        <Link>Client\Demo\Router\RouterCheckComponentSystem.cs.meta</Link>
+      </Content>
+      <Content Include="..\..\Unity\Assets\Scripts\Codes\Hotfix\Client\Demo\Router\RouterHelper.cs.meta">
+        <Link>Client\Demo\Router\RouterHelper.cs.meta</Link>
+      </Content>
+      <Content Include="..\..\Unity\Assets\Scripts\Codes\Hotfix\Client\Demo\Scene.meta">
+        <Link>Client\Demo\Scene.meta</Link>
+      </Content>
+      <Content Include="..\..\Unity\Assets\Scripts\Codes\Hotfix\Client\Demo\Scene\M2C_StartSceneChangeHandler.cs.meta">
+        <Link>Client\Demo\Scene\M2C_StartSceneChangeHandler.cs.meta</Link>
+      </Content>
+      <Content Include="..\..\Unity\Assets\Scripts\Codes\Hotfix\Client\Demo\Scene\SceneChangeHelper.cs.meta">
+        <Link>Client\Demo\Scene\SceneChangeHelper.cs.meta</Link>
+      </Content>
+      <Content Include="..\..\Unity\Assets\Scripts\Codes\Hotfix\Client\Demo\Scene\SceneFactory.cs.meta">
+        <Link>Client\Demo\Scene\SceneFactory.cs.meta</Link>
+      </Content>
+      <Content Include="..\..\Unity\Assets\Scripts\Codes\Hotfix\Client\Demo\Session.meta">
+        <Link>Client\Demo\Session.meta</Link>
+      </Content>
+      <Content Include="..\..\Unity\Assets\Scripts\Codes\Hotfix\Client\Demo\Session\NetClientComponentOnReadEvent.cs.meta">
+        <Link>Client\Demo\Session\NetClientComponentOnReadEvent.cs.meta</Link>
+      </Content>
+      <Content Include="..\..\Unity\Assets\Scripts\Codes\Hotfix\Client\Demo\Session\SessionComponentSystem.cs.meta">
+        <Link>Client\Demo\Session\SessionComponentSystem.cs.meta</Link>
+      </Content>
+      <Content Include="..\..\Unity\Assets\Scripts\Codes\Hotfix\Client\Demo\Unit.meta">
+        <Link>Client\Demo\Unit.meta</Link>
+      </Content>
+      <Content Include="..\..\Unity\Assets\Scripts\Codes\Hotfix\Client\Demo\Unit\M2C_CreateMyUnitHandler.cs.meta">
+        <Link>Client\Demo\Unit\M2C_CreateMyUnitHandler.cs.meta</Link>
+      </Content>
+      <Content Include="..\..\Unity\Assets\Scripts\Codes\Hotfix\Client\Demo\Unit\M2C_CreateUnitsHandler.cs.meta">
+        <Link>Client\Demo\Unit\M2C_CreateUnitsHandler.cs.meta</Link>
+      </Content>
+      <Content Include="..\..\Unity\Assets\Scripts\Codes\Hotfix\Client\Demo\Unit\M2C_RemoveUnitsHandler.cs.meta">
+        <Link>Client\Demo\Unit\M2C_RemoveUnitsHandler.cs.meta</Link>
+      </Content>
+      <Content Include="..\..\Unity\Assets\Scripts\Codes\Hotfix\Client\Demo\Unit\UnitFactory.cs.meta">
+        <Link>Client\Demo\Unit\UnitFactory.cs.meta</Link>
+      </Content>
+      <Content Include="..\..\Unity\Assets\Scripts\Codes\Hotfix\Client\Demo\Unit\UnitHelper.cs.meta">
+        <Link>Client\Demo\Unit\UnitHelper.cs.meta</Link>
+      </Content>
+      <Content Include="..\..\Unity\Assets\Scripts\Codes\Hotfix\Client\Module.meta">
+        <Link>Client\Module.meta</Link>
+      </Content>
+      <Content Include="..\..\Unity\Assets\Scripts\Codes\Hotfix\Client\Module\Message.meta">
+        <Link>Client\Module\Message.meta</Link>
+      </Content>
+      <Content Include="..\..\Unity\Assets\Scripts\Codes\Hotfix\Client\Module\Message\NetClientComponentSystem.cs.meta">
+        <Link>Client\Module\Message\NetClientComponentSystem.cs.meta</Link>
+      </Content>
+      <Content Include="..\..\Unity\Assets\Scripts\Codes\Hotfix\Client\Plugins.meta">
+        <Link>Client\Plugins.meta</Link>
+      </Content>
+      <Content Include="..\..\Unity\Assets\Scripts\Codes\Hotfix\Client\Plugins\Example.meta">
+        <Link>Client\Plugins\Example.meta</Link>
+      </Content>
+      <Content Include="..\..\Unity\Assets\Scripts\Codes\Hotfix\Client\Plugins\Example\HotfixClient.cs.meta">
+        <Link>Client\Plugins\Example\HotfixClient.cs.meta</Link>
+      </Content>
+    </ItemGroup>
 
 </Project>
