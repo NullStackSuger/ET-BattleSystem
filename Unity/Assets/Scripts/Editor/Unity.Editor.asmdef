@@ -7,8 +7,7 @@
         "HybridCLR.Runtime",
         "Unity.ThirdParty",
         "Unity.Loader",
-        "Unity.Core",
-        "Unity.Model"
+        "Unity.Core"
     ],
     "includePlatforms": [
         "Editor"

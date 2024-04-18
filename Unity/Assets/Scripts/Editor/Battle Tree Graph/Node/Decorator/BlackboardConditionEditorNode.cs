@@ -15,7 +15,7 @@ namespace ET
 
         public string Key;
 
-        public override Decorator Init(Unit unit, Blackboard blackboard, Node node)
+        public override Decorator Init(Blackboard blackboard, Node node)
         {
             NP_Node = new BlackboardCondition(Key, Op, Stop, node);
             return this.NP_Node as Decorator;

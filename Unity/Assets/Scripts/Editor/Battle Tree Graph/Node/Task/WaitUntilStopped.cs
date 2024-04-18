@@ -9,7 +9,7 @@ namespace ET
     [NodeMenuItem("Tree/Task/Wait Until Stopped", typeof(TreeGraph))]
     public class WaitUntilStopped: TaskEditorNode
     {
-        public override Task Init(Unit unit, Blackboard blackboard)
+        public override Task Init(Blackboard blackboard)
         {
             this.NP_Node = new NPBehave.WaitUntilStopped();
             return this.NP_Node as Task;

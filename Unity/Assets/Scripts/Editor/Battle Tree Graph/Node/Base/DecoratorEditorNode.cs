@@ -11,6 +11,6 @@ namespace ET
         [Output("OutPut"), Vertical] [HideInInspector]
         public EditorNodeBase OutPut;
         
-        public abstract Decorator Init(Unit unit, Blackboard blackboard, Node node);
+        public abstract Decorator Init(Blackboard blackboard, Node node);
     }
 }
