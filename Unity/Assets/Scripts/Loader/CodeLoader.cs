@@ -8,7 +8,7 @@ namespace ET
 {
 	public class CodeLoader: Singleton<CodeLoader>
 	{
-		private Assembly model;
+		public Assembly model;
 
 		public void Start()
 		{

@@ -1,6 +1,6 @@
 using NPBehave;
 
-namespace ET.Server
+namespace ET.Client
 {
     public class TestNode : Task
     {
