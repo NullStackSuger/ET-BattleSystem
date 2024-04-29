@@ -1,19 +1,11 @@
-using System.Collections;
 using System.Collections.Generic;
 using System.IO;
-using System.Linq;
-using System.Runtime.CompilerServices;
-using ET;
 using GraphProcessor;
-using MongoDB.Bson;
 using MongoDB.Bson.IO;
 using MongoDB.Bson.Serialization;
-using MongoDB.Bson.Serialization.Serializers;
-using NodeGraphProcessor.Examples;
 using NPBehave;
 using Sirenix.OdinInspector;
 using UnityEngine;
-using Root = NPBehave.Root;
 
 namespace ET
 {
@@ -21,7 +13,7 @@ namespace ET
     public class TreeGraph : BaseGraph
     {
         [LabelText("保存路径"), GUIColor(0.1f, 0.7f, 1)] [FolderPath]
-        public string SavePath = "Assets/Script/Editor/Save";
+        public string SavePath = "Assets/Script/Editor/Battle Tree Graph/Save";
 
         [BoxGroup("行为树")] 
         public NPBehave.Root Tree;
@@ -33,70 +25,55 @@ namespace ET
         public void ToNP_Tree()
         {
             Tree = null;
-
+            
             RootEditorNode rootEditorNode = FindNode<RootEditorNode>(this.nodes);
-            
-            InitNodes(Sort(rootEditorNode));
-            
+
+            List<BaseNode> nodes = new();
+            Sort(ref nodes, rootEditorNode);
+            InitNodes(InitBlackboard(), nodes);
+
             Tree = rootEditorNode.NP_Node as NPBehave.Root;
             
             Debug.Log("构建完成");
 
             // 倒序遍历并排序树
-            List<BaseNode> Sort(RootEditorNode root)
+            void Sort(ref List<BaseNode> nodes, BaseNode root)
             {
-                List<BaseNode> res = new();
-                Stack<BaseNode> stack = new();
-                stack.Push(root);
-                while (stack.Count() != 0)
+                if (root == null) return;
+                Debug.Log(root.name);
+                foreach (BaseNode baseNode in root.GetOutputNodes())
                 {
-                    BaseNode node = stack.Peek();
-                    if (node == null)
-                    {
-                        stack.Pop();
-                        node = stack.Pop();
-                        res.Add(node);
-                    }
-                    else
-                    {
-                        stack.Pop();
-                        stack.Push(node);
-                        stack.Push(null);
-                        foreach (BaseNode child in node.GetOutputNodes())
-                        {
-                            stack.Push(child);
-                        }
-                    }
+                    Sort(ref nodes, baseNode);
                 }
-                return res;
+                nodes.Add(root);
             }
             
             // 初始化节点
-            void InitNodes(List<BaseNode> nodes)
+            void InitNodes(Blackboard blackboard, List<BaseNode> nodes)
             {
                 foreach (BaseNode baseNode in nodes)
                 {
-                    if (baseNode is not EditorNodeBase editorNode) continue;
+                    if (baseNode is not EditorNodeBase) continue;
                     
-                    switch (editorNode)
+                    switch (baseNode)
                     {
                         case TaskEditorNode task:
                             task.Init(null);
                             break;
                         case DecoratorEditorNode decorator:
-                            foreach (BaseNode child in editorNode.GetOutputNodes())
+                            foreach (BaseNode child in baseNode.GetOutputNodes())
                             {
                                 if (child is EditorNodeBase childEditorNode)
                                 {
                                     Debug.Log("Decorator Node : " + decorator.name + " " + "Child is: " + childEditorNode.name);
-                                    decorator.Init(null, childEditorNode.NP_Node);
+                                    decorator.Init(blackboard, childEditorNode.NP_Node);
                                     break;
                                 }
                             }
                             break;
                         case CompositeEditorNode composite:
                             List<Node> temp = new();
-                            foreach (BaseNode child in editorNode.GetOutputNodes())
+                            foreach (BaseNode child in baseNode.GetOutputNodes())
                             {
                                 if (child is EditorNodeBase childEditorNode)
                                 {
@@ -108,6 +85,11 @@ namespace ET
                             break;
                     }
                 }
+            }
+
+            Blackboard InitBlackboard()
+            {
+                return new Blackboard(new Clock());
             }
 
             // 找指定节点
