@@ -1,10 +1,12 @@
 using System.Collections.Generic;
 using System.IO;
+using System.Reflection;
 using GraphProcessor;
 using MongoDB.Bson.IO;
 using MongoDB.Bson.Serialization;
 using NPBehave;
 using Sirenix.OdinInspector;
+using UnityEditorInternal;
 using UnityEngine;
 
 namespace ET
@@ -12,6 +14,19 @@ namespace ET
     [CreateAssetMenu(fileName = "Tree Graph", menuName = "Tree Graph")]
     public class TreeGraph : BaseGraph
     {
+        // TODO: 暂时用这种方法先凑合着
+        private static Assembly model;
+        public static Assembly Model
+        {
+            get
+            {
+                if (model == null)
+                    model = Assembly.Load(File.ReadAllBytes($"{Application.dataPath}/Bundles/Code/Model.dll.bytes"));
+                return model;
+            }
+        }
+
+
         [LabelText("保存路径"), GUIColor(0.1f, 0.7f, 1)] [FolderPath]
         public string SavePath = "Assets/Script/Editor/Battle Tree Graph/Save";
 
@@ -87,9 +102,14 @@ namespace ET
                 }
             }
 
+            // 初始化黑板
             Blackboard InitBlackboard()
             {
-                return new Blackboard(new Clock());
+                Blackboard blackboard = new Blackboard(new Clock());
+                
+                // Add Item
+                
+                return blackboard;
             }
 
             // 找指定节点

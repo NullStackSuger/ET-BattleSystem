@@ -27,7 +27,7 @@ MonoBehaviour:
         mscorlib
     - Name: 
       Entry: 12
-      Data: 2
+      Data: 3
     - Name: 
       Entry: 7
       Data: 1|ET.RootEditorNode, Unity.Editor
@@ -129,16 +129,16 @@ MonoBehaviour:
       Data: UnityEngine.Rect, UnityEngine.CoreModule
     - Name: 
       Entry: 4
-      Data: 456.000061
+      Data: 492.967529
     - Name: 
       Entry: 4
-      Data: 364.000031
+      Data: 333.715
     - Name: 
       Entry: 4
-      Data: 100
+      Data: 152.800018
     - Name: 
       Entry: 4
-      Data: 100
+      Data: 68
     - Name: 
       Entry: 8
       Data: 
@@ -188,6 +188,78 @@ MonoBehaviour:
       Entry: 8
       Data: 
     - Name: 
+      Entry: 7
+      Data: 5|ET.TestEditorNode, Unity.Editor
+    - Name: nodeCustomName
+      Entry: 6
+      Data: 
+    - Name: GUID
+      Entry: 1
+      Data: edf15630-18a1-4554-a262-8c25a9b963f2
+    - Name: computeOrder
+      Entry: 3
+      Data: 2
+    - Name: position
+      Entry: 7
+      Data: UnityEngine.Rect, UnityEngine.CoreModule
+    - Name: 
+      Entry: 4
+      Data: 176.472519
+    - Name: 
+      Entry: 4
+      Data: 333.599976
+    - Name: 
+      Entry: 4
+      Data: 218.400009
+    - Name: 
+      Entry: 4
+      Data: 69.6000061
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: expanded
+      Entry: 5
+      Data: false
+    - Name: debug
+      Entry: 5
+      Data: false
+    - Name: nodeLock
+      Entry: 5
+      Data: false
+    - Name: NP_Node
+      Entry: 7
+      Data: 6|ET.Client.TestNode, Model
+    - Name: RootNode
+      Entry: 6
+      Data: 
+    - Name: DebugLastStopRequestAt
+      Entry: 4
+      Data: 0
+    - Name: DebugLastStoppedAt
+      Entry: 4
+      Data: 0
+    - Name: DebugNumStartCalls
+      Entry: 3
+      Data: 0
+    - Name: DebugNumStopCalls
+      Entry: 3
+      Data: 0
+    - Name: DebugNumStoppedCalls
+      Entry: 3
+      Data: 0
+    - Name: DebugLastResult
+      Entry: 5
+      Data: false
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: Input
+      Entry: 6
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
       Entry: 13
       Data: 
     - Name: 
@@ -195,7 +267,7 @@ MonoBehaviour:
       Data: 
     - Name: groups
       Entry: 7
-      Data: 5|System.Collections.Generic.List`1[[GraphProcessor.Group, Unity.Editor]],
+      Data: 7|System.Collections.Generic.List`1[[GraphProcessor.Group, Unity.Editor]],
         mscorlib
     - Name: 
       Entry: 12
@@ -222,13 +294,21 @@ MonoBehaviour:
     outputFieldName: OutPut
     inputPortIdentifier: 
     outputPortIdentifier: 
+  - GUID: 42356efd-ae63-4e6f-bb7e-3578ab0bb48f
+    owner: {fileID: 11400000}
+    inputNodeGUID: edf15630-18a1-4554-a262-8c25a9b963f2
+    outputNodeGUID: 764512cc-5f03-49b2-bf2a-8f263fbcba64
+    inputFieldName: Input
+    outputFieldName: OutPut
+    inputPortIdentifier: 
+    outputPortIdentifier: 
   stackNodes: []
   pinnedElements: []
   exposedParameters: []
   serializedParameterList: []
   stickyNotes: []
-  position: {x: 0, y: 0, z: 0}
-  scale: {x: 1, y: 1, z: 1}
+  position: {x: 99.2, y: -265.6, z: 0}
+  scale: {x: 1.15, y: 1.15, z: 1}
   SavePath: Assets/Script/Editor/Save
   references:
     version: 2

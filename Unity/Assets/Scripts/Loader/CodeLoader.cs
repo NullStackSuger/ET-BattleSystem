@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using System.Reflection;
 using UnityEngine;
 
@@ -8,7 +9,7 @@ namespace ET
 {
 	public class CodeLoader: Singleton<CodeLoader>
 	{
-		public Assembly model;
+		private Assembly model;
 
 		public void Start()
 		{
