@@ -1,3 +1,4 @@
+using MongoDB.Bson.Serialization.Attributes;
 using NPBehave;
 
 namespace ET.Client

@@ -45,22 +45,5 @@ namespace ET.Server
                 self.Targets.Clear();
             }
         }
-        
-        public class CastUpdateSystem : UpdateSystem<Cast>
-        {
-            protected override void Update(Cast self)
-            {
-                M2C_CastTick message = new()
-                {
-                    CastId = self.Id,
-                    CasterId = self.Owner.Id,
-                    TargetsId = new(self.Targets),
-                };
-
-                Unit unit = self.Parent.GetParent<Unit>();
-                NoticeClientHelper.Send(unit, message, 
-                    (NoticeClientType)CastConfigCategory.Instance.Get(self.ConfigId).NoticeClientType);
-            }
-        }
     }
 }

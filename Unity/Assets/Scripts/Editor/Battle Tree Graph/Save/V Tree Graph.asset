@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 8265f0d0cba676d44b4f522c92c8a183, type: 3}
-  m_Name: C Tree Graph
+  m_Name: V Tree Graph
   m_EditorClassIdentifier: 
   serializationData:
     SerializedFormat: 2
@@ -27,7 +27,7 @@ MonoBehaviour:
         mscorlib
     - Name: 
       Entry: 12
-      Data: 2
+      Data: 1
     - Name: 
       Entry: 7
       Data: 1|ET.RootEditorNode, Unity.Editor
@@ -73,6 +73,33 @@ MonoBehaviour:
     - Name: RootNode
       Entry: 6
       Data: 
+    - Name: DebugLastStopRequestAt
+      Entry: 4
+      Data: 0
+    - Name: DebugLastStoppedAt
+      Entry: 4
+      Data: 0
+    - Name: DebugNumStartCalls
+      Entry: 3
+      Data: 0
+    - Name: DebugNumStopCalls
+      Entry: 3
+      Data: 0
+    - Name: DebugNumStoppedCalls
+      Entry: 3
+      Data: 0
+    - Name: DebugLastResult
+      Entry: 5
+      Data: false
+    - Name: TotalNumStartCalls
+      Entry: 3
+      Data: 0
+    - Name: TotalNumStopCalls
+      Entry: 3
+      Data: 0
+    - Name: TotalNumStoppedCalls
+      Entry: 3
+      Data: 0
     - Name: 
       Entry: 8
       Data: 
@@ -86,60 +113,6 @@ MonoBehaviour:
       Entry: 8
       Data: 
     - Name: 
-      Entry: 7
-      Data: 3|ET.CTestEditorNode, Unity.Editor
-    - Name: nodeCustomName
-      Entry: 6
-      Data: 
-    - Name: GUID
-      Entry: 1
-      Data: 33fad6bc-6ed8-4c76-bb05-d102889d003e
-    - Name: computeOrder
-      Entry: 3
-      Data: 1
-    - Name: position
-      Entry: 7
-      Data: UnityEngine.Rect, UnityEngine.CoreModule
-    - Name: 
-      Entry: 4
-      Data: 279.2
-    - Name: 
-      Entry: 4
-      Data: 357.62088
-    - Name: 
-      Entry: 4
-      Data: 161.599976
-    - Name: 
-      Entry: 4
-      Data: 50.3999939
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: expanded
-      Entry: 5
-      Data: false
-    - Name: debug
-      Entry: 5
-      Data: false
-    - Name: nodeLock
-      Entry: 5
-      Data: false
-    - Name: NP_Node
-      Entry: 7
-      Data: 4|ET.Client.CTestNode, Model
-    - Name: RootNode
-      Entry: 6
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: Input
-      Entry: 6
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
       Entry: 13
       Data: 
     - Name: 
@@ -147,7 +120,7 @@ MonoBehaviour:
       Data: 
     - Name: groups
       Entry: 7
-      Data: 5|System.Collections.Generic.List`1[[GraphProcessor.Group, Unity.Editor]],
+      Data: 3|System.Collections.Generic.List`1[[GraphProcessor.Group, Unity.Editor]],
         mscorlib
     - Name: 
       Entry: 12
@@ -163,29 +136,48 @@ MonoBehaviour:
       Data: 2
     - Name: Tree1
       Entry: 7
-      Data: 6|NPBehave.Root, Unity.ThirdParty
+      Data: 4|NPBehave.Root, Unity.ThirdParty
     - Name: RootNode
       Entry: 6
       Data: 
+    - Name: DebugLastStopRequestAt
+      Entry: 4
+      Data: 0
+    - Name: DebugLastStoppedAt
+      Entry: 4
+      Data: 0
+    - Name: DebugNumStartCalls
+      Entry: 3
+      Data: 0
+    - Name: DebugNumStopCalls
+      Entry: 3
+      Data: 0
+    - Name: DebugNumStoppedCalls
+      Entry: 3
+      Data: 0
+    - Name: DebugLastResult
+      Entry: 5
+      Data: false
+    - Name: TotalNumStartCalls
+      Entry: 3
+      Data: 0
+    - Name: TotalNumStopCalls
+      Entry: 3
+      Data: 0
+    - Name: TotalNumStoppedCalls
+      Entry: 3
+      Data: 0
     - Name: 
       Entry: 8
       Data: 
   serializedNodes: []
-  edges:
-  - GUID: c83d9fdc-b6d1-4646-9a96-7ed77325dff2
-    owner: {fileID: 11400000}
-    inputNodeGUID: 33fad6bc-6ed8-4c76-bb05-d102889d003e
-    outputNodeGUID: 764512cc-5f03-49b2-bf2a-8f263fbcba64
-    inputFieldName: Input
-    outputFieldName: OutPut
-    inputPortIdentifier: 
-    outputPortIdentifier: 
+  edges: []
   stackNodes: []
   pinnedElements: []
   exposedParameters: []
   serializedParameterList: []
   stickyNotes: []
-  position: {x: -109.6, y: -241.6, z: 0}
+  position: {x: -110.4, y: -200.8, z: 0}
   scale: {x: 1.15, y: 1.15, z: 1}
   SavePath: Assets/Scripts/Editor/Battle Tree Graph/Save
   references:

@@ -8,7 +8,7 @@ namespace ET.Server
     /// CastComponent -> Unit -> Cast
     /// </summary>
     [ComponentOf(typeof(Unit))]
-    public class Cast: Entity, IAwake<int>, IDestroy, IUpdate
+    public class Cast: Entity, IAwake<int>, IDestroy
     {
         public int ConfigId;
 

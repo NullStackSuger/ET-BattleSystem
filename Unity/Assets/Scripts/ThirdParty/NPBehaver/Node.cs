@@ -1,4 +1,5 @@
 ﻿using System;
+using UnityEngine;
 using UnityEngine.Assertions;
 
 namespace NPBehave
@@ -107,14 +108,14 @@ namespace NPBehave
             this.parentNode = parent;
         }
 
-#if UNITY_EDITOR
+/*#if UNITY_EDITOR
         public float DebugLastStopRequestAt = 0.0f;
         public float DebugLastStoppedAt = 0.0f;
         public int DebugNumStartCalls = 0;
         public int DebugNumStopCalls = 0;
         public int DebugNumStoppedCalls = 0;
         public bool DebugLastResult = false;
-#endif
+#endif*/
 
         public void Start()
         {

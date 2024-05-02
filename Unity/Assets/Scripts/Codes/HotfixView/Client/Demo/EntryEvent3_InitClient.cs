@@ -21,15 +21,12 @@ namespace ET.Client
             
             Log.Info("开始测试");
 
-            /*NPBehave.Root tree = TreeFactory.BuildTree("C Tree Graph");
-            Log.Info("Colck" + tree.Clock == null);
-            Log.Info("Blackboard" + tree.Blackboard == null);
-            tree.Start();*/
+            NPBehave.Root tree = TreeFactory.Creat("C Tree Graph");
+            Log.Info("Tree: " + tree == null);
+            tree.Start();
 
             /*NPBehave.Root tree = new(new CTestNode());
-            tree.Start();
-            Log.Info("Colck" + tree.Clock == null);
-            Log.Info("Blackboard" + tree.Blackboard == null);*/
+            tree.Start();*/
         }
     }
 }

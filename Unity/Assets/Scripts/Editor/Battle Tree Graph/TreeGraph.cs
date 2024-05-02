@@ -56,7 +56,6 @@ namespace ET
             void Sort(ref List<BaseNode> nodes, BaseNode root)
             {
                 if (root == null) return;
-                Debug.Log(root.name);
                 foreach (BaseNode baseNode in root.GetOutputNodes())
                 {
                     Sort(ref nodes, baseNode);
@@ -153,6 +152,10 @@ namespace ET
             AssetDatabase.Refresh();
         }
         
+        /// <summary>
+        /// 序列化或反序列化时问题, 无法识别"CTestNode"或者其他"WaitUntilStop"
+        /// 解决方法: 1.自己写一个序列化方案(SerializerBase) 2.把Init过程移到运行时 3.感觉1 2 都不太好, 但想不出来3 但感觉有3
+        /// </summary>
         [Button("DeBson", 25), GUIColor(0.4f, 0.8f, 1)]
         public void DeBson()
         {
@@ -161,6 +164,7 @@ namespace ET
                 byte[] file = File.ReadAllBytes($"{SavePath}/{name}.bytes");
                 if (file.Length == 0) Debug.Log("没有读取到文件");
                 Tree1 = BsonSerializer.Deserialize<NPBehave.Root>(file);
+                
                 Debug.Log($"反序列化 {SavePath}/{name}.bytes 成功");
             }
             catch (Exception e)

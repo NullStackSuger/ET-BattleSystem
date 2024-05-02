@@ -16,7 +16,7 @@ namespace ET.Client
         /// </summary>
         /// <param name="treeName">之后用enum表示, 编辑器构建时加一个enum元素</param>
         /// <returns></returns>
-        public static NPBehave.Root BuildTree(string name)
+        public static NPBehave.Root Creat(string name)
         {
             try
             {

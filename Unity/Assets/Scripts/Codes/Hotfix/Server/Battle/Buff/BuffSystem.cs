@@ -43,22 +43,5 @@ namespace ET.Server
                 self.Targets.Clear();
             }
         }
-        
-        public class BuffUpdateSystem : UpdateSystem<Buff>
-        {
-            protected override void Update(Buff self)
-            {
-                M2C_BuffTick message = new()
-                {
-                    BuffId = self.Id,
-                    CasterId = self.Owner.Id,
-                    TargetsId = new(self.Targets),
-                };
-
-                Unit unit = self.Parent.GetParent<Unit>();
-                NoticeClientHelper.Send(unit, message, 
-                    (NoticeClientType)BuffConfigCategory.Instance.Get(self.ConfigId).NoticeClientType);
-            }
-        }
     }
 }

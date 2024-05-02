@@ -2,8 +2,8 @@ using System.Collections.Generic;
 
 namespace ET.Server
 {
-    [FriendOfAttribute(typeof (BuffComponent))]
-    [FriendOfAttribute(typeof (Buff))]
+    [FriendOf(typeof (BuffComponent))]
+    [FriendOf(typeof (Buff))]
     public static class BuffComponentSystem
     {
         public class BuffComponentAwakeSystem: AwakeSystem<BuffComponent>
@@ -20,6 +20,24 @@ namespace ET.Server
             protected override void Destroy(BuffComponent self)
             {
                 self.Buffs.Clear();
+            }
+        }
+        [FriendOf(typeof(Buff))]
+        public class BuffComponentUpdateSystem : UpdateSystem<BuffComponent>
+        {
+            protected override void Update(BuffComponent self)
+            {
+                M2C_BuffTick message = new() { BuffId = self.Id, };
+
+                foreach (Buff buff in self.Buffs.Values)
+                {
+                    message.CasterId = buff.Owner.Id;
+                    message.TargetsId = buff.Targets;
+
+                    Unit unit = buff.Parent.GetParent<Unit>();
+                    NoticeClientHelper.Send(unit, message,
+                        (NoticeClientType)BuffConfigCategory.Instance.Get(buff.ConfigId).NoticeClientType);
+                }
             }
         }
 

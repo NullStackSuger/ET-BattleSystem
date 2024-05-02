@@ -4,7 +4,7 @@ using Unity.Mathematics;
 namespace ET.Server
 {
     [FriendOf(typeof(CastComponent))]
-    [FriendOfAttribute(typeof(Cast))]
+    [FriendOf(typeof(Cast))]
     public static class CastComponentSystem
     {
         public class CastComponentAwakeSystem : AwakeSystem<CastComponent>
@@ -21,6 +21,25 @@ namespace ET.Server
             protected override void Destroy(CastComponent self)
             {
                 self.Casts.Clear();
+            }
+        }
+        
+        [FriendOf(typeof(Cast))]
+        public class CastComponentUpdateSystem : UpdateSystem<CastComponent>
+        {
+            protected override void Update(CastComponent self)
+            {
+                M2C_CastTick message = new() { CastId = self.Id, };
+
+                foreach (Cast cast in self.Casts)
+                {
+                    message.CasterId = cast.Owner.Id;
+                    message.TargetsId = cast.Targets;
+
+                    Unit unit = self.Parent.GetParent<Unit>();
+                    NoticeClientHelper.Send(unit, message,
+                        (NoticeClientType)CastConfigCategory.Instance.Get(cast.ConfigId).NoticeClientType);
+                }
             }
         }
 

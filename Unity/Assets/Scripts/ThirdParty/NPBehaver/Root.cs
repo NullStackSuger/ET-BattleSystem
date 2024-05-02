@@ -1,15 +1,18 @@
 ﻿//using UnityEngine.Assertions;
 
 using System;
+using MongoDB.Bson.Serialization.Attributes;
+using UnityEngine;
 
 namespace NPBehave
 {
     public class Root : Decorator
     {
+        [BsonRequired]
         private Node mainNode;
 
         //private Node inProgressNode;
-
+        [BsonRequired]
         private Blackboard blackboard;
         public override Blackboard Blackboard
         {
@@ -18,8 +21,7 @@ namespace NPBehave
                 return blackboard;
             }
         }
-
-
+        [BsonRequired]
         private Clock clock;
         public override Clock Clock
         {
@@ -29,11 +31,11 @@ namespace NPBehave
             }
         }
 
-#if UNITY_EDITOR
+/*#if UNITY_EDITOR
         public int TotalNumStartCalls = 0;
         public int TotalNumStopCalls = 0;
         public int TotalNumStoppedCalls = 0;
-#endif
+#endif*/
 
         public Root(Node mainNode) : base("Root", mainNode)
         {
