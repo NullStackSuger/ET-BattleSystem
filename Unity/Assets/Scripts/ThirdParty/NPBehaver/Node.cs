@@ -1,4 +1,5 @@
-﻿using UnityEngine.Assertions;
+﻿using System;
+using UnityEngine.Assertions;
 
 namespace NPBehave
 {
@@ -120,10 +121,10 @@ namespace NPBehave
             // Assert.AreEqual(this.currentState, State.INACTIVE, "can only start inactive nodes, tried to start: " + this.Name + "! PATH: " + GetPath());
             Assert.AreEqual(this.currentState, State.INACTIVE, "can only start inactive nodes");
 
-#if UNITY_EDITOR
+/*#if UNITY_EDITOR
             RootNode.TotalNumStartCalls++;
             this.DebugNumStartCalls++;
-#endif
+#endif*/
             this.currentState = State.ACTIVE;
             DoStart();
         }
@@ -136,11 +137,11 @@ namespace NPBehave
             // Assert.AreEqual(this.currentState, State.ACTIVE, "can only stop active nodes, tried to stop " + this.Name + "! PATH: " + GetPath());
             Assert.AreEqual(this.currentState, State.ACTIVE, "can only stop active nodes, tried to stop");
             this.currentState = State.STOP_REQUESTED;
-#if UNITY_EDITOR
+/*#if UNITY_EDITOR
             RootNode.TotalNumStopCalls++;
             this.DebugLastStopRequestAt = UnityEngine.Time.time;
             this.DebugNumStopCalls++;
-#endif
+#endif*/
             DoStop();
         }
 
@@ -162,12 +163,12 @@ namespace NPBehave
             // Assert.AreNotEqual(this.currentState, State.INACTIVE, "The Node " + this + " called 'Stopped' while in state INACTIVE, something is wrong! PATH: " + GetPath());
             Assert.AreNotEqual(this.currentState, State.INACTIVE, "Called 'Stopped' while in state INACTIVE, something is wrong!");
             this.currentState = State.INACTIVE;
-#if UNITY_EDITOR
+/*#if UNITY_EDITOR
             RootNode.TotalNumStoppedCalls++;
             this.DebugNumStoppedCalls++;
             this.DebugLastStoppedAt = UnityEngine.Time.time;
             DebugLastResult = success;
-#endif
+#endif*/
             if (this.ParentNode != null)
             {
                 this.ParentNode.ChildStopped(this, success);

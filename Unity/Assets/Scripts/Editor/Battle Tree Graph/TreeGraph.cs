@@ -6,6 +6,7 @@ using MongoDB.Bson.IO;
 using MongoDB.Bson.Serialization;
 using NPBehave;
 using Sirenix.OdinInspector;
+using UnityEditor;
 using UnityEditorInternal;
 using UnityEngine;
 
@@ -149,6 +150,7 @@ namespace ET
             }
             
             Debug.Log($"保存 {SavePath}/{name}.bytes 成功");
+            AssetDatabase.Refresh();
         }
         
         [Button("DeBson", 25), GUIColor(0.4f, 0.8f, 1)]

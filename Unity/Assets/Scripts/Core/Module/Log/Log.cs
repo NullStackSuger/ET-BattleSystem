@@ -19,6 +19,24 @@ namespace ET
             Logger.Instance.Info(msg);
         }
 
+        public static void Info(bool msg)
+        {
+            Info(msg.ToString());
+        }
+        public static void Info(int msg)
+        {
+            Info(msg.ToString());
+        }
+        public static void Info(float msg)
+        {
+            Info(msg.ToString());
+        }
+        
+        public static void Info(long msg)
+        {
+            Info(msg.ToString());
+        }
+
         public static void TraceInfo(string msg)
         {
             Logger.Instance.Trace(msg);

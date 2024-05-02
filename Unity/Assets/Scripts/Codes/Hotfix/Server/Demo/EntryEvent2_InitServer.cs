@@ -1,5 +1,4 @@
 using System.Net;
-using ET.Client;
 
 namespace ET.Server
 {
@@ -54,6 +53,11 @@ namespace ET.Server
             {
                 Root.Instance.Scene.AddComponent<ConsoleComponent>();
             }
+            
+            NPBehave.Root tree = new(new STestNode());
+            tree.Start();
+            Log.Info("Colck" + tree.Clock == null);
+            Log.Info("Blackboard" + tree.Blackboard == null);
         }
     }
 }

@@ -1,5 +1,7 @@
 ﻿//using UnityEngine.Assertions;
 
+using System;
+
 namespace NPBehave
 {
     public class Root : Decorator
@@ -66,7 +68,7 @@ namespace NPBehave
 
         override protected void DoStart()
         {
-            this.blackboard.Enable();
+            this.Blackboard.Enable();
             this.mainNode.Start();
         }
 
@@ -92,7 +94,7 @@ namespace NPBehave
             }
             else
             {
-                this.blackboard.Disable();
+                this.Blackboard.Disable();
                 Stopped(success);
             }
         }

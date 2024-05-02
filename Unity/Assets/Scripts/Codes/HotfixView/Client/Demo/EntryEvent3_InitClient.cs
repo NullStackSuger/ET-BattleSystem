@@ -1,6 +1,3 @@
-using System;
-using System.IO;
-using ET.Server;
 
 namespace ET.Client
 {
@@ -23,6 +20,16 @@ namespace ET.Client
             await EventSystem.Instance.PublishAsync(clientScene, new EventType.AppStartInitFinish());
             
             Log.Info("开始测试");
+
+            /*NPBehave.Root tree = TreeFactory.BuildTree("C Tree Graph");
+            Log.Info("Colck" + tree.Clock == null);
+            Log.Info("Blackboard" + tree.Blackboard == null);
+            tree.Start();*/
+
+            /*NPBehave.Root tree = new(new CTestNode());
+            tree.Start();
+            Log.Info("Colck" + tree.Clock == null);
+            Log.Info("Blackboard" + tree.Blackboard == null);*/
         }
     }
 }

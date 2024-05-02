@@ -2,9 +2,9 @@ using NPBehave;
 
 namespace ET.Client
 {
-    public class TestNode : Task
+    public class CTestNode : Task
     {
-        public TestNode() : base("Test")
+        public CTestNode() : base("Test")
         {
         }
 
