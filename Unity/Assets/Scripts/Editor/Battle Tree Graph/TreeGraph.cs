@@ -2,6 +2,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Reflection;
 using GraphProcessor;
+using MongoDB.Bson;
 using MongoDB.Bson.IO;
 using MongoDB.Bson.Serialization;
 using NPBehave;
@@ -148,6 +149,9 @@ namespace ET
                 BsonSerializer.Serialize(new BsonBinaryWriter(file), Tree);
             }
             
+            Debug.Log(this.Tree.ToJson());
+            Debug.Log(this.Tree.ToBsonDocument());
+            
             Debug.Log($"保存 {SavePath}/{name}.bytes 成功");
             AssetDatabase.Refresh();
         }
@@ -163,7 +167,7 @@ namespace ET
             {
                 byte[] file = File.ReadAllBytes($"{SavePath}/{name}.bytes");
                 if (file.Length == 0) Debug.Log("没有读取到文件");
-                Tree1 = BsonSerializer.Deserialize<NPBehave.Root>(file);
+                Tree1 = MongoHelper.Deserialize<NPBehave.Root>(file);
                 
                 Debug.Log($"反序列化 {SavePath}/{name}.bytes 成功");
             }

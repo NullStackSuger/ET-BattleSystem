@@ -1,18 +1,19 @@
 using MongoDB.Bson.Serialization.Attributes;
 using NPBehave;
 
-namespace ET.Client
+namespace ET
 {
+    [BsonDeserializerRegister]
     public class CTestNode : Task
     {
-        public CTestNode() : base("Test")
+        public CTestNode() : base("CTestNode")
         {
         }
 
         protected override void DoStart()
         {
             base.DoStart();
-            Log.Info("TestNode DoStart");
+            Log.Info("CTestNode DoStart");
         }
     }
 }

@@ -48,7 +48,7 @@ MonoBehaviour:
       Data: 279.2
     - Name: 
       Entry: 4
-      Data: 264.3478
+      Data: 252.480011
     - Name: 
       Entry: 4
       Data: 154.4
@@ -93,7 +93,7 @@ MonoBehaviour:
       Data: 
     - Name: GUID
       Entry: 1
-      Data: 33fad6bc-6ed8-4c76-bb05-d102889d003e
+      Data: f484dd8d-aeb7-4f51-897f-251b2d85d38f
     - Name: computeOrder
       Entry: 3
       Data: 1
@@ -102,16 +102,16 @@ MonoBehaviour:
       Data: UnityEngine.Rect, UnityEngine.CoreModule
     - Name: 
       Entry: 4
-      Data: 279.2
+      Data: 272
     - Name: 
       Entry: 4
-      Data: 357.62088
+      Data: 347.6174
     - Name: 
       Entry: 4
-      Data: 161.599976
+      Data: 161.6
     - Name: 
       Entry: 4
-      Data: 50.3999939
+      Data: 50.4000244
     - Name: 
       Entry: 8
       Data: 
@@ -125,13 +125,7 @@ MonoBehaviour:
       Entry: 5
       Data: false
     - Name: NP_Node
-      Entry: 7
-      Data: 4|ET.Client.CTestNode, Model
-    - Name: RootNode
       Entry: 6
-      Data: 
-    - Name: 
-      Entry: 8
       Data: 
     - Name: Input
       Entry: 6
@@ -147,7 +141,7 @@ MonoBehaviour:
       Data: 
     - Name: groups
       Entry: 7
-      Data: 5|System.Collections.Generic.List`1[[GraphProcessor.Group, Unity.Editor]],
+      Data: 4|System.Collections.Generic.List`1[[GraphProcessor.Group, Unity.Editor]],
         mscorlib
     - Name: 
       Entry: 12
@@ -163,7 +157,7 @@ MonoBehaviour:
       Data: 2
     - Name: Tree1
       Entry: 7
-      Data: 6|NPBehave.Root, Unity.ThirdParty
+      Data: 5|NPBehave.Root, Unity.ThirdParty
     - Name: RootNode
       Entry: 6
       Data: 
@@ -172,9 +166,9 @@ MonoBehaviour:
       Data: 
   serializedNodes: []
   edges:
-  - GUID: c83d9fdc-b6d1-4646-9a96-7ed77325dff2
+  - GUID: fae0dbb1-594a-42a4-93c0-996e4c044df8
     owner: {fileID: 11400000}
-    inputNodeGUID: 33fad6bc-6ed8-4c76-bb05-d102889d003e
+    inputNodeGUID: f484dd8d-aeb7-4f51-897f-251b2d85d38f
     outputNodeGUID: 764512cc-5f03-49b2-bf2a-8f263fbcba64
     inputFieldName: Input
     outputFieldName: OutPut
@@ -185,7 +179,7 @@ MonoBehaviour:
   exposedParameters: []
   serializedParameterList: []
   stickyNotes: []
-  position: {x: -109.6, y: -241.6, z: 0}
+  position: {x: -72, y: -201.6, z: 0}
   scale: {x: 1.15, y: 1.15, z: 1}
   SavePath: Assets/Scripts/Editor/Battle Tree Graph/Save
   references:

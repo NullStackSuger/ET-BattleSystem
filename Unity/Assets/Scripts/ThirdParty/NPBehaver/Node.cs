@@ -1,4 +1,5 @@
 ﻿using System;
+using MongoDB.Bson.Serialization.Attributes;
 using UnityEngine;
 using UnityEngine.Assertions;
 
@@ -49,7 +50,7 @@ namespace NPBehave
                 label = value;
             }
         }
-
+        
         private string name;
 
         public string Name

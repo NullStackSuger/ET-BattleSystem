@@ -10,7 +10,7 @@ namespace ET
         public override Task Init(Blackboard blackboard)
         {
             //NP_Node = new CTestNode();
-            this.NP_Node = TreeGraph.Model.CreateInstance("ET.Client.CTestNode") as Node;
+            this.NP_Node = TreeGraph.Model.CreateInstance("ET.CTestNode") as Node;
             return NP_Node as Task;
         }
     }

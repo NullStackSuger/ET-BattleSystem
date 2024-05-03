@@ -1,5 +1,6 @@
 using System;
 using System.IO;
+using MongoDB.Bson;
 using MongoDB.Bson.Serialization;
 using NPBehave;
 using Exception = NPBehave.Exception;
@@ -32,8 +33,7 @@ namespace ET
                 
                 if (file.Length == 0) Log.Info("没有读取到文件");
                 
-                var result = BsonSerializer.Deserialize<NPBehave.Root>(file);
-                result.Unit = unit;
+                var result = MongoHelper.Deserialize<NPBehave.Root>(file);
                 
                 Log.Info($"反序列化{name}.bytes 成功");
 

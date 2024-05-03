@@ -1,4 +1,6 @@
 
+using MongoDB.Bson.Serialization;
+
 namespace ET.Client
 {
     [Event(SceneType.Process)]
@@ -21,7 +23,11 @@ namespace ET.Client
             
             Log.Info("开始测试");
 
-            NPBehave.Root tree = TreeFactory.Creat("C Tree Graph");
+            // 找到问题了, 但是不知道怎么改
+            // MongoHelper
+            BsonClassMap.RegisterClassMap<CTestNode>();
+            
+            NPBehave.Root tree = TreeFactory.Creat("C Tree Graph", null);
             Log.Info("Tree: " + tree == null);
             tree.Start();
 
