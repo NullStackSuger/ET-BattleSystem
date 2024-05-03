@@ -138,6 +138,7 @@ namespace ET
                                 BsonDeserializerRegisterAttribute[];
                 if (bsonDeserializerRegisterAttributes.Length > 0)
                 {
+                    Debug.LogWarning("parenTypes.Add   " + type);
                     parenTypes.Add(type);
                 }
 
@@ -147,6 +148,7 @@ namespace ET
                 if (bsonDeserializerRegisterAttributes1.Length > 0)
                 {
                     childrenTypes.Add(type);
+                    RegisterClass(type);
                 }
             }
 
@@ -159,6 +161,12 @@ namespace ET
                         BsonClassMap.LookupClassMap(type);
                     }
                 }
+            }
+
+            void RegisterClass(Type type)
+            {
+                BsonClassMap classMap = new BsonClassMap(type);
+                BsonClassMap.RegisterClassMap((BsonClassMap) classMap);
             }
         }
 

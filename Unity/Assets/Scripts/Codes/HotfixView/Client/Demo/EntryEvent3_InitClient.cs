@@ -22,17 +22,9 @@ namespace ET.Client
             await EventSystem.Instance.PublishAsync(clientScene, new EventType.AppStartInitFinish());
             
             Log.Info("开始测试");
-
-            // 找到问题了, 但是不知道怎么改
-            // MongoHelper
-            BsonClassMap.RegisterClassMap<CTestNode>();
             
             NPBehave.Root tree = TreeFactory.Creat("C Tree Graph", null);
-            Log.Info("Tree: " + tree == null);
             tree.Start();
-
-            /*NPBehave.Root tree = new(new CTestNode());
-            tree.Start();*/
         }
     }
 }
