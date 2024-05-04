@@ -73,6 +73,9 @@ MonoBehaviour:
     - Name: RootNode
       Entry: 6
       Data: 
+    - Name: Unit
+      Entry: 6
+      Data: 
     - Name: 
       Entry: 8
       Data: 
@@ -159,6 +162,9 @@ MonoBehaviour:
       Entry: 7
       Data: 5|NPBehave.Root, Unity.ThirdParty
     - Name: RootNode
+      Entry: 6
+      Data: 
+    - Name: Unit
       Entry: 6
       Data: 
     - Name: 

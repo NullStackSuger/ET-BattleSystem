@@ -9,7 +9,7 @@ namespace ET
     {
         public override Task Init(Blackboard blackboard)
         {
-            this.NP_Node = TreeGraph.Model.CreateInstance("ET.STestNode") as Node;
+            this.NP_Node = TreeGraph.Hotfix.CreateInstance("ET.Server.STestNode") as Node;
             return NP_Node as Task;
         }
     }

@@ -1,6 +1,7 @@
 ﻿//using UnityEngine.Assertions;
 
 using System;
+using ET;
 using MongoDB.Bson.Serialization.Attributes;
 using UnityEngine;
 
@@ -8,6 +9,9 @@ namespace NPBehave
 {
     public class Root : Decorator
     {
+        [BsonIgnore]
+        public object Unit;
+        
         [BsonRequired]
         private Node mainNode;
 

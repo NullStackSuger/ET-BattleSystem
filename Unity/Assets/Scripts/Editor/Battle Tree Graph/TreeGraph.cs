@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Reflection;
@@ -10,6 +11,7 @@ using Sirenix.OdinInspector;
 using UnityEditor;
 using UnityEditorInternal;
 using UnityEngine;
+using Exception = NPBehave.Exception;
 
 namespace ET
 {
@@ -17,14 +19,24 @@ namespace ET
     public class TreeGraph : BaseGraph
     {
         // TODO: 暂时用这种方法先凑合着
-        private static Assembly model;
-        public static Assembly Model
+        private static Assembly hotfix;
+        public static Assembly Hotfix
         {
             get
             {
-                if (model == null)
-                    model = Assembly.Load(File.ReadAllBytes($"{Application.dataPath}/Bundles/Code/Model.dll.bytes"));
-                return model;
+                if (hotfix == null)
+                {
+#if UNITY_EDITOR
+                    // 问题: LoadFrom 会自动加载关联的程序集, 但文件流不会自动释放
+                    // Load 不会自动加载关联的程序集, 但不用文件流
+                    Assembly.LoadFrom($"{Application.dataPath}/Bundles/Code/Model.dll.bytes");
+                    hotfix = Assembly.LoadFrom($"{Application.dataPath}/Bundles/Code/Hotfix.dll.bytes");
+#else
+                    Assembly.LoadFrom($"{Application.streamingAssetsPath}/Bundles/Code/Model.dll.bytes");
+                    hotfix = Assembly.LoadFrom($"{Application.streamingAssetsPath}/Bundles/Code/Hotfix.dll.bytes");
+#endif
+                }
+                return hotfix;
             }
         }
 
@@ -34,9 +46,6 @@ namespace ET
 
         [BoxGroup("行为树")] 
         public NPBehave.Root Tree;
-        
-        [BoxGroup("行为树1")] 
-        public NPBehave.Root Tree1;
         
         [Button("ToNP_Tree", 25), GUIColor(0.4f, 0.8f, 1)]
         public void ToNP_Tree()
@@ -48,7 +57,7 @@ namespace ET
             List<BaseNode> nodes = new();
             Sort(ref nodes, rootEditorNode);
             InitNodes(InitBlackboard(), nodes);
-
+            
             Tree = rootEditorNode.NP_Node as NPBehave.Root;
             
             Debug.Log("构建完成");
@@ -149,33 +158,11 @@ namespace ET
                 BsonSerializer.Serialize(new BsonBinaryWriter(file), Tree);
             }
             
-            Debug.Log(this.Tree.ToJson());
-            Debug.Log(this.Tree.ToBsonDocument());
-            
             Debug.Log($"保存 {SavePath}/{name}.bytes 成功");
+            
+            // 这里应该卸载Model Hotfix 程序集
+            
             AssetDatabase.Refresh();
-        }
-        
-        /// <summary>
-        /// 序列化或反序列化时问题, 无法识别"CTestNode"或者其他"WaitUntilStop"
-        /// 解决方法: 1.自己写一个序列化方案(SerializerBase) 2.把Init过程移到运行时 3.感觉1 2 都不太好, 但想不出来3 但感觉有3
-        /// </summary>
-        [Button("DeBson", 25), GUIColor(0.4f, 0.8f, 1)]
-        public void DeBson()
-        {
-            try
-            {
-                byte[] file = File.ReadAllBytes($"{SavePath}/{name}.bytes");
-                if (file.Length == 0) Debug.Log("没有读取到文件");
-                Tree1 = MongoHelper.Deserialize<NPBehave.Root>(file);
-                
-                Debug.Log($"反序列化 {SavePath}/{name}.bytes 成功");
-            }
-            catch (Exception e)
-            {
-                Debug.Log(e.ToString());
-                throw;
-            }
         }
     }
 }

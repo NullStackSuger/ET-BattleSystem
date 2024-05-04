@@ -54,10 +54,8 @@ namespace ET.Server
                 Root.Instance.Scene.AddComponent<ConsoleComponent>();
             }
             
-            /*NPBehave.Root tree = new(new STestNode());
-            tree.Start();
-            Log.Info("Colck" + tree.Clock == null);
-            Log.Info("Blackboard" + tree.Blackboard == null);*/
+            /*NPBehave.Root tree = TreeFactory.Creat("S Tree Graph", null);
+            tree.Start();*/
         }
     }
 }

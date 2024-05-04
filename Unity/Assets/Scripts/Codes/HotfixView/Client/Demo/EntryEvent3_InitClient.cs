@@ -23,8 +23,8 @@ namespace ET.Client
             
             Log.Info("开始测试");
             
-            NPBehave.Root tree = TreeFactory.Creat("C Tree Graph", null);
-            tree.Start();
+            /*NPBehave.Root tree = TreeFactory.Creat("C Tree Graph", null);
+            tree.Start();*/
         }
     }
 }
