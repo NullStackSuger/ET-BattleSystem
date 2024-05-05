@@ -11,8 +11,8 @@ namespace ET
         
         public override object Init(Blackboard blackboard)
         {
-            this.NodeData = NodeHelper.CreatNodeData("WaitNodeData",
-                ("Seconds", this.Seconds));
+            this.NodeData = NodeHelper.CreatNodeData("ET.WaitNodeData");
+            NodeHelper.SetField(this.NodeData,  ("Seconds", this.Seconds));
             return this.NodeData;
         }
     }

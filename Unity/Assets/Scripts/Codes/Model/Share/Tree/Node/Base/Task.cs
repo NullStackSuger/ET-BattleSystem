@@ -1,9 +1,13 @@
-﻿namespace NPBehave
+﻿namespace ET
 {
-    public abstract class Task : Node
+    namespace Node
     {
-        public Task(string name) : base(name)
+
+        public abstract class Task: Node
         {
+            public Task(string name): base(name)
+            {
+            }
         }
     }
 }

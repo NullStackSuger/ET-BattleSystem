@@ -17,8 +17,8 @@ namespace ET
 
         public override object Init(Blackboard blackboard, object node)
         {
-            this.NodeData = NodeHelper.CreatNodeData("BlackboardConditionNodeData", 
-                ("Key", this.Key), ("Op", this.Op), ("Stop", this.Stop));
+            this.NodeData = NodeHelper.CreatNodeData("ET.BlackboardConditionNodeData");
+            NodeHelper.SetField(this.NodeData, ("Key", this.Key), ("Op", this.Op), ("Stop", this.Stop));
             return this.NodeData;
         }
     }

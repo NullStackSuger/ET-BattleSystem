@@ -9,7 +9,7 @@ namespace ET
     {
         public override object Init(Blackboard blackboard)
         {
-            this.NodeData = NodeHelper.CreatNodeData("WaitUntilStoppedNodeData");
+            this.NodeData = NodeHelper.CreatNodeData("ET.WaitUntilStoppedNodeData");
             return this.NodeData;
         }
     }

@@ -1,3 +1,4 @@
+using ET.Node;
 using NPBehave;
 using Sirenix.OdinInspector;
 
@@ -7,7 +8,7 @@ namespace ET
     {
         private int loopCount = -1;
         
-        public override Decorator Init(Unit unit, Blackboard blackboard, Node node)
+        public override Decorator Init(Unit unit, Blackboard blackboard, ET.Node.Node node)
         {
             Repeater repeater = new Repeater(loopCount, node);
             this.NP_Node = repeater;

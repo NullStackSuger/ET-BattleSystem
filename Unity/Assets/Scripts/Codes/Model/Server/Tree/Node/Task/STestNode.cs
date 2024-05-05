@@ -1,6 +1,4 @@
-using NPBehave;
-
-namespace ET.Server
+namespace ET.Node
 {
     [BsonDeserializerRegister]
     public class STestNode : Task

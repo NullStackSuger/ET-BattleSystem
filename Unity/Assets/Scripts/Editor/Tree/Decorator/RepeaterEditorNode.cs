@@ -11,8 +11,8 @@ namespace ET
         
         public override object Init(Blackboard blackboard, object node)
         {
-            this.NodeData = NodeHelper.CreatNodeData("ET.RepeaterNodeData", 
-                ("loopCount", this.loopCount));
+            this.NodeData = NodeHelper.CreatNodeData("ET.RepeaterNodeData");
+            NodeHelper.SetField(this.NodeData, ("loopCount", this.loopCount));
             return this.NodeData;
         }
     }

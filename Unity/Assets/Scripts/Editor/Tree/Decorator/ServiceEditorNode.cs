@@ -14,8 +14,8 @@ namespace ET
         
         public override object Init(Blackboard blackboard, object node)
         {
-            this.NodeData = NodeHelper.CreatNodeData("ServiceNodeData",
-                ("Interval", this.Interval), ("Action", this.Action));
+            this.NodeData = NodeHelper.CreatNodeData("ET.ServiceNodeData");
+            NodeHelper.SetField(this.NodeData, ("Interval", this.Interval), ("Action", this.Action));
             return this.NodeData;
         }
     }

@@ -68,7 +68,10 @@ MonoBehaviour:
       Entry: 5
       Data: false
     - Name: NodeData
-      Entry: 6
+      Entry: 7
+      Data: 2|System.Object, mscorlib
+    - Name: 
+      Entry: 8
       Data: 
     - Name: Input
       Entry: 6
@@ -81,7 +84,7 @@ MonoBehaviour:
       Data: 
     - Name: 
       Entry: 7
-      Data: 2|ET.STestEditorNode, Unity.Editor
+      Data: 3|ET.STestEditorNode, Unity.Editor
     - Name: nodeCustomName
       Entry: 6
       Data: 
@@ -135,7 +138,7 @@ MonoBehaviour:
       Data: 
     - Name: groups
       Entry: 7
-      Data: 3|System.Collections.Generic.List`1[[GraphProcessor.Group, Unity.Editor]],
+      Data: 4|System.Collections.Generic.List`1[[GraphProcessor.Group, Unity.Editor]],
         mscorlib
     - Name: 
       Entry: 12
@@ -147,26 +150,8 @@ MonoBehaviour:
       Entry: 8
       Data: 
     - Name: Tree
-      Entry: 7
-      Data: 4|NPBehave.Root, Unity.ThirdParty
-    - Name: RootNode
-      Entry: 6
-      Data: 
-    - Name: Unit
-      Entry: 6
-      Data: 
-    - Name: mainNode
-      Entry: 6
-      Data: 
-    - Name: clock
-      Entry: 7
-      Data: 5|NPBehave.Clock, Unity.ThirdParty
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
+      Entry: 9
+      Data: 2
   serializedNodes: []
   edges:
   - GUID: 8e2f7c62-369d-4c0a-934c-50bf83d8b650

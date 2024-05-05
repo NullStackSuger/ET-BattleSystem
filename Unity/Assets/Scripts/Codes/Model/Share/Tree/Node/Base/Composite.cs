@@ -1,65 +1,70 @@
 ﻿using NUnit.Framework;
 
-namespace NPBehave
+namespace ET
 {
-    public abstract class Composite : Container
+    namespace Node
     {
-        protected Node[] Children;
 
-        public Composite(string name, Node[] children) : base(name)
+        public abstract class Composite: Container
         {
-            this.Children = children;
-            Assert.IsTrue(children.Length > 0, "Composite nodes (Selector, Sequence, Parallel) need at least one child!");
+            protected Node[] Children;
 
-            foreach (Node node in Children)
+            public Composite(string name, Node[] children): base(name)
             {
-                node.SetParent(this);
-            }
-        }
+                this.Children = children;
+                Assert.IsTrue(children.Length > 0, "Composite nodes (Selector, Sequence, Parallel) need at least one child!");
 
-        override public void SetRoot(Root rootNode)
-        {
-            base.SetRoot(rootNode);
-
-            foreach (Node node in Children)
-            {
-                node.SetRoot(rootNode);
-            }
-        }
-
-
-#if UNITY_EDITOR
-        public override Node[] DebugChildren
-        {
-            get
-            {
-                return this.Children;
-            }
-        }
-
-        public Node DebugGetActiveChild()
-        {
-            foreach( Node node in DebugChildren )
-            {
-                if(node.CurrentState == Node.State.ACTIVE )
+                foreach (Node node in Children)
                 {
-                    return node;
+                    node.SetParent(this);
                 }
             }
 
-            return null;
-        }
+            override public void SetRoot(Root rootNode)
+            {
+                base.SetRoot(rootNode);
+
+                foreach (Node node in Children)
+                {
+                    node.SetRoot(rootNode);
+                }
+            }
+
+
+#if UNITY_EDITOR
+            public override Node[] DebugChildren
+            {
+                get
+                {
+                    return this.Children;
+                }
+            }
+
+            public Node DebugGetActiveChild()
+            {
+                foreach (Node node in DebugChildren)
+                {
+                    if (node.CurrentState == Node.State.ACTIVE)
+                    {
+                        return node;
+                    }
+                }
+
+                return null;
+            }
 #endif
 
-        protected override void Stopped(bool success)
-        {
-            foreach (Node child in Children)
+            protected override void Stopped(bool success)
             {
-                child.ParentCompositeStopped(this);
-            }
-            base.Stopped(success);
-        }
+                foreach (Node child in Children)
+                {
+                    child.ParentCompositeStopped(this);
+                }
 
-        public abstract void StopLowerPriorityChildrenForChild(Node child, bool immediateRestart);
+                base.Stopped(success);
+            }
+
+            public abstract void StopLowerPriorityChildrenForChild(Node child, bool immediateRestart);
+        }
     }
 }

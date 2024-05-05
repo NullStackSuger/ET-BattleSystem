@@ -9,7 +9,7 @@ namespace ET
     {
         public override object Init(Blackboard blackboard, object node)
         {
-            this.NodeData = NodeHelper.CreatNodeData("RootNodeData");
+            this.NodeData = NodeHelper.CreatNodeData("ET.RootNodeData");
             return this.NodeData;
         }
     }

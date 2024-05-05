@@ -1,4 +1,3 @@
-using System.Collections.Generic;
 using System.IO;
 using Exception = NPBehave.Exception;
 
@@ -16,7 +15,7 @@ namespace ET
         /// </summary>
         /// <param name="treeName">之后用enum表示, 编辑器构建时加一个enum元素</param>
         /// <returns></returns>
-        public static NPBehave.Root Creat(string name, Unit unit)
+        public static ET.Node.Root Creat(string name, Unit unit)
         {
             try
             {

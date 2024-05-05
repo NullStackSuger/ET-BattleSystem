@@ -17,45 +17,54 @@ namespace ET
 
         public static void Test()
         {
-            foreach (Type type in Model.GetTypes())
-            {
-                if (type.ToString().EndsWith("NodeData"))
-                    Debug.Log(type.ToString());
-            }
+            object obj = CreatNodeData("ET.RootNodeData");
+            
+            NodeHelper.SetField(obj, "Child", null);
         }
 
-        public static object CreatNodeData(string nodeName, params (string, object)[] propertyTuples)
+        public static object CreatNodeData(string nodeName)
         {
             if (!nodeName.StartsWith("ET.")) nodeName = "ET." + nodeName;
             if (!nodeName.EndsWith("NodeData")) nodeName += "NodeData";
 
             object obj = Model.CreateInstance(nodeName);
-
-            foreach (var property in propertyTuples)
-            {
-                SetProperty(obj, property.Item1, property.Item2);
-            }
-
+            
             return obj;
         }
 
-        public static object CreatNodeData(string nodeName, object[] args, params (string, object)[] propertyTuples)
+        public static object CreatNodeData(string nodeName, params object[] args)
         {
+            if (!nodeName.StartsWith("ET.")) nodeName = "ET." + nodeName;
             if (!nodeName.EndsWith("NodeData")) nodeName += "NodeData";
 
             object obj = Model.CreateInstance(nodeName, true, BindingFlags.Public, null, args, null, null);
 
-            foreach (var property in propertyTuples)
-            {
-                SetProperty(obj, property.Item1, property.Item2);
-            }
-
             return obj;
         }
 
-        public static void SetProperty(object obj, string name, object value)
+        public static void SetField(object obj, string name, object value)
         {
-            obj.GetType().GetProperty(name).SetValue(obj, value);
+            Type type = obj.GetType();
+            while (type != typeof(object))
+            {
+                var info = type.GetField(name);
+                if (info != null)
+                {
+                    info.SetValue(obj, value);
+                    return;
+                }
+                else type = type.BaseType;
+            }
+            
+            Debug.LogError($"未找到{type}中字段{name}");
+        }
+
+        public static void SetField(object obj, params (string, object)[] fieldTuples)
+        {
+            foreach (var field in fieldTuples)
+            {
+                SetField(obj, field.Item1, field.Item2);
+            }
         }
     }
 }

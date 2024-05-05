@@ -1,3 +1,4 @@
+using ET.Node;
 using NPBehave;
 using Sirenix.OdinInspector;
 
@@ -13,7 +14,7 @@ namespace ET
 
         public string Key;
 
-        public override Decorator Init(Unit unit, Blackboard blackboard, Node node)
+        public override Decorator Init(Unit unit, Blackboard blackboard, ET.Node.Node node)
         {
             BlackboardCondition blackboardCondition = new BlackboardCondition(Key, Op, Stop, node);
             this.NP_Node = blackboardCondition;

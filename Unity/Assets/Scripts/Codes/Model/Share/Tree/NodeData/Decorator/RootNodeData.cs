@@ -1,12 +1,13 @@
+using ET.Node;
 using NPBehave;
 
 namespace ET
 {
     public class RootNodeData : DecoratorNodeData
     {
-        public override Decorator Init(Unit unit, Blackboard blackboard, Node node)
+        public override Decorator Init(Unit unit, Blackboard blackboard, ET.Node.Node node)
         {
-            NPBehave.Root root = new NPBehave.Root(node);
+            ET.Node.Root root = new ET.Node.Root(node);
             this.NP_Node = root;
             return root;
         }

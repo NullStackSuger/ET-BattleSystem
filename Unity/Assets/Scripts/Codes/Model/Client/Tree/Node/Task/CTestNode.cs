@@ -1,7 +1,4 @@
-using MongoDB.Bson.Serialization.Attributes;
-using NPBehave;
-
-namespace ET.Client
+namespace ET.Node
 {
     [BsonDeserializerRegister]
     public class CTestNode : Task

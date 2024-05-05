@@ -15,8 +15,8 @@ namespace ET
 
         public override object Init(object[] nodes)
         {
-            this.NodeData = NodeHelper.CreatNodeData("ParallelNodeData", 
-                ("SuccessPolicy", this.SuccessPolicy), ("FailurePolicy", this.FailurePolicy));
+            this.NodeData = NodeHelper.CreatNodeData("ET.ParallelNodeData");
+            NodeHelper.SetField(this.NodeData, ("SuccessPolicy", this.SuccessPolicy), ("FailurePolicy", this.FailurePolicy));
             return this.NodeData;
         }
     }

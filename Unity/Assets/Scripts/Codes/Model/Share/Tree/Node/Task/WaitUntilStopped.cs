@@ -1,19 +1,23 @@
-﻿namespace NPBehave
+﻿namespace ET
 {
-    /// <summary>
-    /// 等待直到被停用
-    /// </summary>
-    public class WaitUntilStopped : Task
+    namespace Node
     {
-        private bool sucessWhenStopped;
-        public WaitUntilStopped(bool sucessWhenStopped = false) : base("WaitUntilStopped")
+        /// <summary>
+        /// 等待直到被停用
+        /// </summary>
+        public class WaitUntilStopped: Task
         {
-            this.sucessWhenStopped = sucessWhenStopped;
-        }
+            private bool sucessWhenStopped;
 
-        protected override void DoStop()
-        {
-            this.Stopped(sucessWhenStopped);
+            public WaitUntilStopped(bool sucessWhenStopped = false): base("WaitUntilStopped")
+            {
+                this.sucessWhenStopped = sucessWhenStopped;
+            }
+
+            protected override void DoStop()
+            {
+                this.Stopped(sucessWhenStopped);
+            }
         }
     }
 }

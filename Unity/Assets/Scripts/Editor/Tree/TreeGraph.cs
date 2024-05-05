@@ -14,7 +14,7 @@ namespace ET
     public class TreeGraph : BaseGraph
     {
         [LabelText("保存路径"), GUIColor(0.1f, 0.7f, 1)] [FolderPath]
-        public string SavePath = "Assets/Script/Editor/Battle Tree Graph/Save";
+        public string SavePath = "Assets/Script/Editor/Tree/Save";
 
         [BoxGroup("行为树")] 
         public object Tree;
@@ -40,7 +40,6 @@ namespace ET
             
             Init(blackboard, nodes);
             Debug.Log("创建NodeData对象完成");
-            Test(nodes);
             SetData(nodes);
             Debug.Log("设置信息完成");
             
@@ -125,10 +124,9 @@ namespace ET
                         case DecoratorEditorNode decorator:
                             foreach (BaseNode child in baseNode.GetOutputNodes())
                             {
-                                NodeHelper.SetProperty(node.NodeData,"Child", (child as EditorNodeBase).NodeData);
+                                NodeHelper.SetField(node.NodeData,"Child", (child as EditorNodeBase).NodeData);
                                 break;
                             }
-                            Debug.LogError($"{node.GetType()}下没有节点");
                             break;
                         case CompositeEditorNode composite:
                             List<object> temp = new();
@@ -136,34 +134,19 @@ namespace ET
                             {
                                 temp.Add((child as EditorNodeBase).NodeData);
                             }
-                            if (temp.Count <= 0) Debug.LogError($"{node.GetType()}下没有节点");
-                            
-                            NodeHelper.SetProperty(node.NodeData,"Children", temp.ToArray());
+                            NodeHelper.SetField(node.NodeData,"Children", temp.ToArray());
                             break;
                     }
                 }
             }
             
             // 返回RootNodeData
-            
-            //Test
-            void Test(List<BaseNode> nodes)
-            {
-                foreach (BaseNode baseNode in nodes)
-                {
-                    if (baseNode is not EditorNodeBase node) continue;
-                    
-                    Debug.Log(node.name);
-                    if (node.NodeData == null) Debug.Log("NodeData is null");
-                    else Debug.Log(node.NodeData.GetType());
-                }
-            }
         }
         
         [Button("ToBson", 25), GUIColor(0.4f, 0.8f, 1)]
         public void ToBson()
         {
-            if (string.IsNullOrEmpty(SavePath)) SavePath = "Assets/Script/Editor/Save";
+            if (string.IsNullOrEmpty(SavePath)) SavePath = "Assets/Script/Editor/Tree/Save";
             
             using (FileStream file = File.Create($"{SavePath}/{name}.bytes"))
             {

@@ -1,3 +1,4 @@
+using ET.Node;
 using NPBehave;
 using Sirenix.OdinInspector;
 
@@ -10,7 +11,7 @@ namespace ET
         
         public System.Action Action;
         
-        public override Decorator Init(Unit unit,  Blackboard blackboard, Node node)
+        public override Decorator Init(Unit unit,  Blackboard blackboard, ET.Node.Node node)
         {
             Service service = new Service(Interval, Action, node);
             this.NP_Node = service;

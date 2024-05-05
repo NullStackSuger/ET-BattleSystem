@@ -1,98 +1,103 @@
 ﻿
 using NUnit.Framework;
 
-namespace NPBehave
+namespace ET
 {
-    public class Selector : Composite
+    namespace Node
     {
-        private int currentIndex = -1;
 
-        public Selector(params Node[] children) : base("Selector", children)
+        public class Selector: Composite
         {
-        }
+            private int currentIndex = -1;
 
-
-        protected override void DoStart()
-        {
-            foreach (Node child in Children)
+            public Selector(params Node[] children): base("Selector", children)
             {
-                Assert.AreEqual(child.CurrentState, State.INACTIVE);
             }
 
-            currentIndex = -1;
 
-            ProcessChildren();
-        }
-
-        protected override void DoStop()
-        {
-            Children[currentIndex].Stop();
-        }
-
-        protected override void DoChildStopped(Node child, bool result)
-        {
-            if (result)
+            protected override void DoStart()
             {
-                Stopped(true);
-            }
-            else
-            {
+                foreach (Node child in Children)
+                {
+                    Assert.AreEqual(child.CurrentState, State.INACTIVE);
+                }
+
+                currentIndex = -1;
+
                 ProcessChildren();
             }
-        }
 
-        private void ProcessChildren()
-        {
-            if (++currentIndex < Children.Length)
+            protected override void DoStop()
             {
-                if (IsStopRequested)
+                Children[currentIndex].Stop();
+            }
+
+            protected override void DoChildStopped(Node child, bool result)
+            {
+                if (result)
                 {
-                    Stopped(false);
+                    Stopped(true);
                 }
                 else
                 {
-                    Children[currentIndex].Start();
+                    ProcessChildren();
                 }
             }
-            else
-            {
-                Stopped(false);
-            }
-        }
 
-        public override void StopLowerPriorityChildrenForChild(Node abortForChild, bool immediateRestart)
-        {
-            int indexForChild = 0;
-            bool found = false;
-            foreach (Node currentChild in Children)
+            private void ProcessChildren()
             {
-                if (currentChild == abortForChild)
+                if (++currentIndex < Children.Length)
                 {
-                    found = true;
-                }
-                else if (!found)
-                {
-                    indexForChild++;
-                }
-                else if (found && currentChild.IsActive)
-                {
-                    if (immediateRestart)
+                    if (IsStopRequested)
                     {
-                        currentIndex = indexForChild - 1;
+                        Stopped(false);
                     }
                     else
                     {
-                        currentIndex = Children.Length;
+                        Children[currentIndex].Start();
                     }
-                    currentChild.Stop();
-                    break;
+                }
+                else
+                {
+                    Stopped(false);
                 }
             }
-        }
 
-        override public string ToString()
-        {
-            return base.ToString() + "[" + this.currentIndex + "]";
+            public override void StopLowerPriorityChildrenForChild(Node abortForChild, bool immediateRestart)
+            {
+                int indexForChild = 0;
+                bool found = false;
+                foreach (Node currentChild in Children)
+                {
+                    if (currentChild == abortForChild)
+                    {
+                        found = true;
+                    }
+                    else if (!found)
+                    {
+                        indexForChild++;
+                    }
+                    else if (found && currentChild.IsActive)
+                    {
+                        if (immediateRestart)
+                        {
+                            currentIndex = indexForChild - 1;
+                        }
+                        else
+                        {
+                            currentIndex = Children.Length;
+                        }
+
+                        currentChild.Stop();
+                        break;
+                    }
+                }
+            }
+
+            override public string ToString()
+            {
+                return base.ToString() + "[" + this.currentIndex + "]";
+            }
         }
     }
 }
