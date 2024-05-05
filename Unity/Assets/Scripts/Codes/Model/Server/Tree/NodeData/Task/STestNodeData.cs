@@ -3,9 +3,10 @@ using NPBehave;
 
 namespace ET.Server
 {
+    [BsonDeserializerRegister]
     public class STestNodeData : TaskNodeData
     {
-        public override Task Init(Unit unit, Blackboard blackboard)
+        public override Node.Node Init(Unit unit, Blackboard blackboard)
         {
             STestNode sTestNode = new STestNode();
             this.NP_Node = sTestNode;

@@ -1,6 +1,5 @@
 namespace ET.Node
 {
-    [BsonDeserializerRegister]
     public class STestNode : Task
     {
         //public int castConfigId = 0001; 

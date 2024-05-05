@@ -1,6 +1,5 @@
 namespace ET.Node
 {
-    [BsonDeserializerRegister]
     public class CTestNode : Task
     {
         public CTestNode() : base("CTestNode")

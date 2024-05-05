@@ -15,13 +15,6 @@ namespace ET
             Model = Assembly.Load(File.ReadAllBytes($"{Application.dataPath}/Bundles/Code/Model.dll.bytes"));
         }
 
-        public static void Test()
-        {
-            object obj = CreatNodeData("ET.RootNodeData");
-            
-            NodeHelper.SetField(obj, "Child", null);
-        }
-
         public static object CreatNodeData(string nodeName)
         {
             if (!nodeName.StartsWith("ET.")) nodeName = "ET." + nodeName;

@@ -3,9 +3,10 @@ using NPBehave;
 
 namespace ET
 {
+    [BsonDeserializerRegister]
     public class WaitUntilStoppedNodeData: TaskNodeData
     {
-        public override Task Init(Unit unit, Blackboard blackboard)
+        public override Node.Node Init(Unit unit, Blackboard blackboard)
         {
             WaitUntilStopped waitUntilStopped = new WaitUntilStopped();
             this.NP_Node = waitUntilStopped;

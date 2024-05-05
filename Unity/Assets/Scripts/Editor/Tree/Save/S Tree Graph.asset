@@ -169,7 +169,7 @@ MonoBehaviour:
   stickyNotes: []
   position: {x: -110.4, y: -200.8, z: 0}
   scale: {x: 1.15, y: 1.15, z: 1}
-  SavePath: Assets/Scripts/Editor/Battle Tree Graph/Save
+  SavePath: Assets/Scripts/Editor/Tree/Save
   references:
     version: 2
     RefIds: []

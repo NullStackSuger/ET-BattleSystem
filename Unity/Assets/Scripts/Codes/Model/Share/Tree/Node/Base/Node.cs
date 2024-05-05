@@ -12,6 +12,7 @@ namespace ET
         ///        DoStop 关闭时应该做什么？
         ///        DoParentCompositeStopped 父组合节点关闭时应该做什么？
         /// </summary>
+        [BsonDeserializerRegister]
         public abstract class Node
         {
             public enum State
@@ -130,8 +131,8 @@ namespace ET
                 Assert.AreEqual(this.currentState, State.INACTIVE, "can only start inactive nodes");
 
                 /*#if UNITY_EDITOR
-                            RootNode.TotalNumStartCalls++;
-                            this.DebugNumStartCalls++;
+                RootNode.TotalNumStartCalls++;
+                this.DebugNumStartCalls++;
                 #endif*/
                 this.currentState = State.ACTIVE;
                 DoStart();

@@ -5,7 +5,6 @@ namespace ET
 {
     namespace Node
     {
-
         public class Sequence: Composite
         {
             private int currentIndex = -1;

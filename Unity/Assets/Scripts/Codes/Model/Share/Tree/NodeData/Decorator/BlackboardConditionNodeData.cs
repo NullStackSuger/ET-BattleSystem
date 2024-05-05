@@ -4,6 +4,7 @@ using Sirenix.OdinInspector;
 
 namespace ET
 {
+    [BsonDeserializerRegister]
     public class BlackboardConditionNodeData: DecoratorNodeData
     {
         [LabelText("运算符号")]
@@ -14,9 +15,9 @@ namespace ET
 
         public string Key;
 
-        public override Decorator Init(Unit unit, Blackboard blackboard, ET.Node.Node node)
+        public override Node.Node Init(Unit unit, Blackboard blackboard)
         {
-            BlackboardCondition blackboardCondition = new BlackboardCondition(Key, Op, Stop, node);
+            BlackboardCondition blackboardCondition = new BlackboardCondition(Key, Op, Stop, this.Child.NP_Node);
             this.NP_Node = blackboardCondition;
             return blackboardCondition;
         }

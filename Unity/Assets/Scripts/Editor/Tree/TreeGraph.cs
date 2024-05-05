@@ -18,12 +18,6 @@ namespace ET
 
         [BoxGroup("行为树")] 
         public object Tree;
-
-        [Button("Test", 25), GUIColor(0.4f, 0.8f, 1)]
-        public void Test()
-        {
-            NodeHelper.Test();
-        }
         
         [Button("ToNodeData", 25), GUIColor(0.4f, 0.8f, 1)]
         public void ToNodeData()

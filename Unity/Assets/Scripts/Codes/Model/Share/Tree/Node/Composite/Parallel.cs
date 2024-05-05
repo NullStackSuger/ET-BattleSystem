@@ -6,7 +6,6 @@ namespace ET
 {
     namespace Node
     {
-
         public class Parallel: Composite
         {
             // public enum Wait

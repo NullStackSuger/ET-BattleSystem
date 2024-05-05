@@ -5,7 +5,6 @@ namespace ET
 {
     namespace Node
     {
-
         public class Selector: Composite
         {
             private int currentIndex = -1;

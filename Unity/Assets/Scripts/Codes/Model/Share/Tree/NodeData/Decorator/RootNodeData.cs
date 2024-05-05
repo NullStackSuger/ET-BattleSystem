@@ -3,11 +3,14 @@ using NPBehave;
 
 namespace ET
 {
+    [BsonDeserializerRegister]
     public class RootNodeData : DecoratorNodeData
     {
-        public override Decorator Init(Unit unit, Blackboard blackboard, ET.Node.Node node)
+        public Blackboard Blackboard;
+        
+        public override Node.Node Init(Unit unit, Blackboard blackboard)
         {
-            ET.Node.Root root = new ET.Node.Root(node);
+            ET.Node.Root root = new ET.Node.Root(Blackboard, this.Child.NP_Node);
             this.NP_Node = root;
             return root;
         }
