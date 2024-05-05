@@ -1,4 +1,4 @@
-﻿namespace NPBehave
+﻿/*namespace NPBehave
 {
     /// <summary>
     /// 被装饰节点返回后，停用并返回 它取反后的执行结果
@@ -24,4 +24,4 @@
             Stopped(!result);
         }
     }
-}
+}*/

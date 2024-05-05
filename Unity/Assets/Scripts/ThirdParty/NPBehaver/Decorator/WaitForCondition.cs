@@ -1,4 +1,4 @@
-﻿using System;
+﻿/*using System;
 using UnityEngine.Assertions;
 
 namespace NPBehave
@@ -70,4 +70,4 @@ namespace NPBehave
             Stopped(result);
         }
     }
-}
+}*/

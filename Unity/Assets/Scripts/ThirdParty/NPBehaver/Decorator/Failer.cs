@@ -1,4 +1,4 @@
-﻿namespace NPBehave
+﻿/*namespace NPBehave
 {
     public class Failer : Decorator
     {
@@ -22,4 +22,4 @@
         }
     }
 
-}
+}*/

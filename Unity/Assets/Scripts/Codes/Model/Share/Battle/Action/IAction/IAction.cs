@@ -1,4 +1,4 @@
-namespace ET.Server
+namespace ET
 {
 
     // 可以考虑在里面放个行为树

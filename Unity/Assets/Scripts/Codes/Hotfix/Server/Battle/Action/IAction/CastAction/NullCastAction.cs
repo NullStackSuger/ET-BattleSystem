@@ -4,7 +4,7 @@ namespace ET.Server
 {
 
     [Action(0001)]
-    [FriendOfAttribute(typeof(ET.Server.Cast))]
+    [FriendOfAttribute(typeof(ET.Cast))]
     public class NullCastAction : IAction
     {
         public bool Check(ActionComponent actionComponent, ActionConfig config)

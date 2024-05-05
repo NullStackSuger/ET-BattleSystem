@@ -1,6 +1,6 @@
 using System.Collections.Generic;
 
-namespace ET.Server
+namespace ET
 {
 
     [ComponentOf(typeof(Unit))]

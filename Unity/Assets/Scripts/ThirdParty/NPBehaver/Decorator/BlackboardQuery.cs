@@ -1,4 +1,4 @@
-﻿namespace NPBehave
+﻿/*namespace NPBehave
 {
     public class BlackboardQuery : ObservingDecorator
     {
@@ -47,4 +47,4 @@
             return Name + keys;
         }
     }
-}
+}*/

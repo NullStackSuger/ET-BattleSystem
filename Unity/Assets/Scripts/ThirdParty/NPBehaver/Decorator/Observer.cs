@@ -1,4 +1,4 @@
-using System;
+/*using System;
 
 namespace NPBehave
 {
@@ -30,4 +30,4 @@ namespace NPBehave
             Stopped(result);
         }
     }
-}
+}*/

@@ -6,7 +6,7 @@ namespace ET.Server
 
     [Action(0000)]
     [FriendOf(typeof(Cast))]
-    [FriendOfAttribute(typeof(ET.Server.Buff))]
+    [FriendOfAttribute(typeof(ET.Buff))]
     public class FireBallCastAction : IAction
     {
         public bool Check(ActionComponent actionComponent, ActionConfig config)

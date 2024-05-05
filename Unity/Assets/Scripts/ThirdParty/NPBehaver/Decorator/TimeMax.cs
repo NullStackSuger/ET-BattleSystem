@@ -1,4 +1,4 @@
-﻿using UnityEngine.Assertions;
+﻿/*using UnityEngine.Assertions;
 
 namespace NPBehave
 {
@@ -75,4 +75,4 @@ namespace NPBehave
             }
         }
     }
-}
+}*/

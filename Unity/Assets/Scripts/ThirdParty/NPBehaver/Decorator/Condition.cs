@@ -1,4 +1,4 @@
-﻿using System;
+﻿/*using System;
 
 namespace NPBehave
 {
@@ -44,4 +44,4 @@ namespace NPBehave
             return this.condition();
         }
     }
-}
+}*/

@@ -1,8 +1,7 @@
 using System.Collections.Generic;
 using MongoDB.Bson.Serialization.Attributes;
-using Unity.Mathematics;
 
-namespace ET.Server
+namespace ET
 {
     /// <summary>
     /// CastComponent -> Unit -> Cast

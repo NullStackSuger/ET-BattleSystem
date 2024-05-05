@@ -1,6 +1,6 @@
 using System.Collections.Generic;
 
-namespace ET.Server
+namespace ET
 {
     /// <summary>
     /// 管理所有行为逻辑

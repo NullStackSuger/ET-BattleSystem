@@ -1,4 +1,4 @@
-﻿namespace NPBehave
+﻿/*namespace NPBehave
 {
     public class Succeeder : Decorator
     {
@@ -21,4 +21,4 @@
             Stopped(true);
         }
     }
-}
+}*/

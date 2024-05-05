@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using MongoDB.Bson.Serialization.Attributes;
 
-namespace ET.Server
+namespace ET
 {
     [ChildOf(typeof (BuffComponent))]
     public class Buff: Entity, IAwake<int>, IDestroy
