@@ -13,7 +13,6 @@ namespace ET
         ///        DoStop 关闭时应该做什么？
         ///        DoParentCompositeStopped 父组合节点关闭时应该做什么？
         /// </summary>
-        [BsonDeserializerRegister]
         public abstract class Node
         {
             public enum State

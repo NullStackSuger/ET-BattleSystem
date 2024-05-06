@@ -1,14 +1,12 @@
-﻿//using UnityEngine;
-
-using NPBehave;
-using UnityEngine;
+﻿using NPBehave;
 using Exception = System.Exception;
 
 namespace ET
 {
     namespace Node
     {
-        public class BlackboardCondition: ObservingDecorator
+        [FriendOf(typeof(Node))]
+        public class BlackboardCondition : ObservingDecorator
         {
             private string key;
             private object value;
@@ -38,7 +36,7 @@ namespace ET
                 }
             }
 
-            public BlackboardCondition(string key, Operator op, object value, Stops stopsOnChange, Node decoratee): base("BlackboardCondition",
+            public BlackboardCondition(string key, Operator op, object value, Stops stopsOnChange, Node decoratee) : base("BlackboardCondition",
                 stopsOnChange, decoratee)
             {
                 this.op = op;
@@ -47,7 +45,7 @@ namespace ET
                 this.stopsOnChange = stopsOnChange;
             }
 
-            public BlackboardCondition(string key, Operator op, Stops stopsOnChange, Node decoratee): base("BlackboardCondition", stopsOnChange,
+            public BlackboardCondition(string key, Operator op, Stops stopsOnChange, Node decoratee) : base("BlackboardCondition", stopsOnChange,
                 decoratee)
             {
                 this.op = op;
