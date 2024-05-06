@@ -138,7 +138,6 @@ namespace ET
                                 BsonDeserializerRegisterAttribute[];
                 if (bsonDeserializerRegisterAttributes.Length > 0)
                 {
-                    Debug.LogWarning("parenTypes.Add   " + type);
                     parenTypes.Add(type);
                 }
 

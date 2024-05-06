@@ -13,8 +13,8 @@ namespace ET
         public class Root: Decorator
         {
             [BsonIgnore]
-            public object Unit;
-
+            public Unit Unit;
+            
             [BsonRequired]
             public Node mainNode;
 

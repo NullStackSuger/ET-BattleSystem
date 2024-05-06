@@ -10,8 +10,9 @@ namespace ET
         
         public override Node.Node Init(Unit unit, Blackboard blackboard)
         {
-            ET.Node.Root root = new ET.Node.Root(Blackboard, this.Child.NP_Node);
+            ET.Node.Root root = new ET.Node.Root(blackboard, this.Child.NP_Node);
             this.NP_Node = root;
+            root.Unit = unit;
             return root;
         }
     }

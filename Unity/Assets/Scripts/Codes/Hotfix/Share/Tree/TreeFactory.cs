@@ -12,6 +12,8 @@ namespace ET
         private const string ServerPath = "D:/ToolSoft/U3D/Project/ETs/ET-BattleSystem/Unity/Assets/Scripts/Editor/Tree/Save";
         private const string ViewPath   = "D:/ToolSoft/U3D/Project/ETs/ET-BattleSystem/Unity/Assets/Scripts/Editor/Tree/Save";
         
+        // TODO: 这里应该加一个字典, 每次Creat先看字典里有没有
+        
         /// <summary>
         /// 构建运行时行为树
         /// </summary>
@@ -46,14 +48,23 @@ namespace ET
             
             // ----------------------------------------------------------------
 
+            Blackboard blackboard = InitBlackboard();
             List<NodeData> nodeDatas = new();
             Sort(ref nodeDatas, root);
-            Init(nodeDatas, root.Blackboard);
-            BuildTree();
+            Init(nodeDatas, blackboard);
 
             Log.Info("构建NP_Tree成功");
             return root.NP_Node as ET.Node.Root;
             
+            // 生成黑板
+            Blackboard InitBlackboard()
+            {
+                Blackboard blackboard = new(new Clock());
+                
+                // 给黑板赋值
+
+                return blackboard;
+            }
             // 找到RootNodeData
             
             // 倒序排序
@@ -83,12 +94,6 @@ namespace ET
                 {
                     nodeData.Init(unit, blackboard);
                 }
-            }
-            
-            // 遍历生成Tree
-            void BuildTree()
-            {
-                
             }
             
             // 返回RootNodeData.NP_Node as ET.Node.Root

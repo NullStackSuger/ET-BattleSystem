@@ -46,6 +46,22 @@ namespace ET
         {
             Logger.Instance.Warning(msg);
         }
+        public static void Warning(bool msg)
+        {
+            Logger.Instance.Warning(msg.ToString());
+        }
+        public static void Warning(int msg)
+        {
+            Logger.Instance.Warning(msg.ToString());
+        }
+        public static void Warning(float msg)
+        {
+            Logger.Instance.Warning(msg.ToString());
+        }
+        public static void Warning(long msg)
+        {
+            Logger.Instance.Warning(msg.ToString());
+        }
 
         public static void Error(string msg)
         {

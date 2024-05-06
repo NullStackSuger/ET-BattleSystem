@@ -54,8 +54,8 @@ namespace ET.Server
                 Root.Instance.Scene.AddComponent<ConsoleComponent>();
             }
             
-            ET.Node.Root tree = TreeFactory.Creat("S Tree Graph", null);
-            //tree.Start();
+            /*ET.Node.Root tree = TreeFactory.Creat("S Tree Graph", null);
+            tree.Start();*/
         }
     }
 }
