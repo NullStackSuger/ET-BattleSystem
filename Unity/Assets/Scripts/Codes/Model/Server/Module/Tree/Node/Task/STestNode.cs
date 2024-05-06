@@ -2,7 +2,8 @@ namespace ET.Node
 {
     public class STestNode : Task
     {
-        //public int castConfigId = 0001; 
+        public int CastConfigId = 0001;
+        
         public STestNode() : base("STestNode")
         {
         }
@@ -10,6 +11,11 @@ namespace ET.Node
         protected override void DoStart()
         {
             base.DoStart();
+            
+            // 问题: 想在DoStart调用hotfix代码
+            // push to github
+            // Try move Battle to Core
+            // then can use CastCompoent in Model
             //0001
             //this.RootNode.Unit.GetComponent<CastComponent>().Creat(0001);
         }
