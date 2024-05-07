@@ -1,4 +1,4 @@
-using System.Collections.Generic;
+/*using System.Collections.Generic;
 using NPBehave;
 using NUnit.Framework;
 
@@ -27,7 +27,7 @@ namespace ET
             private bool successState;
             private bool childrenAborted;
 
-            public Parallel(Policy successPolicy, Policy failurePolicy, /*Wait waitForPendingChildrenRule,*/ params Node[] children): base("Parallel",
+            public Parallel(Policy successPolicy, Policy failurePolicy, /*Wait waitForPendingChildrenRule,#1# params Node[] children): base("Parallel",
                 children)
             {
                 this.successPolicy = successPolicy;
@@ -115,14 +115,14 @@ namespace ET
                         Assert.IsFalse(failedCount == childrenCount);
 
                         if (failurePolicy == Policy.ONE &&
-                            failedCount > 0 /* && waitForPendingChildrenRule != Wait.ON_FAILURE && waitForPendingChildrenRule != Wait.BOTH*/)
+                            failedCount > 0 /* && waitForPendingChildrenRule != Wait.ON_FAILURE && waitForPendingChildrenRule != Wait.BOTH#1#)
                         {
                             successState = false;
                             childrenAborted = true;
                         }
                         else if
                                 (successPolicy == Policy.ONE &&
-                                 succeededCount > 0 /* && waitForPendingChildrenRule != Wait.ON_SUCCESS && waitForPendingChildrenRule != Wait.BOTH*/)
+                                 succeededCount > 0 /* && waitForPendingChildrenRule != Wait.ON_SUCCESS && waitForPendingChildrenRule != Wait.BOTH#1#)
                         {
                             successState = true;
                             childrenAborted = true;
@@ -167,4 +167,4 @@ namespace ET
             }
         }
     }
-}
+}*/

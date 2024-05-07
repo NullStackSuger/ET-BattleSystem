@@ -13,7 +13,7 @@ namespace ET
         ///        DoStop 关闭时应该做什么？
         ///        DoParentCompositeStopped 父组合节点关闭时应该做什么？
         /// </summary>
-        public abstract class Node
+        public abstract class Node/* : Entity*/
         {
             public enum State
             {
@@ -22,99 +22,8 @@ namespace ET
                 STOP_REQUESTED,
             }
 
-            protected State currentState = State.INACTIVE;
-
-            public State CurrentState
-            {
-                get
-                {
-                    return currentState;
-                }
-            }
-
-            public Root RootNode;
-
-            private Container parentNode;
-
-            public Container ParentNode
-            {
-                get
-                {
-                    return parentNode;
-                }
-            }
-
-            private string label;
-
-            public string Label
-            {
-                get
-                {
-                    return label;
-                }
-                set
-                {
-                    label = value;
-                }
-            }
-
-            private string name;
-
-            public string Name
-            {
-                get
-                {
-                    return name;
-                }
-            }
-
-            public virtual Blackboard Blackboard
-            {
-                get
-                {
-                    return RootNode.Blackboard;
-                }
-            }
-
-            public virtual Clock Clock
-            {
-                get
-                {
-                    return RootNode.Clock;
-                }
-            }
-
-            public bool IsStopRequested
-            {
-                get
-                {
-                    return this.currentState == State.STOP_REQUESTED;
-                }
-            }
-
-            public bool IsActive
-            {
-                get
-                {
-                    return this.currentState == State.ACTIVE;
-                }
-            }
-
-
-            public Node(string name)
-            {
-                this.name = name;
-            }
-
-            public virtual void SetRoot(Root rootNode)
-            {
-                this.RootNode = rootNode;
-            }
-
-            public void SetParent(Container parent)
-            {
-                this.parentNode = parent;
-            }
+            public State CurrentState { get; protected set; }
+            public Container ParentNode { get; private set; }
 
             /*#if UNITY_EDITOR
                     public float DebugLastStopRequestAt = 0.0f;

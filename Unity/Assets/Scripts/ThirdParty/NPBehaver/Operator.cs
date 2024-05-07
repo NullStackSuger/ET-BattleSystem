@@ -1,4 +1,4 @@
-namespace NPBehave
+/*namespace NPBehave
 {
     public enum Operator
     {
@@ -12,4 +12,4 @@ namespace NPBehave
         IS_SMALLER,
         ALWAYS_TRUE
     }
-}
+}*/

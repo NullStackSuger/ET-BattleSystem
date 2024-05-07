@@ -19,7 +19,7 @@ namespace ET
         /// </summary>
         /// <param name="treeName">之后用enum表示, 编辑器构建时加一个enum元素</param>
         /// <returns></returns>
-        public static ET.Node.Root Creat(string name, Unit unit)
+        public static TreeComponent Creat(string name, Unit unit)
         {
             RootNodeData root;
             try
@@ -48,13 +48,16 @@ namespace ET
             
             // ----------------------------------------------------------------
 
+            TreeComponent result = unit.AddComponent<TreeComponent>();
             Blackboard blackboard = InitBlackboard();
             List<NodeData> nodeDatas = new();
             Sort(ref nodeDatas, root);
             Init(nodeDatas, blackboard);
 
             Log.Info("构建NP_Tree成功");
-            return root.NP_Node as ET.Node.Root;
+            return result;
+            
+            // 添加TreeComponent组件
             
             // 生成黑板
             Blackboard InitBlackboard()

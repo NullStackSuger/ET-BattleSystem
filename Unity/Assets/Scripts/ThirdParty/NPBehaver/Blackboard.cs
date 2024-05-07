@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿/*
+using UnityEngine;
 using System.Collections.Generic;
 
 namespace NPBehave
@@ -343,3 +344,4 @@ namespace NPBehave
         }
     }
 }
+*/
