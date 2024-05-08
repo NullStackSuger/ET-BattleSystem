@@ -1,6 +1,5 @@
+using System.Collections.Generic;
 using GraphProcessor;
-using NPBehave;
-using Sirenix.OdinInspector;
 
 namespace ET
 {
@@ -9,7 +8,7 @@ namespace ET
     {
         public float Seconds;
         
-        public override object Init(Blackboard blackboard)
+        public override object Init(Dictionary<string, object> blackboard)
         {
             this.NodeData = NodeHelper.CreatNodeData("ET.WaitNodeData");
             NodeHelper.SetField(this.NodeData,  ("Seconds", this.Seconds));

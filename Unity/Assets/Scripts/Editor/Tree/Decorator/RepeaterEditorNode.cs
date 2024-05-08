@@ -1,18 +1,17 @@
+using System.Collections.Generic;
 using GraphProcessor;
-using NPBehave;
-using Sirenix.OdinInspector;
 
 namespace ET
 {
     [NodeMenuItem("Tree/Decorator/Repeater", typeof(TreeGraph))]
     public class RepeaterEditorNode : DecoratorEditorNode
     {
-        private int loopCount = -1;
+        public int LoopCount = -1;
         
-        public override object Init(Blackboard blackboard, object node)
+        public override object Init(Dictionary<string, object> blackboard, object node)
         {
             this.NodeData = NodeHelper.CreatNodeData("ET.RepeaterNodeData");
-            NodeHelper.SetField(this.NodeData, ("loopCount", this.loopCount));
+            NodeHelper.SetField(this.NodeData, ("LoopCount", this.LoopCount));
             return this.NodeData;
         }
     }

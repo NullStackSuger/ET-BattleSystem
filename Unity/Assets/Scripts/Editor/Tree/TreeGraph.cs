@@ -24,7 +24,7 @@ namespace ET
         {
             // ------------------------------------------------------------------------
             Debug.Log("----------------开始构建NodeData----------------");
-            Blackboard blackboard = InitBlackboard();
+            Dictionary<string, object> blackboard = InitBlackboard();
             Debug.Log("构建黑板完成");
             RootEditorNode rootEditorNode = FindNode<RootEditorNode>(this.nodes);
             Debug.Log("找到Root");
@@ -42,9 +42,9 @@ namespace ET
             // ------------------------------------------------------------------------
             
             // 设置黑板
-            Blackboard InitBlackboard()
+            Dictionary<string, object> InitBlackboard()
             {
-                Blackboard blackboard = new Blackboard(new Clock());
+                Dictionary<string, object> blackboard = new();
                 
                 // Add Item
                 
@@ -74,7 +74,7 @@ namespace ET
             }
             
             // 调用Init
-            void Init(Blackboard blackboard, List<BaseNode> nodes)
+            void Init(Dictionary<string, object> blackboard, List<BaseNode> nodes)
             {
                 foreach (BaseNode baseNode in nodes)
                 {

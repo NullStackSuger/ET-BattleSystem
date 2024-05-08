@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using MongoDB.Bson.Serialization.Attributes;
 using NPBehave;
 
@@ -19,9 +20,9 @@ namespace ET
         }
 
         [BsonIgnore]
-        public ET.Node.Root Root;
+        public ET.RootComponent Root;
 
         [BsonIgnore]
-        public Blackboard Blackboard;
+        public Dictionary<string, object> Blackboard;
     }
 }

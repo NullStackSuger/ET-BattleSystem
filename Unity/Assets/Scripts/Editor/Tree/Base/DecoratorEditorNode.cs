@@ -1,5 +1,5 @@
+using System.Collections.Generic;
 using GraphProcessor;
-using NPBehave;
 using UnityEngine;
 
 namespace ET
@@ -11,6 +11,6 @@ namespace ET
         [Output("OutPut"), Vertical] [HideInInspector]
         public EditorNodeBase OutPut;
         
-        public abstract object Init(Blackboard blackboard, object node);
+        public abstract object Init(Dictionary<string, object> blackboard, object node);
     }
 }

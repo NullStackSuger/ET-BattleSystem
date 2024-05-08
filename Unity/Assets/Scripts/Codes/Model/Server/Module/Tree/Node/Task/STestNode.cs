@@ -1,4 +1,4 @@
-namespace ET.Node
+/*namespace ET.Node
 {
     [FriendOf(typeof(Node))]
     public class STestNode : Task
@@ -16,4 +16,4 @@ namespace ET.Node
             //(this.RootNode.Unit as Unit).GetComponent<CastComponent>().Creat(CastConfigId);
         }
     }
-}
+}*/

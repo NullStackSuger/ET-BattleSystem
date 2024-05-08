@@ -1,4 +1,4 @@
-namespace ET.Node
+/*namespace ET.Node
 {
     public class CTestNode : Task
     {
@@ -12,4 +12,4 @@ namespace ET.Node
             Log.Info("CTestNode DoStart");
         }
     }
-}
+}*/

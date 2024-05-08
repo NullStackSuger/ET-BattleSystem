@@ -1,4 +1,4 @@
-﻿/*namespace NPBehave
+﻿namespace NPBehave
 {
     public enum Stops
     {
@@ -9,4 +9,4 @@
         IMMEDIATE_RESTART,
         LOWER_PRIORITY_IMMEDIATE_RESTART
     }
-}*/
+}

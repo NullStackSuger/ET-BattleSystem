@@ -1,4 +1,4 @@
-using ET.Node;
+/*using ET.Node;
 using NPBehave;
 
 namespace ET.Client
@@ -13,4 +13,4 @@ namespace ET.Client
             return cTestNode;
         }
     }
-}
+}*/
