@@ -309,7 +309,7 @@ namespace ET
             }
         }
 
-        public T GetSystem<T>(Entity component) where T : ISystemType
+        public NodeRunSystem<T> GetNodeRun<T>(Type type) where T : Entity, INodeRun
         {
             // EventSystem.Instance.GetSystem<NodeStartSystem>(component)
             throw new Exception("这里还不知道怎么写");
