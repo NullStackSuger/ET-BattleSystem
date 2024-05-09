@@ -3,7 +3,7 @@ using GraphProcessor;
 
 namespace ET
 {
-    [NodeMenuItem("Tree/Decorator/Repeater", typeof(TreeGraph))]
+    [NodeMenuItem("Decorator/Repeater", typeof(TreeGraph))]
     public class RepeaterEditorNode : DecoratorEditorNode
     {
         public int LoopCount = -1;
@@ -12,6 +12,7 @@ namespace ET
         {
             this.NodeData = NodeHelper.CreatNodeData("ET.RepeaterNodeData");
             NodeHelper.SetField(this.NodeData, ("LoopCount", this.LoopCount));
+            NodeHelper.SetField(this.NodeData, ("Child", node));
             return this.NodeData;
         }
     }

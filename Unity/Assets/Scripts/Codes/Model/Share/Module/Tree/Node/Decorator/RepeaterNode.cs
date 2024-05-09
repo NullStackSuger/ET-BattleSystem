@@ -3,7 +3,7 @@ using MongoDB.Bson.Serialization.Attributes;
 
 namespace ET
 {
-    public class RepeaterNode : Entity, INode, IAwake, IDestroy
+    public class RepeaterNode : Entity, INode, IAwake<int>, IDestroy
     {
         [BsonIgnore]
         public Entity Child

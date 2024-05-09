@@ -3,7 +3,7 @@ using GraphProcessor;
 
 namespace ET
 {
-    [NodeMenuItem("Tree/Task/Log", typeof(TreeGraph))]
+    [NodeMenuItem("Task/Log", typeof(TreeGraph))]
     public class LogEditorNode : TaskEditorNode
     {
         public string Message;

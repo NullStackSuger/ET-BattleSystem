@@ -1,7 +1,7 @@
 namespace ET
 {
-    public class WaitNode : Entity, INode, IAwake, IDestroy
+    public class WaitNode : Entity, INode, IAwake<long>, IDestroy
     {
-        public long WaitTime; // Tick
+        public long Seconds; // S
     }
 }

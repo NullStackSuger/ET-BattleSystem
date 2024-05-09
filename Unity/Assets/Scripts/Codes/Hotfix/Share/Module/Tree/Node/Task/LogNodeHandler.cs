@@ -1,3 +1,5 @@
+
+
 namespace ET
 {
     [NodeHandler(typeof(LogNode))]
@@ -12,6 +14,22 @@ namespace ET
 
             await ETTask.CompletedTask;
             return true;
+        }
+    }
+
+    public class LogNodeAwakeSystem: AwakeSystem<LogNode, string>
+    {
+        protected override void Awake(LogNode self, string message)
+        {
+            self.Message = message;
+        }
+    }
+    
+    public class LogNodeDestroyystem : DestroySystem<LogNode>
+    {
+        protected override void Destroy(LogNode self)
+        {
+            self.Message = "";
         }
     }
 }

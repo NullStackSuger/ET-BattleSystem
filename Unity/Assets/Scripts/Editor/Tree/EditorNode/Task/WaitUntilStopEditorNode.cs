@@ -3,7 +3,7 @@ using GraphProcessor;
 
 namespace ET
 {
-    [NodeMenuItem("Tree/Task/WaitUntilStopped", typeof(TreeGraph))]
+    [NodeMenuItem("Task/WaitUntilStop", typeof(TreeGraph))]
     public class WaitUntilStopEditorNode: TaskEditorNode
     {
         public override object Init(Dictionary<string, object> blackboard)

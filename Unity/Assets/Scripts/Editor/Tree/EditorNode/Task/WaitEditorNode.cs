@@ -3,7 +3,7 @@ using GraphProcessor;
 
 namespace ET
 {
-    [NodeMenuItem("Tree/Task/Wait", typeof(TreeGraph))]
+    [NodeMenuItem("Task/Wait", typeof(TreeGraph))]
     public class WaitEditorNode : TaskEditorNode
     {
         public float Seconds;

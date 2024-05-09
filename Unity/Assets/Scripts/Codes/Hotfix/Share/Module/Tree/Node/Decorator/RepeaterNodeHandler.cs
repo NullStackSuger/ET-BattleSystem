@@ -26,4 +26,20 @@ namespace ET
             return true;
         }
     }
+    
+    public class RepeaterNodeAwakeSystem : AwakeSystem<RepeaterNode, int>
+    {
+        protected override void Awake(RepeaterNode self, int count)
+        {
+            self.LoopCount = count;
+        }
+    }
+    
+    public class RepeaterNodeDestroySystem : DestroySystem<RepeaterNode>
+    {
+        protected override void Destroy(RepeaterNode self)
+        {
+            self.LoopCount = 0;
+        }
+    }
 }
