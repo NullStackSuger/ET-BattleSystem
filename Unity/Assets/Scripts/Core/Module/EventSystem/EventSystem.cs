@@ -309,12 +309,6 @@ namespace ET
             }
         }
 
-        public NodeRunSystem<T> GetNodeRun<T>(Type type) where T : Entity, INodeRun
-        {
-            // EventSystem.Instance.GetSystem<NodeStartSystem>(component)
-            throw new Exception("这里还不知道怎么写");
-        }
-
         public void Awake(Entity component)
         {
             List<object> iAwakeSystems = this.typeSystems.GetSystems(component.GetType(), typeof (IAwakeSystem));

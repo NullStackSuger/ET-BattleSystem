@@ -27,7 +27,7 @@ MonoBehaviour:
         mscorlib
     - Name: 
       Entry: 12
-      Data: 2
+      Data: 1
     - Name: 
       Entry: 7
       Data: 1|ET.RootEditorNode, Unity.Editor
@@ -67,70 +67,13 @@ MonoBehaviour:
     - Name: nodeLock
       Entry: 5
       Data: false
-    - Name: NP_Node
-      Entry: 7
-      Data: 2|NPBehave.Root, Unity.ThirdParty
-    - Name: RootNode
+    - Name: NodeData
       Entry: 6
-      Data: 
-    - Name: Unit
-      Entry: 6
-      Data: 
-    - Name: 
-      Entry: 8
       Data: 
     - Name: Input
       Entry: 6
       Data: 
     - Name: OutPut
-      Entry: 6
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 7
-      Data: 3|ET.CTestEditorNode, Unity.Editor
-    - Name: nodeCustomName
-      Entry: 6
-      Data: 
-    - Name: GUID
-      Entry: 1
-      Data: f484dd8d-aeb7-4f51-897f-251b2d85d38f
-    - Name: computeOrder
-      Entry: 3
-      Data: 1
-    - Name: position
-      Entry: 7
-      Data: UnityEngine.Rect, UnityEngine.CoreModule
-    - Name: 
-      Entry: 4
-      Data: 272
-    - Name: 
-      Entry: 4
-      Data: 347.6174
-    - Name: 
-      Entry: 4
-      Data: 161.6
-    - Name: 
-      Entry: 4
-      Data: 50.4000244
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: expanded
-      Entry: 5
-      Data: false
-    - Name: debug
-      Entry: 5
-      Data: false
-    - Name: nodeLock
-      Entry: 5
-      Data: false
-    - Name: NP_Node
-      Entry: 6
-      Data: 
-    - Name: Input
       Entry: 6
       Data: 
     - Name: 
@@ -144,7 +87,7 @@ MonoBehaviour:
       Data: 
     - Name: groups
       Entry: 7
-      Data: 4|System.Collections.Generic.List`1[[GraphProcessor.Group, Unity.Editor]],
+      Data: 2|System.Collections.Generic.List`1[[GraphProcessor.Group, Unity.Editor]],
         mscorlib
     - Name: 
       Entry: 12
@@ -156,19 +99,7 @@ MonoBehaviour:
       Entry: 8
       Data: 
     - Name: Tree
-      Entry: 9
-      Data: 2
-    - Name: Tree1
-      Entry: 7
-      Data: 5|NPBehave.Root, Unity.ThirdParty
-    - Name: RootNode
       Entry: 6
-      Data: 
-    - Name: Unit
-      Entry: 6
-      Data: 
-    - Name: 
-      Entry: 8
       Data: 
   serializedNodes: []
   edges:

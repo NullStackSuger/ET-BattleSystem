@@ -67,41 +67,8 @@ MonoBehaviour:
     - Name: nodeLock
       Entry: 5
       Data: false
-    - Name: NP_Node
-      Entry: 7
-      Data: 2|NPBehave.Root, Unity.ThirdParty
-    - Name: RootNode
+    - Name: NodeData
       Entry: 6
-      Data: 
-    - Name: DebugLastStopRequestAt
-      Entry: 4
-      Data: 0
-    - Name: DebugLastStoppedAt
-      Entry: 4
-      Data: 0
-    - Name: DebugNumStartCalls
-      Entry: 3
-      Data: 0
-    - Name: DebugNumStopCalls
-      Entry: 3
-      Data: 0
-    - Name: DebugNumStoppedCalls
-      Entry: 3
-      Data: 0
-    - Name: DebugLastResult
-      Entry: 5
-      Data: false
-    - Name: TotalNumStartCalls
-      Entry: 3
-      Data: 0
-    - Name: TotalNumStopCalls
-      Entry: 3
-      Data: 0
-    - Name: TotalNumStoppedCalls
-      Entry: 3
-      Data: 0
-    - Name: 
-      Entry: 8
       Data: 
     - Name: Input
       Entry: 6
@@ -120,7 +87,7 @@ MonoBehaviour:
       Data: 
     - Name: groups
       Entry: 7
-      Data: 3|System.Collections.Generic.List`1[[GraphProcessor.Group, Unity.Editor]],
+      Data: 2|System.Collections.Generic.List`1[[GraphProcessor.Group, Unity.Editor]],
         mscorlib
     - Name: 
       Entry: 12
@@ -132,43 +99,7 @@ MonoBehaviour:
       Entry: 8
       Data: 
     - Name: Tree
-      Entry: 9
-      Data: 2
-    - Name: Tree1
-      Entry: 7
-      Data: 4|NPBehave.Root, Unity.ThirdParty
-    - Name: RootNode
       Entry: 6
-      Data: 
-    - Name: DebugLastStopRequestAt
-      Entry: 4
-      Data: 0
-    - Name: DebugLastStoppedAt
-      Entry: 4
-      Data: 0
-    - Name: DebugNumStartCalls
-      Entry: 3
-      Data: 0
-    - Name: DebugNumStopCalls
-      Entry: 3
-      Data: 0
-    - Name: DebugNumStoppedCalls
-      Entry: 3
-      Data: 0
-    - Name: DebugLastResult
-      Entry: 5
-      Data: false
-    - Name: TotalNumStartCalls
-      Entry: 3
-      Data: 0
-    - Name: TotalNumStopCalls
-      Entry: 3
-      Data: 0
-    - Name: TotalNumStoppedCalls
-      Entry: 3
-      Data: 0
-    - Name: 
-      Entry: 8
       Data: 
   serializedNodes: []
   edges: []

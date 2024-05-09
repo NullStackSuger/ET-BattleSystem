@@ -1,4 +1,4 @@
-using System.Collections.Generic;
+using System;
 
 namespace ET
 {
@@ -10,8 +10,8 @@ namespace ET
             protected override void Awake(NodeDispatcherComponent self)
             {
                 NodeDispatcherComponent.Instance = self;
-
-                // Patch
+                self.NodeHandlers ??= new();
+                self.Load();
             }
         }
 
@@ -20,13 +20,40 @@ namespace ET
             protected override void Destroy(NodeDispatcherComponent self)
             {
                 NodeDispatcherComponent.Instance = null;
-                self.Nodes.Clear();
+                self.NodeHandlers.Clear();
             }
         }
 
-        public static (Entity, NodeRun) Get(this NodeDispatcherComponent self, NodeType type)
+        public class NodeDispatcherComponentLoadSystem : LoadSystem<NodeDispatcherComponent>
         {
-            return self.Nodes.GetValueOrDefault(type);
+            protected override void Load(NodeDispatcherComponent self)
+            {
+                self.Load();
+            }
+        }
+
+        public static void Load(this NodeDispatcherComponent self)
+        {
+            self.NodeHandlers.Clear();
+            var handlers = EventSystem.Instance.GetTypes(typeof (NodeHandlerAttribute));
+            foreach (Type type in handlers)
+            {
+                ANodeHandler aNodeHandler = Activator.CreateInstance(type) as ANodeHandler;
+                if (aNodeHandler == null)
+                {
+                    Log.Error($"robot ai is not AAIHandler: {type.Name}");
+                    continue;
+                }
+                
+                // 获取NodeHandlerAttribute.NodeType
+                NodeHandlerAttribute handler = type.GetCustomAttributes(typeof (NodeHandlerAttribute), false)[0] as NodeHandlerAttribute;
+                self.NodeHandlers.Add(handler.NodeType,  aNodeHandler);
+            }
+        }
+
+        public static ANodeHandler Get(this NodeDispatcherComponent self, Type node)
+        {
+            return self.NodeHandlers[node];
         }
     }
 }

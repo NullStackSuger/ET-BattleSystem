@@ -1,28 +1,17 @@
 using System.Collections.Generic;
-using MongoDB.Bson.Serialization.Attributes;
-using NPBehave;
 
 namespace ET
 {
-    /// <summary>
-    /// 用于管理树
-    /// </summary>
-    [ComponentOf(typeof(Unit))]
-    public class TreeComponent: Entity, IAwake
+
+    public class TreeComponent : Entity, IAwake<string>, IDestroy
     {
-        [BsonIgnore]
-        public Unit Unit
-        {
-            get
-            {
-                return this.GetParent<Unit>();
-            }
-        }
+        [StaticField] // Key: Name, Value: fileBytes
+        public static Dictionary<string, RootNode> AlreadyLoadTree = new();
+        [StaticField]
+        public static string TreeFilePath = "D:/ToolSoft/U3D/Project/ETs/ET-BattleSystem/Unity/Assets/Scripts/Editor/Tree/Save";
+        
+        public ETCancellationToken CancellationToken;
 
-        [BsonIgnore]
-        public ET.RootComponent Root;
-
-        [BsonIgnore]
-        public Dictionary<string, object> Blackboard;
+        public RootNode Root;
     }
 }
