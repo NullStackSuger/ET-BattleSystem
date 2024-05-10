@@ -6,7 +6,7 @@ namespace ET
     [NodeMenuItem("Task/Wait", typeof(TreeGraph))]
     public class WaitEditorNode : TaskEditorNode
     {
-        public float Seconds;
+        public long Seconds;
         
         public override object Init(Dictionary<string, object> blackboard)
         {

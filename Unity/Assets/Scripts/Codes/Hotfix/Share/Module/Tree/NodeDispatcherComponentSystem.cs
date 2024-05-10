@@ -32,7 +32,7 @@ namespace ET
             }
         }
 
-        public static void Load(this NodeDispatcherComponent self)
+        private static void Load(this NodeDispatcherComponent self)
         {
             self.NodeHandlers.Clear();
             var handlers = EventSystem.Instance.GetTypes(typeof (NodeHandlerAttribute));
@@ -49,11 +49,6 @@ namespace ET
                 NodeHandlerAttribute handler = type.GetCustomAttributes(typeof (NodeHandlerAttribute), false)[0] as NodeHandlerAttribute;
                 self.NodeHandlers.Add(handler.NodeType,  aNodeHandler);
             }
-        }
-
-        public static ANodeHandler Get(this NodeDispatcherComponent self, Type node)
-        {
-            return self.NodeHandlers[node];
         }
     }
 }

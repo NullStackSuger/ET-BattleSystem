@@ -2,6 +2,7 @@ using MongoDB.Bson.Serialization.Attributes;
 
 namespace ET
 {
+    [ComponentOf(typeof(TreeComponent))]
     public class RootNode : Entity, INode, IAwake, IDestroy
     {
         [BsonIgnore]

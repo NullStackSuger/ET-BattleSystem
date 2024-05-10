@@ -1,3 +1,5 @@
+using System;
+
 namespace ET
 {
     [BsonDeserializerRegister]
@@ -5,9 +7,10 @@ namespace ET
     {
         public string Message;
         
-        public override void AddNode(Entity parent, TreeComponent tree)
+        [EnableAccessEntiyChild]
+        public override Entity AddNode(Entity parent, TreeComponent tree)
         {
-            //parent.AddComponent<LogNode, string>(this.Message);
+            return parent.AddComponent<LogNode, string>(this.Message);
         }
     }
 }

@@ -5,9 +5,10 @@ namespace ET
     {
         public int LoopCount = -1;
 
-        public override void AddNode(Entity parent, TreeComponent tree)
+        [EnableAccessEntiyChild]
+        public override Entity AddNode(Entity parent, TreeComponent tree)
         {
-            
+            return parent.AddComponent<RepeaterNode, int>(this.LoopCount);
         }
     }
 }

@@ -3,6 +3,9 @@ namespace ET
     [BsonDeserializerRegister]
     public abstract class BaseNodeData
     {
-        public abstract void AddNode(Entity parent, TreeComponent tree); // 给parent添加子组件
+        // 如果要调用AddComponent, 在方法上添加[EnableAccessEntityChild]
+        // 给parent添加子组件
+        // returns parent
+        public abstract Entity AddNode(Entity parent, TreeComponent tree); 
     }
 }

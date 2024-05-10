@@ -59,5 +59,17 @@ namespace ET
                 SetField(obj, field.Item1, field.Item2);
             }
         }
+
+        public static object GetField(object obj, string name)
+        {
+            Type type = obj.GetType();
+            while (type != typeof (object))
+            {
+                var info = type.GetField(name);
+                if (info != null) return info.GetValue(obj);
+                else type = type.BaseType;
+            }
+            throw new Exception($"{obj.GetType()}中没有{name}字段");
+        }
     }
 }

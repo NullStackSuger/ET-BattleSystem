@@ -7,7 +7,8 @@ namespace ET.Server
         {
             //ET.Node.Root tree = TreeFactory.Creat("S Tree Graph", unit);
             //tree.Start();
-            unit.GetComponent<CastComponent>().Creat(request.CastConfigId);
+            //unit.GetComponent<CastComponent>().Creat(request.CastConfigId);
+            unit.AddComponent<TreeComponent, string>("S Tree Graph");
             await ETTask.CompletedTask;
         }
     }

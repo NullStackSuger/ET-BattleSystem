@@ -2,6 +2,7 @@ namespace ET
 {
     [NodeHandler(typeof(RepeaterNode))]
     [FriendOf(typeof(RepeaterNode))]
+    [FriendOf(typeof(NodeDispatcherComponent))]
     public class RepeaterNodeHandler : ANodeHandler
     {
         public override async ETTask<bool> Run(Entity iNode, TreeComponent tree, ETCancellationToken cancellationToken)
@@ -12,7 +13,7 @@ namespace ET
             {
                 while (!cancellationToken.IsCancel())
                 {
-                    await NodeDispatcherComponent.Instance.Get(node.Child.GetType()).Run(node.Child, tree, cancellationToken);
+                    await NodeDispatcherComponent.Instance.NodeHandlers[node.Child.GetType()].Run(node.Child, tree, cancellationToken);
                 }
             }
             else
@@ -20,13 +21,13 @@ namespace ET
                 int count = node.LoopCount;
                 while (!cancellationToken.IsCancel() && count-- <= 0)
                 {
-                    await NodeDispatcherComponent.Instance.Get(node.Child.GetType()).Run(node.Child, tree, cancellationToken);
+                    await NodeDispatcherComponent.Instance.NodeHandlers[node.Child.GetType()].Run(node.Child, tree, cancellationToken);
                 }
             }
             return true;
         }
     }
-    
+
     public class RepeaterNodeAwakeSystem : AwakeSystem<RepeaterNode, int>
     {
         protected override void Awake(RepeaterNode self, int count)

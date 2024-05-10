@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using GraphProcessor;
+using UnityEngine;
 
 namespace ET
 {
@@ -10,6 +11,7 @@ namespace ET
         {
             this.NodeData = NodeHelper.CreatNodeData("ET.RootNodeData");
             NodeHelper.SetField(this.NodeData, ("Child", node));
+            NodeHelper.SetField(this.NodeData, "test", 10); 
             return this.NodeData;
         }
     }

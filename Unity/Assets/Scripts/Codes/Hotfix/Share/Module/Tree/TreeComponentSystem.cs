@@ -1,15 +1,69 @@
+using System.Collections.Generic;
 using System.IO;
+using MongoDB.Bson;
 
 namespace ET
 {
     [FriendOf(typeof(TreeComponent))]
+    [FriendOf(typeof(NodeDispatcherComponent))]
     public static class TreeComponentSystem
     {
         public class TreeComponentAwakeSystem : AwakeSystem<TreeComponent, string>
         {
             protected override void Awake(TreeComponent self, string treeName)
             {
-                self.ChangeTree(treeName);
+                // 为TreeComponent构建组件
+                // 加载过对应树时, 说明已经构建好了, 直接添加就行
+                if (TreeComponent.AlreadyLoadTree.ContainsKey(treeName))
+                {
+                    Log.Info($"已经加载过{treeName}");
+                    self.AddComponent(TreeComponent.AlreadyLoadTree[treeName]);
+                }
+                else // 没加载过对应组件时, 先加载, 再构建
+                {
+                    Log.Info($"未加载过{treeName}, 准备开始加载");
+                    byte[] file = File.ReadAllBytes($"{TreeComponent.TreeFilePath}/{treeName}.bytes");
+                    if (file.Length == 0) Log.Error("没有读取到文件");
+
+                    object testobj = MongoHelper.Deserialize<object>(file);
+                    Log.Info(testobj.ToJson());
+                    RootNodeData rootData = testobj as RootNodeData;
+                    Log.Info($"反序列化{treeName}.bytes 成功");
+
+                    // -------------------------------------------------------------------------------------
+                    // Test
+                    Log.Warning(rootData.test);
+                    Log.Info(rootData.Child == null);
+                    
+                    // -------------------------------------------------------------------------------------
+                    // 遍历AddNode
+                    AddNode(self, rootData);
+
+                    // 完成初始化
+                    TreeComponent.AlreadyLoadTree.Add(treeName, self.GetComponent<RootNode>());
+
+                    void AddNode(Entity parent, BaseNodeData data)
+                    {
+                        Entity current = data.AddNode(parent, self);
+                        Log.Info($"添加节点{data.GetType()}");
+                    
+                        switch (data)
+                        {
+                            case TaskNodeData taskNodeData:
+                                return;
+                            case DecoratorNodeData decoratorNodeData:
+                                Log.Info(decoratorNodeData.Child == null);
+                                AddNode(current, decoratorNodeData.Child);
+                                break;
+                            case CompositeNodeData compositeNodeData:
+                                foreach (BaseNodeData child in compositeNodeData.Children)
+                                {
+                                    AddNode(current, child);
+                                }
+                                break;
+                        }
+                    }
+                }
             }
         }
 
@@ -19,31 +73,6 @@ namespace ET
             {
                 self.CancellationToken?.Cancel();
                 self.CancellationToken = null;
-                self.Root = null;
-            }
-        }
-
-        public static void ChangeTree(this TreeComponent self, string treeName)
-        {
-            self.CancellationToken?.Cancel();
-            self.CancellationToken = new();
-
-            if (TreeComponent.AlreadyLoadTree.ContainsKey(treeName))
-                self.Root = TreeComponent.AlreadyLoadTree[treeName];
-            else
-            {
-                byte[] file = File.ReadAllBytes($"{TreeComponent.TreeFilePath}/{treeName}.bytes");
-                if (file.Length == 0) Log.Error("没有读取到文件");
-                
-                RootNodeData rootData = MongoHelper.Deserialize<RootNodeData>(file);
-                Log.Info($"反序列化{treeName}.bytes 成功");
-                
-                // TODO: 根据RootNodeData构建RootNode
-                RootNode root = null;
-
-                // 完成初始化
-                self.Root = root;
-                TreeComponent.AlreadyLoadTree.Add(treeName, root);
             }
         }
 
@@ -55,7 +84,7 @@ namespace ET
                 return;
             }
 
-            await NodeDispatcherComponent.Instance.Get(self.Root.GetType()).Run(self.Root, self, self.CancellationToken);
+            await NodeDispatcherComponent.Instance.NodeHandlers[self.Root.GetType()].Run(self.Root, self, self.CancellationToken);
         }
 
         public static void Stop(this TreeComponent self)

@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using System.IO;
 using GraphProcessor;
+using MongoDB.Bson;
 using MongoDB.Bson.IO;
 using MongoDB.Bson.Serialization;
 using Sirenix.OdinInspector;
@@ -38,6 +39,7 @@ namespace ET
             
             Tree = rootEditorNode.NodeData;
             Debug.Log("构建NodeData完成");
+
             // ------------------------------------------------------------------------
             
             // 设置黑板
@@ -146,9 +148,20 @@ namespace ET
                 BsonSerializer.Serialize(new BsonBinaryWriter(file), Tree);
             }
             
+            Debug.Log(this.Tree.ToJson());
             Debug.Log($"保存 {SavePath}/{name}.bytes 成功");
             
             AssetDatabase.Refresh();
+        }
+
+        [Button("DeBson", 25), GUIColor(0.4f, 0.8f, 1)]
+        public void DeBson()
+        {
+            byte[] file = File.ReadAllBytes($"{SavePath}/{name}.bytes");
+            if (file.Length == 0) Log.Error("没有读取到文件");
+            
+            object testobj = BsonSerializer.Deserialize<object>(file);
+            Debug.Log(testobj.ToJson());
         }
     }
 }

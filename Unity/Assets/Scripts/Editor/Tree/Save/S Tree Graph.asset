@@ -27,7 +27,7 @@ MonoBehaviour:
         mscorlib
     - Name: 
       Entry: 12
-      Data: 1
+      Data: 2
     - Name: 
       Entry: 7
       Data: 1|ET.RootEditorNode, Unity.Editor
@@ -83,6 +83,57 @@ MonoBehaviour:
       Entry: 8
       Data: 
     - Name: 
+      Entry: 7
+      Data: 3|ET.LogEditorNode, Unity.Editor
+    - Name: nodeCustomName
+      Entry: 6
+      Data: 
+    - Name: GUID
+      Entry: 1
+      Data: abb455f9-6073-4c4f-a292-8809e43bf16c
+    - Name: computeOrder
+      Entry: 3
+      Data: 1
+    - Name: position
+      Entry: 7
+      Data: UnityEngine.Rect, UnityEngine.CoreModule
+    - Name: 
+      Entry: 4
+      Data: 236.939163
+    - Name: 
+      Entry: 4
+      Data: 370.3652
+    - Name: 
+      Entry: 4
+      Data: 148.8
+    - Name: 
+      Entry: 4
+      Data: 68
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: expanded
+      Entry: 5
+      Data: false
+    - Name: debug
+      Entry: 5
+      Data: false
+    - Name: nodeLock
+      Entry: 5
+      Data: false
+    - Name: NodeData
+      Entry: 6
+      Data: 
+    - Name: Input
+      Entry: 6
+      Data: 
+    - Name: Message
+      Entry: 1
+      Data: 114514
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
       Entry: 13
       Data: 
     - Name: 
@@ -90,7 +141,7 @@ MonoBehaviour:
       Data: 
     - Name: groups
       Entry: 7
-      Data: 3|System.Collections.Generic.List`1[[GraphProcessor.Group, Unity.Editor]],
+      Data: 4|System.Collections.Generic.List`1[[GraphProcessor.Group, Unity.Editor]],
         mscorlib
     - Name: 
       Entry: 12
@@ -106,9 +157,9 @@ MonoBehaviour:
       Data: 2
   serializedNodes: []
   edges:
-  - GUID: 8e2f7c62-369d-4c0a-934c-50bf83d8b650
+  - GUID: f67eaa94-3c23-4926-b7b7-7e29aeec8d72
     owner: {fileID: 11400000}
-    inputNodeGUID: 8d23688d-c9ea-4154-91da-34f0b5c7b0b0
+    inputNodeGUID: abb455f9-6073-4c4f-a292-8809e43bf16c
     outputNodeGUID: 764512cc-5f03-49b2-bf2a-8f263fbcba64
     inputFieldName: Input
     outputFieldName: OutPut
@@ -119,8 +170,8 @@ MonoBehaviour:
   exposedParameters: []
   serializedParameterList: []
   stickyNotes: []
-  position: {x: -110.4, y: -200.8, z: 0}
-  scale: {x: 1.15, y: 1.15, z: 1}
+  position: {x: -115.2, y: -211.2, z: 0}
+  scale: {x: 1, y: 1, z: 1}
   SavePath: Assets/Scripts/Editor/Tree/Save
   references:
     version: 2

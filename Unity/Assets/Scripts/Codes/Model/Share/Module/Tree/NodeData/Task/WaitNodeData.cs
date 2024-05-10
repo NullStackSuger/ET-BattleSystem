@@ -3,11 +3,12 @@ namespace ET
     [BsonDeserializerRegister]
     public class WaitNodeData : TaskNodeData
     {
-        public float Seconds;
+        public long Seconds;
 
-        public override void AddNode(Entity parent, TreeComponent tree)
+        [EnableAccessEntiyChild]
+        public override Entity AddNode(Entity parent, TreeComponent tree)
         {
-            
+            return parent.AddComponent<WaitNode, long>(this.Seconds);
         }
     }
 }
