@@ -1,5 +1,7 @@
+using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Text;
 using GraphProcessor;
 using MongoDB.Bson;
 using MongoDB.Bson.IO;
@@ -154,14 +156,24 @@ namespace ET
             AssetDatabase.Refresh();
         }
 
-        [Button("DeBson", 25), GUIColor(0.4f, 0.8f, 1)]
-        public void DeBson()
+
+        public object obj;
+        [Button("Test", 25), GUIColor(0.4f, 0.8f, 1)]
+        public void Test()
         {
-            byte[] file = File.ReadAllBytes($"{SavePath}/{name}.bytes");
-            if (file.Length == 0) Log.Error("没有读取到文件");
-            
-            object testobj = BsonSerializer.Deserialize<object>(file);
-            Debug.Log(testobj.ToJson());
+            foreach (Type type in NodeHelper.Model.GetTypes())
+            {
+                if (type.ToString().EndsWith("Test"))
+                    Debug.Log(type);
+            }
+            obj = NodeHelper.Model.CreateInstance("ET.Server.Test");
+            obj.GetType().GetField("value").SetValue(obj, 10);
+            Debug.Log(obj.ToJson());
+            using (FileStream file = File.Create($"{SavePath}/Test.txt"))
+            {
+                file.Write(Encoding.UTF8.GetBytes(this.obj.ToJson()));
+                //BsonSerializer.Serialize(new BsonBinaryWriter(file), obj);
+            }
         }
     }
 }

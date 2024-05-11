@@ -11,7 +11,7 @@ namespace ET
         {
             this.NodeData = NodeHelper.CreatNodeData("ET.RootNodeData");
             NodeHelper.SetField(this.NodeData, ("Child", node));
-            NodeHelper.SetField(this.NodeData, "test", 10); 
+            NodeHelper.SetField(this.NodeData, "value", 10); 
             return this.NodeData;
         }
     }

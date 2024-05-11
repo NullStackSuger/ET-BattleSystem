@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using System.IO;
+using System.Text;
 using MongoDB.Bson;
 
 namespace ET
@@ -24,15 +25,13 @@ namespace ET
                     Log.Info($"未加载过{treeName}, 准备开始加载");
                     byte[] file = File.ReadAllBytes($"{TreeComponent.TreeFilePath}/{treeName}.bytes");
                     if (file.Length == 0) Log.Error("没有读取到文件");
-
-                    object testobj = MongoHelper.Deserialize<object>(file);
-                    Log.Info(testobj.ToJson());
-                    RootNodeData rootData = testobj as RootNodeData;
+                    
+                    RootNodeData rootData = MongoHelper.Deserialize<RootNodeData>(file);
                     Log.Info($"反序列化{treeName}.bytes 成功");
 
                     // -------------------------------------------------------------------------------------
                     // Test
-                    Log.Warning(rootData.test);
+                    Log.Warning(rootData.value);
                     Log.Info(rootData.Child == null);
                     
                     // -------------------------------------------------------------------------------------

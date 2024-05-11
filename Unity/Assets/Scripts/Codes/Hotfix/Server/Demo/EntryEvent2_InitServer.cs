@@ -1,4 +1,6 @@
+using System.IO;
 using System.Net;
+using System.Text;
 
 namespace ET.Server
 {
@@ -57,6 +59,11 @@ namespace ET.Server
             
             /*ET.Node.Root tree = TreeFactory.Creat("S Tree Graph", null);
             tree.Start();*/
+            byte[] file = File.ReadAllBytes("D:/ToolSoft/U3D/Project/ETs/ET-BattleSystem/Unity/Assets/Scripts/Editor/Tree/Save/Test.txt");
+            string json = Encoding.UTF8.GetString(file);
+            Log.Warning(json);
+            Test t = JsonHelper.FromJson<Test>(json);
+            Log.Warning(t.value);
         }
     }
 }
