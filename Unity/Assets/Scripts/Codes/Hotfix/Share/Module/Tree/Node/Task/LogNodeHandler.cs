@@ -25,7 +25,7 @@ namespace ET
         }
     }
     
-    public class LogNodeDestroyystem : DestroySystem<LogNode>
+    public class LogNodeDestroySystem : DestroySystem<LogNode>
     {
         protected override void Destroy(LogNode self)
         {

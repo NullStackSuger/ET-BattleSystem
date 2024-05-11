@@ -1,6 +1,9 @@
 using System.IO;
 using System.Net;
 using System.Text;
+using MongoDB.Bson;
+using MongoDB.Bson.IO;
+using MongoDB.Bson.Serialization;
 
 namespace ET.Server
 {
@@ -56,12 +59,6 @@ namespace ET.Server
             {
                 Root.Instance.Scene.AddComponent<ConsoleComponent>();
             }
-            
-            /*ET.Node.Root tree = TreeFactory.Creat("S Tree Graph", null);
-            tree.Start();*/
-            byte[] file = File.ReadAllBytes("D:/ToolSoft/U3D/Project/ETs/ET-BattleSystem/Unity/Assets/Scripts/Editor/Tree/Save/Test.bytes");
-            Test t = MongoHelper.Deserialize<Test>(file);
-            Log.Warning(t.value);
         }
     }
 }

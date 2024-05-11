@@ -112,6 +112,8 @@ namespace ET
             }
             
             RegisterAllSubClassForDeserialize(types.Values.ToList());
+
+            //RegisterBsonDeserializerRegister(types.Values.ToList());
         }
         
         public static void Init()
@@ -123,9 +125,6 @@ namespace ET
             BsonSerializer.RegisterSerializer(typeof (T), new StructBsonSerialize<T>());
         }
         
-        /// <summary>
-        /// 注册所有供反序列化的子类
-        /// </summary>
         public static void RegisterAllSubClassForDeserialize(List<Type> allTypes)
         {
             List<Type> parenTypes = new List<Type>();
@@ -147,7 +146,6 @@ namespace ET
                 if (bsonDeserializerRegisterAttributes1.Length > 0)
                 {
                     childrenTypes.Add(type);
-                    RegisterClass(type);
                 }
             }
 
@@ -161,11 +159,14 @@ namespace ET
                     }
                 }
             }
+        }
 
-            void RegisterClass(Type type)
+        public static void RegisterBsonDeserializerRegister(List<Type> allTypes)
+        {
+            foreach (Type type in allTypes)
             {
-                BsonClassMap classMap = new BsonClassMap(type);
-                BsonClassMap.RegisterClassMap((BsonClassMap) classMap);
+                var attrs = type.GetCustomAttributes<BsonDeserializerRegisterAttribute>();
+                if (attrs.Any()) BsonClassMap.LookupClassMap(type);
             }
         }
 

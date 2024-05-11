@@ -28,11 +28,6 @@ namespace ET
                     
                     RootNodeData rootData = MongoHelper.Deserialize<RootNodeData>(file);
                     Log.Info($"反序列化{treeName}.bytes 成功");
-
-                    // -------------------------------------------------------------------------------------
-                    // Test
-                    Log.Warning(rootData.value);
-                    Log.Info(rootData.Child == null);
                     
                     // -------------------------------------------------------------------------------------
                     // 遍历AddNode
@@ -51,12 +46,13 @@ namespace ET
                             case TaskNodeData taskNodeData:
                                 return;
                             case DecoratorNodeData decoratorNodeData:
-                                Log.Info(decoratorNodeData.Child == null);
+                                Log.Info($"{decoratorNodeData.GetType()} Child is {decoratorNodeData.Child.GetType()}");
                                 AddNode(current, decoratorNodeData.Child);
                                 break;
                             case CompositeNodeData compositeNodeData:
                                 foreach (BaseNodeData child in compositeNodeData.Children)
                                 {
+                                    Log.Info($"{compositeNodeData.GetType()} Child is {child.GetType()}");
                                     AddNode(current, child);
                                 }
                                 break;

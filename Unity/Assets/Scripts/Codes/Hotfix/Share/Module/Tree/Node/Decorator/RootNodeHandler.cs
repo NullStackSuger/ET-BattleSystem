@@ -10,7 +10,6 @@ namespace ET
             var node = iNode as RootNode;
 
             // Init SomeThing
-
             return await NodeDispatcherComponent.Instance.NodeHandlers[node.Child.GetType()].Run(node.Child, tree, cancellationToken);
         }
     }

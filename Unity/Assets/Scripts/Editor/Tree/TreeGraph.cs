@@ -155,18 +155,5 @@ namespace ET
             
             AssetDatabase.Refresh();
         }
-
-
-        public object obj;
-        [Button("Test", 25), GUIColor(0.4f, 0.8f, 1)]
-        public void Test()
-        {
-            obj = NodeHelper.Model.CreateInstance("ET.Server.Test");
-            obj.GetType().GetField("value").SetValue(obj, 10);
-            using (FileStream file = File.Create($"{SavePath}/Test.bytes"))
-            {
-                BsonSerializer.Serialize(new BsonBinaryWriter(file), obj);
-            }
-        }
     }
 }

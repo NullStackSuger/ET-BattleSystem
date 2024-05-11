@@ -155,12 +155,6 @@ MonoBehaviour:
     - Name: Tree
       Entry: 9
       Data: 2
-    - Name: obj
-      Entry: 7
-      Data: 5|System.Object, mscorlib
-    - Name: 
-      Entry: 8
-      Data: 
   serializedNodes: []
   edges:
   - GUID: f67eaa94-3c23-4926-b7b7-7e29aeec8d72
