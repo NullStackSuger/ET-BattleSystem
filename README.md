@@ -1,2 +1,2 @@
 # ET-BattleSystem
-B站视频: https://www.bilibili.com/video/BV1c1421m7mR/?vd_source=ab7441f8ee249ea83fe4c13952199372
+B站: https://www.bilibili.com/read/cv34444818/?spm_id_from=444.41.0.0
