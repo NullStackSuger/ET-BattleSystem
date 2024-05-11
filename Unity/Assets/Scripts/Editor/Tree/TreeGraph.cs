@@ -161,18 +161,11 @@ namespace ET
         [Button("Test", 25), GUIColor(0.4f, 0.8f, 1)]
         public void Test()
         {
-            foreach (Type type in NodeHelper.Model.GetTypes())
-            {
-                if (type.ToString().EndsWith("Test"))
-                    Debug.Log(type);
-            }
             obj = NodeHelper.Model.CreateInstance("ET.Server.Test");
             obj.GetType().GetField("value").SetValue(obj, 10);
-            Debug.Log(obj.ToJson());
-            using (FileStream file = File.Create($"{SavePath}/Test.txt"))
+            using (FileStream file = File.Create($"{SavePath}/Test.bytes"))
             {
-                file.Write(Encoding.UTF8.GetBytes(this.obj.ToJson()));
-                //BsonSerializer.Serialize(new BsonBinaryWriter(file), obj);
+                BsonSerializer.Serialize(new BsonBinaryWriter(file), obj);
             }
         }
     }

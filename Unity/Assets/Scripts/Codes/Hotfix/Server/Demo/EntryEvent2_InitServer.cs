@@ -59,10 +59,8 @@ namespace ET.Server
             
             /*ET.Node.Root tree = TreeFactory.Creat("S Tree Graph", null);
             tree.Start();*/
-            byte[] file = File.ReadAllBytes("D:/ToolSoft/U3D/Project/ETs/ET-BattleSystem/Unity/Assets/Scripts/Editor/Tree/Save/Test.txt");
-            string json = Encoding.UTF8.GetString(file);
-            Log.Warning(json);
-            Test t = JsonHelper.FromJson<Test>(json);
+            byte[] file = File.ReadAllBytes("D:/ToolSoft/U3D/Project/ETs/ET-BattleSystem/Unity/Assets/Scripts/Editor/Tree/Save/Test.bytes");
+            Test t = MongoHelper.Deserialize<Test>(file);
             Log.Warning(t.value);
         }
     }

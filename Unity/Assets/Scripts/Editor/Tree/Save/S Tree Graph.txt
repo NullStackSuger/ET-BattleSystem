@@ -1,1 +1,0 @@
-{ "_t" : "RootNodeData", "Child" : { "_t" : "LogNodeData", "Message" : "114514" }, "test" : 10 }
