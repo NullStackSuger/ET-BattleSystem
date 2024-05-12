@@ -4,7 +4,7 @@ using UnityEngine;
 using GraphProcessor;
 using System.Linq;
 
-[System.Serializable, NodeMenuItem("Custom/TypeSwitchNode")]
+[System.Serializable, NodeMenuItem("Other/Custom/TypeSwitchNode")]
 public class TypeSwitchNode : BaseNode
 {
 	[Input]

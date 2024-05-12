@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Linq;
 using MongoDB.Bson.Serialization.Attributes;
 
 namespace ET
@@ -16,7 +17,7 @@ namespace ET
         {
             get
             {
-                return this.GetComponent<RootNode>();
+                return this.Children.Values.First() as RootNode;
             }
         }
 

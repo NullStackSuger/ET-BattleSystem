@@ -1,7 +1,7 @@
 using UnityEngine;
 using GraphProcessor;
 
-[System.Serializable, NodeMenuItem("Custom/Renamable")]
+[System.Serializable, NodeMenuItem("Other/Custom/Renamable")]
 public class RenamableNode : BaseNode
 {
     [Output("Out")] public float output;

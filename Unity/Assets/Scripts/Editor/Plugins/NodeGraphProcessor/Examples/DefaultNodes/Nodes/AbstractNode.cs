@@ -29,7 +29,7 @@ public abstract class AbstractNode : BaseNode
 	}
 }
 
-[System.Serializable, NodeMenuItem("Custom/Abstract Child1")]
+[System.Serializable, NodeMenuItem("Other/Custom/Abstract Child1")]
 public class AbstractNodeChild1 : AbstractNode {}
-[System.Serializable, NodeMenuItem("Custom/Abstract Child2")]
+[System.Serializable, NodeMenuItem("Other/Custom/Abstract Child2")]
 public class AbstractNodeChild2 : AbstractNode {}

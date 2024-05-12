@@ -8,7 +8,7 @@ namespace ET
         [EnableAccessEntiyChild]
         public override Entity AddNode(Entity parent, TreeComponent tree)
         {
-            return parent.AddComponent<RepeaterNode, int>(this.LoopCount);
+            return parent.AddChild<RepeaterNode, int>(this.LoopCount);
         }
     }
 }

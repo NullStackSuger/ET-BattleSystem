@@ -4,7 +4,7 @@ using UnityEngine;
 using GraphProcessor;
 using System.Linq;
 
-[System.Serializable, NodeMenuItem("Custom/FieldTestNode")]
+[System.Serializable, NodeMenuItem("Other/Custom/FieldTestNode")]
 public class FieldTestNode : BaseNode
 {
 	public string s;

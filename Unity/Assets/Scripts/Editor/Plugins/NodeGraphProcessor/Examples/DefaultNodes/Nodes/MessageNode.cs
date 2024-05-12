@@ -4,7 +4,7 @@ using UnityEngine;
 using GraphProcessor;
 using System.Linq;
 
-[System.Serializable, NodeMenuItem("Custom/MessageNode")]
+[System.Serializable, NodeMenuItem("Other/Custom/MessageNode")]
 public class MessageNode : BaseNode
 {
 	const string k_InputIsNot42Error = "Input is not 42 !";

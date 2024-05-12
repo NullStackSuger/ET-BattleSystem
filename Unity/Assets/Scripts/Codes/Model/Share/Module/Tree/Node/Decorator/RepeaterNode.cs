@@ -11,7 +11,7 @@ namespace ET
         {
             get
             {
-                return this.Components.Values.First();
+                return this.Children.Values.First();
             }
         }
 

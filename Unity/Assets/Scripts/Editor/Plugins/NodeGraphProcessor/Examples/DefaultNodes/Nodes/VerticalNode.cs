@@ -1,7 +1,7 @@
 using UnityEngine;
 using GraphProcessor;
 
-[System.Serializable, NodeMenuItem("Custom/Vertical")]
+[System.Serializable, NodeMenuItem("Other/Custom/Vertical")]
 public class VerticalNode : BaseNode
 {
 	[Input, Vertical, ShowPortIcon(ShowIcon = false)]

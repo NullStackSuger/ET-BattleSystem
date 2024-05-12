@@ -7,7 +7,7 @@ using System;
 using Sirenix.OdinInspector;
 using Sirenix.Utilities;
 
-[System.Serializable, NodeMenuItem("Utils/Relay")]
+[System.Serializable, NodeMenuItem("Other/Utils/Relay")]
 public class RelayNode : BaseNode
 {
 	const string packIdentifier = "_Pack";

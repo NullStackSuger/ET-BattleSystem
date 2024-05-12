@@ -4,7 +4,7 @@ using GraphProcessor;
 using NodeGraphProcessor.Examples;
 using UnityEngine;
 
-[System.Serializable, NodeMenuItem("Custom/Texture2DPreview")]
+[System.Serializable, NodeMenuItem("Other/Custom/Texture2DPreview")]
 public class Texture2DPreviewNode : LinearConditionalNode
 {
     [Input(name = "Texture2D")] public Texture2D input;

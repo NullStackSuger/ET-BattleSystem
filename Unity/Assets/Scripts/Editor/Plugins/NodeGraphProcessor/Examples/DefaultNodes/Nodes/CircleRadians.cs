@@ -4,7 +4,7 @@ using UnityEngine;
 using GraphProcessor;
 using System.Linq;
 
-[System.Serializable, NodeMenuItem("Custom/CircleRadians")]
+[System.Serializable, NodeMenuItem("Other/Custom/CircleRadians")]
 public class CircleRadians : BaseNode
 {
 	[Output(name = "In")]

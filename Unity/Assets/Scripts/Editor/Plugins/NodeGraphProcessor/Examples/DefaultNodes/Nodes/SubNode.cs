@@ -4,7 +4,7 @@ using UnityEngine;
 using GraphProcessor;
 using System.Linq;
 
-[System.Serializable, NodeMenuItem("Operations/Sub")]
+[System.Serializable, NodeMenuItem("Other/Operations/Sub")]
 public class SubNode : BaseNode
 {
 	[Input(name = "A")]

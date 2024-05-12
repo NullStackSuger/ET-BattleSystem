@@ -10,7 +10,7 @@ namespace ET
         [EnableAccessEntiyChild]
         public override Entity AddNode(Entity parent, TreeComponent tree)
         {
-            return parent.AddComponent<LogNode, string>(this.Message);
+            return parent.AddChild<LogNode, string>(this.Message);
         }
     }
 }

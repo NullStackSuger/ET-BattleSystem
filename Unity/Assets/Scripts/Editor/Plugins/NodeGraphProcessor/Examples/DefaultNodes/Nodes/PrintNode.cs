@@ -4,7 +4,7 @@ using UnityEngine;
 using GraphProcessor;
 using NodeGraphProcessor.Examples;
 
-[NodeMenuItem("Print")]
+[NodeMenuItem("Other/Print")]
 public class PrintNode : BaseNode
 {
 	[Input]
@@ -18,7 +18,7 @@ public class PrintNode : BaseNode
 	}
 }
 
-[NodeMenuItem("Conditional/Print")]
+[NodeMenuItem("Other/Conditional/Print")]
 public class ConditionalPrintNode : LinearConditionalNode
 {
 	[Input]

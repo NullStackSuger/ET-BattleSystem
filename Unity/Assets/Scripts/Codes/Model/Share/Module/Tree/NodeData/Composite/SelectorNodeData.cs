@@ -6,7 +6,7 @@ namespace ET
         [EnableAccessEntiyChild]
         public override Entity AddNode(Entity parent, TreeComponent tree)
         {
-            return parent.AddComponent<SelectorNode>();
+            return parent.AddChild<SelectorNode>();
         }
     }
 }

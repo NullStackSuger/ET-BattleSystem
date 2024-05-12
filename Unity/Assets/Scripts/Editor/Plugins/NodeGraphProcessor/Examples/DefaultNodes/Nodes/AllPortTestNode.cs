@@ -6,7 +6,7 @@ using GraphProcessor;
 using System.Linq;
 using Sirenix.OdinInspector;
 
-[System.Serializable, NodeMenuItem("Custom/AllPortTestNode")]
+[System.Serializable, NodeMenuItem("Other/Custom/AllPortTestNode")]
 public class AllPortTestNode : BaseNode
 {
     [Input(name = "input_Boolean")] public bool input_Boolean;

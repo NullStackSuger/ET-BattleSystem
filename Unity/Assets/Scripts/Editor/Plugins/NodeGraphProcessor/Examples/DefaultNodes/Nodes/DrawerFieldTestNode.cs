@@ -4,7 +4,7 @@ using UnityEngine;
 using GraphProcessor;
 using System.Linq;
 
-[System.Serializable, NodeMenuItem("Custom/Drawer Field Test")]
+[System.Serializable, NodeMenuItem("Other/Custom/Drawer Field Test")]
 public class DrawerFieldTestNode : BaseNode
 {
     [Input(name = "Vector 4"), ShowAsDrawer]

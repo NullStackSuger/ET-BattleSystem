@@ -5,7 +5,7 @@ using UnityEngine;
 
 namespace NodeGraphProcessor.Examples
 {
-	[Serializable, NodeMenuItem("Debug/Console Log")]
+	[Serializable, NodeMenuItem("Other/Debug/Console Log")]
 	public class ConsoleNode : LinearConditionalNode
 	{
 		public override string name => "Console Log";

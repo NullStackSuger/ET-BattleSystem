@@ -4,7 +4,7 @@ using UnityEngine;
 using GraphProcessor;
 using System.Linq;
 
-[System.Serializable, NodeMenuItem("Custom/InspectorNode")]
+[System.Serializable, NodeMenuItem("Other/Custom/InspectorNode")]
 public class InspectorNode : BaseNode
 {
 	[Input(name = "In")]

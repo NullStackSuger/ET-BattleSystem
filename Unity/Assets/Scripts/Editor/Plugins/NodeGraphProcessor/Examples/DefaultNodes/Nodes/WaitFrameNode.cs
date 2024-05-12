@@ -5,7 +5,7 @@ using UnityEngine;
 
 namespace NodeGraphProcessor.Examples
 {
-	[Serializable, NodeMenuItem("Functions/Wait Frames")]
+	[Serializable, NodeMenuItem("Other/Functions/Wait Frames")]
 	public class WaitFrameNode : WaitableNode
 	{
 		public override string name => "Wait Frames";

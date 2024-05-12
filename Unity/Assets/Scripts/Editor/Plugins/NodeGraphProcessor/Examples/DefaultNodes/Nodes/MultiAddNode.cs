@@ -4,7 +4,7 @@ using UnityEngine;
 using GraphProcessor;
 using System.Linq;
 
-[System.Serializable, NodeMenuItem("Custom/MultiAdd")]
+[System.Serializable, NodeMenuItem("Other/Custom/MultiAdd")]
 public class MultiAddNode : BaseNode
 {
 	[Input]

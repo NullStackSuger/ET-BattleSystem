@@ -4,7 +4,7 @@ using UnityEngine;
 using GraphProcessor;
 using System.Linq;
 
-[System.Serializable, NodeMenuItem("Conditional/Switch")]
+[System.Serializable, NodeMenuItem("Other/Conditional/Switch")]
 public class SwitchNode : BaseNode
 {
 	[Input(name = "In")]

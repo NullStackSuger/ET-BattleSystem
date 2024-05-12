@@ -7,7 +7,7 @@ namespace ET
     {
         public override async ETTask<bool> Run(Entity iNode, TreeComponent tree, ETCancellationToken cancellationToken)
         {
-            var node = iNode as SelectorNode;
+            var node = iNode as SequenceNode;
 
             foreach (Entity child in node.Children)
             {

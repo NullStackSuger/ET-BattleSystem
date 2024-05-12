@@ -6,7 +6,7 @@ using System.Linq;
 using NodeGraphProcessor.Examples;
 using UnityEngine.Rendering;
 
-[System.Serializable, NodeMenuItem("Conditional/If"), NodeMenuItem("Conditional/Branch")]
+[System.Serializable, NodeMenuItem("Other/Conditional/If"), NodeMenuItem("Other/Conditional/Branch")]
 public class IfNode : ConditionalNode
 {
 	[Input(name = "Condition")]

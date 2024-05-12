@@ -4,7 +4,7 @@ using UnityEngine;
 using GraphProcessor;
 using System.Linq;
 
-[System.Serializable, NodeMenuItem("Custom/Inheritance1")]
+[System.Serializable, NodeMenuItem("Other/Custom/Inheritance1")]
 public class Inheritance1 : InheritanceBase
 {
     [Input(name = "In 1")] public float input1;

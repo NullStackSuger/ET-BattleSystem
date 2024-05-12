@@ -8,7 +8,7 @@ namespace ET
         public override async ETTask<bool> Run(Entity iNode, TreeComponent tree, ETCancellationToken cancellationToken)
         {
             var node = iNode as RepeaterNode;
-
+            
             if (node.LoopCount <= -1)
             {
                 while (!cancellationToken.IsCancel())
@@ -19,7 +19,7 @@ namespace ET
             else
             {
                 int count = node.LoopCount;
-                while (!cancellationToken.IsCancel() && count-- <= 0)
+                while (!cancellationToken.IsCancel() && count-- > 0)
                 {
                     await NodeDispatcherComponent.Instance.NodeHandlers[node.Child.GetType()].Run(node.Child, tree, cancellationToken);
                 }

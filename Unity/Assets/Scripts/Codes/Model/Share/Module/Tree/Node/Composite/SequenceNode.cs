@@ -10,7 +10,7 @@ namespace ET
         {
             get
             {
-                return this.Components.Values.ToArray();
+                return base.Children.Values.ToArray();
             }
         }
     }
