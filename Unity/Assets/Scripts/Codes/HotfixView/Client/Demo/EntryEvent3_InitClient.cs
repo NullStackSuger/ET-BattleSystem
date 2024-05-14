@@ -13,7 +13,6 @@ namespace ET.Client
             
             Root.Instance.Scene.AddComponent<GlobalComponent>();
             
-            Root.Instance.Scene.AddComponent<ActionsDispatcherComponent>();
             Root.Instance.Scene.AddComponent<NodeDispatcherComponent>();
 
             await ResourcesComponent.Instance.LoadBundleAsync("unit.unity3d");

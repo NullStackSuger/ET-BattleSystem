@@ -27,10 +27,12 @@ namespace ET
 
                 // 添加行为
                 CastConfig castConfig = CastConfigCategory.Instance.Get(id);
-                foreach (int actionId in castConfig.SeverActionIds)
+                /*foreach (string tree in castConfig.Actions)
                 {
-                    actionComponent.Creat(actionId);
-                }
+                    Log.Warning(tree);
+                    if (tree == "") continue;
+                    //actionComponent.Creat(tree);
+                }*/
             }
         }
         

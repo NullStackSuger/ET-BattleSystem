@@ -4,7 +4,7 @@ using MongoDB.Bson.Serialization.Attributes;
 
 namespace ET
 {
-    [ComponentOf]
+    [ChildOf]
     public class TreeComponent : Entity, IAwake<string>, IDestroy
     {
         [StaticField] // Key: Name, Value: RootNode
@@ -31,5 +31,7 @@ namespace ET
         }
         
         public ETCancellationToken CancellationToken;
+        
+        
     }
 }

@@ -17,58 +17,31 @@ namespace ET
         {
             protected override void Destroy(ActionComponent self)
             {
-                self.Cancel();
                 self.Actions.Clear();
             }
         }
 
-        public class ActionComponentUpdateSystem: UpdateSystem<ActionComponent>
+        public static void Creat(this ActionComponent self, string name)
         {
-            protected override void Update(ActionComponent self)
+            TreeComponent tree = self.AddChild<TreeComponent, string>(name);
+            tree.Start().Coroutine();
+            self.Actions.Add(name, tree);
+        }
+
+        public static void Remove(this ActionComponent self, string name)
+        {
+            if (self.Current == name)
             {
-                foreach (int actionId in self.Actions)
-                {
-                    ActionConfig config = ActionConfigCategory.Instance.Get(actionId);
-                    IAction action = self.Get(actionId);
-                    
-                    if (!action.Check(self, config)) continue;
-                    if (actionId == self.Current) continue;
-                    
-                    self.Cancel();
-                    self.CancellationToken = new();
-                    self.Current = actionId;
-                    action.Run(self, config, self.CancellationToken).Coroutine();
-                    return;
-                }
+                self.Get(name).Stop();
             }
+            
+            self.RemoveChild(self.Get(name).Id);
+            self.Actions.Remove(name);
         }
 
-        public static void Creat(this ActionComponent self, int configId)
+        public static TreeComponent Get(this ActionComponent self, string name)
         {
-            self.Actions.Insert(0,configId);
-        }
-
-        public static void Remove(this ActionComponent self, int configId)
-        {
-            if (self.Current == configId)
-            {
-                self.Cancel();
-            }
-            self.Actions.Remove(configId);
-        }
-
-        public static IAction Get(this ActionComponent self, int configId)
-        {
-            if (self.Actions.Contains(configId))
-                return ActionsDispatcherComponent.Instance.Get(configId);
-            else return null;
-        }
-
-        private static void Cancel(this ActionComponent self)
-        {
-            self.CancellationToken?.Cancel();
-            self.CancellationToken = null;
-            self.Current = int.MinValue;
+            return self.Actions[name];
         }
     }
 }

@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 9fd3d525b27e4333a352805f6664f6d8, type: 3}
-  m_Name: ClientTreeGraph
+  m_Name: Client Tree Graph
   m_EditorClassIdentifier: 
   serializationData:
     SerializedFormat: 2
@@ -27,7 +27,7 @@ MonoBehaviour:
         mscorlib
     - Name: 
       Entry: 12
-      Data: 2
+      Data: 3
     - Name: 
       Entry: 7
       Data: 1|ET.RootEditorNode, Unity.Editor
@@ -72,10 +72,10 @@ MonoBehaviour:
       Data: 2|ET.RootNodeData, Model
     - Name: Child
       Entry: 7
-      Data: 3|ET.Client.C_CreatCastNodeData, Model
-    - Name: CastConfigId
-      Entry: 3
-      Data: 0
+      Data: 3|ET.LogNodeData, Model
+    - Name: Message
+      Entry: 1
+      Data: CCC
     - Name: 
       Entry: 8
       Data: 
@@ -108,10 +108,10 @@ MonoBehaviour:
       Data: UnityEngine.Rect, UnityEngine.CoreModule
     - Name: 
       Entry: 4
-      Data: 196.200012
+      Data: 364.72
     - Name: 
       Entry: 4
-      Data: 232.88797
+      Data: 259.807922
     - Name: 
       Entry: 4
       Data: 199.199982
@@ -131,14 +131,65 @@ MonoBehaviour:
       Entry: 5
       Data: false
     - Name: NodeData
-      Entry: 9
-      Data: 3
+      Entry: 6
+      Data: 
     - Name: Input
       Entry: 6
       Data: 
     - Name: CastConfigId
       Entry: 3
       Data: 0
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 5|ET.LogEditorNode, Unity.Editor
+    - Name: nodeCustomName
+      Entry: 6
+      Data: 
+    - Name: GUID
+      Entry: 1
+      Data: 446b9363-3ead-4f81-aee1-5cc77e731b82
+    - Name: computeOrder
+      Entry: 3
+      Data: 2
+    - Name: position
+      Entry: 7
+      Data: UnityEngine.Rect, UnityEngine.CoreModule
+    - Name: 
+      Entry: 4
+      Data: 166
+    - Name: 
+      Entry: 4
+      Data: 249.199982
+    - Name: 
+      Entry: 4
+      Data: 100
+    - Name: 
+      Entry: 4
+      Data: 100
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: expanded
+      Entry: 5
+      Data: false
+    - Name: debug
+      Entry: 5
+      Data: false
+    - Name: nodeLock
+      Entry: 5
+      Data: false
+    - Name: NodeData
+      Entry: 9
+      Data: 3
+    - Name: Input
+      Entry: 6
+      Data: 
+    - Name: Message
+      Entry: 1
+      Data: CCC
     - Name: 
       Entry: 8
       Data: 
@@ -150,7 +201,7 @@ MonoBehaviour:
       Data: 
     - Name: groups
       Entry: 7
-      Data: 5|System.Collections.Generic.List`1[[GraphProcessor.Group, Unity.Editor]],
+      Data: 6|System.Collections.Generic.List`1[[GraphProcessor.Group, Unity.Editor]],
         mscorlib
     - Name: 
       Entry: 12
@@ -166,9 +217,9 @@ MonoBehaviour:
       Data: 2
   serializedNodes: []
   edges:
-  - GUID: 2ed05467-24ad-415e-a16c-3c5d3cab82ec
+  - GUID: 5a6ad69a-61a4-4106-a347-9dfb2279b9c0
     owner: {fileID: 11400000}
-    inputNodeGUID: 2513c9d6-9d01-477c-9791-8b72e696e3ea
+    inputNodeGUID: 446b9363-3ead-4f81-aee1-5cc77e731b82
     outputNodeGUID: 1add90a3-b0d9-4a64-8d96-bc0da2ac5f02
     inputFieldName: Input
     outputFieldName: OutPut
@@ -179,8 +230,8 @@ MonoBehaviour:
   exposedParameters: []
   serializedParameterList: []
   stickyNotes: []
-  position: {x: 0, y: -55.2, z: 0}
-  scale: {x: 1, y: 1, z: 1}
+  position: {x: -56.8, y: -87.2, z: 0}
+  scale: {x: 0.7561437, y: 0.7561437, z: 1}
   SavePath: Assets/Scripts/Editor/Tree/Save
   references:
     version: 2

@@ -27,7 +27,7 @@ namespace ET
             }
         }
         
-        public static void Load(this TreeComponent self, string name)
+        private static void Load(this TreeComponent self, string name)
         {
             if (TreeComponent.AlreadyLoadTree.ContainsKey(name))
             {

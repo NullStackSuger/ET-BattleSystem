@@ -74,14 +74,14 @@ namespace ET
 		/// <summary>Id</summary>
 		[ProtoMember(1)]
 		public int Id { get; set; }
-		/// <summary>服务端行为Id</summary>
+		/// <summary>行为树名字</summary>
 		[ProtoMember(2)]
-		public int[] SeverActionIds { get; set; }
+		public string[] Actions { get; set; }
 		/// <summary>目标选择方式(添加对应组件)</summary>
-		[ProtoMember(5)]
+		[ProtoMember(3)]
 		public int SelectType { get; set; }
 		/// <summary>通知客户端类型</summary>
-		[ProtoMember(6)]
+		[ProtoMember(4)]
 		public int NoticeClientType { get; set; }
 
 	}

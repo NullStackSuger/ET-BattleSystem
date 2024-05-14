@@ -34,9 +34,8 @@ namespace ET.Server
                 {
                     message.CasterId = cast.Owner.Id;
                     message.TargetsId = cast.Targets;
-
-                    Unit unit = self.Parent.GetParent<Unit>();
-                    NoticeClientHelper.Send(unit, message,
+                    
+                    NoticeClientHelper.Send(cast.Owner, message,
                         (NoticeClientType)CastConfigCategory.Instance.Get(cast.ConfigId).NoticeClientType);
                 }
             }
@@ -57,6 +56,7 @@ namespace ET.Server
             message.CasterId = cast.Owner.Id;
             NoticeClientHelper.Send(cast.Owner, message, 
                 (NoticeClientType)CastConfigCategory.Instance.Get(configId).NoticeClientType);
+            Log.Warning("SendMessageToClient");
 
             return cast;
         }

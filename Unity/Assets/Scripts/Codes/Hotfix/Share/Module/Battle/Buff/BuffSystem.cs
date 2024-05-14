@@ -27,10 +27,11 @@ namespace ET
 
                 // 添加行为
                 BuffConfig buffConfig = BuffConfigCategory.Instance.Get(id);
-                foreach (int actionId in buffConfig.SeverActionIds)
+                /*foreach (string tree in buffConfig.Actions)
                 {
-                    actionComponent.Creat(actionId);
-                }
+                    if (tree == "") continue;
+                    actionComponent.Creat(tree);
+                }*/
             }
         }
         

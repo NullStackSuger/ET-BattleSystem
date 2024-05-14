@@ -80,14 +80,17 @@ namespace ET
 		/// <summary>名字</summary>
 		[ProtoMember(3)]
 		public string Name { get; set; }
-		/// <summary>位置</summary>
+		/// <summary>行为树名字</summary>
 		[ProtoMember(4)]
+		public string[] Actions { get; set; }
+		/// <summary>位置</summary>
+		[ProtoMember(5)]
 		public int Position { get; set; }
 		/// <summary>身高</summary>
-		[ProtoMember(5)]
+		[ProtoMember(6)]
 		public int Height { get; set; }
 		/// <summary>体重</summary>
-		[ProtoMember(6)]
+		[ProtoMember(7)]
 		public int Weight { get; set; }
 
 	}

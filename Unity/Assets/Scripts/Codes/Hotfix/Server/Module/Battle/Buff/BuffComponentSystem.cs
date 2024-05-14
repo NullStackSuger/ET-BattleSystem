@@ -31,9 +31,8 @@ namespace ET.Server
                 {
                     message.CasterId = buff.Owner.Id;
                     message.TargetsId = buff.Targets;
-
-                    Unit unit = buff.Parent.GetParent<Unit>();
-                    NoticeClientHelper.Send(unit, message,
+                    
+                    NoticeClientHelper.Send(buff.Owner, message,
                         (NoticeClientType)BuffConfigCategory.Instance.Get(buff.ConfigId).NoticeClientType);
                 }
             }
