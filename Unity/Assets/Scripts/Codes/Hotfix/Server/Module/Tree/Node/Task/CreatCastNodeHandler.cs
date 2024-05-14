@@ -9,6 +9,7 @@ namespace ET.Server
         {
             var node = iNode as CreatCastNode;
 
+            Log.Info($"S_CreatCastNode");
             tree.Owner.GetComponent<CastComponent>().Creat(node.CastConfigId);
 
             await ETTask.CompletedTask;

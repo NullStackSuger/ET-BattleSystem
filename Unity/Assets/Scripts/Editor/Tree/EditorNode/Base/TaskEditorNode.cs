@@ -9,6 +9,6 @@ namespace ET
         [Input("Input"), Vertical] [HideInInspector]
         public EditorNodeBase Input;
         
-        public abstract object Init(Dictionary<string, object> blackboard);
+        public abstract object Init();
     }
 }

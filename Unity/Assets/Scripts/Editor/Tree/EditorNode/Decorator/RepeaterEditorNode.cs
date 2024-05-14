@@ -3,12 +3,13 @@ using GraphProcessor;
 
 namespace ET
 {
-    [NodeMenuItem("Decorator/Repeater", typeof(TreeGraph))]
+    [NodeMenuItem("Decorator/Repeater", typeof(ClientTreeGraph))]
+    [NodeMenuItem("Decorator/Repeater", typeof(ServerTreeGraph))]
     public class RepeaterEditorNode : DecoratorEditorNode
     {
         public int LoopCount = -1;
         
-        public override object Init(Dictionary<string, object> blackboard, object node)
+        public override object Init(object node)
         {
             this.NodeData = NodeHelper.CreatNodeData("ET.RepeaterNodeData");
             NodeHelper.SetField(this.NodeData, ("LoopCount", this.LoopCount));

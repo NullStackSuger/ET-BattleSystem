@@ -6,7 +6,8 @@ namespace ET
         [EnableAccessEntiyChild]
         public override Entity AddNode(Entity parent, TreeComponent tree)
         {
-            return parent.AddChild<RootNode>();
+            // 这里parent是TreeComponent
+            return parent.AddComponent<RootNode>();
         }
     }
 }

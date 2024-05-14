@@ -5,7 +5,7 @@ namespace ET.Client
     {
         protected override async ETTask Run(Session session, M2C_CastCreat message)
         {
-            Log.Info("Client Message: Cast Creat");
+            Log.Warning("Client Message: Cast Creat");
             await EventSystem.Instance.PublishAsync(session.DomainScene(), new EventType.CastCreat(){ CastId = message.CastId });
         }
     }

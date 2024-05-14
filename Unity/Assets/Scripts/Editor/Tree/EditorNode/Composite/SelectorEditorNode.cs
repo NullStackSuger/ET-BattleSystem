@@ -2,7 +2,8 @@ using GraphProcessor;
 
 namespace ET
 {
-    [NodeMenuItem("Composite/Selector", typeof(TreeGraph))]
+    [NodeMenuItem("Composite/Selector", typeof(ClientTreeGraph))]
+    [NodeMenuItem("Composite/Selector", typeof(ServerTreeGraph))]
     public class SelectorEditorNode: CompositeEditorNode
     {
         public override object Init(object[] nodes)

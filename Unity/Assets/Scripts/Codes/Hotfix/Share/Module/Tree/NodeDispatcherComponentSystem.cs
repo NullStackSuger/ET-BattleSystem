@@ -41,12 +41,19 @@ namespace ET
                 ANodeHandler aNodeHandler = Activator.CreateInstance(type) as ANodeHandler;
                 if (aNodeHandler == null)
                 {
-                    Log.Error($"robot ai is not AAIHandler: {type.Name}");
+                    Log.Error($"robot ai is not ANodeHandler: {type.Name}");
                     continue;
                 }
                 
                 // 获取NodeHandlerAttribute.NodeType
                 NodeHandlerAttribute handler = type.GetCustomAttributes(typeof (NodeHandlerAttribute), false)[0] as NodeHandlerAttribute;
+                
+                Log.Info(handler.NodeType.ToString());
+                if (self.NodeHandlers.ContainsKey(handler.NodeType))
+                {
+                    Log.Warning(handler.NodeType.ToString());
+                    continue;
+                }
                 self.NodeHandlers.Add(handler.NodeType,  aNodeHandler);
             }
         }

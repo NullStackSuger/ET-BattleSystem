@@ -38,5 +38,27 @@ namespace ET.Client
 	        
             return unit;
         }
+        
+        public static Unit CreatCast(/*Scene scene, */int castConfigId, float3 position, quaternion rotation)
+        {
+	        // Error: unitComponent == null
+	        UnitComponent unitComponent = Root.Instance.Scene.DomainScene().GetComponent<UnitComponent>();
+	        // 这里暂时先添1001, 以后再修改配置表
+	        Unit unit = unitComponent.AddChild<Unit, int>(1001);
+	        unit.Position = position;
+	        unit.Rotation = rotation;
+            
+	        unit.AddComponent<MoveComponent>();
+	        //unit.AddComponent<PathfindingComponent, string>(Root.Instance.Scene.Name);
+	        NumericComponent numericComponent = unit.AddComponent<NumericComponent>();
+	        numericComponent.Set(NumericType.Speed, 6f);
+	        numericComponent.Set(NumericType.AOI, 15000);
+	        unit.AddComponent<Cast, int>(castConfigId);
+	        // Add AOI Entity
+	        //unit.AddComponent<AOIEntity, int, float3>(9 * 1000, unit.Position);
+	        // Add RangeComponent(Type selected by selectedType)
+            
+	        return unit;
+        }
     }
 }

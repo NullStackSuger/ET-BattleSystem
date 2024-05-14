@@ -4,7 +4,7 @@ using MongoDB.Bson.Serialization.Attributes;
 
 namespace ET
 {
-    [ComponentOf(typeof(Unit))]
+    [ComponentOf]
     public class TreeComponent : Entity, IAwake<string>, IDestroy
     {
         [StaticField] // Key: Name, Value: RootNode
@@ -17,7 +17,7 @@ namespace ET
         {
             get
             {
-                return this.Children.Values.First() as RootNode;
+                return this.Components.Values.First() as RootNode;
             }
         }
 

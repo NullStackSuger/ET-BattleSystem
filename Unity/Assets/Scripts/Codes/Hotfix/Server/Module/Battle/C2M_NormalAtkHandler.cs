@@ -5,8 +5,8 @@ namespace ET.Server
     {
         protected override async ETTask Run(Unit unit, C2M_NormalAtk request, M2C_NormalAtk response)
         {
-            TreeComponent tree = unit.AddComponent<TreeComponent, string>("S Tree Graph");
-            tree.Start();
+            TreeComponent tree = unit.AddComponent<TreeComponent, string>("Server Tree Graph");
+            tree.Start().Coroutine();
             await ETTask.CompletedTask;
         }
     }

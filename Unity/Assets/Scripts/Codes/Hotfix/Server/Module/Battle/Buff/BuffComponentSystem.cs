@@ -1,5 +1,3 @@
-using System.Collections.Generic;
-
 namespace ET.Server
 {
     [FriendOf(typeof (BuffComponent))]
@@ -15,7 +13,7 @@ namespace ET.Server
             }
         }
 
-        public class BuffComponentDestorySystem: DestroySystem<BuffComponent>
+        public class BuffComponentDestroySystem: DestroySystem<BuffComponent>
         {
             protected override void Destroy(BuffComponent self)
             {

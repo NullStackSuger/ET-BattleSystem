@@ -1,4 +1,3 @@
-using System.Collections.Generic;
 using Unity.Mathematics;
 
 namespace ET.Server
@@ -16,7 +15,7 @@ namespace ET.Server
             }
         }
 
-        public class CastComponentDestorySystem : DestroySystem<CastComponent>
+        public class CastComponentDestroySystem : DestroySystem<CastComponent>
         {
             protected override void Destroy(CastComponent self)
             {
@@ -52,7 +51,6 @@ namespace ET.Server
 
             // Cast的其他属性赋值
             cast.Owner = self.GetParent<Unit>();
-
             // 向客户端发送消息
             message ??= new();
             message.CastId = cast.Id;
