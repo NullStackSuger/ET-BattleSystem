@@ -14,6 +14,7 @@ namespace ET
             protected override void Awake(TreeComponent self, string name)
             {
                 self.CancellationToken = new();
+                self.BlackBoard = new();
                 
                 self.Load(name);
             }

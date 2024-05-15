@@ -31,7 +31,7 @@ namespace ET
         }
         
         public ETCancellationToken CancellationToken;
-        
-        
+
+        public BlackBoard BlackBoard;
     }
 }
