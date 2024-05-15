@@ -5,7 +5,7 @@ using MongoDB.Bson.Serialization.Attributes;
 namespace ET
 {
     [ChildOf]
-    public class TreeComponent : Entity, IAwake<string>, IDestroy
+    public class TreeComponent : Entity, IAwake<string, ETCancellationToken, BlackBoard>, IAwake<string>, IDestroy
     {
         [StaticField] // Key: Name, Value: RootNode
         public static Dictionary<string, RootNode> AlreadyLoadTree = new();
@@ -29,9 +29,8 @@ namespace ET
                 return this.GetParent<Unit>();
             }
         }
-        
-        public ETCancellationToken CancellationToken;
 
         public BlackBoard BlackBoard;
+        public ETCancellationToken CancellationToken;
     }
 }

@@ -27,7 +27,7 @@ MonoBehaviour:
         mscorlib
     - Name: 
       Entry: 12
-      Data: 3
+      Data: 4
     - Name: 
       Entry: 7
       Data: 1|ET.RootEditorNode, Unity.Editor
@@ -194,6 +194,57 @@ MonoBehaviour:
       Entry: 8
       Data: 
     - Name: 
+      Entry: 7
+      Data: 5|ET.WaitUntilEditorNode, Unity.Editor
+    - Name: nodeCustomName
+      Entry: 6
+      Data: 
+    - Name: GUID
+      Entry: 1
+      Data: a13938cb-c242-42d7-86a0-19930be85cab
+    - Name: computeOrder
+      Entry: 3
+      Data: 3
+    - Name: position
+      Entry: 7
+      Data: UnityEngine.Rect, UnityEngine.CoreModule
+    - Name: 
+      Entry: 4
+      Data: -16.0000153
+    - Name: 
+      Entry: 4
+      Data: 90.8
+    - Name: 
+      Entry: 4
+      Data: 179.2
+    - Name: 
+      Entry: 4
+      Data: 58.3999939
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: expanded
+      Entry: 5
+      Data: false
+    - Name: debug
+      Entry: 5
+      Data: false
+    - Name: nodeLock
+      Entry: 5
+      Data: false
+    - Name: NodeData
+      Entry: 6
+      Data: 
+    - Name: Input
+      Entry: 6
+      Data: 
+    - Name: OutPut
+      Entry: 6
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
       Entry: 13
       Data: 
     - Name: 
@@ -201,7 +252,7 @@ MonoBehaviour:
       Data: 
     - Name: groups
       Entry: 7
-      Data: 5|System.Collections.Generic.List`1[[GraphProcessor.Group, Unity.Editor]],
+      Data: 6|System.Collections.Generic.List`1[[GraphProcessor.Group, Unity.Editor]],
         mscorlib
     - Name: 
       Entry: 12

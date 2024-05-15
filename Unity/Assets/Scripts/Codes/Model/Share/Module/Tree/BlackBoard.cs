@@ -69,5 +69,10 @@ namespace ET
         {
             return this.data.ContainsKey(key);
         }
+
+        public void Clear()
+        {
+            data.Clear();
+        }
     }
 }

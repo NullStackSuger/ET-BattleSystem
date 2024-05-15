@@ -9,12 +9,22 @@ namespace ET
     [FriendOf(typeof(NodeDispatcherComponent))]
     public static class TreeComponentSystem
     {
-        public class TreeComponentAwakeSystem : AwakeSystem<TreeComponent, string>
+        public class TreeComponentAwakeSystem : AwakeSystem<TreeComponent, string, ETCancellationToken, BlackBoard>
+        {
+            protected override void Awake(TreeComponent self, string name, ETCancellationToken cancellationToken, BlackBoard blackBoard)
+            {
+                self.BlackBoard = blackBoard;
+                self.CancellationToken = cancellationToken;
+                
+                self.Load(name);
+            }
+        }
+        public class TreeComponentAwakeSystem1 : AwakeSystem<TreeComponent, string>
         {
             protected override void Awake(TreeComponent self, string name)
             {
-                self.CancellationToken = new();
                 self.BlackBoard = new();
+                self.CancellationToken = new();
                 
                 self.Load(name);
             }
@@ -79,8 +89,6 @@ namespace ET
         public static async ETTask<bool> Start(this TreeComponent self, string name = "")
         {
             if (self.Root == null) self.Load(name);
-            
-            self.CancellationToken ??= new();
 
             return await NodeDispatcherComponent.Instance.NodeHandlers[self.Root.GetType()].Run(self.Root, self, self.CancellationToken);
         }
@@ -89,6 +97,7 @@ namespace ET
         {
             self.CancellationToken?.Cancel();
             self.CancellationToken = null;
+            self.BlackBoard.Clear();
             
             self.RemoveComponent<RootNode>();
         }
