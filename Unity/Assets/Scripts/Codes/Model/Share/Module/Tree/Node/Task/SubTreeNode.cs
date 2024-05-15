@@ -1,18 +1,20 @@
 using System.Linq;
 using MongoDB.Bson.Serialization.Attributes;
 
-namespace ET;
-
-public class SubTreeNode : Entity, INode, IAwake<string, ETCancellationToken, BlackBoard>, IDestroy
+namespace ET
 {
-    public string Name;
 
-    [BsonIgnore]
-    public TreeComponent SubTree
+    public class SubTreeNode: Entity, INode, IAwake<string, ETCancellationToken, BlackBoard>, IDestroy
     {
-        get
+        public string Name;
+
+        [BsonIgnore]
+        public TreeComponent SubTree
         {
-            return this.Children.Values.First() as TreeComponent;
+            get
+            {
+                return this.Children.Values.First() as TreeComponent;
+            }
         }
     }
 }

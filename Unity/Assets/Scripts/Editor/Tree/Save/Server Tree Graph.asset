@@ -27,7 +27,7 @@ MonoBehaviour:
         mscorlib
     - Name: 
       Entry: 12
-      Data: 4
+      Data: 2
     - Name: 
       Entry: 7
       Data: 1|ET.RootEditorNode, Unity.Editor
@@ -134,117 +134,6 @@ MonoBehaviour:
       Entry: 8
       Data: 
     - Name: 
-      Entry: 7
-      Data: 4|ET.BlackboardConditionEditorNode, Unity.Editor
-    - Name: nodeCustomName
-      Entry: 6
-      Data: 
-    - Name: GUID
-      Entry: 1
-      Data: 00e8a876-6513-408e-92e9-3e4bd7e3fcbb
-    - Name: computeOrder
-      Entry: 3
-      Data: 2
-    - Name: position
-      Entry: 7
-      Data: UnityEngine.Rect, UnityEngine.CoreModule
-    - Name: 
-      Entry: 4
-      Data: -83.4
-    - Name: 
-      Entry: 4
-      Data: 182.976
-    - Name: 
-      Entry: 4
-      Data: 246.4
-    - Name: 
-      Entry: 4
-      Data: 113.599991
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: expanded
-      Entry: 5
-      Data: true
-    - Name: debug
-      Entry: 5
-      Data: false
-    - Name: nodeLock
-      Entry: 5
-      Data: false
-    - Name: NodeData
-      Entry: 6
-      Data: 
-    - Name: Input
-      Entry: 6
-      Data: 
-    - Name: OutPut
-      Entry: 6
-      Data: 
-    - Name: Op
-      Entry: 3
-      Data: 0
-    - Name: Key
-      Entry: 6
-      Data: 
-    - Name: Value
-      Entry: 6
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 7
-      Data: 5|ET.WaitUntilEditorNode, Unity.Editor
-    - Name: nodeCustomName
-      Entry: 6
-      Data: 
-    - Name: GUID
-      Entry: 1
-      Data: a13938cb-c242-42d7-86a0-19930be85cab
-    - Name: computeOrder
-      Entry: 3
-      Data: 3
-    - Name: position
-      Entry: 7
-      Data: UnityEngine.Rect, UnityEngine.CoreModule
-    - Name: 
-      Entry: 4
-      Data: -16.0000153
-    - Name: 
-      Entry: 4
-      Data: 90.8
-    - Name: 
-      Entry: 4
-      Data: 179.2
-    - Name: 
-      Entry: 4
-      Data: 58.3999939
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: expanded
-      Entry: 5
-      Data: false
-    - Name: debug
-      Entry: 5
-      Data: false
-    - Name: nodeLock
-      Entry: 5
-      Data: false
-    - Name: NodeData
-      Entry: 6
-      Data: 
-    - Name: Input
-      Entry: 6
-      Data: 
-    - Name: OutPut
-      Entry: 6
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
       Entry: 13
       Data: 
     - Name: 
@@ -252,7 +141,7 @@ MonoBehaviour:
       Data: 
     - Name: groups
       Entry: 7
-      Data: 6|System.Collections.Generic.List`1[[GraphProcessor.Group, Unity.Editor]],
+      Data: 4|System.Collections.Generic.List`1[[GraphProcessor.Group, Unity.Editor]],
         mscorlib
     - Name: 
       Entry: 12
@@ -281,8 +170,8 @@ MonoBehaviour:
   exposedParameters: []
   serializedParameterList: []
   stickyNotes: []
-  position: {x: 129.6, y: -26.4, z: 0}
-  scale: {x: 1, y: 1, z: 1}
+  position: {x: 140.8, y: -8, z: 0}
+  scale: {x: 0.8695652, y: 0.8695652, z: 1}
   SavePath: Assets/Scripts/Editor/Tree/Save
   references:
     version: 2
