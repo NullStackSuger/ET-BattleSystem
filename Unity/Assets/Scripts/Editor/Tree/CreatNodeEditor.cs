@@ -38,13 +38,13 @@ namespace ET
             [FoldoutGroup("节点信息")][ShowInInspector]
             public Dictionary<Type, string> Fields = new();
             
-            [LabelText("EditorNode路径")][ReadOnly]
+            [LabelText("EditorNode路径")][FolderPath]
             public string EditorNodePath = "";
-            [LabelText("NodeData路径")][ReadOnly]
+            [LabelText("NodeData路径")][FolderPath]
             public string NodeDataPath = "";
-            [LabelText("Node路径")][ReadOnly]
+            [LabelText("Node路径")][FolderPath]
             public string NodePath = "";
-            [LabelText("NodeHandler路径")][ReadOnly]
+            [LabelText("NodeHandler路径")][FolderPath]
             public string NodeHandlerPath = "";
             
             private void SaveFile(string path, string name, string context)
@@ -88,6 +88,7 @@ namespace ET
                 
                 StringBuilder str = new();
                 #region Build EditorNode
+                str.AppendLine("// 由Creat Node Editor生成");
                 str.AppendLine("using GraphProcessor;");
                 str.AppendLine("namespace ET");
                 str.AppendLine("{");
@@ -101,7 +102,18 @@ namespace ET
                 }
                 str.AppendLine("        public override object Init()");
                 str.AppendLine("        {");
-                str.AppendLine($"            this.NodeData = NodeHelper.CreatNodeData(\"ET.{this.Name}NodeData\");");
+                switch (this.BelongTo)
+                {
+                    case BelongTo.Share:
+                        str.AppendLine($"            this.NodeData = NodeHelper.CreatNodeData(\"ET.{this.Name}NodeData\");");
+                        break;
+                    case BelongTo.Client:
+                        str.AppendLine($"            this.NodeData = NodeHelper.CreatNodeData(\"ET.Client.{this.Name}NodeData\");");
+                        break;
+                    case BelongTo.Server:
+                        str.AppendLine($"            this.NodeData = NodeHelper.CreatNodeData(\"ET.Server.{this.Name}NodeData\");");
+                        break;
+                }
                 foreach (var field in this.Fields)
                 {
                     str.AppendLine($"            NodeHelper.SetField(this.NodeData,  (\"{field.Value}\", this.{field.Value}));");
@@ -117,7 +129,20 @@ namespace ET
                 #endregion
 
                 #region Build NodeData
-                str.AppendLine("namespace ET");
+                str.AppendLine("// 由Creat Node Editor生成");
+                str.Append("namespace ET");
+                switch (this.BelongTo)
+                {
+                    case BelongTo.Share:
+                        str.AppendLine();
+                        break;
+                    case BelongTo.Client:
+                        str.AppendLine(".Client");
+                        break;
+                    case BelongTo.Server:
+                        str.AppendLine(".Server");
+                        break;
+                }
                 str.AppendLine("{");
                 str.AppendLine("    [BsonDeserializerRegister]");
                 str.AppendLine($"    public class {this.Name}NodeData : {this.Type}NodeData");
@@ -161,7 +186,20 @@ namespace ET
                 #endregion
 
                 #region Build Node
-                str.AppendLine("namespace ET");
+                str.AppendLine("// 由Creat Node Editor生成");
+                str.Append("namespace ET");
+                switch (this.BelongTo)
+                {
+                    case BelongTo.Share:
+                        str.AppendLine();
+                        break;
+                    case BelongTo.Client:
+                        str.AppendLine(".Client");
+                        break;
+                    case BelongTo.Server:
+                        str.AppendLine(".Server");
+                        break;
+                }
                 str.AppendLine("{");
                 str.Append($"    public class {this.Name}Node : Entity, INode, IAwake");
                 tmp = "";
@@ -194,7 +232,20 @@ namespace ET
                 #endregion
 
                 #region Build NodeHandler
-                str.AppendLine("namespace ET");
+                str.AppendLine("// 由Creat Node Editor生成");
+                str.Append("namespace ET");
+                switch (this.BelongTo)
+                {
+                    case BelongTo.Share:
+                        str.AppendLine();
+                        break;
+                    case BelongTo.Client:
+                        str.AppendLine(".Client");
+                        break;
+                    case BelongTo.Server:
+                        str.AppendLine(".Server");
+                        break;
+                }
                 str.AppendLine("{");
                 str.AppendLine($"    [NodeHandler(typeof({this.Name}Node))]");
                 str.AppendLine($"    [FriendOf(typeof({this.Name}Node))]");
@@ -247,7 +298,7 @@ namespace ET
                 #endregion
             }
 
-            [Button("Delete", 25), GUIColor(0.4f, 0.8f, 1)]
+            [Button("Delete", 25), GUIColor(0.4f, 0.8f, 0)]
             public void Delete()
             {
                 if (this.EditorNodePath == "" || this.NodeDataPath == "" || this.NodePath == "" || this.NodeHandlerPath == "")
@@ -255,12 +306,16 @@ namespace ET
                 
                 string path = $"{this.EditorNodePath}/{this.Type}/{this.Name}EditorNode.cs";
                 if (File.Exists(path)) File.Delete(path);
+                else Debug.LogWarning($"文件不存在: {path}");
                 path = $"{this.NodeDataPath}/{this.Type}/{this.Name}NodeData.cs";
                 if (File.Exists(path)) File.Delete(path);
+                else Debug.LogWarning($"文件不存在: {path}");
                 path = $"{this.NodePath}/{this.Type}/{this.Name}Node.cs";
                 if (File.Exists(path)) File.Delete(path);
+                else Debug.LogWarning($"文件不存在: {path}");
                 path = $"{this.NodeHandlerPath}/{this.Type}/{this.Name}NodeHandler.cs";
                 if (File.Exists(path)) File.Delete(path);
+                else Debug.LogWarning($"文件不存在: {path}");
             }
 
             public NodeItem(string name, NodeType type, BelongTo belongTo, params (Type, string)[] fields)
@@ -286,34 +341,41 @@ namespace ET
 
         public class Setting
         {
-            [BoxGroup("EditorNode路径")][LabelText("Share")] [FolderPath][StaticField][ShowInInspector]
+            [FoldoutGroup("EditorNode路径")][LabelText("Share")] [FolderPath][StaticField][ShowInInspector]
             public static string EditorNodeSharePath = "Assets/Scripts/Editor/Tree/EditorNode";
-            [BoxGroup("EditorNode路径")][LabelText("Server")] [FolderPath][StaticField][ShowInInspector]
+            [FoldoutGroup("EditorNode路径")][LabelText("Server")] [FolderPath][StaticField][ShowInInspector]
             public static string EditorNodeServerPath = "Assets/Scripts/Editor/Tree/EditorNode";
-            [BoxGroup("EditorNode路径")][LabelText("Client")] [FolderPath][StaticField][ShowInInspector]
+            [FoldoutGroup("EditorNode路径")][LabelText("Client")] [FolderPath][StaticField][ShowInInspector]
             public static string EditorNodeClientPath = "Assets/Scripts/Editor/Tree/EditorNode";
 
-            [BoxGroup("NodeData路径")][LabelText("Share")] [FolderPath][StaticField][ShowInInspector]
+            [FoldoutGroup("NodeData路径")][LabelText("Share")] [FolderPath][StaticField][ShowInInspector]
             public static string NodeDataSharePath = "Assets/Scripts/Codes/Model/Share/Module/Tree/NodeData";
-            [BoxGroup("NodeData路径")][LabelText("Server")] [FolderPath][StaticField][ShowInInspector]
+            [FoldoutGroup("NodeData路径")][LabelText("Server")] [FolderPath][StaticField][ShowInInspector]
             public static string NodeDataServerPath = "Assets/Scripts/Codes/Model/Server/Module/Tree/NodeData";
-            [BoxGroup("NodeData路径")][LabelText("Client")] [FolderPath][StaticField][ShowInInspector]
+            [FoldoutGroup("NodeData路径")][LabelText("Client")] [FolderPath][StaticField][ShowInInspector]
             public static string NodeDataClientPath = "Assets/Scripts/Codes/Model/Client/Module/Tree/NodeData";
 
             
-            [BoxGroup("Node路径")][LabelText("Share")] [FolderPath][StaticField][ShowInInspector]
+            [FoldoutGroup("Node路径")][LabelText("Share")] [FolderPath][StaticField][ShowInInspector]
             public static string NodeSharePath = "Assets/Scripts/Codes/Model/Share/Module/Tree/Node";
-            [BoxGroup("Node路径")][LabelText("Server")] [FolderPath][StaticField][ShowInInspector]
+            [FoldoutGroup("Node路径")][LabelText("Server")] [FolderPath][StaticField][ShowInInspector]
             public static string NodeServerPath = "Assets/Scripts/Codes/Model/Server/Module/Tree/Node";
-            [BoxGroup("Node路径")][LabelText("Client")] [FolderPath][StaticField][ShowInInspector]
+            [FoldoutGroup("Node路径")][LabelText("Client")] [FolderPath][StaticField][ShowInInspector]
             public static string NodeClientPath = "Assets/Scripts/Codes/Model/Client/Module/Tree/Node";
             
-            [BoxGroup("NodeHandler路径")][LabelText("Share")] [FolderPath][StaticField][ShowInInspector]
+            [FoldoutGroup("NodeHandler路径")][LabelText("Share")] [FolderPath][StaticField][ShowInInspector]
             public static string NodeHandlerSharePath = "Assets/Scripts/Codes/Hotfix/Share/Module/Tree/Node";
-            [BoxGroup("NodeHandler路径")][LabelText("Server")] [FolderPath][StaticField][ShowInInspector]
+            [FoldoutGroup("NodeHandler路径")][LabelText("Server")] [FolderPath][StaticField][ShowInInspector]
             public static string NodeHandlerServerPath = "Assets/Scripts/Codes/Hotfix/Server/Module/Tree/Node";
-            [BoxGroup("NodeHandler路径")][LabelText("Client")] [FolderPath][StaticField][ShowInInspector]
+            [FoldoutGroup("NodeHandler路径")][LabelText("Client")] [FolderPath][StaticField][ShowInInspector]
             public static string NodeHandlerClientPath = "Assets/Scripts/Codes/Hotfix/Client/Module/Tree/Node";
+
+            [BoxGroup("Read Me")][MultiLineProperty][ReadOnly]
+            public string ReadMe = 
+@"Node路径可以不用添, 为Setting中默认路径
+创建/删除节点涉及热更部分, 记得Build下
+可能是Model程序集有缓存, 创建/删除后过一会编辑器面板才会变化
+";
         }
         
         protected override OdinMenuTree BuildMenuTree()
@@ -333,7 +395,8 @@ namespace ET
             foreach (Type type in NodeHelper.GetAllNodes())
             {
                 // 获取Type名 : ET.XXXNodeData
-                name = type.ToString().Substring(3, type.ToString().Length - 3 - 4 - 4);
+                name = type.ToString().Split(".")[^1];
+                name = name.Substring(0, name.Length - 4 - 4);
                 
                 // 获取NodeType : 获取父类类型
                 switch (type.BaseType.ToString())
@@ -351,8 +414,8 @@ namespace ET
                 }
                 
                 // 获取Node作用范围
-                if (name.StartsWith("Client.")) belongTo = BelongTo.Client;
-                else if (name.StartsWith("Server.")) belongTo = BelongTo.Server;
+                if (type.ToString().StartsWith("ET.Client.")) belongTo = BelongTo.Client;
+                else if (type.ToString().StartsWith("ET.Server.")) belongTo = BelongTo.Server;
                 else belongTo = BelongTo.Share;
                 
                 // 遍历获取属性 : 反射获取属性
