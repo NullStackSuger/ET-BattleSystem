@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using System.IO;
 using System.Reflection;
 using UnityEngine;
@@ -13,6 +14,17 @@ namespace ET
         static NodeHelper()
         {
             Model = Assembly.Load(File.ReadAllBytes($"{Application.dataPath}/Bundles/Code/Model.dll.bytes"));
+        }
+
+        public static List<Type> GetAllNodes()
+        {
+            List<Type> res = new();
+            foreach (Type type in Model.GetTypes())
+            {
+                if (type.ToString().EndsWith("NodeData"))
+                    res.Add(type);
+            }
+            return res;
         }
 
         public static object CreatNodeData(string nodeName)

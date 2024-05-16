@@ -1,7 +1,7 @@
 namespace ET
 {
     [NodeHandler(typeof(WaitUntilStopNode))]
-    [FriendOf(typeof(WaitNode))]
+    [FriendOf(typeof(WaitUntilStopNode))]
     public class WaitUntilStopNodeHandler : ANodeHandler
     {
         public override async ETTask<bool> Run(Entity iNode, TreeComponent tree, ETCancellationToken cancellationToken)

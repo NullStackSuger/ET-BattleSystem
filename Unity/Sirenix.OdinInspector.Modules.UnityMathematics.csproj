@@ -309,6 +309,9 @@
     <Reference Include="UnityEditor.WindowsStandalone.Extensions">
       <HintPath>D:\ToolSoft\U3D\Editor\2022.3.6f1\Editor\Data\PlaybackEngines\WindowsStandaloneSupport\UnityEditor.WindowsStandalone.Extensions.dll</HintPath>
     </Reference>
+    <Reference Include="Sirenix.Reflection.Editor">
+      <HintPath>D:\ToolSoft\U3D\Project\ETs\ET-BattleSystem\Unity\Assets\Plugins\Sirenix\Assemblies\Sirenix.Reflection.Editor.dll</HintPath>
+    </Reference>
     <Reference Include="Sirenix.Serialization">
       <HintPath>D:\ToolSoft\U3D\Project\ETs\ET-BattleSystem\Unity\Assets\Plugins\Sirenix\Assemblies\Sirenix.Serialization.dll</HintPath>
     </Reference>
@@ -362,9 +365,6 @@
     </Reference>
     <Reference Include="MongoDB.Driver">
       <HintPath>D:\ToolSoft\U3D\Project\ETs\ET-BattleSystem\Unity\Assets\Plugins\MongoDB\MongoDB.Driver.dll</HintPath>
-    </Reference>
-    <Reference Include="Sirenix.Reflection.Editor">
-      <HintPath>D:\ToolSoft\U3D\Project\ETs\ET-BattleSystem\Unity\Assets\Plugins\Sirenix\Assemblies\Sirenix.Reflection.Editor.dll</HintPath>
     </Reference>
     <Reference Include="nunit.framework">
       <HintPath>D:\ToolSoft\U3D\Project\ETs\ET-BattleSystem\Unity\Library\PackageCache\com.unity.ext.nunit@1.0.6\net35\unity-custom\nunit.framework.dll</HintPath>
