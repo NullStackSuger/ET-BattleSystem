@@ -9,68 +9,86 @@ namespace ET
         public override async ETTask<bool> Run(Entity iNode, TreeComponent tree, ETCancellationToken cancellationToken)
         {
             var node = iNode as BlackboardConditionNode;
-            bool meetCondition = false;
             
-            switch (node.Op)
+            if (CheckValue(node.Op, tree.BlackBoard[node.Key], node.Value))
             {
-                case Operator.Equal:
-                    meetCondition = tree.BlackBoard.Get<object>(node.Key) == node.Value;
-                    break;
-                case Operator.NotEqual:
-                    meetCondition = tree.BlackBoard.Get<object>(node.Key) != node.Value;
-                    break;
-                case Operator.Smaller:
-                    if (node.Value is float)
-                        meetCondition = tree.BlackBoard.Get<float>(node.Key) < (float)node.Value;
-                    else if (node.Value is int)
-                        meetCondition = tree.BlackBoard.Get<int>(node.Key) < (int)node.Value;
-                    else meetCondition = false;
-                    break;
-                case Operator.SmallerOrEqual:
-                    if (node.Value is float)
-                        meetCondition = tree.BlackBoard.Get<float>(node.Key) <= (float)node.Value;
-                    else if (node.Value is int)
-                        meetCondition = tree.BlackBoard.Get<int>(node.Key) <= (int)node.Value;
-                    else meetCondition = false;
-                    break;
-                case Operator.Greater:
-                    if (node.Value is float)
-                        meetCondition = tree.BlackBoard.Get<float>(node.Key) > (float)node.Value;
-                    else if (node.Value is int)
-                        meetCondition = tree.BlackBoard.Get<int>(node.Key) > (int)node.Value;
-                    else meetCondition = false;
-                    break;
-                case Operator.GreaterOrEqual:
-                    if (node.Value is float)
-                        meetCondition = tree.BlackBoard.Get<float>(node.Key) >= (float)node.Value;
-                    else if (node.Value is int)
-                        meetCondition = tree.BlackBoard.Get<int>(node.Key) >= (int)node.Value;
-                    else meetCondition = false;
-                    break;
-            }
-
-            if (meetCondition)
-            {
-                // 添加监听, 当值改变 && 不满足时, 调用自己Stop()
-                // 监听最后移除监听
+                // 添加监听
+                node.childCancel = new();
+                cancellationToken.Add(ChildCancel);
                 tree.BlackBoard.AddObserver(node.Key, OnValueChanged);
-                bool res = await NodeDispatcherComponent.Instance.NodeHandlers[node.Child.GetType()].Run(node.Child, tree, cancellationToken);
+                
+                // 运行子节点
+                bool res = await NodeDispatcherComponent.Instance.NodeHandlers[node.Child.GetType()].Run(node.Child, tree, node.childCancel);
+                
                 // 移除监听
                 tree.BlackBoard.RemoveObserver(node.Key, OnValueChanged);
+                cancellationToken.Remove(ChildCancel);
+                node.childCancel = null;
+                
                 return res;
             }
             else
             {
                 return false;
             }
-            
-            
+
+
+            void ChildCancel()
+            {
+                node.childCancel?.Cancel();
+            }
             void OnValueChanged(string key, object oldValue, object newValue)
             {
-                tree.Stop();
-                tree.BlackBoard.RemoveObserver(node.Key, OnValueChanged);
-                tree.Start().Coroutine();
+                // 不满足条件 && 当前运行节点 == 子节点
+                if (!CheckValue(node.Op, tree.BlackBoard[node.Key], node.Value))
+                {
+                    ChildCancel();
+                }
             }
+        }
+
+        private bool CheckValue(Operator op, object value1, object value2)
+        {
+            bool result = false;
+            switch (op)
+            {
+                case Operator.Equal:
+                    result = value1 == value2;
+                    break;
+                case Operator.NotEqual:
+                    result = value1 != value2;
+                    break;
+                case Operator.Smaller:
+                    if (value1 is float && value2 is float)
+                        result = (float)value1 < (float)value2;
+                    else if (value1 is int && value2 is int)
+                        result = (int)value1 < (int)value2;
+                    else result = false;
+                    break;
+                case Operator.SmallerOrEqual:
+                    if (value1 is float && value2 is float)
+                        result = (float)value1 <= (float)value2;
+                    else if (value1 is int && value2 is int)
+                        result = (int)value1 <= (int)value2;
+                    else result = false;
+                    break;
+                case Operator.Greater:
+                    if (value1 is float && value2 is float)
+                        result = (float)value1 > (float)value2;
+                    else if (value1 is int && value2 is int)
+                        result = (int)value1 > (int)value2;
+                    else result = false;
+                    break;
+                case Operator.GreaterOrEqual:
+                    if (value1 is float && value2 is float)
+                        result = (float)value1 >= (float)value2;
+                    else if (value1 is int && value2 is int)
+                        result = (int)value1 >= (int)value2;
+                    else result = false;
+                    break;
+            }
+
+            return result;
         }
     }
     

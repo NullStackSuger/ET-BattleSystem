@@ -18,5 +18,7 @@ namespace ET
         public Operator Op;
         public string Key;
         public object Value;
+
+        public ETCancellationToken childCancel;
     }
 }
