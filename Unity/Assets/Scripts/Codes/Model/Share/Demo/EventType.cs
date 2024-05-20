@@ -35,14 +35,6 @@
             public Unit Unit;
         }
 
-        public struct BlackboardValueChanged
-        {
-            public BlackBoard BlackBoard;
-            public string Key;
-            public object OldValue;
-            public object NewValue;
-        }
-
         public struct CastCreat
         {
             public long CastId;

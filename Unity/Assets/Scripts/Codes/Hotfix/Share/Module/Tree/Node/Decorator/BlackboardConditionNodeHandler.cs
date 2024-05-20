@@ -9,54 +9,72 @@ namespace ET
         public override async ETTask<bool> Run(Entity iNode, TreeComponent tree, ETCancellationToken cancellationToken)
         {
             var node = iNode as BlackboardConditionNode;
-            bool res = false;
+            bool meetCondition = false;
             
             switch (node.Op)
             {
                 case Operator.Equal:
-                    res = tree.BlackBoard.Get<object>(node.Key) == node.Value;
+                    meetCondition = tree.BlackBoard.Get<object>(node.Key) == node.Value;
                     break;
                 case Operator.NotEqual:
-                    res = tree.BlackBoard.Get<object>(node.Key) != node.Value;
+                    meetCondition = tree.BlackBoard.Get<object>(node.Key) != node.Value;
                     break;
                 case Operator.Smaller:
                     if (node.Value is float)
-                        res = tree.BlackBoard.Get<float>(node.Key) < (float)node.Value;
+                        meetCondition = tree.BlackBoard.Get<float>(node.Key) < (float)node.Value;
                     else if (node.Value is int)
-                        res = tree.BlackBoard.Get<int>(node.Key) < (int)node.Value;
-                    else res = false;
+                        meetCondition = tree.BlackBoard.Get<int>(node.Key) < (int)node.Value;
+                    else meetCondition = false;
                     break;
                 case Operator.SmallerOrEqual:
                     if (node.Value is float)
-                        res = tree.BlackBoard.Get<float>(node.Key) <= (float)node.Value;
+                        meetCondition = tree.BlackBoard.Get<float>(node.Key) <= (float)node.Value;
                     else if (node.Value is int)
-                        res = tree.BlackBoard.Get<int>(node.Key) <= (int)node.Value;
-                    else res = false;
+                        meetCondition = tree.BlackBoard.Get<int>(node.Key) <= (int)node.Value;
+                    else meetCondition = false;
                     break;
                 case Operator.Greater:
                     if (node.Value is float)
-                        res = tree.BlackBoard.Get<float>(node.Key) > (float)node.Value;
+                        meetCondition = tree.BlackBoard.Get<float>(node.Key) > (float)node.Value;
                     else if (node.Value is int)
-                        res = tree.BlackBoard.Get<int>(node.Key) > (int)node.Value;
-                    else res = false;
+                        meetCondition = tree.BlackBoard.Get<int>(node.Key) > (int)node.Value;
+                    else meetCondition = false;
                     break;
                 case Operator.GreaterOrEqual:
                     if (node.Value is float)
-                        res = tree.BlackBoard.Get<float>(node.Key) >= (float)node.Value;
+                        meetCondition = tree.BlackBoard.Get<float>(node.Key) >= (float)node.Value;
                     else if (node.Value is int)
-                        res = tree.BlackBoard.Get<int>(node.Key) >= (int)node.Value;
-                    else res = false;
+                        meetCondition = tree.BlackBoard.Get<int>(node.Key) >= (int)node.Value;
+                    else meetCondition = false;
                     break;
             }
 
-            if (res)
+            if (meetCondition)
             {
-                return await NodeDispatcherComponent.Instance.NodeHandlers[node.Child.GetType()].Run(node.Child, tree, cancellationToken);
+                // 添加监听, 当值改变 && 不满足时, 调用自己Stop()
+                // 监听最后移除监听
+                tree.BlackBoard.AddObserver(node.Key, OnValueChanged);
+                bool res = await NodeDispatcherComponent.Instance.NodeHandlers[node.Child.GetType()].Run(node.Child, tree, cancellationToken);
+                // 移除监听
+                tree.BlackBoard.RemoveObserver(node.Key, OnValueChanged);
+                return res;
+            }
+            else
+            {
+                return false;
             }
             
-            return false;
+            
+            void OnValueChanged(string key, object oldValue, object newValue)
+            {
+                tree.Stop();
+                tree.BlackBoard.RemoveObserver(node.Key, OnValueChanged);
+                tree.Start().Coroutine();
+            }
         }
     }
+    
+    
 
     public class BlackboardConditionNodeAwakeSystem : AwakeSystem<BlackboardConditionNode, Operator, string, object>
     {

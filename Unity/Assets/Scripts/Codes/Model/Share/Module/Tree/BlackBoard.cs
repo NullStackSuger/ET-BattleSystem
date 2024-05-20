@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 
 namespace ET
@@ -5,6 +6,7 @@ namespace ET
     public class BlackBoard
     {
         private Dictionary<string, object> data = new();
+        private Dictionary<string, List<Action<string, object, object>>> observers = new();
         
         public object this[string key]
         {
@@ -18,51 +20,24 @@ namespace ET
             }
         }
 
+        public object Get(string key)
+        {
+            return this.data[key];
+        }
         public T Get<T>(string key)
         {
             if (Contains(key)) return (T)this.data[key];
             return default;
         }
 
-        public void Set(string key, object value)
+        public void Set(string key, object newValue)
         {
-            if (Contains(key))
-            {
-                object old = Get<object>(key);
+            object oldValue = Get(key);
+            if (oldValue == newValue) return;
 
-                // OldValue != null, NewValue == null
-                if (value == null)
-                {
-                    this.data.Remove(key);
-                    EventSystem.Instance.Publish(Root.Instance.Scene.DomainScene(), new EventType.BlackboardValueChanged()
-                    {
-                        BlackBoard = this, Key = key, OldValue = old, NewValue = null
-                    });
-                }
-                // OldValue != null, NewValue != null
-                else
-                {
-                    if (old == value) return;
-
-                    this.data[key] = value;
-                    EventSystem.Instance.Publish(Root.Instance.Scene.DomainScene(), new EventType.BlackboardValueChanged()
-                    {
-                        BlackBoard = this, Key = key, OldValue = old, NewValue = value
-                    });
-                }
-            }
-            else
-            {
-                // OldValue == null, NewValue == null
-                if (value == null) return;
-                
-                // OldValue == null, NewValue != null
-                data[key] = value;
-                EventSystem.Instance.Publish(Root.Instance.Scene.DomainScene(), new EventType.BlackboardValueChanged()
-                {
-                    BlackBoard = this, Key = key, OldValue = null, NewValue = value
-                });
-            }
+            this.data[key] = newValue;
+            
+            TriggerObserver(key, oldValue, newValue);
         }
 
         public bool Contains(string key)
@@ -73,6 +48,30 @@ namespace ET
         public void Clear()
         {
             data.Clear();
+            this.observers.Clear();
+        }
+
+        public void AddObserver(string key, Action<string, object, object> observer)
+        {
+            if (!this.observers.ContainsKey(key))
+                this.observers.Add(key, new List<Action<string, object, object>>());
+            this.observers[key].Add(observer);
+        }
+
+        public void RemoveObserver(string key, Action<string, object, object> observer)
+        {
+            if (!this.observers.ContainsKey(key)) return;
+            if(!this.observers[key].Contains(observer)) return;
+            this.observers[key].Remove(observer);
+        }
+
+        private void TriggerObserver(string key, object oldValue, object newValue)
+        {
+            if (!this.observers.ContainsKey(key)) return;
+            for(int i = this.observers[key].Count - 1; i >= 0; --i)
+            {
+                this.observers[key][i]?.Invoke(key, oldValue, newValue);
+            }
         }
     }
 }

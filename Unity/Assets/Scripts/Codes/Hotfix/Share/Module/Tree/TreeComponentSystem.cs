@@ -89,7 +89,8 @@ namespace ET
         public static async ETTask<bool> Start(this TreeComponent self, string name = "")
         {
             if (self.Root == null) self.Load(name);
-
+            self.CancellationToken ??= new();
+            
             return await NodeDispatcherComponent.Instance.NodeHandlers[self.Root.GetType()].Run(self.Root, self, self.CancellationToken);
         }
 
