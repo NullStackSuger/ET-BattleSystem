@@ -14,6 +14,11 @@ namespace ET.Client
             Root.Instance.Scene.AddComponent<GlobalComponent>();
             
             Root.Instance.Scene.AddComponent<NodeDispatcherComponent>();
+            
+            Root.Instance.Scene.AddComponent<B2CollisionHandlerDispatcherComponent>();
+            
+            // 正常是一个房间一个World, 但这里Demo当作直接开启一局了
+            Root.Instance.Scene.AddComponent<B2WorldComponent>();
 
             await ResourcesComponent.Instance.LoadBundleAsync("unit.unity3d");
             

@@ -29,9 +29,6 @@ namespace ET.Server
             {
                 case AppType.Server:
                 {
-                    //Root.Instance.Scene.AddComponent<ActionsDispatcherComponent>();
-                    //Root.Instance.Scene.AddComponent<NodeDispatcherComponent>();
-                    
                     Root.Instance.Scene.AddComponent<NetInnerComponent, IPEndPoint>(processConfig.InnerIPPort);
 
                     var processScenes = StartSceneConfigCategory.Instance.GetByProcess(Options.Instance.Process);
