@@ -2,10 +2,11 @@
     "name": "Unity.ModelView",
     "rootNamespace": "ET",
     "references": [
+        "Unity.Mathematics",
+        "BulletUnity",
         "Unity.Model",
         "Unity.ThirdParty",
         "Unity.Core",
-        "Unity.Mathematics",
         "Unity.Loader"
     ],
     "includePlatforms": [

@@ -2,6 +2,7 @@
     "name": "Unity.Model.Codes",
     "rootNamespace": "ET",
     "references": [
+        "BulletUnity",
         "Unity.Mathematics",
         "Unity.ThirdParty",
         "Unity.Core"

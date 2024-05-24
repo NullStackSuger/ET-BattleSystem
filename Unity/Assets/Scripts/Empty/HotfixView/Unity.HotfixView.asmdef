@@ -2,12 +2,13 @@
     "name": "Unity.HotfixView",
     "rootNamespace": "ET",
     "references": [
+        "BulletUnity",
+        "Unity.Mathematics",
         "Unity.ThirdParty",
         "Unity.Model",
         "Unity.Hotfix",
         "Unity.ModelView",
         "Unity.Core",
-        "Unity.Mathematics",
         "Unity.Loader"
     ],
     "includePlatforms": [

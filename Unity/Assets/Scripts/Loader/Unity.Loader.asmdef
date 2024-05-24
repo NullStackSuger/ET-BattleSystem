@@ -2,6 +2,7 @@
     "name": "Unity.Loader",
     "rootNamespace": "ET",
     "references": [
+        "BulletUnity",
         "Unity.ThirdParty",
         "Unity.Core",
         "HybridCLR.Runtime"

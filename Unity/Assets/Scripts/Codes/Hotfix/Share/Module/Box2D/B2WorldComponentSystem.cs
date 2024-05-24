@@ -7,7 +7,7 @@ namespace ET
     [FriendOf(typeof(B2CollisionComponent))]
     public static class B2WorldComponentSystem
     {
-        public class B2WorldAwakeSystem : AwakeSystem<B2WorldComponent>
+        public class B2WorldAwakeComponentSystem : AwakeSystem<B2WorldComponent>
         {
             protected override void Awake(B2WorldComponent self)
             {
@@ -17,7 +17,7 @@ namespace ET
             }
         }
 
-        public class B2WorldUpdateSystem : UpdateSystem<B2WorldComponent>
+        public class B2WorldUpdateComponentSystem : UpdateSystem<B2WorldComponent>
         {
             protected override void Update(B2WorldComponent self)
             {
@@ -26,7 +26,7 @@ namespace ET
             }
         }
         
-        public class B2WorldDestroySystem : DestroySystem<B2WorldComponent>
+        public class B2WorldDestroyComponentSystem : DestroySystem<B2WorldComponent>
         {
             protected override void Destroy(B2WorldComponent self)
             {
