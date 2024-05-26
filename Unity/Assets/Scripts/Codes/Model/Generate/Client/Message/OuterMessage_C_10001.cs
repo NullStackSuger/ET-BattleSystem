@@ -633,6 +633,39 @@ namespace ET
 
 	}
 
+	[Message(OuterMessage.C2M_FrameCmd)]
+	[ProtoContract]
+	public partial class C2M_FrameCmd: ProtoObject, IActorLocationMessage
+	{
+		[ProtoMember(90)]
+		public int RpcId { get; set; }
+
+		[ProtoMember(93)]
+		public long ActorId { get; set; }
+
+		[ProtoMember(92)]
+		public LSFCmd Cmd { get; set; }
+
+	}
+
+	[Message(OuterMessage.M2C_FrameCmd)]
+	[ProtoContract]
+	public partial class M2C_FrameCmd: ProtoObject, IActorMessage
+	{
+		[ProtoMember(90)]
+		public int RpcId { get; set; }
+
+		[ProtoMember(93)]
+		public long ActorId { get; set; }
+
+		[ProtoMember(94)]
+		public uint Frame { get; set; }
+
+		[ProtoMember(92)]
+		public LSFCmd Cmd { get; set; }
+
+	}
+
 	public static class OuterMessage
 	{
 		 public const ushort HttpGetRouterResponse = 10002;
@@ -678,5 +711,7 @@ namespace ET
 		 public const ushort M2C_HpChanged = 10042;
 		 public const ushort C2M_NormalAtk = 10043;
 		 public const ushort M2C_NormalAtk = 10044;
+		 public const ushort C2M_FrameCmd = 10045;
+		 public const ushort M2C_FrameCmd = 10046;
 	}
 }

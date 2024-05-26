@@ -1,7 +1,7 @@
 using System;
 using System.Collections.Generic;
 
-namespace ET.Server
+namespace ET.Client
 {
     [ComponentOf(typeof(Scene))]
     public class LSFCmdHandlerDispatcherComponent : Entity, IAwake, IDestroy

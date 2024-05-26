@@ -1,22 +1,33 @@
-namespace ET.Server
+using System;
+
+namespace ET.Client
 {
     /// <summary>
     /// 监听对应组件数值改变, 发送给LSFComponent
     /// 控制Tick组件相关
     /// </summary>
     /// <typeparam name="T"></typeparam>
-    public abstract class LSFComponentHandler<T> where T : Entity
+    public abstract class LSFComponentHandler
     {
-        public abstract void TickStart(T component, uint currentFrame /*这里应该有LSFComponent组件作为参数*/);
-        public abstract void Tick(T component, uint currentFrame /*这里应该有LSFComponent组件作为参数*/);
-        public abstract void TickEnd(T component, uint currentFrame /*这里应该有LSFComponent组件作为参数*/);
+        public abstract void TickStart(LSFComponent lsf, Entity component);
+        public abstract void Tick(LSFComponent lsf, Entity component);
+        public abstract void TickEnd(LSFComponent lsf, Entity component);
 
         /// <summary>
         /// 检查传入Cmd与当前组件值是否一致
         /// 若不一致 需调用RollBack, 重新预测
         /// </summary>
-        public abstract bool Check<K>(T component, uint currentFrame, K cmd /*这里应该有LSFComponent组件作为参数*/) where K : LSFCmd;
+        public abstract bool Check(LSFComponent lsf, Entity component, LSFCmd cmd);
 
-        public abstract void RollBack<K>(T component, uint currentFrame, uint triggerFrame, K cmd /*这里应该有LSFComponent组件作为参数*/) where K : LSFCmd;
+        public abstract void RollBack(LSFComponent lsf, Entity component, LSFCmd cmd);
+    }
+    
+    public class LSFComponentHandlerAttribute: BaseAttribute
+    {
+        public Type Type;
+        public LSFComponentHandlerAttribute(Type type)
+        {
+            this.Type = type;
+        }
     }
 }

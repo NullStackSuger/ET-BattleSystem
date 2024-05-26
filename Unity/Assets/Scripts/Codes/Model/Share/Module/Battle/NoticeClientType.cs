@@ -5,7 +5,7 @@ namespace ET
     {
         None,
         Self,
-        Broadcast,
-        BroadcastWithoutSelf,
+        Broad,
+        BroadWithoutSelf,
     }
 }

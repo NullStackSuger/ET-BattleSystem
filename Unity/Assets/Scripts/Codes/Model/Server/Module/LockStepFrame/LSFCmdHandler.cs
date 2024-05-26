@@ -1,15 +1,21 @@
-namespace ET
+using System;
+
+namespace ET.Server
 {
     /// <summary>
     /// 接收处理对应消息
     /// </summary>
-    [LSFCmdHandler]
-    public abstract class ILSFCmdHandler<T> where T : LSFCmd
+    public abstract class LSFCmdHandler
     {
-        public abstract void Receive(T cmd);
+        public abstract void Receive(LSFCmd cmd);
     }
 
     public class LSFCmdHandlerAttribute: BaseAttribute
     {
+        public Type Type;
+        public LSFCmdHandlerAttribute(Type type)
+        {
+            this.Type = type;
+        }
     }
 }

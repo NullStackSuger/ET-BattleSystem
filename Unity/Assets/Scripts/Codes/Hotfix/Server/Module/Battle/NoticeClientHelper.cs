@@ -13,14 +13,14 @@ namespace ET.Server
                     if (unitGateComponent.GateSessionActorId == 0) return;
                     MessageHelper.SendActor(unitGateComponent.GateSessionActorId, message);
                     break;
-                case NoticeClientType.Broadcast:
+                case NoticeClientType.Broad:
                     foreach (var aoi in self.GetBeSeePlayers().Values)
                     {
                         if (aoi.Unit == null || aoi.Unit.IsDisposed) continue;
                         Send(self, message, NoticeClientType.Self);
                     }
                     break;
-                case NoticeClientType.BroadcastWithoutSelf:
+                case NoticeClientType.BroadWithoutSelf:
                     foreach (var aoi in self.GetBeSeePlayers().Values)
                     {
                         if (aoi.Unit == null || aoi.Unit.IsDisposed) continue;
