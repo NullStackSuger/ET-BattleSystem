@@ -3,7 +3,7 @@ using BulletSharp;
 namespace ET
 {
     [ContactResultCallback]
-    public class TestContactResultCallback : ContactResultCallback
+    public class TestContactResultCallback : SingletonContactResultCallback<TestContactResultCallback>
     {
         public override float AddSingleResult(ManifoldPoint cp, 
         CollisionObjectWrapper colObj0Wrap, int partId0, int index0, 

@@ -41,5 +41,10 @@ namespace ET
         {
             return TimeInfo.Instance.ServerFrameTime();
         }
+
+        public static long DeltaTime()
+        {
+            return TimeInfo.Instance.DeltaTIme;
+        }
     }
 }

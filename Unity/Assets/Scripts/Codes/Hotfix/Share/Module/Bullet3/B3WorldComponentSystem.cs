@@ -27,7 +27,16 @@ namespace ET
         {
             protected override void Update(B3WorldComponent self)
             {
-                self.World.StepSimulation(TimeHelper.ServerFrameTime());
+                self.World.StepSimulation(1.0f / TimeHelper.DeltaTime());
+                
+                Log.Warning(TimeHelper.DeltaTime());
+                /*if (self.World.CollisionObjectArray.Count > 0)
+                    Log.Warning(self.World.CollisionObjectArray[0].WorldTransform.ToString());*/
+                    
+                foreach (var pair in self.Callbacks)
+                {
+                    self.World.ContactTest(pair.Key, pair.Value);
+                }
             }
         }
         
@@ -45,7 +54,7 @@ namespace ET
         {
             RigidBody body = new RigidBody(info);
             self.World.AddRigidBody(body);
-            if(callback != null) self.World.ContactTest(body, callback);
+            if(callback != null) self.Callbacks.Add(body, callback);
             var collision = self.AddChild<B3CollisionComponent, RigidBody, Unit>(body, owner);
             return collision;
         }
@@ -53,6 +62,8 @@ namespace ET
         public static void RemoveBody(this B3WorldComponent self, long collisionId)
         {
             var collision = self.GetChild<B3CollisionComponent>(collisionId);
+            if (self.Callbacks.ContainsKey(collision.Body))
+                self.Callbacks.Remove(collision.Body);
             collision.Body.Dispose();
             self.World.RemoveRigidBody(collision.Body);
             self.RemoveChild(collisionId);

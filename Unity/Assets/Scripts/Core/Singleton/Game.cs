@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using UnityEngine;
 
 namespace ET
 {
@@ -58,7 +59,7 @@ namespace ET
             frameFinishTask.Enqueue(task);
             await task;
         }
-
+        
         public static void Update()
         {
             int count = updates.Count;

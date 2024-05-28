@@ -15,7 +15,7 @@ namespace ET.Server
 
             }
         }
-
+        
         public class LSFComponentUpdateSystem : UpdateSystem<LSFComponent>
         {
             protected override void Update(LSFComponent self)
@@ -105,8 +105,7 @@ namespace ET.Server
                     LSFCmd cmd = sends.Dequeue();
                     m2CFrameCmd.Cmd = cmd;
                     
-                    //TODO: 需要知道发给哪个客户端
-                    NoticeClientHelper.Send(null, m2CFrameCmd, NoticeClientType.Broad);
+                    NoticeClientHelper.Send(Root.Instance.Scene.GetComponent<UnitComponent>().Get(cmd.UnitId), m2CFrameCmd, NoticeClientType.Broad);
                 }
 
                 self.Sends.Remove(self.CurrentFrame);

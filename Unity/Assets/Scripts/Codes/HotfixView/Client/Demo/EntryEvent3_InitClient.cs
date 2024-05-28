@@ -31,6 +31,15 @@ namespace ET.Client
             await EventSystem.Instance.PublishAsync(clientScene, new EventType.AppStartInitFinish());
 
             Log.Info("开始测试");
+
+            float mass = 1.0f;
+            SphereShape shape = new SphereShape(2);
+            MotionState motionState = new DefaultMotionState(Matrix.Translation(0, 50, 0));
+            Vector3 f = mass > 0? shape.CalculateLocalInertia(mass) : Vector3.Zero;
+            RigidBodyConstructionInfo info = new RigidBodyConstructionInfo(mass, motionState, shape, f);
+            var collision = world.AddBody(info, null);
+            
+            Log.Warning(collision.Body.WorldTransform.ToString());
         }
     }
 }

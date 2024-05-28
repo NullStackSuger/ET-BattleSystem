@@ -26,16 +26,22 @@ namespace ET
 
         public long FrameTime;
 
+        private long LastTime;
+        public long DeltaTIme { get; private set; }
+
         public TimeInfo()
         {
             this.dt1970 = new DateTime(1970, 1, 1, 0, 0, 0, DateTimeKind.Utc);
             this.dt = new DateTime(1970, 1, 1, 0, 0, 0, DateTimeKind.Utc);
             this.FrameTime = this.ClientNow();
+            this.LastTime = this.FrameTime;
         }
 
         public void Update()
         {
             this.FrameTime = this.ClientNow();
+            this.DeltaTIme = this.FrameTime - this.LastTime;
+            this.LastTime = this.FrameTime;
         }
         
         /// <summary> 
@@ -54,7 +60,7 @@ namespace ET
         
         public long ServerNow()
         {
-            return ClientNow() + Instance.ServerMinusClientTime;
+            return ClientNow() + ServerMinusClientTime;
         }
         
         public long ClientFrameTime()
@@ -64,7 +70,7 @@ namespace ET
         
         public long ServerFrameTime()
         {
-            return this.FrameTime + Instance.ServerMinusClientTime;
+            return this.FrameTime + ServerMinusClientTime;
         }
         
         public long Transition(DateTime d)
