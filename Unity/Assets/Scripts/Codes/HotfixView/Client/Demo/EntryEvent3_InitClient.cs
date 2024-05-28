@@ -18,6 +18,10 @@ namespace ET.Client
             Root.Instance.Scene.AddComponent<GlobalComponent>();
 
             Root.Instance.Scene.AddComponent<NodeDispatcherComponent>();
+            
+            Root.Instance.Scene.AddComponent<LSFCmdHandlerDispatcherComponent>();
+            
+            Root.Instance.Scene.AddComponent<LSFComponentHandlerDispatcherComponent>();
 
             B3WorldComponent world = Root.Instance.Scene.AddComponent<B3WorldComponent>();
 

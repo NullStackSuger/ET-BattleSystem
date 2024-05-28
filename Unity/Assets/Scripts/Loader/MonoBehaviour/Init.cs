@@ -36,17 +36,10 @@ namespace ET
 
 			Game.AddSingleton<CodeLoader>().Start();
 		}
-
-		private float time;
 		
 		private void Update()
 		{
-			time += Time.deltaTime;
-			if (time < 0.33) return;
-
-			time -= 0.33f;
 			Game.Update();
-			Debug.Log("Tick");
 		}
 
 		private void LateUpdate()

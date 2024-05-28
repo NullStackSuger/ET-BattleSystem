@@ -59,9 +59,18 @@ namespace ET
             frameFinishTask.Enqueue(task);
             await task;
         }
+
+        [StaticField]
+        private static float TickFrequency = 0.33f;
+        [StaticField]
+        private static float time;
         
         public static void Update()
         {
+            time += Time.deltaTime;
+            if (time < TickFrequency) return;
+            time -= TickFrequency;
+            
             int count = updates.Count;
             while (count-- > 0)
             {

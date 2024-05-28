@@ -9,6 +9,6 @@ namespace ET.Server
         [StaticField]
         public static LSFCmdHandlerDispatcherComponent Instance;
 
-        public Dictionary<Type, LSFCmdHandler> Handlers;
+        public Dictionary<Type, LSFCmdHandler> Handlers = new();
     }
 }

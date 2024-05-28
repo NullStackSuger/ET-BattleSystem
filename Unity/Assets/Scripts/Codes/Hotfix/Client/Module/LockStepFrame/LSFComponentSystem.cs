@@ -228,12 +228,12 @@ namespace ET.Client
             // 更改Tick频率
             if (self.HalfRTT * 2 + self.Buffer.Count != aheadFrame)
             {
-                //TODO: 更改Update频率
+                Game.TickFrequency = 1 / (30 + self.HalfRTT * 2 + self.Buffer.Count - aheadFrame);
             }
             // 恢复Tick频率
             else
             {
-                
+                Game.TickFrequency = 0.33f;
             }*/
         }
     }

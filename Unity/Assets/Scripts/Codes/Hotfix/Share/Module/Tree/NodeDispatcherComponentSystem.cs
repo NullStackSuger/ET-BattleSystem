@@ -48,12 +48,6 @@ namespace ET
                 // 获取NodeHandlerAttribute.NodeType
                 NodeHandlerAttribute handler = type.GetCustomAttributes(typeof (NodeHandlerAttribute), false)[0] as NodeHandlerAttribute;
                 
-                Log.Info(handler.NodeType.ToString());
-                if (self.NodeHandlers.ContainsKey(handler.NodeType))
-                {
-                    Log.Warning(handler.NodeType.ToString());
-                    continue;
-                }
                 self.NodeHandlers.Add(handler.NodeType,  aNodeHandler);
             }
         }

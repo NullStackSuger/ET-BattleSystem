@@ -28,10 +28,6 @@ namespace ET
             protected override void Update(B3WorldComponent self)
             {
                 self.World.StepSimulation(1.0f / TimeHelper.DeltaTime());
-                
-                Log.Warning(TimeHelper.DeltaTime());
-                /*if (self.World.CollisionObjectArray.Count > 0)
-                    Log.Warning(self.World.CollisionObjectArray[0].WorldTransform.ToString());*/
                     
                 foreach (var pair in self.Callbacks)
                 {
