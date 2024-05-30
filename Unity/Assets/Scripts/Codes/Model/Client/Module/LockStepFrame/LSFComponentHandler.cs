@@ -9,17 +9,17 @@ namespace ET.Client
     /// <typeparam name="T"></typeparam>
     public abstract class LSFComponentHandler
     {
-        public abstract void TickStart(LSFComponent lsf, Entity component);
-        public abstract void Tick(LSFComponent lsf, Entity component);
-        public abstract void TickEnd(LSFComponent lsf, Entity component);
+        public abstract void TickStart(GameRoomComponent room, Entity component, bool needSend);
+        public abstract void Tick(GameRoomComponent room, Entity component, bool needSend);
+        public abstract void TickEnd(GameRoomComponent room, Entity component, bool needSend);
 
         /// <summary>
         /// 检查传入Cmd与当前组件值是否一致
         /// 若不一致 需调用RollBack, 重新预测
         /// </summary>
-        public abstract bool Check(LSFComponent lsf, Entity component, LSFCmd cmd);
+        public abstract bool Check(GameRoomComponent room, Entity component, LSFCmd cmd);
 
-        public abstract void RollBack(LSFComponent lsf, Entity component, LSFCmd cmd);
+        public abstract void RollBack(GameRoomComponent room, Entity component, LSFCmd cmd);
     }
     
     public class LSFComponentHandlerAttribute: BaseAttribute

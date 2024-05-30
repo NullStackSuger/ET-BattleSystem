@@ -151,8 +151,8 @@
     <Compile Include="Assets\Plugins\BulletUnity\Scripts\CollisionShapes\BBoxShape.cs" />
     <Compile Include="Assets\Plugins\BulletUnity\BulletSharp\Collision\GjkConvexCast.cs" />
     <Compile Include="Assets\Plugins\BulletUnity\Scripts\Constraints\Editor\BHingedConstraintEditor.cs" />
-    <Compile Include="Assets\Plugins\BulletUnity\BulletSharp\Dynamics\SequentialImpulseConstraintSolver.cs" />
     <Compile Include="Assets\Plugins\BulletUnity\BulletSharp\Dynamics\Generic6DofSpring2Constraint.cs" />
+    <Compile Include="Assets\Plugins\BulletUnity\BulletSharp\Dynamics\SequentialImpulseConstraintSolver.cs" />
     <Compile Include="Assets\Plugins\BulletUnity\BulletSharp\Collision\AxisSweep3.cs" />
     <Compile Include="Assets\Plugins\BulletUnity\BulletSharp\Collision\CylinderShape.cs" />
     <Compile Include="Assets\Plugins\BulletUnity\Examples\Scenes\BulletSharpDemos\BulletSharpDemos\ConcaveRaycastDemo\ConcaveRaycastDemo.cs" />

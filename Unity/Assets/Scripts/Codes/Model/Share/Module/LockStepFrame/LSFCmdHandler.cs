@@ -1,6 +1,6 @@
 using System;
 
-namespace ET.Server
+namespace ET
 {
     /// <summary>
     /// 接收处理对应消息

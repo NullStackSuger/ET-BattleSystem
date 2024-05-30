@@ -658,11 +658,43 @@ namespace ET
 		[ProtoMember(93)]
 		public long ActorId { get; set; }
 
-		[ProtoMember(94)]
-		public uint Frame { get; set; }
-
 		[ProtoMember(92)]
 		public LSFCmd Cmd { get; set; }
+
+	}
+
+	// 用于设置GameRoomComponent.TargetRTT
+	[ResponseType(nameof(M2C_Ping))]
+	[Message(OuterMessage.C2M_Ping)]
+	[ProtoContract]
+	public partial class C2M_Ping: ProtoObject, IActorLocationRequest
+	{
+		[ProtoMember(90)]
+		public int RpcId { get; set; }
+
+		[ProtoMember(93)]
+		public long ActorId { get; set; }
+
+	}
+
+	[Message(OuterMessage.M2C_Ping)]
+	[ProtoContract]
+	public partial class M2C_Ping: ProtoObject, IActorLocationResponse
+	{
+		[ProtoMember(90)]
+		public int RpcId { get; set; }
+
+		[ProtoMember(92)]
+		public string Message { get; set; }
+
+		[ProtoMember(91)]
+		public int Error { get; set; }
+
+		[ProtoMember(1)]
+		public long TimePoint { get; set; }
+
+		[ProtoMember(93)]
+		public uint ServerFrame { get; set; }
 
 	}
 
@@ -713,5 +745,7 @@ namespace ET
 		 public const ushort M2C_NormalAtk = 10044;
 		 public const ushort C2M_FrameCmd = 10045;
 		 public const ushort M2C_FrameCmd = 10046;
+		 public const ushort C2M_Ping = 10047;
+		 public const ushort M2C_Ping = 10048;
 	}
 }

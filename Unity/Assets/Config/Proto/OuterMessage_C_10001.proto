@@ -332,7 +332,22 @@ message M2C_FrameCmd // IActorMessage
   int32 RpcId = 90;
   int64 ActorId = 93;
   
-  uint32 Frame = 94;
-  
   LSFCmd Cmd = 92;
+}
+
+// 用于设置GameRoomComponent.TargetRTT
+//ResponseType M2C_Ping
+message C2M_Ping // IActorLocationRequest
+{
+  int32 RpcId = 90;
+  int64 ActorId = 93;
+}
+
+message M2C_Ping // IActorLocationResponse
+{
+  int32 RpcId = 90;
+  string Message = 92;
+  int32 Error = 91;
+  int64 TimePoint = 1;
+  uint32 ServerFrame = 93;
 }

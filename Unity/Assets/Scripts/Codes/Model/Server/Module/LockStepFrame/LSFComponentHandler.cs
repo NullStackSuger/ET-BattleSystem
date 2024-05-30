@@ -8,9 +8,9 @@ namespace ET.Server
     /// </summary>
     public abstract class LSFComponentHandler
     {
-        public abstract void TickStart(LSFComponent lsf, Entity component);
-        public abstract void Tick(LSFComponent lsf, Entity component);
-        public abstract void TickEnd(LSFComponent lsf, Entity component);
+        public abstract void TickStart(GameRoomComponent room, Entity component);
+        public abstract void Tick(GameRoomComponent room, Entity component);
+        public abstract void TickEnd(GameRoomComponent room, Entity component);
     }
     
     public class LSFComponentHandlerAttribute: BaseAttribute

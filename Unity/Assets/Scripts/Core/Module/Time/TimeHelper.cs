@@ -46,5 +46,16 @@ namespace ET
         {
             return TimeInfo.Instance.DeltaTIme;
         }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="time">时长</param>
+        /// <param name="frameRate">每秒多少帧</param>
+        /// <returns></returns>
+        public static long ToFrame(long time, uint frameRate)
+        {
+            return time * frameRate;
+        }
     }
 }
