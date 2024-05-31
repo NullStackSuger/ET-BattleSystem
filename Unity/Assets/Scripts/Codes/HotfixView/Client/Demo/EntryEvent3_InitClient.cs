@@ -20,6 +20,8 @@ namespace ET.Client
             Root.Instance.Scene.AddComponent<NodeDispatcherComponent>();
 
             B3WorldComponent world = Root.Instance.Scene.AddComponent<B3WorldComponent>();
+            
+            Root.Instance.Scene.AddComponent<GameRoomComponent>();
 
             await ResourcesComponent.Instance.LoadBundleAsync("unit.unity3d");
 
@@ -28,6 +30,8 @@ namespace ET.Client
             await EventSystem.Instance.PublishAsync(clientScene, new EventType.AppStartInitFinish());
 
             Log.Info("开始测试");
+            
+            
         }
     }
 }

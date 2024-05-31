@@ -1,5 +1,9 @@
+using ProtoBuf;
+
 namespace ET
 {
+    [ProtoContract]
+    [ProtobufBaseTypeRegister]
     public abstract class LSFCmd
     {
         public uint Frame;

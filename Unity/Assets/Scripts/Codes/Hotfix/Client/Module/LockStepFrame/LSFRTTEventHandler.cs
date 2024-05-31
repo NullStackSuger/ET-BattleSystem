@@ -11,7 +11,7 @@ namespace ET.Client
         protected override async ETTask Run(Scene scene, AppStartInitFinish a)
         {
             ETCancellationToken cancellationToken = new();
-            CallServer(Root.Instance.Scene.GetComponent<GameRoomComponent>(), cancellationToken, 10).Coroutine();
+            //CallServer(Root.Instance.Scene.GetComponent<GameRoomComponent>(), cancellationToken, 10).Coroutine();
             await ETTask.CompletedTask;
         }
 

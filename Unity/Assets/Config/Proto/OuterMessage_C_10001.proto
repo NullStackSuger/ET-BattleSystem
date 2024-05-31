@@ -320,19 +320,17 @@ message M2C_NormalAtk // IActorLocationResponse
 
 message C2M_FrameCmd // IActorLocationMessage
 {
-  int32 RpcId = 90;
-  int64 ActorId = 93;
-  
-  LSFCmd Cmd = 92;
+	int32 RpcId = 90;
+	
+  	LSFCmd Cmd = 1;
 }
 
 
-message M2C_FrameCmd // IActorMessage
+message M2C_FrameCmd // IActorLocationMessage
 {
-  int32 RpcId = 90;
-  int64 ActorId = 93;
-  
-  LSFCmd Cmd = 92;
+	int32 RpcId = 90;
+
+  	LSFCmd Cmd = 1;
 }
 
 // 用于设置GameRoomComponent.TargetRTT

@@ -1,6 +1,6 @@
 namespace ET.Client
 {
-    [LSFComponentHandler(typeof(LSFTestCmd))]
+    [LSFComponentHandler(typeof(TestComponent))]
     [FriendOfAttribute(typeof(ET.Client.LSFComponent))]
     public class LSFTestComponentHandler : LSFComponentHandler
     {
@@ -16,6 +16,8 @@ namespace ET.Client
 
         public override void TickEnd(GameRoomComponent room, Entity component, bool needSend)
         {
+            /*LSFComponent lsf = room.MainPlayer.GetComponent<LSFComponent>();
+            lsf.AddToSend(new LSFTestCmd(){ Value = "ClientSendToServer" });*/
             Log.Info("Client.TickEnd");
         }
 

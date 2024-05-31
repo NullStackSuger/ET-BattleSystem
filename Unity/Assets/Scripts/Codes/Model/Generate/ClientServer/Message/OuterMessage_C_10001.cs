@@ -640,30 +640,24 @@ namespace ET
 		[ProtoMember(90)]
 		public int RpcId { get; set; }
 
-		[ProtoMember(93)]
-		public long ActorId { get; set; }
-
-		[ProtoMember(92)]
+		[ProtoMember(1)]
 		public LSFCmd Cmd { get; set; }
 
 	}
 
 	[Message(OuterMessage.M2C_FrameCmd)]
 	[ProtoContract]
-	public partial class M2C_FrameCmd: ProtoObject, IActorMessage
+	public partial class M2C_FrameCmd: ProtoObject, IActorLocationMessage
 	{
 		[ProtoMember(90)]
 		public int RpcId { get; set; }
 
-		[ProtoMember(93)]
-		public long ActorId { get; set; }
-
-		[ProtoMember(92)]
+		[ProtoMember(1)]
 		public LSFCmd Cmd { get; set; }
 
 	}
 
-	// 用于设置GameRoomComponent.TargetRTT
+// 用于设置GameRoomComponent.TargetRTT
 	[ResponseType(nameof(M2C_Ping))]
 	[Message(OuterMessage.C2M_Ping)]
 	[ProtoContract]

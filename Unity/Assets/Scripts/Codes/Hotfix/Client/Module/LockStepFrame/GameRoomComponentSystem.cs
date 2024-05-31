@@ -23,13 +23,13 @@ namespace ET.Client
             }
         }
 
-        public class DestroySystem : DestroySystem<GameRoomComponent>
+        /*public class DestroySystem : DestroySystem<GameRoomComponent>
         {
             protected override void Destroy(GameRoomComponent self)
             {
                 self.MainPlayer = null;
             }
-        }
+        }*/
 
         /// <returns>是否预测成功</returns>
         private static bool Receive(this GameRoomComponent self)
@@ -97,7 +97,7 @@ namespace ET.Client
             foreach (LSFCmd cmd in sends)
             {
                 c2MFrameCmd.Cmd = cmd;
-                self.ClientScene().GetComponent<SessionComponent>().Session.Call(c2MFrameCmd).Coroutine();
+                self.ClientScene().GetComponent<SessionComponent>().Session.Send(c2MFrameCmd);
             }
 
             lsf.Sends.Remove(self.Frame);
@@ -169,15 +169,6 @@ namespace ET.Client
             {
                 // 等待3s
             }
-        }
-
-        /// <summary>
-        /// 设置本地玩家
-        /// </summary>
-        public static void SetMainPlayer(this GameRoomComponent self, Unit unit)
-        {
-            unit.AddComponent<LSFComponent>();
-            self.MainPlayer = unit;
-        }
+        }   
     }
 }

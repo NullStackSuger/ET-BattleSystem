@@ -6,7 +6,7 @@ namespace ET.Client
 {
     [ComponentOf(typeof(Scene))]
     [FriendOfAttribute(typeof(ET.Client.LSFComponent))]
-    public class GameRoomComponent : Entity, IUpdate, IDestroy
+    public class GameRoomComponent : Entity, IAwake, IUpdate
     {
         /// <summary>
         /// 客户端最大领先帧数
@@ -15,11 +15,23 @@ namespace ET.Client
         public static readonly uint MaxAhead = 10;
         
         public uint Frame;
-        
+
         /// <summary>
         /// 客户端操控的Unit
         /// </summary>
-        public Unit MainPlayer;
+        public Unit MainPlayer
+        {
+            set
+            {
+                value.AddComponent<LSFComponent>();
+                InnerMainPlayer = value;
+            }
+            get
+            {
+                return this.InnerMainPlayer;
+            }
+        }
+        private Unit InnerMainPlayer;
         
         /// <summary>
         /// 客户端当前领先服务端帧数

@@ -26,7 +26,7 @@ namespace ET
                 ET.Client.LSFComponentHandlerAttribute attribute = type.GetCustomAttributes(typeof (ET.Client.LSFComponentHandlerAttribute), false)[0] as ET.Client.LSFComponentHandlerAttribute;
                 if (!attribute.Type.IsSubclassOf(typeof (Entity))) // 检查是否是Component
                 {
-                    Log.Error($"Attribute args error: {type.Name}");
+                    Log.Error($"Attribute args error: {type.Name} {attribute.Type.Name}");
                     continue;
                 }
                     

@@ -1,6 +1,6 @@
 namespace ET.Server
 {
-    [LSFComponentHandler(typeof(LSFTestCmd))]
+    [LSFComponentHandler(typeof(TestComponent))]
     [FriendOfAttribute(typeof(ET.Server.LSFComponent))]
     public class LSFTestComponentHandler : LSFComponentHandler
     {

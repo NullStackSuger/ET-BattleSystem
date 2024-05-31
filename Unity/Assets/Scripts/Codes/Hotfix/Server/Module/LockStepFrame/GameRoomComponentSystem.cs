@@ -64,7 +64,7 @@ namespace ET.Server
                 foreach (LSFCmd cmd in sends)
                 {
                     m2CFrameCmd.Cmd = cmd;
-                    NoticeClientHelper.Send(unit, m2CFrameCmd, NoticeClientType.Broad);
+                    NoticeClientHelper.Send(unit, m2CFrameCmd, NoticeClientType.Broad);;
                 }
 
                 lsf.Sends.Remove(self.Frame);
@@ -107,8 +107,9 @@ namespace ET.Server
         /// <summary>
         /// 添加一个被帧同步的Unit
         /// </summary>
-        public static void AddSync(this GameRoomComponent self, Unit unit)
+        public static void TryAddSync(this GameRoomComponent self, Unit unit)
         {
+            if (unit.Components.ContainsKey(typeof(LSFComponent))) return;
             LSFComponent lsf = unit.AddComponent<LSFComponent>();
             self.Syncs.Add(lsf);
         }
