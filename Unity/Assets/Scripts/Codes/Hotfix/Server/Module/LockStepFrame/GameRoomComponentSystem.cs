@@ -10,6 +10,10 @@ namespace ET.Server
         {
             protected override void Update(GameRoomComponent self)
             {
+                if (self.IsStart == false) return;
+                
+                Log.Info(self.Frame);
+                
                 for (int i = self.Syncs.Count - 1; i >= 0; --i)
                 {
                     LSFComponent lsf = self.Syncs[i];
@@ -42,10 +46,12 @@ namespace ET.Server
             foreach (LSFComponent lsf in self.Syncs)
             {
                 if (!lsf.Receives.TryGetValue(self.Frame, out Queue<LSFCmd> receives)) continue;
+
+                Unit unit = lsf.GetParent<Unit>();
                 
                 foreach (LSFCmd cmd in receives)
                 {
-                    LSFCmdHandlerDispatcher.Server[cmd.GetType()]?.Receive(cmd);
+                    LSFCmdHandlerDispatcher.Server[cmd.GetType()]?.Receive(unit, cmd);
                 }
                 
                 lsf.Receives.Remove(self.Frame);
@@ -109,9 +115,14 @@ namespace ET.Server
         /// </summary>
         public static void TryAddSync(this GameRoomComponent self, Unit unit)
         {
-            if (unit.Components.ContainsKey(typeof(LSFComponent))) return;
-            LSFComponent lsf = unit.AddComponent<LSFComponent>();
-            self.Syncs.Add(lsf);
+            LSFComponent lsf = null;
+            if (!unit.Components.ContainsKey(typeof(LSFComponent)))
+                lsf = unit.AddComponent<LSFComponent>();
+            else 
+                lsf = unit.GetComponent<LSFComponent>();
+            
+            if (!self.Syncs.Contains(lsf))
+                self.Syncs.Add(lsf);
         }
     }
 }

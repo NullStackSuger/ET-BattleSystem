@@ -5,6 +5,8 @@ namespace ET.Server
     [ComponentOf(typeof(Scene))]
     public class GameRoomComponent : Entity, IAwake, IUpdate, IDestroy
     {
+        public bool IsStart;
+        
         public List<LSFComponent> Syncs = new();
         
         public uint Frame;

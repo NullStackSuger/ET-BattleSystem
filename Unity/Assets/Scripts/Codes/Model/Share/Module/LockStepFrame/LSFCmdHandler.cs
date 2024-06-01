@@ -7,7 +7,7 @@ namespace ET
     /// </summary>
     public abstract class LSFCmdHandler
     {
-        public abstract void Receive(LSFCmd cmd);
+        public abstract void Receive(Unit unit, LSFCmd cmd);
     }
 
     public class LSFCmdHandlerAttribute: BaseAttribute

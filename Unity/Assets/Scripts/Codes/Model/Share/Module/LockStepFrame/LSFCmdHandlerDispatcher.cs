@@ -30,7 +30,7 @@ namespace ET
                     continue;
                 }
                     
-                if (attribute.Type.ToString().StartsWith("ET.Client"))
+                if (type.Namespace.Equals("ET.Client"))
                 {
                     LSFCmdHandlerDispatcher.Client.Add(attribute.Type, handler);
                 }

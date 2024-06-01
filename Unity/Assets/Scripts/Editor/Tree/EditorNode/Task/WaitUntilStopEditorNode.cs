@@ -9,7 +9,7 @@ namespace ET
     {
         public override object Init()
         {
-            this.NodeData = NodeHelper.CreatNodeData("ET.WaitUntilStopNodeData");
+            this.NodeData = ReflectHelper.CreatNodeData("ET.WaitUntilStopNodeData");
             return this.NodeData;
         }
     }

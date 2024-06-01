@@ -10,7 +10,7 @@ namespace ET
 	/// PB基类注册器，不用再手写各种ProtoInclude了
 	/// </summary>
 	[AttributeUsage(AttributeTargets.Class, AllowMultiple = false, Inherited = false)]
-	public class ProtobufBaseTypeRegisterAttribute : Attribute
+	public class ProtobufBaseTypeRegisterAttribute : BaseAttribute
 	{
 	}
 	
@@ -26,7 +26,7 @@ namespace ET
 			RuntimeTypeModel.Default.Add(typeof(float3), false).Add("x", "y", "z");
 			RuntimeTypeModel.Default.Add(typeof(float4), false).Add("x", "y", "z", "w");
 			RuntimeTypeModel.Default.Add(typeof(quaternion), false).Add("value");
-
+			
 			var types = EventSystem.Instance.GetTypes(typeof (ProtobufBaseTypeRegisterAttribute));
 			foreach (Type type in types)
 			{
@@ -36,7 +36,6 @@ namespace ET
 				{
 					if (type1 != type && type1.IsSubclassOf(type))
 					{
-						Log.Warning($"{type.Name} subType {type1.Name}");
 						RuntimeTypeModel.Default[type].AddSubType(flag++, type1);
 					}
 				}

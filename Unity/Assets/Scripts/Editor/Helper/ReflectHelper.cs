@@ -7,16 +7,27 @@ using UnityEngine;
 namespace ET
 {
 
-    public static class NodeHelper
+    public static class ReflectHelper
     {
         public static Assembly Model { get; private set; }
 
-        static NodeHelper()
+        static ReflectHelper()
         {
             Model = Assembly.Load(File.ReadAllBytes($"{Application.dataPath}/Bundles/Code/Model.dll.bytes"));
         }
 
-        public static List<Type> GetAllNodes()
+        public static List<Type> GetAllCmds(this CreatLSFCmdEditor self)
+        {
+            List<Type> res = new();
+            foreach (Type type in Model.GetTypes())
+            {
+                if (type.Name.StartsWith("LSF") && type.Name.EndsWith("Cmd") && type.Name != "LSFCmd")
+                    res.Add(type);
+            }
+            return res;
+        }
+        
+        public static List<Type> GetAllNodes(this CreatNodeEditor self)
         {
             List<Type> res = new();
             foreach (Type type in Model.GetTypes())
@@ -27,7 +38,7 @@ namespace ET
             return res;
         }
 
-        public static object CreatNodeData(string nodeName)
+        public static object CreatNodeData(this CreatNodeEditor self, string nodeName)
         {
             if (!nodeName.StartsWith("ET.")) nodeName = "ET." + nodeName;
             if (!nodeName.EndsWith("NodeData")) nodeName += "NodeData";

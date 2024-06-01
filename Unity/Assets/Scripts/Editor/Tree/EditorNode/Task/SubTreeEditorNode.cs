@@ -10,8 +10,8 @@ namespace ET
         
         public override object Init()
         {
-            this.NodeData = NodeHelper.CreatNodeData("ET.SubTreeNodeData");
-            NodeHelper.SetField(this.NodeData,  ("Name", this.Name));
+            this.NodeData = ReflectHelper.CreatNodeData("ET.SubTreeNodeData");
+            ReflectHelper.SetField(this.NodeData,  ("Name", this.Name));
             return this.NodeData;
         }
     }

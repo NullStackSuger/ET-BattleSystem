@@ -20,10 +20,10 @@ namespace ET
         
         public override object Init(object node)
         {
-            this.NodeData = NodeHelper.CreatNodeData("ET.BlackboardConditionNodeData");
-            NodeHelper.SetField(this.NodeData, ("Op", (int)this.Op));
-            NodeHelper.SetField(this.NodeData, ("Key", this.Key));
-            NodeHelper.SetField(this.NodeData, ("Value", this.Value));
+            this.NodeData = ReflectHelper.CreatNodeData("ET.BlackboardConditionNodeData");
+            ReflectHelper.SetField(this.NodeData, ("Op", (int)this.Op));
+            ReflectHelper.SetField(this.NodeData, ("Key", this.Key));
+            ReflectHelper.SetField(this.NodeData, ("Value", this.Value));
             return this.NodeData;
         }
     }

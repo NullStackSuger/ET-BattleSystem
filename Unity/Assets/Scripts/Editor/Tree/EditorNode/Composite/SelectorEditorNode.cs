@@ -8,8 +8,8 @@ namespace ET
     {
         public override object Init(object[] nodes)
         {
-            this.NodeData = NodeHelper.CreatNodeData("ET.SelectorNodeData");
-            NodeHelper.SetField(this.NodeData, ("Children", nodes));
+            this.NodeData = ReflectHelper.CreatNodeData("ET.SelectorNodeData");
+            ReflectHelper.SetField(this.NodeData, ("Children", nodes));
             return this.NodeData;
         }
     }

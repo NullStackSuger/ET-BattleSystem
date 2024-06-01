@@ -105,18 +105,18 @@ namespace ET
                 switch (this.BelongTo)
                 {
                     case BelongTo.Share:
-                        str.AppendLine($"            this.NodeData = NodeHelper.CreatNodeData(\"ET.{this.Name}NodeData\");");
+                        str.AppendLine($"            this.NodeData = ReflectHelper.CreatNodeData(\"ET.{this.Name}NodeData\");");
                         break;
                     case BelongTo.Client:
-                        str.AppendLine($"            this.NodeData = NodeHelper.CreatNodeData(\"ET.Client.{this.Name}NodeData\");");
+                        str.AppendLine($"            this.NodeData = ReflectHelper.CreatNodeData(\"ET.Client.{this.Name}NodeData\");");
                         break;
                     case BelongTo.Server:
-                        str.AppendLine($"            this.NodeData = NodeHelper.CreatNodeData(\"ET.Server.{this.Name}NodeData\");");
+                        str.AppendLine($"            this.NodeData = ReflectHelper.CreatNodeData(\"ET.Server.{this.Name}NodeData\");");
                         break;
                 }
                 foreach (var field in this.Fields)
                 {
-                    str.AppendLine($"            NodeHelper.SetField(this.NodeData,  (\"{field.Value}\", this.{field.Value}));");
+                    str.AppendLine($"            ReflectHelper.SetField(this.NodeData,  (\"{field.Value}\", this.{field.Value}));");
                 }
                 str.AppendLine("            return this.NodeData;");
                 str.AppendLine("        }");
@@ -392,7 +392,7 @@ namespace ET
             BelongTo belongTo = BelongTo.Share;
             FieldInfo[] fieldInfos = null;
             List<(Type, string)> fields = new();
-            foreach (Type type in NodeHelper.GetAllNodes())
+            foreach (Type type in this.GetAllNodes())
             {
                 // 获取Type名 : ET.XXXNodeData
                 name = type.ToString().Split(".")[^1];

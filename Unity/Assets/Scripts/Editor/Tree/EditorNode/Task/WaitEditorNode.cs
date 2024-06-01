@@ -11,8 +11,8 @@ namespace ET
         
         public override object Init()
         {
-            this.NodeData = NodeHelper.CreatNodeData("ET.WaitNodeData");
-            NodeHelper.SetField(this.NodeData,  ("Seconds", this.Seconds));
+            this.NodeData = ReflectHelper.CreatNodeData("ET.WaitNodeData");
+            ReflectHelper.SetField(this.NodeData,  ("Seconds", this.Seconds));
             return this.NodeData;
         }
     }

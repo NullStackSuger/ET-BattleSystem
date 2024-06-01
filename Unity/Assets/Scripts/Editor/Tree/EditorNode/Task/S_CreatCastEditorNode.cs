@@ -10,8 +10,8 @@ namespace ET
         
         public override object Init()
         {
-            this.NodeData = NodeHelper.CreatNodeData("ET.Server.S_CreatCastNodeData");
-            NodeHelper.SetField(this.NodeData,  ("CastConfigId", this.CastConfigId));
+            this.NodeData = ReflectHelper.CreatNodeData("ET.Server.S_CreatCastNodeData");
+            ReflectHelper.SetField(this.NodeData,  ("CastConfigId", this.CastConfigId));
             return this.NodeData;
         }
     }

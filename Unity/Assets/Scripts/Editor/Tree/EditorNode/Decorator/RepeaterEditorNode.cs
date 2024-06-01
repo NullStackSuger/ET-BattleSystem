@@ -11,9 +11,9 @@ namespace ET
         
         public override object Init(object node)
         {
-            this.NodeData = NodeHelper.CreatNodeData("ET.RepeaterNodeData");
-            NodeHelper.SetField(this.NodeData, ("LoopCount", this.LoopCount));
-            NodeHelper.SetField(this.NodeData, ("Child", node));
+            this.NodeData = ReflectHelper.CreatNodeData("ET.RepeaterNodeData");
+            ReflectHelper.SetField(this.NodeData, ("LoopCount", this.LoopCount));
+            ReflectHelper.SetField(this.NodeData, ("Child", node));
             return this.NodeData;
         }
     }

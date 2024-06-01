@@ -8,7 +8,7 @@ namespace ET
     {
         public override object Init(object node)
         {
-            this.NodeData = NodeHelper.CreatNodeData("ET.WaitUntilNodeData");
+            this.NodeData = ReflectHelper.CreatNodeData("ET.WaitUntilNodeData");
             return this.NodeData;
         }
     }

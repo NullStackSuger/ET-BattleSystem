@@ -16,8 +16,6 @@ namespace ET.Client
 
         public override void TickEnd(GameRoomComponent room, Entity component, bool needSend)
         {
-            /*LSFComponent lsf = room.MainPlayer.GetComponent<LSFComponent>();
-            lsf.AddToSend(new LSFTestCmd(){ Value = "ClientSendToServer" });*/
             Log.Info("Client.TickEnd");
         }
 

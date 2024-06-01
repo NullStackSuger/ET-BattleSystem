@@ -4,7 +4,7 @@ namespace ET
 {
     [ProtoContract]
     [ProtobufBaseTypeRegister]
-    public abstract class LSFCmd
+    public class LSFCmd
     {
         public uint Frame;
         public long UnitId;

@@ -13,8 +13,12 @@ namespace ET.Client
         /// </summary>
         [StaticField]
         public static readonly uint MaxAhead = 10;
-        
+
+        public bool IsStart;
+                
         public uint Frame;
+        
+        public List<LSFComponent> Syncs = new();
 
         /// <summary>
         /// 客户端操控的Unit
@@ -23,7 +27,9 @@ namespace ET.Client
         {
             set
             {
-                value.AddComponent<LSFComponent>();
+                if (!value.Components.ContainsKey(typeof(LSFComponent)))
+                    value.AddComponent<LSFComponent>();
+                
                 InnerMainPlayer = value;
             }
             get

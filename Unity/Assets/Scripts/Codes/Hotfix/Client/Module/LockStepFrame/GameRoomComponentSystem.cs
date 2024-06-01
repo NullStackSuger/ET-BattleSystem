@@ -12,8 +12,11 @@ namespace ET.Client
         {
             protected override void Update(GameRoomComponent self)
             {
+                if (self.IsStart == false) return;
                 if (self.MainPlayer == null || self.MainPlayer.IsDisposed) return;
 
+                Log.Warning(self.Frame);
+                
                 self.Receive();
                 self.Tick();
                 self.Send();
@@ -23,17 +26,10 @@ namespace ET.Client
             }
         }
 
-        /*public class DestroySystem : DestroySystem<GameRoomComponent>
-        {
-            protected override void Destroy(GameRoomComponent self)
-            {
-                self.MainPlayer = null;
-            }
-        }*/
-
         /// <returns>是否预测成功</returns>
         private static bool Receive(this GameRoomComponent self)
         {
+            UnitComponent unitComponent = Root.Instance.Scene.GetComponent<UnitComponent>();
             LSFComponent lsf = self.MainPlayer.GetComponent<LSFComponent>();
             Queue<LSFCmd> unCheckCmds = new();
             if (!lsf.Receives.TryGetValue(self.Frame, out Queue<LSFCmd> receives)) return true;
@@ -59,7 +55,7 @@ namespace ET.Client
                 // 非本地玩家
                 else
                 {
-                    LSFCmdHandlerDispatcher.Client[cmd.GetType()]?.Receive(cmd);
+                    LSFCmdHandlerDispatcher.Client[cmd.GetType()]?.Receive(unitComponent.Get(cmd.UnitId), cmd);
                 }
             }
 
@@ -72,7 +68,7 @@ namespace ET.Client
                 // Handler
                 foreach (LSFCmd cmd in unCheckCmds)
                 {
-                    LSFCmdHandlerDispatcher.Client[cmd.GetType()]?.Receive(cmd);   
+                    LSFCmdHandlerDispatcher.Client[cmd.GetType()]?.Receive(unitComponent.Get(cmd.UnitId), cmd);   
                 }
                     
                 // 循环Tick()
@@ -169,6 +165,6 @@ namespace ET.Client
             {
                 // 等待3s
             }
-        }   
+        } 
     }
 }

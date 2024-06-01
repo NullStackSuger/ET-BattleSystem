@@ -51,13 +51,10 @@ namespace ET.Client
                     C2M_NormalAtk c2MNormalAtk = new();
                     c2MNormalAtk.CastConfigId = 0001;
                     self.ClientScene().GetComponent<SessionComponent>().Session.Call(c2MNormalAtk).Coroutine();
+                    
                     C2M_FrameCmd c2MFrameCmd = new();
                     c2MFrameCmd.Cmd = new LSFTestCmd() { Value = "C2S" };
-                    RuntimeTypeModel.Default.Add(typeof (LSFCmd), true);
-                    RuntimeTypeModel.Default.Add(typeof (LSFTestCmd), true);
-                    RuntimeTypeModel.Default[typeof (LSFCmd)].AddSubType(100, typeof(LSFTestCmd));
                     self.ClientScene().GetComponent<SessionComponent>().Session.Send(c2MFrameCmd);
-                    Log.Warning("End Send");
                 }
             }
         }

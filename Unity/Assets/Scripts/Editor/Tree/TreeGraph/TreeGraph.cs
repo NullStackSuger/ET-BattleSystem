@@ -109,7 +109,7 @@ namespace ET
                         case DecoratorEditorNode decorator:
                             foreach (BaseNode child in baseNode.GetOutputNodes())
                             {
-                                NodeHelper.SetField(node.NodeData,"Child", (child as EditorNodeBase).NodeData);
+                                ReflectHelper.SetField(node.NodeData,"Child", (child as EditorNodeBase).NodeData);
                                 break;
                             }
                             break;
@@ -119,7 +119,7 @@ namespace ET
                             {
                                 temp.Add((child as EditorNodeBase).NodeData);
                             }
-                            NodeHelper.SetField(node.NodeData,"Children", temp.ToArray());
+                            ReflectHelper.SetField(node.NodeData,"Children", temp.ToArray());
                             break;
                     }
                 }

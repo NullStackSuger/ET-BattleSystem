@@ -1,7 +1,7 @@
 namespace ET.Server
 {
     [LSFComponentHandler(typeof(TestComponent))]
-    [FriendOfAttribute(typeof(ET.Server.LSFComponent))]
+    [FriendOf(typeof(LSFComponent))]
     public class LSFTestComponentHandler : LSFComponentHandler
     {
         public override void TickStart(GameRoomComponent room, Entity component)
