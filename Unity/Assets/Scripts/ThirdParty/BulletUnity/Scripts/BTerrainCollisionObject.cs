@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿/*
+using UnityEngine;
 using System;
 using System.Collections;
 using BulletSharp;
@@ -9,7 +10,7 @@ namespace BulletUnity
     Custom verson of the collision object for handling heightfields to deal with some issues matching terrains to heighfields
     1) Unity heitfiels have pivot at corner. Bullet heightfields have pivot at center
     2) Can't rotate unity heightfields        
-    */
+    #1#
     public class BTerrainCollisionObject : BCollisionObject
     {
         TerrainData td;
@@ -104,3 +105,4 @@ namespace BulletUnity
 
     }
 }
+*/

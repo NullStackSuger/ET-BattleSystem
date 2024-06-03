@@ -786,6 +786,22 @@
       <Link>BulletUnity\BulletSharp\Utilities.cs</Link>
     </Compile>
 
+    <Compile Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\Examples\Scripts\AddForcesAndTorques.cs">
+      <Link>BulletUnity\Examples\Scripts\AddForcesAndTorques.cs</Link>
+    </Compile>
+
+    <Compile Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\Examples\Scripts\MoveKinematicObject.cs">
+      <Link>BulletUnity\Examples\Scripts\MoveKinematicObject.cs</Link>
+    </Compile>
+
+    <Compile Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\Examples\Scripts\SetAngularAndLinearVelocity.cs">
+      <Link>BulletUnity\Examples\Scripts\SetAngularAndLinearVelocity.cs</Link>
+    </Compile>
+
+    <Compile Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\Examples\Scripts\SimpleOfflineSimulation.cs">
+      <Link>BulletUnity\Examples\Scripts\SimpleOfflineSimulation.cs</Link>
+    </Compile>
+
     <Compile Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\Scripts\BCamera.cs">
       <Link>BulletUnity\Scripts\BCamera.cs</Link>
     </Compile>
@@ -918,124 +934,12 @@
       <Link>BulletUnity\Scripts\Constraints\BTypedConstraint.cs</Link>
     </Compile>
 
-    <Compile Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\Scripts\Constraints\Editor\B6DOFConstraintEditor.cs">
-      <Link>BulletUnity\Scripts\Constraints\Editor\B6DOFConstraintEditor.cs</Link>
-    </Compile>
-
-    <Compile Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\Scripts\Constraints\Editor\BBallSocketConstraintEditor.cs">
-      <Link>BulletUnity\Scripts\Constraints\Editor\BBallSocketConstraintEditor.cs</Link>
-    </Compile>
-
-    <Compile Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\Scripts\Constraints\Editor\BConeTwistConstraintEditor.cs">
-      <Link>BulletUnity\Scripts\Constraints\Editor\BConeTwistConstraintEditor.cs</Link>
-    </Compile>
-
-    <Compile Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\Scripts\Constraints\Editor\BFixedConstraintEditor.cs">
-      <Link>BulletUnity\Scripts\Constraints\Editor\BFixedConstraintEditor.cs</Link>
-    </Compile>
-
-    <Compile Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\Scripts\Constraints\Editor\BHingedConstraintEditor.cs">
-      <Link>BulletUnity\Scripts\Constraints\Editor\BHingedConstraintEditor.cs</Link>
-    </Compile>
-
-    <Compile Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\Scripts\Constraints\Editor\BSliderConstraintEditor.cs">
-      <Link>BulletUnity\Scripts\Constraints\Editor\BSliderConstraintEditor.cs</Link>
-    </Compile>
-
-    <Compile Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\Scripts\Constraints\Editor\BTypedConstraintEditor.cs">
-      <Link>BulletUnity\Scripts\Constraints\Editor\BTypedConstraintEditor.cs</Link>
-    </Compile>
-
     <Compile Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\Scripts\DebugDrawUnity.cs">
       <Link>BulletUnity\Scripts\DebugDrawUnity.cs</Link>
     </Compile>
 
     <Compile Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\Scripts\Debug\BDebug.cs">
       <Link>BulletUnity\Scripts\Debug\BDebug.cs</Link>
-    </Compile>
-
-    <Compile Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\Scripts\Editor\BBoxShapeEditor.cs">
-      <Link>BulletUnity\Scripts\Editor\BBoxShapeEditor.cs</Link>
-    </Compile>
-
-    <Compile Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\Scripts\Editor\BBvhTriangleMeshShapeEditor.cs">
-      <Link>BulletUnity\Scripts\Editor\BBvhTriangleMeshShapeEditor.cs</Link>
-    </Compile>
-
-    <Compile Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\Scripts\Editor\BCapsuleShapeEditor.cs">
-      <Link>BulletUnity\Scripts\Editor\BCapsuleShapeEditor.cs</Link>
-    </Compile>
-
-    <Compile Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\Scripts\Editor\BCollisionObjectEditor.cs">
-      <Link>BulletUnity\Scripts\Editor\BCollisionObjectEditor.cs</Link>
-    </Compile>
-
-    <Compile Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\Scripts\Editor\BCompoundShapeEditor.cs">
-      <Link>BulletUnity\Scripts\Editor\BCompoundShapeEditor.cs</Link>
-    </Compile>
-
-    <Compile Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\Scripts\Editor\BConeShapeEditor.cs">
-      <Link>BulletUnity\Scripts\Editor\BConeShapeEditor.cs</Link>
-    </Compile>
-
-    <Compile Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\Scripts\Editor\BConvexHullShapeEditor.cs">
-      <Link>BulletUnity\Scripts\Editor\BConvexHullShapeEditor.cs</Link>
-    </Compile>
-
-    <Compile Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\Scripts\Editor\BConvexTriangleMeshShapeEditor.cs">
-      <Link>BulletUnity\Scripts\Editor\BConvexTriangleMeshShapeEditor.cs</Link>
-    </Compile>
-
-    <Compile Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\Scripts\Editor\BCylinderShapeEditor.cs">
-      <Link>BulletUnity\Scripts\Editor\BCylinderShapeEditor.cs</Link>
-    </Compile>
-
-    <Compile Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\Scripts\Editor\BGhostObjectEditor.cs">
-      <Link>BulletUnity\Scripts\Editor\BGhostObjectEditor.cs</Link>
-    </Compile>
-
-    <Compile Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\Scripts\Editor\BMultiSphereShapeEditor.cs">
-      <Link>BulletUnity\Scripts\Editor\BMultiSphereShapeEditor.cs</Link>
-    </Compile>
-
-    <Compile Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\Scripts\Editor\BPairCachingGhostObjectEditor.cs">
-      <Link>BulletUnity\Scripts\Editor\BPairCachingGhostObjectEditor.cs</Link>
-    </Compile>
-
-    <Compile Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\Scripts\Editor\BPhysicsWorldEditor.cs">
-      <Link>BulletUnity\Scripts\Editor\BPhysicsWorldEditor.cs</Link>
-    </Compile>
-
-    <Compile Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\Scripts\Editor\BPrimitiveComponentOrderSorter.cs">
-      <Link>BulletUnity\Scripts\Editor\BPrimitiveComponentOrderSorter.cs</Link>
-    </Compile>
-
-    <Compile Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\Scripts\Editor\BRigidBodyEditor.cs">
-      <Link>BulletUnity\Scripts\Editor\BRigidBodyEditor.cs</Link>
-    </Compile>
-
-    <Compile Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\Scripts\Editor\BSoftBodyComponentOrderSorter.cs">
-      <Link>BulletUnity\Scripts\Editor\BSoftBodyComponentOrderSorter.cs</Link>
-    </Compile>
-
-    <Compile Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\Scripts\Editor\BSoftBodyEditor.cs">
-      <Link>BulletUnity\Scripts\Editor\BSoftBodyEditor.cs</Link>
-    </Compile>
-
-    <Compile Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\Scripts\Editor\BSphereShapeEditor.cs">
-      <Link>BulletUnity\Scripts\Editor\BSphereShapeEditor.cs</Link>
-    </Compile>
-
-    <Compile Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\Scripts\Editor\EditorHelpers.cs">
-      <Link>BulletUnity\Scripts\Editor\EditorHelpers.cs</Link>
-    </Compile>
-
-    <Compile Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\Scripts\Editor\EditorInterface.cs">
-      <Link>BulletUnity\Scripts\Editor\EditorInterface.cs</Link>
-    </Compile>
-
-    <Compile Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\Scripts\Editor\PrimitiveEditor.cs">
-      <Link>BulletUnity\Scripts\Editor\PrimitiveEditor.cs</Link>
     </Compile>
 
     <Compile Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\Scripts\Extensions\EnumsExtension.cs">
@@ -1741,6 +1645,69 @@
       </Content>
       <Content Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\BulletSharp\Utilities.cs.meta">
         <Link>BulletUnity\BulletSharp\Utilities.cs.meta</Link>
+      </Content>
+      <Content Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\Examples\Materials.meta">
+        <Link>BulletUnity\Examples\Materials.meta</Link>
+      </Content>
+      <Content Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\Examples\Materials\Ground.mat">
+        <Link>BulletUnity\Examples\Materials\Ground.mat</Link>
+      </Content>
+      <Content Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\Examples\Materials\Ground.mat.meta">
+        <Link>BulletUnity\Examples\Materials\Ground.mat.meta</Link>
+      </Content>
+      <Content Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\Examples\Materials\Object.mat">
+        <Link>BulletUnity\Examples\Materials\Object.mat</Link>
+      </Content>
+      <Content Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\Examples\Materials\Object.mat.meta">
+        <Link>BulletUnity\Examples\Materials\Object.mat.meta</Link>
+      </Content>
+      <Content Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\Examples\Materials\RopeMaterial.mat">
+        <Link>BulletUnity\Examples\Materials\RopeMaterial.mat</Link>
+      </Content>
+      <Content Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\Examples\Materials\RopeMaterial.mat.meta">
+        <Link>BulletUnity\Examples\Materials\RopeMaterial.mat.meta</Link>
+      </Content>
+      <Content Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\Examples\Prefabs.meta">
+        <Link>BulletUnity\Examples\Prefabs.meta</Link>
+      </Content>
+      <Content Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\Examples\Prefabs\Cube.prefab">
+        <Link>BulletUnity\Examples\Prefabs\Cube.prefab</Link>
+      </Content>
+      <Content Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\Examples\Prefabs\Cube.prefab.meta">
+        <Link>BulletUnity\Examples\Prefabs\Cube.prefab.meta</Link>
+      </Content>
+      <Content Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\Examples\Prefabs\Rope.prefab">
+        <Link>BulletUnity\Examples\Prefabs\Rope.prefab</Link>
+      </Content>
+      <Content Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\Examples\Prefabs\Rope.prefab.meta">
+        <Link>BulletUnity\Examples\Prefabs\Rope.prefab.meta</Link>
+      </Content>
+      <Content Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\Examples\Prefabs\SoftBody.prefab">
+        <Link>BulletUnity\Examples\Prefabs\SoftBody.prefab</Link>
+      </Content>
+      <Content Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\Examples\Prefabs\SoftBody.prefab.meta">
+        <Link>BulletUnity\Examples\Prefabs\SoftBody.prefab.meta</Link>
+      </Content>
+      <Content Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\Examples\SceneMenu.meta">
+        <Link>BulletUnity\Examples\SceneMenu.meta</Link>
+      </Content>
+      <Content Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\Examples\Scenes.meta">
+        <Link>BulletUnity\Examples\Scenes.meta</Link>
+      </Content>
+      <Content Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\Examples\Scripts.meta">
+        <Link>BulletUnity\Examples\Scripts.meta</Link>
+      </Content>
+      <Content Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\Examples\Scripts\AddForcesAndTorques.cs.meta">
+        <Link>BulletUnity\Examples\Scripts\AddForcesAndTorques.cs.meta</Link>
+      </Content>
+      <Content Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\Examples\Scripts\MoveKinematicObject.cs.meta">
+        <Link>BulletUnity\Examples\Scripts\MoveKinematicObject.cs.meta</Link>
+      </Content>
+      <Content Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\Examples\Scripts\SetAngularAndLinearVelocity.cs.meta">
+        <Link>BulletUnity\Examples\Scripts\SetAngularAndLinearVelocity.cs.meta</Link>
+      </Content>
+      <Content Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\Examples\Scripts\SimpleOfflineSimulation.cs.meta">
+        <Link>BulletUnity\Examples\Scripts\SimpleOfflineSimulation.cs.meta</Link>
       </Content>
       <Content Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\InternalResources.meta">
         <Link>BulletUnity\InternalResources.meta</Link>
@@ -2561,27 +2528,6 @@
       <Content Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\Scripts\Constraints\Editor.meta">
         <Link>BulletUnity\Scripts\Constraints\Editor.meta</Link>
       </Content>
-      <Content Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\Scripts\Constraints\Editor\B6DOFConstraintEditor.cs.meta">
-        <Link>BulletUnity\Scripts\Constraints\Editor\B6DOFConstraintEditor.cs.meta</Link>
-      </Content>
-      <Content Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\Scripts\Constraints\Editor\BBallSocketConstraintEditor.cs.meta">
-        <Link>BulletUnity\Scripts\Constraints\Editor\BBallSocketConstraintEditor.cs.meta</Link>
-      </Content>
-      <Content Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\Scripts\Constraints\Editor\BConeTwistConstraintEditor.cs.meta">
-        <Link>BulletUnity\Scripts\Constraints\Editor\BConeTwistConstraintEditor.cs.meta</Link>
-      </Content>
-      <Content Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\Scripts\Constraints\Editor\BFixedConstraintEditor.cs.meta">
-        <Link>BulletUnity\Scripts\Constraints\Editor\BFixedConstraintEditor.cs.meta</Link>
-      </Content>
-      <Content Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\Scripts\Constraints\Editor\BHingedConstraintEditor.cs.meta">
-        <Link>BulletUnity\Scripts\Constraints\Editor\BHingedConstraintEditor.cs.meta</Link>
-      </Content>
-      <Content Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\Scripts\Constraints\Editor\BSliderConstraintEditor.cs.meta">
-        <Link>BulletUnity\Scripts\Constraints\Editor\BSliderConstraintEditor.cs.meta</Link>
-      </Content>
-      <Content Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\Scripts\Constraints\Editor\BTypedConstraintEditor.cs.meta">
-        <Link>BulletUnity\Scripts\Constraints\Editor\BTypedConstraintEditor.cs.meta</Link>
-      </Content>
       <Content Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\Scripts\Debug.meta">
         <Link>BulletUnity\Scripts\Debug.meta</Link>
       </Content>
@@ -2593,69 +2539,6 @@
       </Content>
       <Content Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\Scripts\Editor.meta">
         <Link>BulletUnity\Scripts\Editor.meta</Link>
-      </Content>
-      <Content Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\Scripts\Editor\BBoxShapeEditor.cs.meta">
-        <Link>BulletUnity\Scripts\Editor\BBoxShapeEditor.cs.meta</Link>
-      </Content>
-      <Content Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\Scripts\Editor\BBvhTriangleMeshShapeEditor.cs.meta">
-        <Link>BulletUnity\Scripts\Editor\BBvhTriangleMeshShapeEditor.cs.meta</Link>
-      </Content>
-      <Content Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\Scripts\Editor\BCapsuleShapeEditor.cs.meta">
-        <Link>BulletUnity\Scripts\Editor\BCapsuleShapeEditor.cs.meta</Link>
-      </Content>
-      <Content Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\Scripts\Editor\BCollisionObjectEditor.cs.meta">
-        <Link>BulletUnity\Scripts\Editor\BCollisionObjectEditor.cs.meta</Link>
-      </Content>
-      <Content Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\Scripts\Editor\BCompoundShapeEditor.cs.meta">
-        <Link>BulletUnity\Scripts\Editor\BCompoundShapeEditor.cs.meta</Link>
-      </Content>
-      <Content Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\Scripts\Editor\BConeShapeEditor.cs.meta">
-        <Link>BulletUnity\Scripts\Editor\BConeShapeEditor.cs.meta</Link>
-      </Content>
-      <Content Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\Scripts\Editor\BConvexHullShapeEditor.cs.meta">
-        <Link>BulletUnity\Scripts\Editor\BConvexHullShapeEditor.cs.meta</Link>
-      </Content>
-      <Content Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\Scripts\Editor\BConvexTriangleMeshShapeEditor.cs.meta">
-        <Link>BulletUnity\Scripts\Editor\BConvexTriangleMeshShapeEditor.cs.meta</Link>
-      </Content>
-      <Content Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\Scripts\Editor\BCylinderShapeEditor.cs.meta">
-        <Link>BulletUnity\Scripts\Editor\BCylinderShapeEditor.cs.meta</Link>
-      </Content>
-      <Content Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\Scripts\Editor\BGhostObjectEditor.cs.meta">
-        <Link>BulletUnity\Scripts\Editor\BGhostObjectEditor.cs.meta</Link>
-      </Content>
-      <Content Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\Scripts\Editor\BMultiSphereShapeEditor.cs.meta">
-        <Link>BulletUnity\Scripts\Editor\BMultiSphereShapeEditor.cs.meta</Link>
-      </Content>
-      <Content Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\Scripts\Editor\BPairCachingGhostObjectEditor.cs.meta">
-        <Link>BulletUnity\Scripts\Editor\BPairCachingGhostObjectEditor.cs.meta</Link>
-      </Content>
-      <Content Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\Scripts\Editor\BPhysicsWorldEditor.cs.meta">
-        <Link>BulletUnity\Scripts\Editor\BPhysicsWorldEditor.cs.meta</Link>
-      </Content>
-      <Content Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\Scripts\Editor\BPrimitiveComponentOrderSorter.cs.meta">
-        <Link>BulletUnity\Scripts\Editor\BPrimitiveComponentOrderSorter.cs.meta</Link>
-      </Content>
-      <Content Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\Scripts\Editor\BRigidBodyEditor.cs.meta">
-        <Link>BulletUnity\Scripts\Editor\BRigidBodyEditor.cs.meta</Link>
-      </Content>
-      <Content Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\Scripts\Editor\BSoftBodyComponentOrderSorter.cs.meta">
-        <Link>BulletUnity\Scripts\Editor\BSoftBodyComponentOrderSorter.cs.meta</Link>
-      </Content>
-      <Content Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\Scripts\Editor\BSoftBodyEditor.cs.meta">
-        <Link>BulletUnity\Scripts\Editor\BSoftBodyEditor.cs.meta</Link>
-      </Content>
-      <Content Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\Scripts\Editor\BSphereShapeEditor.cs.meta">
-        <Link>BulletUnity\Scripts\Editor\BSphereShapeEditor.cs.meta</Link>
-      </Content>
-      <Content Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\Scripts\Editor\EditorHelpers.cs.meta">
-        <Link>BulletUnity\Scripts\Editor\EditorHelpers.cs.meta</Link>
-      </Content>
-      <Content Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\Scripts\Editor\EditorInterface.cs.meta">
-        <Link>BulletUnity\Scripts\Editor\EditorInterface.cs.meta</Link>
-      </Content>
-      <Content Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\Scripts\Editor\PrimitiveEditor.cs.meta">
-        <Link>BulletUnity\Scripts\Editor\PrimitiveEditor.cs.meta</Link>
       </Content>
       <Content Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\Scripts\Extensions.meta">
         <Link>BulletUnity\Scripts\Extensions.meta</Link>
