@@ -10,10 +10,8 @@ namespace ET.Server
         {
             protected override void Update(GameRoomComponent self)
             {
-                if (self.IsStart == false) return;
-                
-                Log.Info(self.Frame);
-                
+                if (!self.IsStart) return;
+                if (self.Syncs.Count <= 0) return;
                 for (int i = self.Syncs.Count - 1; i >= 0; --i)
                 {
                     LSFComponent lsf = self.Syncs[i];
@@ -23,11 +21,11 @@ namespace ET.Server
                         continue;
                     }
                 }
-
+                
                 self.Receive();
                 self.Tick();
                 self.Send();
-
+                
                 ++self.Frame;
             }
         }
@@ -45,7 +43,7 @@ namespace ET.Server
         {
             foreach (LSFComponent lsf in self.Syncs)
             {
-                if (!lsf.Receives.TryGetValue(self.Frame, out Queue<LSFCmd> receives)) continue;
+                if (!lsf.Receives.TryGetValue(self.Frame, out SortedSet<LSFCmd> receives)) continue;
 
                 Unit unit = lsf.GetParent<Unit>();
                 
@@ -61,19 +59,36 @@ namespace ET.Server
         private static void Send(this GameRoomComponent self)
         {
             M2C_FrameCmd m2CFrameCmd = new();
+            SortedSet<LSFCmd> cmds = new();
             foreach (LSFComponent lsf in self.Syncs)
             {
+                if (self.AllCmds.TryGetValue(self.Frame, out Queue<LSFCmd> allCmds))
+                {
+                    foreach (LSFCmd cmd in allCmds)
+                    {
+                        cmds.Add(cmd);
+                    }
+                }
+
+                if (lsf.Sends.TryGetValue(self.Frame, out SortedSet<LSFCmd> sends))
+                {
+                    foreach (LSFCmd cmd in sends)
+                    {
+                        cmds.Add(cmd);
+                    }
+                }
+                
+                //---------------------------------------------------------------------------------
+                
                 Unit unit = lsf.GetParent<Unit>();
-
-                if (!lsf.Sends.TryGetValue(self.Frame, out Queue<LSFCmd> sends)) continue;
-
-                foreach (LSFCmd cmd in sends)
+                foreach (LSFCmd cmd in cmds)
                 {
                     m2CFrameCmd.Cmd = cmd;
-                    NoticeClientHelper.Send(unit, m2CFrameCmd, NoticeClientType.Broad);;
+                    NoticeClientHelper.Send(unit, m2CFrameCmd, NoticeClientType.Broad);
                 }
 
                 lsf.Sends.Remove(self.Frame);
+                cmds.Clear();
             }
         }
 
@@ -123,6 +138,13 @@ namespace ET.Server
             
             if (!self.Syncs.Contains(lsf))
                 self.Syncs.Add(lsf);
+        }
+
+        public static void RecordCmd(this GameRoomComponent self, LSFCmd cmd)
+        {
+            if (!self.AllCmds.ContainsKey(cmd.Frame))
+                self.AllCmds.Add(cmd.Frame, new Queue<LSFCmd>());
+            self.AllCmds[cmd.Frame].Enqueue(cmd);
         }
     }
 }

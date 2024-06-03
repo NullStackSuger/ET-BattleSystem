@@ -6,7 +6,7 @@ namespace ET
     public class SelectorNode : Entity, INode, IAwake, IDestroy
     {
         [BsonIgnore]
-        public Entity[] Children
+        public new Entity[] Children
         {
             get
             {

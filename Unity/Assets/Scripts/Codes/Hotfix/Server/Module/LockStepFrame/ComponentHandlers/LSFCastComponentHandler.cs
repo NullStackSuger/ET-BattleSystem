@@ -7,15 +7,12 @@ namespace ET.Server
     {
         public override void TickStart(GameRoomComponent room, Entity component)
         {
-            Log.Info("Server.TickStart");
         }
         public override void Tick(GameRoomComponent room, Entity component)
         {
-            Log.Info("Server.Tick");
         }
         public override void TickEnd(GameRoomComponent room, Entity component)
         {
-            Log.Info("Server.TickEnd");
         }
     }
 }

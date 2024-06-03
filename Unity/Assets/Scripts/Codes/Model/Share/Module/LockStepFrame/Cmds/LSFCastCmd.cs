@@ -1,4 +1,6 @@
 // 由Creat LSFCmd Editor生成
+
+using System.Collections.Generic;
 using ProtoBuf;
 namespace ET
 {
@@ -6,6 +8,7 @@ namespace ET
     [ProtobufBaseTypeRegister]
     public class LSFCastCmd: LSFCmd
     {
-        // 暂时不知道添什么属性
+        [ProtoMember(1)]
+        public List<Cast> Casts = new();
     }
 }

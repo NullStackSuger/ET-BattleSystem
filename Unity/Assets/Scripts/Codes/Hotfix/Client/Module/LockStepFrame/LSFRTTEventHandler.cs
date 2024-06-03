@@ -1,4 +1,4 @@
-using ET.EventType;
+/*using ET.EventType;
 
 namespace ET.Client
 {
@@ -28,4 +28,4 @@ namespace ET.Client
             }
         }
     }
-}
+}*/

@@ -27,6 +27,8 @@ namespace ET.Server
                     unit.AddComponent<ActionComponent>();
                     unit.AddComponent<CastComponent>();
                     unit.AddComponent<BuffComponent>();
+
+                    unit.AddComponent<TestComponent>();
                     
                     return unit;
                 }
@@ -37,7 +39,6 @@ namespace ET.Server
 
         public static Unit CreatCast(Scene scene, int castConfigId, float3 position, quaternion rotation)
         {
-            // Error: unitComponent == null
             UnitComponent unitComponent = scene.GetComponent<UnitComponent>();
             // 这里暂时先添1001, 以后再修改配置表
             Unit unit = unitComponent.AddChild<Unit, int>(1001);

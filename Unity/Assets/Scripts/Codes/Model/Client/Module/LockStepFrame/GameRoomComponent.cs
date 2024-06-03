@@ -13,8 +13,6 @@ namespace ET.Client
         /// </summary>
         [StaticField]
         public static readonly uint MaxAhead = 10;
-
-        public bool IsStart;
                 
         public uint Frame;
         
@@ -46,7 +44,10 @@ namespace ET.Client
         {
             get
             {
-                return this.Frame - this.MainPlayer.GetComponent<LSFComponent>().Receives.Last().Value.Peek().Frame + 0;
+                if (this.MainPlayer.GetComponent<LSFComponent>().Receives.Count <= 0)
+                    return this.Frame - 0;
+                else
+                    return this.Frame - this.MainPlayer.GetComponent<LSFComponent>().Receives.Last().Value.First().Frame + 0;
             }
         }
 

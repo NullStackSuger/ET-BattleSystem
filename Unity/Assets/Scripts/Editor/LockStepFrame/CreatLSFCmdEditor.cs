@@ -37,7 +37,6 @@ namespace ET
                 fieldInfos = type.GetFields();
                 foreach (FieldInfo info in fieldInfos)
                 {
-                    Debug.Log($"{info.FieldType} {info.Name}");
                     fields.Add((info.FieldType, info.Name));
                 }
                 
@@ -95,8 +94,10 @@ namespace ET
                 str.AppendLine("    [ProtobufBaseTypeRegister]");
                 str.AppendLine($"    public class LSF{this.Name}Cmd: LSFCmd");
                 str.AppendLine("    {");
+                int index = 1;
                 foreach (var field in this.Fields)
                 {
+                    str.AppendLine($"        [ProtoMember({index++})]");
                     str.AppendLine($"        public {field.Key} {field.Value};");
                 }
                 str.AppendLine("    }");

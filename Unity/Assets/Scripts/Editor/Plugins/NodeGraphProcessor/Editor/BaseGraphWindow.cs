@@ -156,11 +156,11 @@ namespace GraphProcessor
 			reloadWorkaround = true;
 		}
 		
-		void LinkGraphWindowToScene(Scene scene)
+		void LinkGraphWindowToScene(UnityEngine.SceneManagement.Scene scene)
 		{
 			EditorSceneManager.sceneClosed += CloseWindowWhenSceneIsClosed;
 
-			void CloseWindowWhenSceneIsClosed(Scene closedScene)
+			void CloseWindowWhenSceneIsClosed(UnityEngine.SceneManagement.Scene closedScene)
 			{
 				if (scene == closedScene)
 				{

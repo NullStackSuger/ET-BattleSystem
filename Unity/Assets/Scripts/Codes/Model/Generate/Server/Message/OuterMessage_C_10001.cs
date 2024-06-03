@@ -493,9 +493,6 @@ namespace ET
 		[ProtoMember(2)]
 		public long CasterId { get; set; }
 
-		[ProtoMember(3)]
-		public List<long> TargetsId { get; set; }
-
 	}
 
 	[Message(OuterMessage.M2C_CastTick)]
@@ -548,9 +545,6 @@ namespace ET
 		[ProtoMember(2)]
 		public long CasterId { get; set; }
 
-		[ProtoMember(3)]
-		public List<long> TargetsId { get; set; }
-
 	}
 
 	[Message(OuterMessage.M2C_BuffTick)]
@@ -589,7 +583,7 @@ namespace ET
 
 	}
 
-// Other------------------------------------------------------
+// ClientView------------------------------------------------------
 	[Message(OuterMessage.M2C_HpChanged)]
 	[ProtoContract]
 	public partial class M2C_HpChanged: ProtoObject, IActorMessage
@@ -605,10 +599,10 @@ namespace ET
 
 	}
 
-	[ResponseType(nameof(M2C_NormalAtk))]
-	[Message(OuterMessage.C2M_NormalAtk)]
+	[ResponseType(nameof(M2C_UseCast))]
+	[Message(OuterMessage.C2M_UseCast)]
 	[ProtoContract]
-	public partial class C2M_NormalAtk: ProtoObject, IActorLocationRequest
+	public partial class C2M_UseCast: ProtoObject, IActorLocationRequest
 	{
 		[ProtoMember(90)]
 		public int RpcId { get; set; }
@@ -618,9 +612,9 @@ namespace ET
 
 	}
 
-	[Message(OuterMessage.M2C_NormalAtk)]
+	[Message(OuterMessage.M2C_UseCast)]
 	[ProtoContract]
-	public partial class M2C_NormalAtk: ProtoObject, IActorLocationResponse
+	public partial class M2C_UseCast: ProtoObject, IActorLocationResponse
 	{
 		[ProtoMember(90)]
 		public int RpcId { get; set; }
@@ -633,62 +627,47 @@ namespace ET
 
 	}
 
-	[Message(OuterMessage.C2M_FrameCmd)]
+// Frame------------------------------------------------------
+	[ResponseType(nameof(M2C_FrameCmdRes))]
+	[Message(OuterMessage.C2M_FrameCmdReq)]
 	[ProtoContract]
-	public partial class C2M_FrameCmd: ProtoObject, IActorLocationMessage
+	public partial class C2M_FrameCmdReq: ProtoObject, IActorLocationRequest
 	{
 		[ProtoMember(90)]
 		public int RpcId { get; set; }
 
 		[ProtoMember(1)]
 		public LSFCmd Cmd { get; set; }
+
+	}
+
+	[Message(OuterMessage.M2C_FrameCmdRes)]
+	[ProtoContract]
+	public partial class M2C_FrameCmdRes: ProtoObject, IActorLocationResponse
+	{
+		[ProtoMember(90)]
+		public int RpcId { get; set; }
+
+		[ProtoMember(91)]
+		public int Error { get; set; }
+
+		[ProtoMember(92)]
+		public string Message { get; set; }
+
+		[ProtoMember(1)]
+		public uint Frame { get; set; }
 
 	}
 
 	[Message(OuterMessage.M2C_FrameCmd)]
 	[ProtoContract]
-	public partial class M2C_FrameCmd: ProtoObject, IActorLocationMessage
+	public partial class M2C_FrameCmd: ProtoObject, IActorMessage
 	{
 		[ProtoMember(90)]
 		public int RpcId { get; set; }
 
 		[ProtoMember(1)]
 		public LSFCmd Cmd { get; set; }
-
-	}
-
-// 用于设置GameRoomComponent.TargetRTT
-	[ResponseType(nameof(M2C_Ping))]
-	[Message(OuterMessage.C2M_Ping)]
-	[ProtoContract]
-	public partial class C2M_Ping: ProtoObject, IActorLocationRequest
-	{
-		[ProtoMember(90)]
-		public int RpcId { get; set; }
-
-		[ProtoMember(93)]
-		public long ActorId { get; set; }
-
-	}
-
-	[Message(OuterMessage.M2C_Ping)]
-	[ProtoContract]
-	public partial class M2C_Ping: ProtoObject, IActorLocationResponse
-	{
-		[ProtoMember(90)]
-		public int RpcId { get; set; }
-
-		[ProtoMember(92)]
-		public string Message { get; set; }
-
-		[ProtoMember(91)]
-		public int Error { get; set; }
-
-		[ProtoMember(1)]
-		public long TimePoint { get; set; }
-
-		[ProtoMember(93)]
-		public uint ServerFrame { get; set; }
 
 	}
 
@@ -735,11 +714,10 @@ namespace ET
 		 public const ushort M2C_BuffTick = 10040;
 		 public const ushort M2C_BuffRemove = 10041;
 		 public const ushort M2C_HpChanged = 10042;
-		 public const ushort C2M_NormalAtk = 10043;
-		 public const ushort M2C_NormalAtk = 10044;
-		 public const ushort C2M_FrameCmd = 10045;
-		 public const ushort M2C_FrameCmd = 10046;
-		 public const ushort C2M_Ping = 10047;
-		 public const ushort M2C_Ping = 10048;
+		 public const ushort C2M_UseCast = 10043;
+		 public const ushort M2C_UseCast = 10044;
+		 public const ushort C2M_FrameCmdReq = 10045;
+		 public const ushort M2C_FrameCmdRes = 10046;
+		 public const ushort M2C_FrameCmd = 10047;
 	}
 }

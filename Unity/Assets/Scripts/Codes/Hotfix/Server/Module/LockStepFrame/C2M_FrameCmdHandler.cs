@@ -1,17 +1,33 @@
+using MongoDB.Bson;
+
 namespace ET.Server
 {
     [ActorMessageHandler(SceneType.Map)]
-    [FriendOfAttribute(typeof(ET.Server.GameRoomComponent))]
-    public class C2M_FrameCmdHandler : AMActorLocationHandler<Unit, C2M_FrameCmd>
+    [FriendOf(typeof(GameRoomComponent))]
+    public class C2M_FrameCmdHandler : AMActorLocationRpcHandler<Unit, C2M_FrameCmdReq, M2C_FrameCmdRes>
     {
-        protected override async ETTask Run(Unit entity, C2M_FrameCmd message)
+        protected override async ETTask Run(Unit unit, C2M_FrameCmdReq request, M2C_FrameCmdRes response)
         {
-            Log.Warning("C2M_FrameCmd");
+            /*foreach (Entity entity in ServerSceneManagerComponent.Instance.Children.Values)
+            {
+                Scene scene = entity as Scene;
+                if (scene.SceneType != SceneType.Map) continue;
+                Log.Warning($"{scene.Name} | {scene.SceneType} | {scene.DomainZone()}");
+                Log.Warning(scene.GetComponent<UnitComponent>() == null);
+                Log.Warning("------------------------------------------------");
+            }*/
+            /*Scene scene = unit.DomainScene();
+            Log.Warning($"{scene.Name} | {scene.SceneType} | {scene.DomainZone()}");
+            Log.Warning(scene.GetComponent<UnitComponent>() == null);*/
+            
             GameRoomComponent room = Root.Instance.Scene.GetComponent<GameRoomComponent>();
-            room.TryAddSync(entity);
-            LSFComponent lsf = entity.GetComponent<LSFComponent>();
-            lsf.AddToReceive(message.Cmd);
             room.IsStart = true;
+            room.TryAddSync(unit);
+            LSFComponent lsf = unit.GetComponent<LSFComponent>();
+            lsf.AddToReceive(request.Cmd);
+
+            response.Frame = room.Frame;
+            
             await ETTask.CompletedTask;
         }
     }

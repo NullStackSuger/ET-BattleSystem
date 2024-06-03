@@ -6,7 +6,9 @@ namespace ET
     [ProtobufBaseTypeRegister]
     public class LSFCmd
     {
+        [ProtoMember(1)]
         public uint Frame;
+        [ProtoMember(2)]
         public long UnitId;
     }
     

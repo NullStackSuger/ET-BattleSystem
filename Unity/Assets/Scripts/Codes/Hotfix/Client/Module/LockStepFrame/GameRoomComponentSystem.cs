@@ -12,16 +12,14 @@ namespace ET.Client
         {
             protected override void Update(GameRoomComponent self)
             {
-                if (self.IsStart == false) return;
                 if (self.MainPlayer == null || self.MainPlayer.IsDisposed) return;
-
-                Log.Warning(self.Frame);
                 
                 self.Receive();
                 self.Tick();
                 self.Send();
-                self.NetErrorHandler();
+                //self.NetErrorHandler();
 
+                //Log.Warning($"Client Frame {self.Frame}");
                 ++self.Frame;
             }
         }
@@ -32,7 +30,7 @@ namespace ET.Client
             UnitComponent unitComponent = Root.Instance.Scene.GetComponent<UnitComponent>();
             LSFComponent lsf = self.MainPlayer.GetComponent<LSFComponent>();
             Queue<LSFCmd> unCheckCmds = new();
-            if (!lsf.Receives.TryGetValue(self.Frame, out Queue<LSFCmd> receives)) return true;
+            if (!lsf.Receives.TryGetValue(self.Frame, out SortedSet<LSFCmd> receives)) return true;
             
             foreach (LSFCmd cmd in receives)
             {
@@ -86,14 +84,14 @@ namespace ET.Client
 
         private static void Send(this GameRoomComponent self)
         { 
-            C2M_FrameCmd c2MFrameCmd = new();
+            C2M_FrameCmdReq c2MFrameCmd = new();
             LSFComponent lsf = self.MainPlayer.GetComponent<LSFComponent>();
-            if (!lsf.Sends.TryGetValue(self.Frame, out Queue<LSFCmd> sends)) return;
+            if (!lsf.Sends.TryGetValue(self.Frame, out SortedSet<LSFCmd> sends)) return;
 
             foreach (LSFCmd cmd in sends)
             {
                 c2MFrameCmd.Cmd = cmd;
-                self.ClientScene().GetComponent<SessionComponent>().Session.Send(c2MFrameCmd);
+                ClientSceneManagerComponent.Instance.Get(1).GetComponent<SessionComponent>().Session.Call(c2MFrameCmd).Coroutine();
             }
 
             lsf.Sends.Remove(self.Frame);
@@ -164,6 +162,7 @@ namespace ET.Client
             if (self.CurrentAhead > GameRoomComponent.MaxAhead)
             {
                 // 等待3s
+                Log.Warning("掉线");
             }
         } 
     }

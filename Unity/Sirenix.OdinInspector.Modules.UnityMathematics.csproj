@@ -330,9 +330,6 @@
     <Reference Include="System.Text.Encoding.CodePages">
       <HintPath>D:\ToolSoft\U3D\Project\ETs\ET-BattleSystem\Unity\Assets\Plugins\MongoDB\System.Text.Encoding.CodePages.dll</HintPath>
     </Reference>
-    <Reference Include="System.Runtime.CompilerServices.Unsafe">
-      <HintPath>D:\ToolSoft\U3D\Project\ETs\ET-BattleSystem\Unity\Assets\Plugins\MongoDB\System.Runtime.CompilerServices.Unsafe.dll</HintPath>
-    </Reference>
     <Reference Include="MongoDB.Driver.Core">
       <HintPath>D:\ToolSoft\U3D\Project\ETs\ET-BattleSystem\Unity\Assets\Plugins\MongoDB\MongoDB.Driver.Core.dll</HintPath>
     </Reference>
@@ -350,6 +347,9 @@
     </Reference>
     <Reference Include="CommandLine">
       <HintPath>D:\ToolSoft\U3D\Project\ETs\ET-BattleSystem\Unity\Assets\Plugins\CommandLine.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Runtime.CompilerServices.Unsafe">
+      <HintPath>D:\ToolSoft\U3D\Project\ETs\ET-BattleSystem\Unity\Assets\Plugins\MongoDB\System.Runtime.CompilerServices.Unsafe.dll</HintPath>
     </Reference>
     <Reference Include="Sirenix.Utilities.Editor">
       <HintPath>D:\ToolSoft\U3D\Project\ETs\ET-BattleSystem\Unity\Assets\Plugins\Sirenix\Assemblies\Sirenix.Utilities.Editor.dll</HintPath>

@@ -244,7 +244,6 @@ message M2C_CastCreat // IActorMessage
 
 	int64 CastId = 1;
 	int64 CasterId = 2;
-	repeated int64 TargetsId = 3;
 }
 
 message M2C_CastTick // IActorMessage
@@ -273,7 +272,6 @@ message M2C_BuffCreat // IActorMessage
 
 	int64 BuffId = 1;
 	int64 CasterId = 2;
-	repeated int64 TargetsId = 3;
 }
 
 message M2C_BuffTick // IActorMessage
@@ -294,7 +292,7 @@ message M2C_BuffRemove // IActorMessage
 	repeated int64 TargetsId = 3;
 }
 
-// Other------------------------------------------------------
+// ClientView------------------------------------------------------
 
 message M2C_HpChanged // IActorMessage
 {
@@ -303,49 +301,44 @@ message M2C_HpChanged // IActorMessage
 	int64 Damage = 3;
 }
 
-//ResponseType M2C_NormalAtk
-message C2M_NormalAtk // IActorLocationRequest
+//ResponseType M2C_UseCast
+message C2M_UseCast // IActorLocationRequest
 {
 	int32 RpcId = 90;
 
 	int32 CastConfigId = 1;
 }
 
-message M2C_NormalAtk // IActorLocationResponse
+message M2C_UseCast // IActorLocationResponse
 {
 	int32 RpcId = 90;
 	int32 Error = 91;
 	string Message = 92;
 }
 
-message C2M_FrameCmd // IActorLocationMessage
+// Frame------------------------------------------------------
+
+//ResponseType M2C_FrameCmdRes
+message C2M_FrameCmdReq // IActorLocationRequest
 {
 	int32 RpcId = 90;
 	
   	LSFCmd Cmd = 1;
 }
 
+message M2C_FrameCmdRes // IActorLocationResponse
+{
+	int32 RpcId = 90;
+	int32 Error = 91;
+	string Message = 92;
 
-message M2C_FrameCmd // IActorLocationMessage
+	uint32 Frame = 1;
+}
+
+
+message M2C_FrameCmd // IActorMessage
 {
 	int32 RpcId = 90;
 
   	LSFCmd Cmd = 1;
-}
-
-// 用于设置GameRoomComponent.TargetRTT
-//ResponseType M2C_Ping
-message C2M_Ping // IActorLocationRequest
-{
-  int32 RpcId = 90;
-  int64 ActorId = 93;
-}
-
-message M2C_Ping // IActorLocationResponse
-{
-  int32 RpcId = 90;
-  string Message = 92;
-  int32 Error = 91;
-  int64 TimePoint = 1;
-  uint32 ServerFrame = 93;
 }

@@ -20,8 +20,8 @@ namespace ET.Client
         public static void AddToSend(this LSFComponent self, LSFCmd cmd)
         {
             if (!self.Sends.ContainsKey(cmd.Frame))
-                self.Sends.Add(cmd.Frame, new Queue<LSFCmd>());
-            self.Sends[cmd.Frame].Enqueue(cmd);
+                self.Sends.Add(cmd.Frame, new SortedSet<LSFCmd>());
+            self.Sends[cmd.Frame].Add(cmd);
         }
 
         /// <summary>
@@ -30,8 +30,8 @@ namespace ET.Client
         public static void AddToReceive(this LSFComponent self, LSFCmd cmd)
         {
             if (!self.Receives.ContainsKey(cmd.Frame))
-                self.Receives.Add(cmd.Frame, new Queue<LSFCmd>());
-            self.Receives[cmd.Frame].Enqueue(cmd);
+                self.Receives.Add(cmd.Frame, new SortedSet<LSFCmd>());
+            self.Receives[cmd.Frame].Add(cmd);
         }
     }
 }

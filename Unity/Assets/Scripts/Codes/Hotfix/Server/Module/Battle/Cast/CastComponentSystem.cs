@@ -33,7 +33,6 @@ namespace ET.Server
                 foreach (Cast cast in self.Casts)
                 {
                     message.CasterId = cast.Owner.Id;
-                    message.TargetsId = cast.Targets;
                     
                     NoticeClientHelper.Send(cast.Owner, message,
                         (NoticeClientType)CastConfigCategory.Instance.Get(cast.ConfigId).NoticeClientType);
@@ -56,6 +55,7 @@ namespace ET.Server
             message.CasterId = cast.Owner.Id;
             NoticeClientHelper.Send(cast.Owner, message, 
                 (NoticeClientType)CastConfigCategory.Instance.Get(configId).NoticeClientType);
+            MessageHelper.NoticeUnitAdd(castUnit, castUnit);
             Log.Warning("SendMessageToClient");
 
             return cast;

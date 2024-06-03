@@ -1,3 +1,4 @@
+// 由Creat LSFCmd Editor生成
 namespace ET.Server
 {
     [LSFComponentHandler(typeof(TestComponent))]
@@ -6,17 +7,15 @@ namespace ET.Server
     {
         public override void TickStart(GameRoomComponent room, Entity component)
         {
-            Log.Info("Server.TickStart");
+            Log.Info("Server.TickStart TestComponent");
         }
-
         public override void Tick(GameRoomComponent room, Entity component)
         {
-            Log.Info("Server.Tick");
+            Log.Info("Server.Tick TestComponent");
         }
-
         public override void TickEnd(GameRoomComponent room, Entity component)
         {
-            Log.Info("Server.TickEnd");
+            Log.Info("Server.TickEnd TestComponent");
         }
     }
 }

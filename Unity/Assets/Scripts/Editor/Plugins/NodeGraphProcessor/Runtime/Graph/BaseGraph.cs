@@ -131,7 +131,7 @@ namespace GraphProcessor
 		Dictionary< BaseNode, int >						computeOrderDictionary = new Dictionary< BaseNode, int >();
 
 		[NonSerialized]
-		Scene							linkedScene;
+		UnityEngine.SceneManagement.Scene							linkedScene;
 
 		//graph visual properties
 		[HideInInspector]
@@ -149,7 +149,7 @@ namespace GraphProcessor
 		/// <summary>
 		/// Triggered when the graph is linked to an active scene.
 		/// </summary>
-		public event Action< Scene >			onSceneLinked;
+		public event Action< UnityEngine.SceneManagement.Scene >			onSceneLinked;
 
 		/// <summary>
 		/// Triggered when the graph is changed
@@ -699,7 +699,7 @@ namespace GraphProcessor
 		/// Link the current graph to the scene in parameter, allowing the graph to pick and serialize objects from the scene.
 		/// </summary>
 		/// <param name="scene">Target scene to link</param>
-		public void LinkToScene(Scene scene)
+		public void LinkToScene(UnityEngine.SceneManagement.Scene scene)
 		{
 			linkedScene = scene;
 			onSceneLinked?.Invoke(scene);
@@ -713,7 +713,7 @@ namespace GraphProcessor
 		/// <summary>
 		/// Get the linked scene. If there is no linked scene, it returns an invalid scene
 		/// </summary>
-		public Scene GetLinkedScene() => linkedScene;
+		public UnityEngine.SceneManagement.Scene GetLinkedScene() => linkedScene;
 
 		HashSet<BaseNode> infiniteLoopTracker = new HashSet<BaseNode>();
 		int UpdateComputeOrderBreadthFirst(int depth, BaseNode node)

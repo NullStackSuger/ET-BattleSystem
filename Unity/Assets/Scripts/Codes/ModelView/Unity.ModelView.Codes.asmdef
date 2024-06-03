@@ -2,7 +2,6 @@
     "name": "Unity.ModelView.Codes",
     "rootNamespace": "ET",
     "references": [
-        "BulletUnity",
         "Unity.Mathematics",
         "Unity.ThirdParty",
         "Unity.Loader",

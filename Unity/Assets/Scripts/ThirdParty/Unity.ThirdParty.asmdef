@@ -1,7 +1,9 @@
 {
     "name": "Unity.ThirdParty",
     "rootNamespace": "ET",
-    "references": [],
+    "references": [
+        "GUID:71c248b9be2ae064ba039ecd187ee1b1"
+    ],
     "includePlatforms": [],
     "excludePlatforms": [],
     "allowUnsafeCode": true,

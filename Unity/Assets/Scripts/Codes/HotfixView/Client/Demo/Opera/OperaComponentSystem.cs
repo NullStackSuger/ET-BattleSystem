@@ -5,6 +5,7 @@ using UnityEngine;
 namespace ET.Client
 {
     [FriendOf(typeof(OperaComponent))]
+    [FriendOfAttribute(typeof(ET.Client.GameRoomComponent))]
     public static class OperaComponentSystem
     {
         [ObjectSystem]
@@ -17,6 +18,7 @@ namespace ET.Client
         }
 
         [ObjectSystem]
+        [FriendOf(typeof(GameRoomComponent))]
         public class OperaComponentUpdateSystem : UpdateSystem<OperaComponent>
         {
             protected override void Update(OperaComponent self)
@@ -39,7 +41,7 @@ namespace ET.Client
                     EventSystem.Instance.Load();
                     Log.Debug("hot reload success!");
                 }
-            
+
                 if (Input.GetKeyDown(KeyCode.T))
                 {
                     C2M_TransferMap c2MTransferMap = new C2M_TransferMap();
@@ -48,15 +50,35 @@ namespace ET.Client
 
                 if (Input.GetKeyDown(KeyCode.Q))
                 {
-                    C2M_NormalAtk c2MNormalAtk = new();
-                    c2MNormalAtk.CastConfigId = 0001;
-                    self.ClientScene().GetComponent<SessionComponent>().Session.Call(c2MNormalAtk).Coroutine();
+                    /*C2M_UseCast c2MUseCast = new();
+                    c2MUseCast.CastConfigId = 0001;
+                    self.ClientScene().GetComponent<SessionComponent>().Session.Call(c2MUseCast).Coroutine();*/
+
+                    //self.Test().Coroutine();
                     
-                    C2M_FrameCmd c2MFrameCmd = new();
-                    c2MFrameCmd.Cmd = new LSFTestCmd() { Value = "C2S" };
-                    self.ClientScene().GetComponent<SessionComponent>().Session.Send(c2MFrameCmd);
+                    GameRoomComponent room = Root.Instance.Scene.GetComponent<GameRoomComponent>();
+                    Unit castUnit = room.MainPlayer.GetComponent<CastComponent>().Creat(0001);
                 }
             }
+        }
+
+        private static async ETTask Test(this OperaComponent self)
+        {
+            GameRoomComponent room = Root.Instance.Scene.GetComponent<GameRoomComponent>();
+
+            UnitComponent unitComponent = self.ClientScene().GetComponent<UnitComponent>();
+
+            Unit castUnit = room.MainPlayer.GetComponent<CastComponent>().Creat(0001);
+
+            C2M_FrameCmdReq c2MFrameCmd = new();
+            c2MFrameCmd.Cmd = new LSFCastCmd()
+            {
+                Frame = room.Frame,
+                UnitId = castUnit.Id,
+            };
+            Log.Warning($"ClientView Frame: {c2MFrameCmd.Cmd.Frame}");
+            M2C_FrameCmdRes res = await self.ClientScene().GetComponent<SessionComponent>().Session.Call(c2MFrameCmd) as M2C_FrameCmdRes;
+            room.TargetAhead = room.Frame - res.Frame;
         }
     }
 }

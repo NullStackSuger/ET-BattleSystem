@@ -34,10 +34,10 @@ namespace ET.Client
             }
         }
 
-        public static Cast Creat(this CastComponent self, int configId)
+        public static Unit Creat(this CastComponent self, int configId)
         {
             // 创建技能 
-            Unit castUnit = UnitFactory.CreatCast(configId, float3.zero, quaternion.identity);
+            Unit castUnit = UnitFactory.CreatCast(self.DomainScene(), configId, float3.zero, quaternion.identity);
             Cast cast = castUnit.GetComponent<Cast>();
             self.Casts.Add(cast);
 
@@ -47,7 +47,7 @@ namespace ET.Client
             // 发送事件
             EventSystem.Instance.Publish(cast.DomainScene(), new EventType.CastCreat() { CastId = cast.Id });
 
-            return cast;
+            return castUnit;
         }
 
         public static void Remove(this CastComponent self, int id)

@@ -6,8 +6,9 @@ namespace ET
     [ProtobufBaseTypeRegister]
     public class LSFTreeCmd: LSFCmd
     {
-        public string TreeName;
-
+        [ProtoMember(1)]
+        public long TreeId;
+        [ProtoMember(2)]
         public BlackBoard BlackBoard;
     }
 }

@@ -3,7 +3,6 @@
     "rootNamespace": "ET",
     "references": [
         "Unity.Mathematics",
-        "BulletUnity",
         "Unity.ThirdParty",
         "Unity.Core"
     ],
