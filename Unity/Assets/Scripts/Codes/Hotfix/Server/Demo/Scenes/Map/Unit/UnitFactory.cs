@@ -27,8 +27,6 @@ namespace ET.Server
                     unit.AddComponent<ActionComponent>();
                     unit.AddComponent<CastComponent>();
                     unit.AddComponent<BuffComponent>();
-
-                    unit.AddComponent<TestComponent>();
                     
                     return unit;
                 }

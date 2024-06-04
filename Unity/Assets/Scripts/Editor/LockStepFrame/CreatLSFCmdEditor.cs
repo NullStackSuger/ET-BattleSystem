@@ -27,7 +27,7 @@ namespace ET
 
             string name = "";
             FieldInfo[] fieldInfos = null;
-            List<(Type, string)> fields = new();
+            Dictionary<string, Type> fields = new();
             foreach (Type type in this.GetAllCmds())
             {
                 name = type.ToString().Split(".")[^1];
@@ -35,12 +35,14 @@ namespace ET
                 
                 // 遍历获取属性 : 反射获取属性
                 fieldInfos = type.GetFields();
+                Type baseType = type.BaseType;
                 foreach (FieldInfo info in fieldInfos)
                 {
-                    fields.Add((info.FieldType, info.Name));
+                    if (baseType.GetField(info.Name) != null) continue;
+                    fields.Add(info.Name, info.FieldType);
                 }
                 
-                tree.Add($"{name}", new LSFCmdItem(name, $"{name}Component", fields.ToArray()));
+                tree.Add($"{name}", new LSFCmdItem(name, $"{name}Component", fields));
                 fields.Clear();
             }
             
@@ -52,20 +54,16 @@ namespace ET
             [FoldoutGroup("节点信息")]
             public string Name;
             [FoldoutGroup("节点信息")][ShowInInspector]
-            public Dictionary<Type, string> Fields = new();
+            public Dictionary<string, Type> Fields = new();
             [FoldoutGroup("节点信息")][ShowInInspector]
             public string ConnectComponent;
             
             [LabelText("CmdPath")][ReadOnly]
             public string CmdPath = "";
-            [LabelText("Server.CmdHandlerPath")][ReadOnly]
-            public string ServerCmdHandlerPath = "";
-            [LabelText("Client.CmdHandlerPath")][ReadOnly]
-            public string ClientCmdHandlerPath = "";
-            [LabelText("Server.ComponentHandlerPath")][ReadOnly]
-            public string ServerComponentHandlerPath = "";
-            [LabelText("Client.ComponentHandlerPath")][ReadOnly]
-            public string ClientComponentHandlerPath = "";
+            [LabelText("Server HandlerPath")][ReadOnly]
+            public string ServerHandlerPath = "";
+            [LabelText("Client HandlerPath")][ReadOnly]
+            public string ClientHandlerPath = "";
             
             private void SaveFile(string path, string name, string context)
             {
@@ -79,15 +77,15 @@ namespace ET
             public void Apply()
             {
                 if (this.CmdPath == "") this.CmdPath = Setting.CmdPath;
-                if (this.ServerCmdHandlerPath == "") this.ServerCmdHandlerPath = Setting.ServerCmdHandlerPath;
-                if (this.ClientCmdHandlerPath == "") this.ClientCmdHandlerPath = Setting.ClientCmdHandlerPath;
-                if (this.ServerComponentHandlerPath == "") this.ServerComponentHandlerPath = Setting.ServerComponentHandlerPath;
-                if (this.ClientComponentHandlerPath == "") this.ClientComponentHandlerPath = Setting.ClientComponentHandlerPath;
+                if (this.ServerHandlerPath == "") this.ServerHandlerPath = Setting.ServerHandlerPath;
+                if (this.ClientHandlerPath == "") this.ClientHandlerPath = Setting.ClientHandlerPath;
                 
                 StringBuilder str = new();
+                
                 #region Cmd
                 str.AppendLine("// 由Creat LSFCmd Editor生成");
                 str.AppendLine("using ProtoBuf;");
+                str.AppendLine("using System.Collections.Generic;");
                 str.AppendLine("namespace ET");
                 str.AppendLine("{");
                 str.AppendLine("    [ProtoContract]");
@@ -98,7 +96,7 @@ namespace ET
                 foreach (var field in this.Fields)
                 {
                     str.AppendLine($"        [ProtoMember({index++})]");
-                    str.AppendLine($"        public {field.Key} {field.Value};");
+                    str.AppendLine($"        public {field.Value} {field.Key};");
                 }
                 str.AppendLine("    }");
                 str.AppendLine("}");
@@ -106,99 +104,76 @@ namespace ET
                 SaveFile(this.CmdPath, $"LSF{this.Name}Cmd.cs", str.ToString());
                 str.Clear();
                 #endregion
-                #region ServerComponentHandler
+
+                #region Server LSFHandler
                 str.AppendLine("// 由Creat LSFCmd Editor生成");
                 str.AppendLine("namespace ET.Server");
                 str.AppendLine("{");
-                str.AppendLine($"    [LSFComponentHandler(typeof({this.ConnectComponent}))]");
-                str.AppendLine("    [FriendOf(typeof(LSFComponent))]");
-                str.AppendLine($"    public class LSF{this.Name}ComponentHandler : LSFComponentHandler");
+                str.AppendLine($"    [LSFHandler(typeof({this.ConnectComponent}), typeof(LSF{this.Name}Cmd))]");
+                str.AppendLine("    [FriendOf(typeof(GameRoomComponent))]");
+                str.AppendLine($"    public class LSF{this.Name}Handler: LSFHandler<{this.ConnectComponent}, LSF{this.Name}Cmd>");
                 str.AppendLine("    {");
-                str.AppendLine("        public override void TickStart(GameRoomComponent room, Entity component)");
+                str.AppendLine($"        public override void TickStart(GameRoomComponent room, {this.ConnectComponent} component)");
                 str.AppendLine("        {");
-                str.AppendLine("            Log.Info(\"Server.TickStart\");");
+                str.AppendLine();
                 str.AppendLine("        }");
-                str.AppendLine("        public override void Tick(GameRoomComponent room, Entity component)");
+                str.AppendLine($"        public override void Tick(GameRoomComponent room, {this.ConnectComponent} component)");
                 str.AppendLine("        {");
-                str.AppendLine("            Log.Info(\"Server.Tick\");");
+                str.AppendLine();
                 str.AppendLine("        }");
-                str.AppendLine("        public override void TickEnd(GameRoomComponent room, Entity component)");
+                str.AppendLine($"        public override void TickEnd(GameRoomComponent room, {this.ConnectComponent} component)");
                 str.AppendLine("        {");
-                str.AppendLine("            Log.Info(\"Server.TickEnd\");");
+                str.AppendLine();
+                str.AppendLine("        }");
+                str.AppendLine();
+                str.AppendLine($"        public override void Receive(Unit unit, LSF{this.Name}Cmd cmd)");
+                str.AppendLine("        {");
+                str.AppendLine();
                 str.AppendLine("        }");
                 str.AppendLine("    }");
                 str.AppendLine("}");
                 
-                SaveFile(this.ServerComponentHandlerPath, $"LSF{this.Name}ComponentHandler.cs", str.ToString());
+                SaveFile(this.ServerHandlerPath, $"LSF{this.Name}Handler.cs", str.ToString());
                 str.Clear();
                 #endregion
-                #region ClientComponentHandler
+                
+                #region Client LSFHandler
                 str.AppendLine("// 由Creat LSFCmd Editor生成");
                 str.AppendLine("namespace ET.Client");
                 str.AppendLine("{");
-                str.AppendLine($"    [LSFComponentHandler(typeof({this.ConnectComponent}))]");
-                str.AppendLine("    [FriendOf(typeof(LSFComponent))]");
-                str.AppendLine($"    public class LSF{this.Name}ComponentHandler : LSFComponentHandler");
+                str.AppendLine($"    [LSFHandler(typeof({this.ConnectComponent}), typeof(LSF{this.Name}Cmd))]");
+                str.AppendLine("    [FriendOf(typeof(GameRoomComponent))]");
+                str.AppendLine($"    public class LSF{this.Name}Handler: LSFHandler<{this.ConnectComponent}, LSF{this.Name}Cmd>");
                 str.AppendLine("    {");
-                str.AppendLine("        public override void TickStart(GameRoomComponent room, Entity component, bool needSend)");
+                str.AppendLine($"        public override void TickStart(GameRoomComponent room, {this.ConnectComponent} component, bool inRollBack)");
                 str.AppendLine("        {");
-                str.AppendLine("            Log.Info(\"Client.TickStart\");");
+                str.AppendLine();
                 str.AppendLine("        }");
-                str.AppendLine("        public override void Tick(GameRoomComponent room, Entity component, bool needSend)");
+                str.AppendLine($"        public override void Tick(GameRoomComponent room, {this.ConnectComponent} component, bool inRollBack)");
                 str.AppendLine("        {");
-                str.AppendLine("            Log.Info(\"Client.Tick\");");
+                str.AppendLine();
                 str.AppendLine("        }");
-                str.AppendLine("        public override void TickEnd(GameRoomComponent room, Entity component, bool needSend)");
+                str.AppendLine($"        public override void TickEnd(GameRoomComponent room, {this.ConnectComponent} component, bool inRollBack)");
                 str.AppendLine("        {");
-                str.AppendLine("            Log.Info(\"Client.TickEnd\");");
+                str.AppendLine();
                 str.AppendLine("        }");
-                str.AppendLine("        public override bool Check(GameRoomComponent room, Entity component, LSFCmd cmd)");
+                str.AppendLine();
+                str.AppendLine($"        public override void Receive(Unit unit, LSF{this.Name}Cmd cmd)");
                 str.AppendLine("        {");
-                str.AppendLine("            Log.Info(\"Client.Check\");");
+                str.AppendLine();
+                str.AppendLine("        }");
+                str.AppendLine($"        public override bool Check(GameRoomComponent room, {this.ConnectComponent} component, LSF{this.Name}Cmd cmd)");
+                str.AppendLine("        {");
                 str.AppendLine("            return true;");
                 str.AppendLine("        }");
-                str.AppendLine("        public override void RollBack(GameRoomComponent room, Entity component, LSFCmd cmd)");
+                str.AppendLine($"        public override void RollBack(GameRoomComponent room, {this.ConnectComponent} component, LSF{this.Name}Cmd cmd)");
                 str.AppendLine("        {");
-                str.AppendLine("            Log.Info(\"Client.RollBack\");");
+                str.AppendLine();
                 str.AppendLine("        }");
                 str.AppendLine("    }");
                 str.AppendLine("}");
                 
-                SaveFile(this.ClientComponentHandlerPath, $"LSF{this.Name}ComponentHandler.cs", str.ToString());
-                str.Clear();
-                #endregion
-                #region ServerCmdHandlerPath
-                str.AppendLine("// 由Creat LSFCmd Editor生成");
-                str.AppendLine("namespace ET.Server");
-                str.AppendLine("{");
-                str.AppendLine($"    [LSFCmdHandler(typeof (LSF{this.Name}Cmd))]");
-                str.AppendLine($"    public class LSF{this.Name}CmdHandler: LSFCmdHandler");
-                str.AppendLine("    {");
-                str.AppendLine("        public override void Receive(Unit unit, LSFCmd cmd)");
-                str.AppendLine("        {");
-                str.AppendLine($"            var {Char.ToLower(this.Name[0]) + this.Name.Substring(1)}Cmd = cmd as LSF{this.Name}Cmd;");
-                str.AppendLine("        }");
-                str.AppendLine("    }");
-                str.AppendLine("}");
-                
-                SaveFile(this.ServerCmdHandlerPath, $"LSF{this.Name}CmdHandler.cs", str.ToString());
-                str.Clear();
-                #endregion
-                #region ClientCmdHandlerPath
-                str.AppendLine("// 由Creat LSFCmd Editor生成");
-                str.AppendLine("namespace ET.Client");
-                str.AppendLine("{");
-                str.AppendLine($"    [LSFCmdHandler(typeof (LSF{this.Name}Cmd))]");
-                str.AppendLine($"    public class LSF{this.Name}CmdHandler: LSFCmdHandler");
-                str.AppendLine("    {");
-                str.AppendLine("        public override void Receive(Unit unit, LSFCmd cmd)");
-                str.AppendLine("        {");
-                str.AppendLine($"            var {Char.ToLower(this.Name[0]) + this.Name.Substring(1)}Cmd = cmd as LSF{this.Name}Cmd;");
-                str.AppendLine("        }");
-                str.AppendLine("    }");
-                str.AppendLine("}");
-                
-                SaveFile(this.ClientCmdHandlerPath, $"LSF{this.Name}CmdHandler.cs", str.ToString());
+                SaveFile(this.ClientHandlerPath, $"LSF{this.Name}Handler.cs", str.ToString());
                 str.Clear();
                 #endregion
             }
@@ -206,19 +181,17 @@ namespace ET
             [Button("Delete", 25), GUIColor(0.4f, 0.8f, 0)]
             public void Delete()
             {
-                if (this.ServerCmdHandlerPath == "" || this.ClientCmdHandlerPath == "" || this.ServerComponentHandlerPath == "" || this.ClientComponentHandlerPath == "")
-                    return;
+                if (this.CmdPath == "" || this.ServerHandlerPath == "" || this.ClientHandlerPath == "") return;
+
+                string path = "";
                 
-                string path = $"{this.ServerCmdHandlerPath}/LSF{this.Name}CmdHandler.cs";
+                path = $"{this.CmdPath}/LSF{this.Name}Cmd.cs";
                 if (File.Exists(path)) File.Delete(path);
                 else Debug.LogWarning($"文件不存在: {path}");
-                path = $"{this.ClientCmdHandlerPath}/LSF{this.Name}CmdHandler.cs";
+                path = $"{this.ServerHandlerPath}/LSF{this.Name}CmdHandler.cs";
                 if (File.Exists(path)) File.Delete(path);
                 else Debug.LogWarning($"文件不存在: {path}");
-                path = $"{this.ServerComponentHandlerPath}/LSF{this.Name}ComponentHandler.cs";
-                if (File.Exists(path)) File.Delete(path);
-                else Debug.LogWarning($"文件不存在: {path}");
-                path = $"{this.ClientComponentHandlerPath}/LSF{this.Name}ComponentHandler.cs";
+                path = $"{this.ClientHandlerPath}/LSF{this.Name}CmdHandler.cs";
                 if (File.Exists(path)) File.Delete(path);
                 else Debug.LogWarning($"文件不存在: {path}");
             }
@@ -226,7 +199,7 @@ namespace ET
             public LSFCmdItem()
             {
             }
-            public LSFCmdItem(string name, string connectComponent, params (Type, string)[] fields)
+            public LSFCmdItem(string name, string connectComponent, params (string, Type)[] fields)
             {
                 this.Name = name;
                 this.ConnectComponent = connectComponent;
@@ -236,10 +209,22 @@ namespace ET
                 }
 
                 this.CmdPath = Setting.CmdPath;
-                this.ServerCmdHandlerPath = Setting.ServerCmdHandlerPath;
-                this.ClientCmdHandlerPath = Setting.ClientCmdHandlerPath;
-                this.ServerComponentHandlerPath = Setting.ServerComponentHandlerPath;
-                this.ClientComponentHandlerPath = Setting.ClientComponentHandlerPath;
+                this.ServerHandlerPath = Setting.ServerHandlerPath;
+                this.ClientHandlerPath = Setting.ClientHandlerPath;
+            }
+
+            public LSFCmdItem(string name, string connectComponent, Dictionary<string, Type> fields)
+            {
+                this.Name = name;
+                this.ConnectComponent = connectComponent;
+                foreach (var field in fields)
+                {
+                    Fields.Add(field.Key, field.Value);
+                }
+
+                this.CmdPath = Setting.CmdPath;
+                this.ServerHandlerPath = Setting.ServerHandlerPath;
+                this.ClientHandlerPath = Setting.ClientHandlerPath;
             }
         }
 
@@ -247,14 +232,10 @@ namespace ET
         {
             [LabelText("Cmd")] [FolderPath][StaticField][ShowInInspector]
             public static string CmdPath = "Assets/Scripts/Codes/Model/Share/Module/LockStepFrame/Cmds";
-            [LabelText("Server.CmdHandler")] [FolderPath][StaticField][ShowInInspector]
-            public static string ServerCmdHandlerPath = "Assets/Scripts/Codes/Hotfix/Server/Module/LockStepFrame/CmdHandlers";
-            [LabelText("Client.CmdHandler")] [FolderPath][StaticField][ShowInInspector]
-            public static string ClientCmdHandlerPath = "Assets/Scripts/Codes/Hotfix/Client/Module/LockStepFrame/CmdHandlers";
-            [LabelText("Server.ComponentHandler")] [FolderPath][StaticField][ShowInInspector]
-            public static string ServerComponentHandlerPath = "Assets/Scripts/Codes/Hotfix/Server/Module/LockStepFrame/ComponentHandlers";
-            [LabelText("Client.ComponentHandler")] [FolderPath][StaticField][ShowInInspector]
-            public static string ClientComponentHandlerPath = "Assets/Scripts/Codes/Hotfix/Client/Module/LockStepFrame/ComponentHandlers";
+            [LabelText("Server Handler")] [FolderPath][StaticField][ShowInInspector]
+            public static string ServerHandlerPath = "Assets/Scripts/Codes/Hotfix/Server/Module/LockStepFrame/LSFHandler";
+            [LabelText("Client Handler")] [FolderPath][StaticField][ShowInInspector]
+            public static string ClientHandlerPath = "Assets/Scripts/Codes/Hotfix/Client/Module/LockStepFrame/LSFHandler";
         }
     }
 }

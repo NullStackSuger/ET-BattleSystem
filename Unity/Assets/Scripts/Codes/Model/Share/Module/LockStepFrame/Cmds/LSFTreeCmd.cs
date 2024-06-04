@@ -7,8 +7,8 @@ namespace ET
     public class LSFTreeCmd: LSFCmd
     {
         [ProtoMember(1)]
-        public long TreeId;
+        public System.Int64 TreeId;
         [ProtoMember(2)]
-        public BlackBoard BlackBoard;
+        public ET.BlackBoard BlackBoard;
     }
 }

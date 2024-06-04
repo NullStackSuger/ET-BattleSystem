@@ -1,6 +1,4 @@
 // 由Creat LSFCmd Editor生成
-
-using BulletSharp;
 using ProtoBuf;
 namespace ET
 {
@@ -9,8 +7,8 @@ namespace ET
     public class LSFB3CollisionCmd: LSFCmd
     {
         [ProtoMember(1)]
-        public RigidBodyConstructionInfo BodyInfo;
+        public BulletSharp.RigidBodyConstructionInfo BodyInfo;
         [ProtoMember(2)]
-        public long OwnerId;
+        public System.Int64 OwnerId;
     }
 }

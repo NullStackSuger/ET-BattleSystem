@@ -5,9 +5,16 @@ namespace ET.Server
     [ComponentOf(typeof(Scene))]
     public class GameRoomComponent : Entity, IAwake, IUpdate, IDestroy
     {
-        public List<LSFComponent> Syncs = new();
+        /// <summary>
+        /// 需要Tick同步的Units
+        /// </summary>
+        public List<Unit> Syncs = new();
 
-        public Dictionary<uint, Queue<LSFCmd>> AllCmds = new();
+        public SortedDictionary<uint, SortedSet<LSFCmd>> AllCmds = new();
+
+        public SortedDictionary<uint, SortedSet<LSFCmd>> Sends = new();
+
+        public SortedDictionary<uint, SortedSet<LSFCmd>> Receives = new();
         
         public uint Frame;
 

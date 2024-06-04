@@ -1,9 +1,12 @@
 using System.Collections.Generic;
+using System.Linq;
 
 namespace ET.Server
 {
+    //TODO: 需要将此组件挂在Map上而不是Root
+    // 有时间整理一下Root的组件
+    // Dispatcher尽量改成static class 而不是Entity
     [FriendOf(typeof(GameRoomComponent))]
-    [FriendOf(typeof(LSFComponent))]
     public static class GameRoomComponentSystem
     {
         public class UpdateSystem : UpdateSystem<GameRoomComponent>
@@ -12,15 +15,6 @@ namespace ET.Server
             {
                 if (!self.IsStart) return;
                 if (self.Syncs.Count <= 0) return;
-                for (int i = self.Syncs.Count - 1; i >= 0; --i)
-                {
-                    LSFComponent lsf = self.Syncs[i];
-                    if (lsf == null || lsf.IsDisposed)
-                    {
-                        self.Syncs.RemoveAt(i);
-                        continue;
-                    }
-                }
                 
                 self.Receive();
                 self.Tick();
@@ -41,88 +35,97 @@ namespace ET.Server
 
         private static void Receive(this GameRoomComponent self)
         {
-            foreach (LSFComponent lsf in self.Syncs)
-            {
-                if (!lsf.Receives.TryGetValue(self.Frame, out SortedSet<LSFCmd> receives)) continue;
+            if (self.Receives.Count <= 0) return;
+            
+            SortedSet<LSFCmd> receives = self.Receives.First().Value;
 
-                Unit unit = lsf.GetParent<Unit>();
-                
-                foreach (LSFCmd cmd in receives)
-                {
-                    LSFCmdHandlerDispatcher.Server[cmd.GetType()]?.Receive(unit, cmd);
-                }
-                
-                lsf.Receives.Remove(self.Frame);
+            foreach (LSFCmd cmd in receives)
+            {
+                LSFHandlerDispatcher.Handlers[cmd.GetType()]?.OnReceive(self, cmd);
             }
+
+            self.Receives.Remove(receives.First().Frame);
         }
 
         private static void Send(this GameRoomComponent self)
         {
+            if (!self.Sends.TryGetValue(self.Frame, out SortedSet<LSFCmd> sends)) return;
+            
             M2C_FrameCmd m2CFrameCmd = new();
-            SortedSet<LSFCmd> cmds = new();
-            foreach (LSFComponent lsf in self.Syncs)
+            UnitComponent unitComponent = self.DomainScene().GetComponent<UnitComponent>();
+
+            foreach (LSFCmd cmd in sends)
             {
-                if (self.AllCmds.TryGetValue(self.Frame, out Queue<LSFCmd> allCmds))
-                {
-                    foreach (LSFCmd cmd in allCmds)
-                    {
-                        cmds.Add(cmd);
-                    }
-                }
-
-                if (lsf.Sends.TryGetValue(self.Frame, out SortedSet<LSFCmd> sends))
-                {
-                    foreach (LSFCmd cmd in sends)
-                    {
-                        cmds.Add(cmd);
-                    }
-                }
-                
-                //---------------------------------------------------------------------------------
-                
-                Unit unit = lsf.GetParent<Unit>();
-                foreach (LSFCmd cmd in cmds)
-                {
-                    m2CFrameCmd.Cmd = cmd;
-                    NoticeClientHelper.Send(unit, m2CFrameCmd, NoticeClientType.Broad);
-                }
-
-                lsf.Sends.Remove(self.Frame);
-                cmds.Clear();
+                Unit unit = unitComponent.Get(cmd.UnitId);
+                m2CFrameCmd.Cmd = cmd;
+                NoticeClientHelper.Send(unit, m2CFrameCmd, NoticeClientType.Broad);
             }
         }
-
-        /// <summary>
-        /// 这个Tick控制帧率相关
-        /// 如TickRate, NeedRollBack
-        /// </summary>
+        
         private static void Tick(this GameRoomComponent self)
         {
-            List<(LSFComponentHandler, Entity)> handlers = new();
-            foreach (LSFComponent lsf in self.Syncs)
+            // 检查Syncs是否存在
+            for (int i = self.Syncs.Count - 1; i >= 0; --i)
             {
-                Unit unit = lsf.GetParent<Unit>();
-                
+                Unit unit = self.Syncs[i];
+                if (unit == null || unit.IsDisposed)
+                {
+                    self.Syncs.RemoveAt(i);
+                    continue;
+                }
+            }
+            
+            // 记录所有Syncs的Handler
+            List<(ILSFHandler, Entity)> handlers = new();
+            foreach (Unit unit in self.Syncs)
+            {
                 foreach (var pair in unit.Components)
                 {
-                    if (!LSFComponentHandlerDispatcher.Server.TryGetValue(pair.Key, out var handler)) continue;
+                    if (!LSFHandlerDispatcher.Handlers.TryGetValue(pair.Key, out var handler)) continue;
 
                     handlers.Add((handler, pair.Value));
                 }
             }
             
-            foreach (var handler in handlers)
+            foreach (var pair in handlers)
             {
-                handler.Item1.TickStart(self, handler.Item2);
+                var handler = pair.Item1;
+                var component = pair.Item2;
+                
+                handler.OnTickStart(self, component);
             }
-            foreach (var handler in handlers)
+            foreach (var pair in handlers)
             {
-                handler.Item1.Tick(self, handler.Item2);
+                var handler = pair.Item1;
+                var component = pair.Item2;
+                
+                handler.OnTick(self, component);
             }
-            foreach (var handler in handlers)
+            foreach (var pair in handlers)
             {
-                handler.Item1.TickEnd(self, handler.Item2);
+                var handler = pair.Item1;
+                var component = pair.Item2;
+                
+                handler.OnTickEnd(self, component);
             }
+        }
+        
+        public static void AddToSend(this GameRoomComponent self, LSFCmd cmd)
+        {
+            if (!self.Sends.ContainsKey(cmd.Frame))
+                self.Sends.Add(cmd.Frame, new SortedSet<LSFCmd>());
+            self.Sends[cmd.Frame].Add(cmd);
+            
+            // 需要发送的消息都是服务器验证过的
+            // 所以在发送时记录而不是接收时
+            self.RecordCmd(cmd);
+        }
+
+        public static void AddToReceive(this GameRoomComponent self, LSFCmd cmd)
+        {
+            if (!self.Receives.ContainsKey(cmd.Frame))
+                self.Receives.Add(cmd.Frame, new SortedSet<LSFCmd>());
+            self.Receives[cmd.Frame].Add(cmd);
         }
 
         /// <summary>
@@ -130,21 +133,18 @@ namespace ET.Server
         /// </summary>
         public static void TryAddSync(this GameRoomComponent self, Unit unit)
         {
-            LSFComponent lsf = null;
-            if (!unit.Components.ContainsKey(typeof(LSFComponent)))
-                lsf = unit.AddComponent<LSFComponent>();
-            else 
-                lsf = unit.GetComponent<LSFComponent>();
-            
-            if (!self.Syncs.Contains(lsf))
-                self.Syncs.Add(lsf);
+            if (self.Syncs.Contains(unit)) return;
+            self.Syncs.Add(unit);
         }
 
+        /// <summary>
+        /// 记录Cmd
+        /// </summary>
         public static void RecordCmd(this GameRoomComponent self, LSFCmd cmd)
         {
             if (!self.AllCmds.ContainsKey(cmd.Frame))
-                self.AllCmds.Add(cmd.Frame, new Queue<LSFCmd>());
-            self.AllCmds[cmd.Frame].Enqueue(cmd);
+                self.AllCmds.Add(cmd.Frame, new SortedSet<LSFCmd>());
+            self.AllCmds[cmd.Frame].Add(cmd);
         }
     }
 }

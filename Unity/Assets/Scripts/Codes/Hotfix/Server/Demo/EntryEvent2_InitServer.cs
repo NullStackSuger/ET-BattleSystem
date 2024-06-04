@@ -37,8 +37,6 @@ namespace ET.Server
                         await SceneFactory.CreateServerScene(ServerSceneManagerComponent.Instance, startConfig.Id, startConfig.InstanceId, startConfig.Zone, startConfig.Name,
                             startConfig.Type, startConfig);
                     }
-
-                    Root.Instance.Scene.AddComponent<GameRoomComponent>();
                     
                     break;
                 }

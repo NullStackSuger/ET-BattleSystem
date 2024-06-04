@@ -9,6 +9,6 @@ namespace ET
     public class LSFBuffCmd: LSFCmd
     {
         [ProtoMember(1)]
-        public Dictionary<int, Buff> Buffs = new();
+        public Dictionary<int, Buff> Buffs;
     }
 }

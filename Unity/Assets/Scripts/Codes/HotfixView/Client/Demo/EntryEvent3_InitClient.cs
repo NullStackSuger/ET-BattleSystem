@@ -19,13 +19,13 @@ namespace ET.Client
 
             Root.Instance.Scene.AddComponent<NodeDispatcherComponent>();
 
-            B3WorldComponent world = Root.Instance.Scene.AddComponent<B3WorldComponent>();
-            
-            Root.Instance.Scene.AddComponent<GameRoomComponent>();
-
             await ResourcesComponent.Instance.LoadBundleAsync("unit.unity3d");
 
             Scene clientScene = await SceneFactory.CreateClientScene(1, "Game");
+            
+            clientScene.AddComponent<GameRoomComponent>();
+            
+            var world = clientScene.AddComponent<B3WorldComponent>();
 
             await EventSystem.Instance.PublishAsync(clientScene, new EventType.AppStartInitFinish());
 

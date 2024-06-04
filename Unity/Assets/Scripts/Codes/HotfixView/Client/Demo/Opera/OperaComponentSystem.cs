@@ -54,21 +54,18 @@ namespace ET.Client
                     c2MUseCast.CastConfigId = 0001;
                     self.ClientScene().GetComponent<SessionComponent>().Session.Call(c2MUseCast).Coroutine();*/
 
-                    //self.Test().Coroutine();
-                    
-                    GameRoomComponent room = Root.Instance.Scene.GetComponent<GameRoomComponent>();
-                    Unit castUnit = room.MainPlayer.GetComponent<CastComponent>().Creat(0001);
+                    self.CreatCast(0001).Coroutine();
                 }
             }
         }
 
-        private static async ETTask Test(this OperaComponent self)
+        private static async ETTask CreatCast(this OperaComponent self, int castConfig)
         {
             GameRoomComponent room = Root.Instance.Scene.GetComponent<GameRoomComponent>();
 
-            UnitComponent unitComponent = self.ClientScene().GetComponent<UnitComponent>();
+            //UnitComponent unitComponent = self.ClientScene().GetComponent<CurrentScenesComponent>().Scene.GetComponent<UnitComponent>();
 
-            Unit castUnit = room.MainPlayer.GetComponent<CastComponent>().Creat(0001);
+            Unit castUnit = room.MainPlayer.GetComponent<CastComponent>().Creat(castConfig);
 
             C2M_FrameCmdReq c2MFrameCmd = new();
             c2MFrameCmd.Cmd = new LSFCastCmd()
@@ -76,7 +73,6 @@ namespace ET.Client
                 Frame = room.Frame,
                 UnitId = castUnit.Id,
             };
-            Log.Warning($"ClientView Frame: {c2MFrameCmd.Cmd.Frame}");
             M2C_FrameCmdRes res = await self.ClientScene().GetComponent<SessionComponent>().Session.Call(c2MFrameCmd) as M2C_FrameCmdRes;
             room.TargetAhead = room.Frame - res.Frame;
         }
