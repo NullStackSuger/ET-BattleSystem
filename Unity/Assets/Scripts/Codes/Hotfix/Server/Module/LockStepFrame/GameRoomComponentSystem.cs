@@ -3,24 +3,22 @@ using System.Linq;
 
 namespace ET.Server
 {
-    //TODO: 需要将此组件挂在Map上而不是Root
-    // 有时间整理一下Root的组件
-    // Dispatcher尽量改成static class 而不是Entity
     [FriendOf(typeof(GameRoomComponent))]
     public static class GameRoomComponentSystem
     {
+        public class AwakeSystem : AwakeSystem<GameRoomComponent>
+        {
+            protected override void Awake(GameRoomComponent self)
+            {
+                Game.Ticker.UpdateCallback += self.TickOuter;
+            }
+        }
+        
         public class UpdateSystem : UpdateSystem<GameRoomComponent>
         {
             protected override void Update(GameRoomComponent self)
             {
-                if (!self.IsStart) return;
-                if (self.Syncs.Count <= 0) return;
-                
-                self.Receive();
-                self.Tick();
-                self.Send();
-                
-                ++self.Frame;
+                TickOuter(self);
             }
         }
 
@@ -28,9 +26,22 @@ namespace ET.Server
         {
             protected override void Destroy(GameRoomComponent self)
             {
+                Game.Ticker.UpdateCallback -= self.TickOuter;
                 self.Syncs?.Clear();
                 self.Syncs = null;
             }
+        }
+
+        private static void TickOuter(this GameRoomComponent self)
+        {
+            if (!self.IsStart) return;
+            if (self.Syncs.Count <= 0) return;
+            
+            self.Receive();
+            self.Tick();
+            self.Send();
+                
+            ++self.Frame;
         }
 
         private static void Receive(this GameRoomComponent self)
@@ -49,7 +60,9 @@ namespace ET.Server
 
         private static void Send(this GameRoomComponent self)
         {
-            if (!self.Sends.TryGetValue(self.Frame, out SortedSet<LSFCmd> sends)) return;
+            if (self.Sends.Count <= 0) return;
+            
+            SortedSet<LSFCmd> sends = self.Sends.First().Value;
             
             M2C_FrameCmd m2CFrameCmd = new();
             UnitComponent unitComponent = self.DomainScene().GetComponent<UnitComponent>();
@@ -60,6 +73,8 @@ namespace ET.Server
                 m2CFrameCmd.Cmd = cmd;
                 NoticeClientHelper.Send(unit, m2CFrameCmd, NoticeClientType.Broad);
             }
+
+            self.Sends.Remove(sends.First().Frame);
         }
         
         private static void Tick(this GameRoomComponent self)

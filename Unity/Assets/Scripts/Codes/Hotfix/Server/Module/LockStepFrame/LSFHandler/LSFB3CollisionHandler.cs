@@ -18,7 +18,7 @@ namespace ET.Server
 
         }
 
-        public override void Receive(Unit unit, LSFB3CollisionCmd cmd)
+        public override void Receive(Unit unit, B3CollisionComponent component, LSFB3CollisionCmd cmd)
         {
 
         }

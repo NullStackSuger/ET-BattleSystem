@@ -5,13 +5,15 @@ using System.Linq;
 namespace ET.Client
 {
     [ComponentOf(typeof(Scene))]
-    public class GameRoomComponent : Entity, IAwake, IUpdate
+    public class GameRoomComponent : Entity, IAwake, IDestroy, IUpdate
     {
         /// <summary>
         /// 客户端最大领先帧数
         /// </summary>
         [StaticField]
         public static readonly uint MaxAhead = 10;
+
+        public MultiDictionary<uint, Type, LSFCmd> AllCmds = new();
         
         public SortedDictionary<uint, SortedSet<LSFCmd>> Sends = new();
 
@@ -23,20 +25,11 @@ namespace ET.Client
         /// 客户端操控的Unit
         /// </summary>
         public Unit MainPlayer { get; set; }
-
+        
         /// <summary>
-        /// 客户端当前领先服务端帧数
+        /// 最后一次接收的帧数
         /// </summary>
-        public float CurrentAhead
-        {
-            get
-            {
-                if (this.Receives.Count <= 0)
-                    return this.Frame - 0;
-                else
-                    return this.Frame - this.Receives.Last().Value.First().Frame + 0;
-            }
-        }
+        public uint LastReceiveFrame;
 
         /// <summary>
         /// 客户端应该领先服务端帧数
@@ -54,16 +47,7 @@ namespace ET.Client
             }
         }
         private uint InnerTargetAhead = 5;
-        
-        /// <summary>
-        /// 客户端每秒Tick帧数
-        /// </summary>
-        public uint TickRateFrame
-        {
-            get
-            {
-                return (uint)(0.33 + (this.TargetAhead - this.CurrentAhead));
-            }
-        }
+
+        public float TickRate = 0.33f;
     }
 }

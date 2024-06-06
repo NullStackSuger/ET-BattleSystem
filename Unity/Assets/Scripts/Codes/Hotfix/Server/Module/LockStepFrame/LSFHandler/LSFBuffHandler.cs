@@ -18,7 +18,7 @@ namespace ET.Server
 
         }
 
-        public override void Receive(Unit unit, LSFBuffCmd cmd)
+        public override void Receive(Unit unit, BuffComponent component, LSFBuffCmd cmd)
         {
 
         }

@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 
 namespace ET
 {
@@ -75,6 +76,26 @@ namespace ET
             }
 
             return dic.ContainsValue(n);
+        }
+
+        public N this[T t, M m]
+        {
+            get
+            {
+                this.TryGetValue(t, m, out N value);
+                return value;
+            }
+            set
+            {
+                if (this.ContainsKey(t))
+                {
+                    this[t][m] = value;
+                }
+                else
+                {
+                    this.Add(t, m, value);
+                }
+            }
         }
     }
 }

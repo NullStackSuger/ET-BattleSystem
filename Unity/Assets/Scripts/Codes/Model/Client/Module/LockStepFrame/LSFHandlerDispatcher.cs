@@ -9,17 +9,10 @@ namespace ET.Client
     {
         [StaticField]
         public static Dictionary<Type, ILSFHandler> Handler = new();
-
-        /// <summary>
-        /// ComponentType和CmdType相互获取
-        /// </summary>
-        [StaticField]
-        public static Dictionary<Type, Type> Types = new();
         
         static LSFHandlerDispatcher()
         {
             Handler?.Clear();
-            Types?.Clear();
             
             var handlerTypes = EventSystem.Instance.GetTypes(typeof (LSFHandlerAttribute));
             foreach (Type type in handlerTypes)
@@ -35,8 +28,6 @@ namespace ET.Client
                 
                 Handler.Add(attribute.ComponentType, handler);
                 Handler.Add(attribute.CmdType, handler);
-                Types.Add(attribute.ComponentType, attribute.CmdType);
-                Types.Add(attribute.CmdType, attribute.ComponentType);
             }
         }
     }

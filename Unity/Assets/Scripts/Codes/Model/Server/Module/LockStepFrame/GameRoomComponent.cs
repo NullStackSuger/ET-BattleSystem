@@ -3,7 +3,7 @@ using System.Collections.Generic;
 namespace ET.Server
 {
     [ComponentOf(typeof(Scene))]
-    public class GameRoomComponent : Entity, IAwake, IUpdate, IDestroy
+    public class GameRoomComponent : Entity, IAwake, IDestroy, IUpdate
     {
         /// <summary>
         /// 需要Tick同步的Units

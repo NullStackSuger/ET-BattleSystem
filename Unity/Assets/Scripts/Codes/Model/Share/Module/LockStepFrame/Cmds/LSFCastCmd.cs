@@ -1,7 +1,6 @@
 // 由Creat LSFCmd Editor生成
-
-using System.Collections.Generic;
 using ProtoBuf;
+using System.Collections.Generic;
 namespace ET
 {
     [ProtoContract]
@@ -10,5 +9,10 @@ namespace ET
     {
         [ProtoMember(1)]
         public List<Cast> Casts;
+
+        protected bool Equals(LSFCastCmd other)
+        {
+            return base.Equals(other) && this.Casts.Equals(other.Casts);
+        }
     }
 }

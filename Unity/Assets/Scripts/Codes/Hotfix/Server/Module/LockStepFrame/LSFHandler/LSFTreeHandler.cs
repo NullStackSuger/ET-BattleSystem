@@ -18,7 +18,7 @@ namespace ET.Server
 
         }
 
-        public override void Receive(Unit unit, LSFTreeCmd cmd)
+        public override void Receive(Unit unit, TreeComponent component, LSFTreeCmd cmd)
         {
 
         }

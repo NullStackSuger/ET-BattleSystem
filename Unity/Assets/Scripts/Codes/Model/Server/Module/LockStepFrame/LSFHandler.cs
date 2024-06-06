@@ -7,7 +7,7 @@ namespace ET.Server
         public abstract void Tick(GameRoomComponent room, T component);
         public abstract void TickEnd(GameRoomComponent room, T component);
         
-        public abstract void Receive(Unit unit, K cmd);
+        public abstract void Receive(Unit unit, T component, K cmd);
         
         public void OnTickStart(GameRoomComponent room, Entity component)
         {
@@ -54,8 +54,15 @@ namespace ET.Server
                 Log.Error($"未找到{cmd.UnitId}Unit");
                 return;
             }
+
+            T component = unit.GetComponent<T>();
+            if (component == null)
+            {
+                Log.Error($"未找到{typeof(T)}组件");
+                return;
+            }
             
-            Receive(unit, cmd as K);
+            Receive(unit, component, cmd as K);
         }
     }
 

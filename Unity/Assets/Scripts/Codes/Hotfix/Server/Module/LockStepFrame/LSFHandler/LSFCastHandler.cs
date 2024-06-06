@@ -18,7 +18,7 @@ namespace ET.Server
 
         }
 
-        public override void Receive(Unit unit, LSFCastCmd cmd)
+        public override void Receive(Unit unit, CastComponent component, LSFCastCmd cmd)
         {
 
         }

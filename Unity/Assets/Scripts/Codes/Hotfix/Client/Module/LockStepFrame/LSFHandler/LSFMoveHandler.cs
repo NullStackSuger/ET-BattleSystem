@@ -18,38 +18,42 @@ namespace ET.Client
 
         }
 
-        public override void TickEnd(GameRoomComponent room, MoveComponent component, bool inRollBack)
+        public override LSFCmd TickEnd(GameRoomComponent room, MoveComponent component, bool inRollBack)
         {
+            // 这里通常写Tick结束的操作类似LateUpdate
+            
+            Unit unit = component.GetParent<Unit>();
+            
+            LSFMoveCmd moveCmd = new()
+            {
+                Frame = room.Frame,
+                UnitId = unit.Id,
+                Position = unit.Position,
+                Rotation = unit.Rotation,
+            };
+
             if (!inRollBack)
             {
-                Unit unit = component.GetParent<Unit>();
-                LSFMoveCmd moveCmd = new()
-                {
-                    Frame = room.Frame,
-                    Position = unit.Position,
-                    Rotation = unit.Rotation,
-                };
                 room.AddToSend(moveCmd);
             }
-            else
-            {
-                Log.Warning("RollBack TickEnd");
-            }
+
+            return moveCmd;
         }
 
-        public override void Receive(Unit unit, LSFMoveCmd cmd)
+        public override void Receive(Unit unit, MoveComponent component, LSFMoveCmd cmd)
         {
-
+            unit.Position = cmd.Position;
+            unit.Rotation = cmd.Rotation;
         }
 
-        public override bool Check(GameRoomComponent room, MoveComponent component, LSFMoveCmd cmd)
+        public override bool Check(LSFMoveCmd clientCmd, LSFMoveCmd serverCmd)
         {
-            return true;
+            return math.distance(clientCmd.Position, serverCmd.Position) < 0.5 && clientCmd.Rotation.Equals(serverCmd.Rotation);
         }
 
         public override void RollBack(GameRoomComponent room, MoveComponent component, LSFMoveCmd cmd)
         {
-
+            
         }
     }
 }

@@ -15,6 +15,8 @@ namespace ET
         private static readonly Queue<ISingleton> lateUpdates = new Queue<ISingleton>();
         [StaticField]
         private static readonly Queue<ETTask> frameFinishTask = new Queue<ETTask>();
+        [StaticField]
+        public static readonly FixedUpdate Ticker = new();
 
         public static T AddSingleton<T>() where T: Singleton<T>, new()
         {
@@ -57,6 +59,11 @@ namespace ET
             ETTask task = ETTask.Create(true);
             frameFinishTask.Enqueue(task);
             await task;
+        }
+
+        public static void Tick()
+        {
+            Ticker.Tick();
         }
         
         public static void Update()

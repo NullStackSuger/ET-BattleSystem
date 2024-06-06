@@ -13,19 +13,21 @@ namespace ET.Client
         {
 
         }
-        public override void TickEnd(GameRoomComponent room, CastComponent component, bool inRollBack)
+        public override LSFCmd TickEnd(GameRoomComponent room, CastComponent component, bool inRollBack)
+        {
+            return null;
+        }
+
+        public override void Receive(Unit unit, CastComponent component, LSFCastCmd cmd)
         {
 
         }
 
-        public override void Receive(Unit unit, LSFCastCmd cmd)
-        {
-
-        }
-        public override bool Check(GameRoomComponent room, CastComponent component, LSFCastCmd cmd)
+        public override bool Check(LSFCastCmd clientCmd, LSFCastCmd serverCmd)
         {
             return true;
         }
+
         public override void RollBack(GameRoomComponent room, CastComponent component, LSFCastCmd cmd)
         {
 

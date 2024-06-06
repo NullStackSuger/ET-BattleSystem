@@ -38,7 +38,7 @@ namespace ET.Server
 			// 加入aoi
 			unit.AddComponent<AOIEntity, int, float3>(9 * 1000, unit.Position);
 			
-			Root.Instance.Scene.GetComponent<GameRoomComponent>().TryAddSync(unit);
+			unit.DomainScene().GetComponent<GameRoomComponent>().TryAddSync(unit);
 			
 			// 解锁location，可以接收发给Unit的消息
 			await LocationProxyComponent.Instance.UnLock(unit.Id, request.OldInstanceId, unit.InstanceId);

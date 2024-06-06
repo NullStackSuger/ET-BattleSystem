@@ -12,6 +12,8 @@ namespace ET.Server
             room.IsStart = true;
             room.TryAddSync(unit);
             room.AddToReceive(request.Cmd);
+            
+            Log.Warning($"Server 在第{room.Frame}帧收到客户端第{request.Cmd.Frame}帧消息 | 此时服务端还有{room.Receives.Count}条消息未处理, {room.Sends.Count}条消息未发送");
 
             response.Frame = room.Frame;
             

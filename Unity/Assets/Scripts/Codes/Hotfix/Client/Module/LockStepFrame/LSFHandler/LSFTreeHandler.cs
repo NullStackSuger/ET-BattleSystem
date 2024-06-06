@@ -13,19 +13,21 @@ namespace ET.Client
         {
 
         }
-        public override void TickEnd(GameRoomComponent room, TreeComponent component, bool inRollBack)
+        public override LSFCmd TickEnd(GameRoomComponent room, TreeComponent component, bool inRollBack)
+        {
+            return null;
+        }
+
+        public override void Receive(Unit unit, TreeComponent component, LSFTreeCmd cmd)
         {
 
         }
 
-        public override void Receive(Unit unit, LSFTreeCmd cmd)
-        {
-
-        }
-        public override bool Check(GameRoomComponent room, TreeComponent component, LSFTreeCmd cmd)
+        public override bool Check(LSFTreeCmd clientCmd, LSFTreeCmd serverCmd)
         {
             return true;
         }
+
         public override void RollBack(GameRoomComponent room, TreeComponent component, LSFTreeCmd cmd)
         {
 

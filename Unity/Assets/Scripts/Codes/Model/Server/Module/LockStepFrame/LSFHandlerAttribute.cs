@@ -8,7 +8,7 @@ namespace ET.Server
         public readonly Type CmdType;
         public readonly Type ComponentType;
 
-        public LSFHandlerAttribute(Type cmdType, Type componentType)
+        public LSFHandlerAttribute(Type componentType, Type cmdType)
         {
             this.CmdType = cmdType;
             this.ComponentType = componentType;
